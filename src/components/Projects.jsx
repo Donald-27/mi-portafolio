@@ -5,6 +5,14 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
+    title: 'Deliveroo Courier Services',
+    description:
+      'A world-class courier and delivery management platform with real-time tracking, smart courier assignment, booking templates, performance analytics, and futuristic UI. Built for speed, beauty, and scalability.',
+    live: 'https://deliveroo-courier-services.netlify.app/',
+    github: 'https://github.com/Donald-27', // Replace with actual repo if available
+    tags: ['React', 'Tailwind', 'Flask', 'SQLite', 'JWT', 'Courier AI', 'UI/UX'],
+  },
+  {
     title: 'MatatuConnekt',
     description:
       'A travel booking platform for matatus and buses across Kenya. Includes real-time vehicle registration, trip planning, and user-friendly booking flow.',
