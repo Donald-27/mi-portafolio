@@ -22,6 +22,12 @@ const blogPosts = [
     summary:
       'A humorous look at debugging, learning from mistakes, and the chaotic beauty of software development.',
   },
+  {
+    title: 'More Than 20 Cups of Coffee and a Courier App',
+    link: 'https://donnald27.medium.com/more-than-20-cups-of-coffee-and-a-courier-app-eefc6feae9ad',
+    summary:
+      'From broken login pages to SmartAssign magic and accidental Rickrolls — our chaotic, caffeine-fueled journey building a courier app we’re proud of.',
+  },
 ];
 
 export default function Blog() {
@@ -29,7 +35,7 @@ export default function Blog() {
     <section id="blog" className="bg-[#0d0d0d] text-white py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-purple-400 mb-12 text-center">Blog Posts</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
             <motion.div
               key={index}
