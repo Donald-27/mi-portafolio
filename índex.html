@@ -257,13 +257,67 @@
 </button>
 
 <script>
-  document.getElementById('downloadResume').addEventListener('click', () => {
-    const link = document.createElement('a');
-    link.href = 'resume.html';
-    link.download = 'KipropDonald_Resume.html';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  document.getElementById('downloadResume').addEventListener('click', async () => {
+    try {
+      // Show loading state
+      const btn = document.getElementById('downloadResume');
+      const originalContent = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Generating PDF...';
+      btn.disabled = true;
+
+      // Fetch resume.html content
+      const response = await fetch('resume.html');
+      const resumeContent = await response.text();
+      
+      // Create a temporary div to hold the resume content
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = resumeContent;
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.left = '-9999px';
+      tempDiv.style.top = '0';
+      tempDiv.style.width = '210mm';
+      tempDiv.style.fontFamily = 'Arial, sans-serif';
+      tempDiv.style.fontSize = '12px';
+      tempDiv.style.lineHeight = '1.4';
+      tempDiv.style.color = '#000';
+      tempDiv.style.background = '#fff';
+      tempDiv.style.padding = '20px';
+      document.body.appendChild(tempDiv);
+
+      // Configure PDF options
+      const opt = {
+        margin: [0.5, 0.5, 0.5, 0.5],
+        filename: 'Kiprop_Donald_Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+
+      // Generate and download PDF
+      await html2pdf().set(opt).from(tempDiv).save();
+      
+      // Clean up
+      document.body.removeChild(tempDiv);
+      
+      // Reset button state
+      btn.innerHTML = originalContent;
+      btn.disabled = false;
+      
+      // Show success feedback
+      btn.innerHTML = '<i class="fas fa-check mr-2"></i>Downloaded!';
+      setTimeout(() => {
+        btn.innerHTML = originalContent;
+      }, 2000);
+      
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      const btn = document.getElementById('downloadResume');
+      btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+      btn.disabled = false;
+      setTimeout(() => {
+        btn.innerHTML = '<span data-en="Download Resume" data-de="Lebenslauf herunterladen" data-es="Descargar CV" data-gb="Download CV">Download Resume</span><i class="fas fa-download"></i>';
+      }, 2000);
+    }
   });
 </script>
 
@@ -291,7 +345,7 @@
                     <div class="relative mx-auto w-80 h-96 lg:w-96 lg:h-[500px]">
                         <div class="absolute inset-0 bg-gradient-to-br from-primary-500 to-accent-amber-500 rounded-3xl transform rotate-6 animate-pulse-slow"></div>
                         <div class="relative bg-slate-800 rounded-3xl overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500">
-                            <img src="attached_assets/me_1754647107421.jpg" alt="Kiprop Donald - Full-Stack Developer" class="w-full h-full object-cover object-center">
+                            <img src="me.jpg" alt="Kiprop Donald - Full-Stack Developer" class="w-full h-full object-cover object-center">
                         </div>
                         <!-- Floating Elements -->
                         <div class="absolute -top-4 -right-4 bg-accent-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold animate-float">
@@ -399,7 +453,7 @@
                                 <div class="text-sm text-slate-400" data-en="Years Experience" data-de="Jahre Erfahrung" data-es="Años de Experiencia" data-gb="Years Experience">Years Experience</div>
                             </div>
                             <div>
-                                <div class="text-3xl font-black text-accent-emerald-500">15+</div>
+                                <div class="text-3xl font-black text-accent-emerald-500">10+</div>
                                 <div class="text-sm text-slate-400" data-en="Happy Clients" data-de="Zufriedene Kunden" data-es="Clientes Felices" data-gb="Happy Clients">Happy Clients</div>
                             </div>
                         </div>
@@ -442,7 +496,8 @@
                         <span class="text-primary-500" data-en="Work" data-de="Arbeiten" data-es="Destacados" data-gb="Work">Work</span>
                     </h2>
                     <p class="text-xl text-slate-400" data-en="Award-winning projects that solve real-world problems" data-de="Preisgekrönte Projekte, die reale Probleme lösen" data-es="Proyectos premiados que resuelven problemas del mundo real" data-gb="Award-winning projects that solve real-world problems">
-                        Award-winning projects that solve real-world problems
+                        
+Solutions created for today’s pressing needs.
                     </p>
                 </div>
                 
@@ -628,7 +683,7 @@
                         <div class="relative flex items-center">
                             <div class="flex-1 pr-8 text-right">
                                 <div class="glass-card rounded-2xl p-6 transform hover:scale-105 transition-all">
-                                    <div class="text-primary-400 font-semibold mb-2">2021 - Present</div>
+                                    <div class="text-primary-400 font-semibold mb-2">2025 - Present</div>
                                     <h3 class="text-2xl font-bold mb-2">Full-Stack Developer</h3>
                                     <p class="text-accent-emerald-500 mb-4">Freelance & Contract Work</p>
                                     <p class="text-slate-300 leading-relaxed" data-en="Developing end-to-end web applications using React, Flask, and modern web technologies. Successfully delivered 25+ projects across healthcare, travel, and productivity domains." data-de="Entwicklung von End-to-End-Webanwendungen mit React, Flask und modernen Web-Technologien." data-es="Desarrollando aplicaciones web de extremo a extremo usando React, Flask y tecnologías web modernas." data-gb="Developing end-to-end web applications using React, Flask, and modern web technologies.">
@@ -646,7 +701,7 @@
                             <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-accent-emerald-500 rounded-full border-4 border-slate-950 z-10"></div>
                             <div class="flex-1 pl-8">
                                 <div class="glass-card rounded-2xl p-6 transform hover:scale-105 transition-all">
-                                    <div class="text-accent-emerald-400 font-semibold mb-2">2020 - 2021</div>
+                                    <div class="text-accent-emerald-400 font-semibold mb-2">2024-2025</div>
                                     <h3 class="text-2xl font-bold mb-2" data-en="Software Development Training" data-de="Software-Entwicklung Ausbildung" data-es="Formación en Desarrollo de Software" data-gb="Software Development Training">Software Development Training</h3>
                                     <p class="text-accent-amber-500 mb-4">Moringa School</p>
                                     <p class="text-slate-300 leading-relaxed" data-en="Intensive full-stack development bootcamp covering React, Python, Flask, SQLAlchemy, and modern web development practices. Graduated with honors." data-de="Intensiver Full-Stack-Entwicklungs-Bootcamp mit React, Python, Flask und modernen Web-Entwicklungspraktiken." data-es="Bootcamp intensivo de desarrollo full-stack cubriendo React, Python, Flask y prácticas modernas de desarrollo web." data-gb="Intensive full-stack development bootcamp covering React, Python, Flask, SQLAlchemy, and modern web development practices.">
@@ -660,7 +715,7 @@
                         <div class="relative flex items-center">
                             <div class="flex-1 pr-8 text-right">
                                 <div class="glass-card rounded-2xl p-6 transform hover:scale-105 transition-all">
-                                    <div class="text-accent-amber-400 font-semibold mb-2">2018 - 2020</div>
+                                    <div class="text-accent-amber-400 font-semibold mb-2">2022 - 2024</div>
                                     <h3 class="text-2xl font-bold mb-2" data-en="Self-Taught Developer" data-de="Autodidaktischer Entwickler" data-es="Desarrollador Autodidacta" data-gb="Self-Taught Developer">Self-Taught Developer</h3>
                                     <p class="text-primary-500 mb-4" data-en="Personal Learning Journey" data-de="Persönliche Lernreise" data-es="Viaje de Aprendizaje Personal" data-gb="Personal Learning Journey">Personal Learning Journey</p>
                                     <p class="text-slate-300 leading-relaxed" data-en="Started learning programming fundamentals, built small projects, and discovered my passion for creating digital solutions that solve real problems." data-de="Begann mit dem Erlernen von Programmiergrundlagen, baute kleine Projekte und entdeckte meine Leidenschaft für digitale Lösungen." data-es="Comencé aprendiendo fundamentos de programación, construí pequeños proyectos y descubrí mi pasión por crear soluciones digitales." data-gb="Started learning programming fundamentals, built small projects, and discovered my passion for creating digital solutions that solve real problems.">
@@ -816,6 +871,21 @@
                                 <textarea id="message" name="message" rows="5" required
                                           class="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg focus:border-primary-500 focus:outline-none transition-colors text-white placeholder-slate-400 resize-none"
                                           placeholder="Your Message" data-en-placeholder="Your Message" data-de-placeholder="Ihre Nachricht" data-es-placeholder="Tu Mensaje" data-gb-placeholder="Your Message"></textarea>
+                            </div>
+                            
+                            <!-- Send Method Selection -->
+                            <div class="space-y-3">
+                                <label class="text-white font-semibold" data-en="Choose how to send:" data-de="Wählen Sie den Versandweg:" data-es="Elige cómo enviar:" data-gb="Choose how to send:">Choose how to send:</label>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <button type="button" id="sendEmailBtn" class="send-method-btn active flex items-center justify-center space-x-2 px-4 py-3 rounded-lg border-2 border-primary-500 bg-primary-500/20 text-primary-400 font-semibold transition-all">
+                                        <i class="fas fa-envelope"></i>
+                                        <span data-en="Send Email" data-de="E-Mail senden" data-es="Enviar Email" data-gb="Send Email">Send Email</span>
+                                    </button>
+                                    <button type="button" id="sendWhatsAppBtn" class="send-method-btn flex items-center justify-center space-x-2 px-4 py-3 rounded-lg border-2 border-slate-600 bg-slate-800/50 text-slate-400 font-semibold transition-all hover:border-accent-emerald-500 hover:text-accent-emerald-400">
+                                        <i class="fab fa-whatsapp"></i>
+                                        <span data-en="Send WhatsApp" data-de="WhatsApp senden" data-es="Enviar WhatsApp" data-gb="Send WhatsApp">Send WhatsApp</span>
+                                    </button>
+                                </div>
                             </div>
                             
                             <button type="submit" id="submitBtn"
@@ -1109,8 +1179,39 @@
                 const contactForm = document.getElementById('contactForm');
                 const submitBtn = document.getElementById('submitBtn');
                 const formMessages = document.getElementById('formMessages');
+                const sendEmailBtn = document.getElementById('sendEmailBtn');
+                const sendWhatsAppBtn = document.getElementById('sendWhatsAppBtn');
                 
                 if (!contactForm || !submitBtn || !formMessages) return;
+                
+                let selectedMethod = 'email';
+                
+                // Handle send method selection
+                sendEmailBtn?.addEventListener('click', () => {
+                    selectedMethod = 'email';
+                    updateMethodButtons();
+                });
+                
+                sendWhatsAppBtn?.addEventListener('click', () => {
+                    selectedMethod = 'whatsapp';
+                    updateMethodButtons();
+                });
+                
+                function updateMethodButtons() {
+                    const buttons = document.querySelectorAll('.send-method-btn');
+                    buttons.forEach(btn => {
+                        btn.classList.remove('active');
+                        if (selectedMethod === 'email' && btn.id === 'sendEmailBtn') {
+                            btn.classList.add('active');
+                            btn.className = 'send-method-btn active flex items-center justify-center space-x-2 px-4 py-3 rounded-lg border-2 border-primary-500 bg-primary-500/20 text-primary-400 font-semibold transition-all';
+                        } else if (selectedMethod === 'whatsapp' && btn.id === 'sendWhatsAppBtn') {
+                            btn.classList.add('active');
+                            btn.className = 'send-method-btn active flex items-center justify-center space-x-2 px-4 py-3 rounded-lg border-2 border-accent-emerald-500 bg-accent-emerald-500/20 text-accent-emerald-400 font-semibold transition-all';
+                        } else {
+                            btn.className = 'send-method-btn flex items-center justify-center space-x-2 px-4 py-3 rounded-lg border-2 border-slate-600 bg-slate-800/50 text-slate-400 font-semibold transition-all hover:border-accent-emerald-500 hover:text-accent-emerald-400';
+                        }
+                    });
+                }
                 
                 contactForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
@@ -1121,7 +1222,8 @@
                         name: formData.get('name'),
                         email: formData.get('email'), 
                         subject: formData.get('subject'),
-                        message: formData.get('message')
+                        message: formData.get('message'),
+                        method: selectedMethod
                     };
                     
                     // Validate data
@@ -1134,22 +1236,31 @@
                     setFormLoading(true);
                     
                     try {
-                        // TODO: Implement actual email sending with Nodemailer
-                        // For now, simulate API call
-                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        const response = await fetch('/api/send-email', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(data)
+                        });
                         
-                        // Simulate successful email send
-                        showMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
-                        contactForm.reset();
+                        const result = await response.json();
                         
-                        // In real implementation, this would make an API call:
-                        // const response = await fetch('/api/send-email', {
-                        //     method: 'POST',
-                        //     headers: { 'Content-Type': 'application/json' },
-                        //     body: JSON.stringify(data)
-                        // });
+                        if (response.ok && result.success) {
+                            if (selectedMethod === 'whatsapp' && result.whatsapp_url) {
+                                // Open WhatsApp with pre-filled message
+                                window.open(result.whatsapp_url, '_blank');
+                                showMessage('WhatsApp opened with your message!', 'success');
+                            } else {
+                                showMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
+                            }
+                            contactForm.reset();
+                            selectedMethod = 'email';
+                            updateMethodButtons();
+                        } else {
+                            throw new Error(result.error || 'Failed to send message');
+                        }
                         
                     } catch (error) {
+                        console.error('Error:', error);
                         showMessage('Failed to send message. Please try again or contact me directly.', 'error');
                     } finally {
                         setFormLoading(false);
@@ -1189,86 +1300,16 @@
                         formMessages.classList.add('hidden');
                     }, 5000);
                 }
+                
+                // Initialize with email selected
+                updateMethodButtons();
             }
             
-            // Resume download functionality
+            // Resume download functionality - handled by separate script above
             function initResumeDownload() {
-                const downloadBtn = document.getElementById('downloadResume');
-                
-                if (!downloadBtn) return;
-                
-                downloadBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    
-                    // TODO: Implement actual PDF generation and download
-                    // For now, create a simple downloadable resume
-                    
-                    const resumeContent = `
-KIPROP DONALD
-Full-Stack Software Developer
-
-Email: kipropdonald27@gmail.com
-Phone: +254 724 779 523
-Location: Eldoret, Kenya
-GitHub: https://github.com/Donald-27
-LinkedIn: https://linkedin.com/in/kiprop-donald-56b898352
-
-SUMMARY
-Award-winning full-stack developer with 3+ years of experience in building modern web applications using React, Flask, and cutting-edge technologies. Specialized in creating exceptional digital experiences that solve real-world problems.
-
-SKILLS
-• Frontend: React, JavaScript, HTML5, CSS3, Tailwind CSS
-• Backend: Flask, Python, SQLAlchemy, Node.js
-• Databases: SQLite, MongoDB, PostgreSQL
-• Tools: Git, Docker, Netlify, Heroku
-• Design: UI/UX, Figma, Adobe Creative Suite
-
-EXPERIENCE
-Full-Stack Developer (2021 - Present)
-Freelance & Contract Work
-• Developed 25+ web applications across healthcare, travel, and productivity sectors
-• Built responsive, scalable applications using React and Flask
-• Implemented real-time features and complex UI interactions
-• Delivered projects on time with 100% client satisfaction rate
-
-Software Development Training (2020 - 2021)
-Moringa School
-• Intensive full-stack development bootcamp
-• Graduated with honors
-• Specialized in modern web development practices
-
-PROJECTS
-• Deliveroo Courier Services - Delivery management platform with real-time tracking
-• MatatuConnekt - Travel booking platform for Kenya's transport industry  
-• VirtualCare System - Complete hospital management solution
-• Doctor Notes Generator - PDF generation tool for healthcare facilities
-• LateShow Platform - Event scheduling and listing platform
-
-EDUCATION
-Moringa School - Full-Stack Web Development (2020-2021)
-Self-Directed Learning - Programming Fundamentals (2018-2020)
-
-Built with passion and attention to detail.
-                    `;
-                    
-                    // Create and download file
-                    const blob = new Blob([resumeContent], { type: 'text/plain' });
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'Kiprop_Donald_Resume.txt';
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    window.URL.revokeObjectURL(url);
-                    
-                    // Show feedback
-                    const originalText = downloadBtn.innerHTML;
-                    downloadBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Downloaded!';
-                    setTimeout(() => {
-                        downloadBtn.innerHTML = originalText;
-                    }, 2000);
-                });
+                // PDF generation is handled by the separate script above the main script
+                // This function is kept for compatibility but the actual functionality
+                // is implemented in the inline script for the download button
             }
             
             // Smooth scrolling for navigation links
