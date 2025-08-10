@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kiprop Donald — Resume</title>
+
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  /* --- Page setup --- */
+  :root{
+    --navy:#071028;
+    --teal:#06b6d4;
+    --teal-dark:#0891b2;
+    --muted:#93a0b3;
+    --paper:#ffffff;
+    --accent:#0ea5a3;
+  }
+  html,body{
+    height:100%;
+    margin:0;
+    background:linear-gradient(180deg,#061025 0%, #071428 50%, #0b1730 100%);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    color:#0f1724;
+  }
+
+  /* Container centers the resume and gives print-friendly width */
+  .sheet-wrap{
+    max-width: 900px;
+    margin: 40px auto;
+    background: transparent;
+    padding: 0 20px;
+  }
+
+  .sheet {
+    background: var(--paper);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(2,6,23,0.6);
+    page-break-after: always;
+  }
+
+  /* Watermark (KD) repeated on each printed page via pseudo-element */
+  .sheet::before{
+    content:"KD";
+    position:absolute;
+    left:50%;
+    top:45%;
+    transform:translate(-50%,-45%) rotate(-30deg);
+    font-family: "Montserrat", "Inter", sans-serif;
+    font-weight:700;
+    font-size:180px;
+    color: rgba(6,182,212,0.06);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* Header controls (download button visible on screen only) */
+  .top-actions{
+    text-align:center;
+    margin-bottom:12px;
+  }
+  .download-btn{
+    display:inline-flex;
+    gap:10px;
+    align-items:center;
+    background:linear-gradient(90deg,var(--teal),var(--teal-dark));
+    color:white;
+    padding:10px 16px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    box-shadow:0 6px 18px rgba(6,182,212,0.18);
+    cursor:pointer;
+    border:none;
+  }
+  .download-btn i{font-size:14px;}
+  .download-note{color:#cbd5e1;font-size:13px;margin-top:8px;}
+
+  /* --- Page layout --- */
+  .page {
+    position:relative;
+    display:grid;
+    grid-template-columns: 320px 1fr;
+    gap: 30px;
+    padding: 36px;
+    min-height: 1120px; /* helps produce multi-page flow */
+    background: linear-gradient(180deg, #ffffff 0%, #fff 100%);
+    z-index:1;
+  }
+
+  /* Sidebar */
+  .sidebar{
+    background: linear-gradient(180deg, var(--navy), #0b1630);
+    color: #E6F7F8;
+    padding: 28px;
+    border-radius: 8px;
+    position:relative;
+    z-index:2;
+    box-shadow: inset 0 -4px 18px rgba(0,0,0,0.2);
+  }
+  .avatar{
+    width:120px;
+    height:120px;
+    border-radius:999px;
+    overflow:hidden;
+    margin: 0 auto 14px;
+    border:4px solid rgba(255,255,255,0.08);
+    background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:700;
+    font-size:28px;
+    letter-spacing:1px;
+  }
+  .name{
+    text-align:center;
+    font-family:"Montserrat", sans-serif;
+    font-weight:700;
+    font-size:20px;
+    margin-top:6px;
+    color:#fff;
+  }
+  .title{
+    text-align:center;
+    margin-top:6px;
+    font-size:13px;
+    color: #bfeff1;
+    opacity:0.95;
+  }
+  .muted{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:6px;
+    text-align:center;
+  }
+
+  /* sidebar blocks */
+  .block{
+    margin-top:22px;
+  }
+  .block h4{
+    font-size:12px;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    color:#cdeff1;
+    margin-bottom:10px;
+  }
+  .contact-item{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin-bottom:10px;
+    font-size:14px;
+    color:#E7FBFC;
+  }
+  .contact-item i{
+    color: rgba(255,255,255,0.9);
+    width:18px;
+    text-align:center;
+  }
+  .contact-link{ color:#e6f9fa; text-decoration:none; font-size:13px;}
+  .skill-pill{
+    display:inline-block;
+    background: rgba(255,255,255,0.06);
+    color:#d6fbfd;
+    padding:6px 10px;
+    border-radius:999px;
+    font-size:13px;
+    margin: 6px 6px 0 0;
+  }
+  .lang-bar{
+    margin-top:10px;
+  }
+  .lang {
+    margin-bottom:8px;
+    font-size:13px;
+  }
+
+  /* Main content */
+  .content{
+    padding-right:6px;
+  }
+  .section{
+    margin-bottom:22px;
+    position:relative;
+    z-index:2;
+  }
+  .section h3{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:16px;
+    color:var(--navy);
+    margin-bottom:12px;
+  }
+  .section h3 i{
+    color:var(--teal);
+    background: linear-gradient(90deg, rgba(6,182,212,0.12), rgba(8,145,178,0.08));
+    padding:10px;
+    border-radius:8px;
+    font-size:14px;
+    width:38px;
+    text-align:center;
+  }
+
+  /* Experience list (timeline-like) */
+  .exp-item{
+    padding:14px;
+    border-radius:10px;
+    background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
+    box-shadow:0 6px 16px rgba(7,16,36,0.04);
+    display:flex;
+    gap:18px;
+    margin-bottom:14px;
+  }
+  .exp-meta{
+    min-width:110px;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .exp-body h4{
+    margin:0;
+    font-size:15px;
+    color:#071428;
+  }
+  .exp-body p{
+    margin:6px 0 0 0;
+    color:#334155;
+    font-size:14px;
+    line-height:1.45;
+  }
+  .tags{ margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; }
+  .tag{ font-size:12px; background: #eef9fa; color:#04616a; padding:6px 10px; border-radius:999px; }
+
+  /* Projects cards */
+  .project{
+    display:grid;
+    grid-template-columns: 1fr auto;
+    gap:12px;
+    padding:14px;
+    border-radius:10px;
+    background:white;
+    border:1px solid #eef4f7;
+    margin-bottom:12px;
+  }
+  .project h4{ margin:0; font-size:15px; color:#071428; }
+  .project p{ margin:6px 0 0 0; color:#475569; font-size:14px; }
+
+  /* Education & small lists */
+  .edu-item{ margin-bottom:12px;}
+  .edu-item h4{ margin:0; font-size:15px; color:#071428; }
+  .edu-item span{ font-size:13px; color:var(--muted); }
+
+  /* Footer small print */
+  .page-foot{ font-size:12px; color:var(--muted); margin-top:24px; }
+
+  /* --- Print styles --- */
+  @media print {
+    html,body{ background:white; }
+    .sheet{ box-shadow:none; border-radius:0; page-break-after:always; }
+    .sheet::before { color: rgba(6,182,212,0.03); font-size:220px; }
+    .top-actions, .download-btn { display:none; } /* hide on print UI */
+    .page { min-height: 1120px; padding: 28px; grid-template-columns: 280px 1fr; gap:18px; }
+  }
+
+  /* --- Responsive for screen viewers --- */
+  @media (max-width:920px){
+    .page{ grid-template-columns: 1fr; min-height:auto; padding:22px; }
+    .sidebar{ order:2; }
+    .content{ order:1; }
+    .sheet-wrap{ padding:12px; }
+    .sheet::before{ display:none; } /* hide watermark on small screens to reduce clutter */
+  }
+
+</style>
+</head>
+<body>
+  <!-- top action (screen only) -->
+  <div class="sheet-wrap">
+    <div class="top-actions" aria-hidden="true">
+      <button class="download-btn" onclick="window.print()" title="Download as PDF">
+        <i class="fa-solid fa-download"></i> Download Resume (PDF)
+      </button>
+      <div class="download-note">Opens print dialog — choose "Save as PDF" and A4 (or leave default).</div>
+    </div>
+
+    <!-- ------------------ PAGE 1 ------------------ -->
+    <section class="sheet" aria-label="Resume page 1">
+      <div class="page">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" role="complementary">
+          <!-- avatar (use initials if no image) -->
+          <div class="avatar" aria-hidden="true">KD</div>
+
+          <!-- name & title from portfolio -->
+          <div class="name">Kiprop Donald</div>
+          <div class="title">Award-Winning Full-Stack Developer</div>
+          <div class="muted">Eldoret, Kenya · Open to remote & on-site</div>
+
+          <!-- contact -->
+          <div class="block">
+            <h4><i class="fa-solid fa-address-card"></i> Contact</h4>
+            <div class="contact-item"><i class="fa-solid fa-envelope"></i> <a class="contact-link" href="mailto:kipropdonald27@gmail.com">kipropdonald27@gmail.com</a></div>
+            <div class="contact-item"><i class="fa-solid fa-phone"></i> <a class="contact-link" href="tel:+254724779523">+254 724 779 523</a></div>
+            <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Eldoret, Kenya</div>
+            <div class="contact-item"><i class="fa-brands fa-github"></i> <a class="contact-link" href="https://github.com/Donald-27" target="_blank">github.com/Donald-27</a></div>
+            <div class="contact-item"><i class="fa-brands fa-linkedin"></i> <a class="contact-link" href="https://linkedin.com/in/kiprop-donald-56b898352" target="_blank">linkedin.com/in/kiprop-donald-56b898352</a></div>
+            <div class="contact-item"><i class="fa-solid fa-globe"></i> <a class="contact-link" href="https://mi-portafolio-zhwa.onrender.com" target="_blank">mi-portafolio (website)</a></div>
+          </div>
+
+          <!-- skills -->
+          <div class="block">
+            <h4><i class="fa-solid fa-code"></i> Core Skills</h4>
+            <div>
+              <span class="skill-pill">React</span>
+              <span class="skill-pill">JavaScript</span>
+              <span class="skill-pill">Flask</span>
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">Tailwind</span>
+              <span class="skill-pill">JWT</span>
+              <span class="skill-pill">SQL / MongoDB</span>
+              <span class="skill-pill">PDF generation</span>
+            </div>
+          </div>
+
+          <!-- quick stats -->
+          <div class="block">
+            <h4><i class="fa-solid fa-chart-line"></i> Stats</h4>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <div style="min-width:110px">
+                <div style="font-weight:700;font-size:20px;color:#E8FCFD">25+</div>
+                <div style="font-size:12px;color:#cfeff0">Projects</div>
+              </div>
+              <div style="min-width:110px">
+                <div style="font-weight:700;font-size:20px;color:#FFE7B5">3+</div>
+                <div style="font-size:12px;color:#f3d9a0">Years exp</div>
+              </div>
+              <div style="min-width:110px">
+                <div style="font-weight:700;font-size:20px;color:#CFFFE6">10+</div>
+                <div style="font-size:12px;color:#bdecd9">Happy clients</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- languages / availability -->
+          <div class="block">
+            <h4><i class="fa-solid fa-language"></i> Languages</h4>
+            <div class="lang">English — Professional</div>
+            <div class="lang">Swahili — Fluent</div>
+          </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content" role="main">
+          <!-- Profile -->
+          <div class="section">
+            <h3><i class="fa-solid fa-user-pen"></i> Profile</h3>
+            <div>
+              <p style="color:#475569;font-size:15px;line-height:1.5;">
+                Full-stack developer from Eldoret with a practical eye for clean design, performance, and maintainable code. Transitioned from a quantitative background into software engineering and trained at Moringa School. I build production-grade apps—especially health and travel systems—with React frontends and Python/Flask backends. I enjoy shipping solutions that solve real user problems and scale.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience (first page) -->
+          <div class="section">
+            <h3><i class="fa-solid fa-briefcase"></i> Professional Experience</h3>
+
+            <div class="exp-item">
+              <div class="exp-meta">2025 — Present</div>
+              <div class="exp-body">
+                <h4>Full-Stack Developer — Freelance & Contract</h4>
+                <p>Delivered end-to-end web applications using React, Flask, and modern tooling. Led feature design, API development, and PDF/document generation for healthcare and logistics clients. Maintained CI/CD flow and addressed production incidents.</p>
+                <div class="tags">
+                  <div class="tag">React</div><div class="tag">Flask</div><div class="tag">Postgres</div><div class="tag">Deployment</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-meta">2024 — 2025</div>
+              <div class="exp-body">
+                <h4>Software Development Training — Moringa School</h4>
+                <p>Completed an intensive full-stack program covering React, Python, Flask, SQLAlchemy, testing, and software engineering best practices. Built collaborative projects and graduated with strong practical skills.</p>
+                <div class="tags"><div class="tag">Bootcamp</div><div class="tag">React</div><div class="tag">Flask</div></div>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-meta">2022 — 2024</div>
+              <div class="exp-body">
+                <h4>Self-Taught Developer — Personal Projects</h4>
+                <p>Built multiple web apps to solve local problems: a travel booking system, health management tools, and document generators. Adopted best practices, automated tests, and improved UX through iteration.</p>
+                <div class="tags"><div class="tag">Self-Initiative</div><div class="tag">Prototyping</div></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Page footer note -->
+          <div class="page-foot">Page 1 • Designed by KD — Exported resume</div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ------------------ PAGE 2 ------------------ -->
+    <section class="sheet" aria-label="Resume page 2">
+      <div class="page">
+        <!-- Sidebar intentionally lighter on page 2 -->
+        <aside class="sidebar" style="background:linear-gradient(180deg,#071428,#0b1a33);">
+          <div style="padding:2px 8px;border-radius:8px;background:rgba(255,255,255,0.02);font-size:13px;margin-bottom:6px;text-align:center">Selected Projects</div>
+
+          <div class="block">
+            <h4><i class="fa-solid fa-project-diagram"></i> Highlights</h4>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:13px;color:#eafcfd">
+                <strong>Deliveroo Courier Services</strong><br><small style="color:#bfeff1">Delivery & logistics dashboard — React + analytics</small>
+              </div>
+
+              <div style="font-size:13px;color:#eafcfd">
+                <strong>MatatuConnekt</strong><br><small style="color:#bfeff1">Travel booking platform across Kenya — React frontend</small>
+              </div>
+
+              <div style="font-size:13px;color:#eafcfd">
+                <strong>VirtualCare System</strong><br><small style="color:#bfeff1">Hospital management & appointment booking</small>
+              </div>
+
+              <div style="font-size:13px;color:#eafcfd">
+                <strong>Doctor Notes Generator</strong><br><small style="color:#bfeff1">PDF templates, stamps, and branding for clinics</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <h4><i class="fa-solid fa-star"></i> Achievements</h4>
+            <div style="color:#eafcfd;font-size:13px">
+              • 25+ shipped projects<br>
+              • 10+ happy clients<br>
+              • Multiple UX-driven redesigns improving retention
+            </div>
+          </div>
+
+          <div class="block">
+            <h4><i class="fa-solid fa-gear"></i> Tools</h4>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <span class="skill-pill">VS Code</span>
+              <span class="skill-pill">Git</span>
+              <span class="skill-pill">Docker</span>
+              <span class="skill-pill">Netlify</span>
+              <span class="skill-pill">Render</span>
+            </div>
+          </div>
+        </aside>
+
+        <main class="content">
+          <div class="section">
+            <h3><i class="fa-solid fa-code-branch"></i> Projects (Detailed)</h3>
+
+            <div class="project">
+              <div>
+                <h4>Deliveroo Courier Services</h4>
+                <p>A production-ready courier and delivery management platform with real-time tracking, smart courier assignment, and analytics dashboards to monitor delivery performance.</p>
+                <div style="margin-top:10px;">
+                  <span class="tag">React</span> <span class="tag">Tailwind</span> <span class="tag">Flask</span> <span class="tag">Realtime</span>
+                </div>
+              </div>
+              <div style="text-align:right;color:var(--muted);font-size:13px">live demo</div>
+            </div>
+
+            <div class="project">
+              <div>
+                <h4>MatatuConnekt</h4>
+                <p>Travel booking platform for matatus and buses across Kenya, integrating vehicle registration and bookings with an intuitive mobile-first UI.</p>
+                <div style="margin-top:10px;">
+                  <span class="tag">React</span> <span class="tag">MongoDB</span>
+                </div>
+              </div>
+              <div style="text-align:right;color:var(--muted);font-size:13px">live demo</div>
+            </div>
+
+            <div class="project">
+              <div>
+                <h4>VirtualCare System</h4>
+                <p>Hospital management system enabling appointment booking, patient records, and emergency workflows. Focused on security and usability for clinical staff.</p>
+                <div style="margin-top:10px;">
+                  <span class="tag">Healthcare</span> <span class="tag">Flask</span>
+                </div>
+              </div>
+              <div style="text-align:right;color:var(--muted);font-size:13px">demo</div>
+            </div>
+
+            <div class="project">
+              <div>
+                <h4>Doctor Notes Generator</h4>
+                <p>Robust PDF generator supporting multiple templated doctor notes with logos, stamps, and watermarks. Designed for clinics to produce official-looking notes quickly.</p>
+                <div style="margin-top:10px;">
+                  <span class="tag">PDF</span> <span class="tag">React</span>
+                </div>
+              </div>
+              <div style="text-align:right;color:var(--muted);font-size:13px">code</div>
+            </div>
+
+          </div>
+
+          <div class="section">
+            <h3><i class="fa-solid fa-wrench"></i> Selected Contributions</h3>
+            <div style="color:#334155;font-size:14px;line-height:1.5;">
+              • Built an automated PDF pipeline that merges dynamic patient data into hospital-branded notes, saving staff time. <br><br>
+              • Implemented JWT authentication and role-based access across patient and doctor dashboards. <br><br>
+              • Redesigned a booking UX that decreased task time by 30% for dispatch teams.
+            </div>
+          </div>
+
+          <div class="page-foot">Page 2 • Projects & contributions</div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ------------------ PAGE 3 ------------------ -->
+    <section class="sheet" aria-label="Resume page 3">
+      <div class="page">
+        <aside class="sidebar" style="background:linear-gradient(180deg,#071428,#071a2a);">
+          <div class="block">
+            <h4><i class="fa-solid fa-graduation-cap"></i> Education</h4>
+            <div class="edu-item">
+              <h4>Moringa School — Software Development (Bootcamp)</h4>
+              <span>Intensive training covering full-stack development, React, Python, Flask, SQLAlchemy.</span>
+            </div>
+            <div class="edu-item">
+              <h4>Actuarial Science — (prior studies)</h4>
+              <span>Transitioned skills from quantitative background into software engineering.</span>
+            </div>
+          </div>
+
+          <div class="block">
+            <h4><i class="fa-solid fa-hand-holding-heart"></i> Volunteer</h4>
+            <div style="font-size:13px;color:#eafcfd">Community tech mentoring and free clinics for small NGOs — helping them digitize booking and records.</div>
+          </div>
+
+          <div class="block">
+            <h4><i class="fa-solid fa-award"></i> Certificates</h4>
+            <div style="font-size:13px;color:#eafcfd">Various certificates from bootcamps, online courses (React, Python, Cloud basics).</div>
+          </div>
+        </aside>
+
+        <main class="content">
+          <div class="section">
+            <h3><i class="fa-solid fa-book"></i> Additional Experience & Skills</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+              <div>
+                <h4 style="margin:0 0 8px 0;color:#0f1724;font-size:14px">Technical</h4>
+                <ul style="color:#475569;font-size:14px;line-height:1.6;">
+                  <li>REST API design & implementation (Flask)</li>
+                  <li>Authentication (JWT), sessions, secure file handling</li>
+                  <li>PDF generation with templates (html2pdf / jsPDF / Puppeteer patterns)</li>
+                  <li>Frontend state management (React hooks, context)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="margin:0 0 8px 0;color:#0f1724;font-size:14px">Soft & Process</h4>
+                <ul style="color:#475569;font-size:14px;line-height:1.6;">
+                  <li>Product-focused development & user testing</li>
+                  <li>CI/CD basics, deployments (Netlify, Render)</li>
+                  <li>Client communication & requirement translation</li>
+                  <li>Rapid prototyping and iterative design</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3><i class="fa-solid fa-people-line"></i> References & Links</h3>
+            <div style="font-size:14px;color:#475569;line-height:1.6;">
+              References available on request. <br><br>
+              Portfolio: <a href="https://mi-portafolio-zhwa.onrender.com" target="_blank">mi-portafolio</a> · GitHub: <a href="https://github.com/Donald-27" target="_blank">Donald-27</a> · Medium: <a href="https://medium.com/@donnald27" target="_blank">@donnald27</a>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3><i class="fa-solid fa-circle-info"></i> Notes</h3>
+            <div style="font-size:13px;color:#475569;line-height:1.5;">
+              This resume was auto-generated from the live portfolio. It is styled for full visual fidelity when exported as PDF. When saving, choose A4 (or default) and ensure "Background graphics" / "Background colors and images" is enabled in your browser print settings for the watermark and colors to appear.
+            </div>
+          </div>
+
+          <div class="page-foot">Page 3 • Education • Extra</div>
+        </main>
+      </div>
+    </section>
+
+    <!-- Extra page (optional overflow) -->
+    <section class="sheet" aria-label="Resume page 4 (optional)">
+      <div class="page">
+        <aside class="sidebar" style="background:linear-gradient(180deg,#071428,#081b2b);">
+          <div class="block">
+            <h4><i class="fa-solid fa-briefcase"></i> More</h4>
+            <div style="font-size:13px;color:#eafcfd">If more space is required, projects and experience will continue here.</div>
+          </div>
+        </aside>
+        <main class="content">
+          <div class="section">
+            <h3><i class="fa-solid fa-folder-open"></i> Additional Projects / Notes</h3>
+            <div style="color:#475569;font-size:14px;line-height:1.6;">
+              (Additional project descriptions, code samples, or long-form case studies can be included here.)
+            </div>
+          </div>
+          <div class="page-foot">Page 4 • Overflow (optional)</div>
+        </main>
+      </div>
+    </section>
+
+  </div>
+
+<script>
+  // Auto-print with a small delay to ensure fonts/styles load.
+  // If this page is opened in a new tab, the print dialog will appear.
+  // Users can cancel or save as PDF. Hide the print call for small screens if preferred.
+  (function(){
+    function triggerPrint(){
+      // some browsers block immediate print; give a brief timeout
+      setTimeout(function(){
+        try { window.print(); } catch(e) { console.warn('print blocked', e); }
+      }, 600);
+    }
+
+    // Only auto-trigger when not in a tiny viewport (avoid printing on mobile accidental)
+    if (window.innerWidth > 600) {
+      // trigger when loaded
+      if (document.readyState === 'complete') triggerPrint();
+      else window.addEventListener('load', triggerPrint);
+    }
+  })();
+</script>
+</body>
+</html>
