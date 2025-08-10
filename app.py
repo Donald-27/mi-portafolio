@@ -99,5 +99,10 @@ Sent from your portfolio contact form
 def health_check():
     return jsonify({'status': 'healthy'})
 
+@app.route('/favicon.ico')
+def favicon():
+    # Return a simple response for favicon to prevent 404 errors
+    return '', 204
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
