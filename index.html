@@ -845,6 +845,145 @@
         .code-comment { color: #6a9955; }
         .code-function { color: #dcdcaa; }
 
+        /* Additional Information */
+        .additional-info {
+            padding: 8rem 2rem;
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-glow);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .info-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .volunteer-card .info-icon {
+            background: var(--green-gradient);
+        }
+
+        .interests-card .info-icon {
+            background: var(--purple-gradient);
+        }
+
+        .hobbies-card .info-icon {
+            background: var(--gold-gradient);
+        }
+
+        .philosophy-card .info-icon {
+            background: var(--secondary-gradient);
+        }
+
+        .info-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .info-content {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .volunteer-item, .interest-item, .hobby-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .volunteer-item:hover, .interest-item:hover, .hobby-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .volunteer-item i, .interest-item i, .hobby-item i {
+            color: var(--text-accent);
+            min-width: 20px;
+            font-size: 1.1rem;
+        }
+
+        .philosophy-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-accent);
+            border-left: 4px solid var(--text-accent);
+            padding-left: 1rem;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.6;
+        }
+
+        .values-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .value-item {
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .value-item strong {
+            color: var(--text-accent);
+            font-weight: 600;
+        }
+
         /* Testimonials */
         .testimonials {
             padding: 8rem 2rem;
@@ -1797,6 +1936,118 @@
                     <p class="feature-description">
                         Customize the portfolio theme with different color schemes and visual effects.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Information -->
+    <section class="additional-info">
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-subtitle">Beyond Code</p>
+                <h2 class="section-title">Additional Information</h2>
+                <p class="section-description">
+                    The complete picture - my interests, volunteer work, and personal pursuits that shape who I am
+                </p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card volunteer-card">
+                    <div class="info-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="info-title">Volunteer Work</h3>
+                    <div class="info-content">
+                        <div class="volunteer-item">
+                            <i class="fas fa-code"></i>
+                            <span>Guided over 7 beginner coders to build their skills</span>
+                        </div>
+                        <div class="volunteer-item">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Volunteered as a tech support helper for community organizations</span>
+                        </div>
+                        <div class="volunteer-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Taught basic computer skills at my home area school</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card interests-card">
+                    <div class="info-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="info-title">Personal Interests</h3>
+                    <div class="info-content">
+                        <div class="interest-item">
+                            <i class="fas fa-robot"></i>
+                            <span>AI and machine learning exploration</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fab fa-github"></i>
+                            <span>Open source contribution and collaboration</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-users"></i>
+                            <span>Tech community building and networking</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Continuous learning and skill development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card hobbies-card">
+                    <div class="info-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="info-title">Hobbies & Interests</h3>
+                    <div class="info-content">
+                        <div class="hobby-item">
+                            <i class="fas fa-blog"></i>
+                            <span>Technology blogging and technical writing</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-camera"></i>
+                            <span>Photography and digital content creation</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-running"></i>
+                            <span>Sports (running and football)</span>
+                        </div>
+                        <div class="hobby-item">
+                            <i class="fas fa-music"></i>
+                            <span>Music and creative arts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card philosophy-card">
+                    <div class="info-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <h3 class="info-title">Philosophy & Values</h3>
+                    <div class="info-content">
+                        <blockquote class="philosophy-quote">
+                            "Code is poetry written in logic. Every line should tell a story, solve a problem, and inspire innovation."
+                        </blockquote>
+                        <div class="values-list">
+                            <div class="value-item">
+                                <strong>Innovation:</strong> Always seeking creative solutions
+                            </div>
+                            <div class="value-item">
+                                <strong>Quality:</strong> Committed to exceptional code
+                            </div>
+                            <div class="value-item">
+                                <strong>Growth:</strong> Continuous learning mindset
+                            </div>
+                            <div class="value-item">
+                                <strong>Impact:</strong> Building solutions that matter
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

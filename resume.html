@@ -664,6 +664,36 @@
             margin: 0.5in;
         }
 
+        /* Loading Animations */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .page {
@@ -1885,8 +1915,19 @@
             const button = document.querySelector('.download-button');
             const originalContent = button.innerHTML;
             
-            // Show loading state
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Generating Complete 6-Page PDF...</span>';
+            // Add loading animation styles
+            button.style.transition = 'all 0.3s ease';
+            button.style.background = 'linear-gradient(45deg, #06b6d4, #0891b2, #06b6d4)';
+            button.style.backgroundSize = '200% 200%';
+            button.style.animation = 'gradientShift 2s ease-in-out infinite';
+            
+            // Show loading state with animated content
+            button.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 20px; height: 20px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                    <span>Generating Complete 6-Page PDF...</span>
+                </div>
+            `;
             button.disabled = true;
             
             try {
@@ -1900,91 +1941,150 @@
                 const resumeSheets = document.querySelectorAll('.resume-sheet');
                 console.log(`Processing ${resumeSheets.length} resume pages`);
                 
-                // Enhanced PDF options specifically for multi-page capture
+                // Create a temporary container for better PDF generation
+                const pdfContainer = document.createElement('div');
+                pdfContainer.style.cssText = `
+                    position: absolute;
+                    top: -9999px;
+                    left: -9999px;
+                    width: 210mm;
+                    background: white;
+                    font-family: Inter, sans-serif;
+                    color: #000;
+                    line-height: 1.4;
+                `;
+                
+                // Clone and prepare each page
+                resumeSheets.forEach((sheet, index) => {
+                    const pageClone = sheet.cloneNode(true);
+                    
+                    // Apply specific styling for PDF generation
+                    pageClone.style.cssText = `
+                        width: 210mm !important;
+                        height: 297mm !important;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        background: white !important;
+                        page-break-after: ${index < resumeSheets.length - 1 ? 'always' : 'auto'} !important;
+                        page-break-inside: avoid !important;
+                        display: block !important;
+                        position: relative !important;
+                        box-sizing: border-box !important;
+                        overflow: hidden !important;
+                        -webkit-print-color-adjust: exact !important;
+                        print-color-adjust: exact !important;
+                        color-adjust: exact !important;
+                    `;
+                    
+                    // Ensure content positioning
+                    const pageContent = pageClone.querySelector('.page');
+                    if (pageContent) {
+                        pageContent.style.cssText = `
+                            display: grid !important;
+                            grid-template-columns: 80mm 130mm !important;
+                            height: 297mm !important;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                        `;
+                    }
+                    
+                    // Fix sidebar styling for PDF
+                    const sidebar = pageClone.querySelector('.sidebar');
+                    if (sidebar) {
+                        sidebar.style.cssText = `
+                            background: linear-gradient(180deg, #0a1628 0%, #1e293b 70%, #334155 100%) !important;
+                            color: #f1f5f9 !important;
+                            padding: 8mm 6mm !important;
+                            width: 80mm !important;
+                            height: 297mm !important;
+                            -webkit-print-color-adjust: exact !important;
+                            print-color-adjust: exact !important;
+                        `;
+                    }
+                    
+                    // Fix main content styling for PDF
+                    const content = pageClone.querySelector('.content');
+                    if (content) {
+                        content.style.cssText = `
+                            background: white !important;
+                            padding: 8mm 6mm !important;
+                            width: 130mm !important;
+                            height: 297mm !important;
+                            overflow: hidden !important;
+                        `;
+                    }
+                    
+                    pdfContainer.appendChild(pageClone);
+                });
+                
+                // Append to body for rendering
+                document.body.appendChild(pdfContainer);
+                
+                // Enhanced PDF options for better quality and page handling
                 const pdfOptions = {
-                    margin: [3, 3, 3, 3],
+                    margin: [0, 0, 0, 0],
                     filename: 'Kiprop_Donald_Complete_Resume_2025.pdf',
                     image: { 
                         type: 'jpeg', 
-                        quality: 0.98
+                        quality: 1.0
                     },
                     html2canvas: { 
-                        scale: 2,
+                        scale: 3,
                         useCORS: true,
                         allowTaint: true,
                         backgroundColor: '#ffffff',
                         letterRendering: true,
                         logging: false,
                         width: 794,
-                        height: 1123 * resumeSheets.length, // Adjust height for all pages
+                        height: 1123,
                         scrollX: 0,
                         scrollY: 0,
-                        imageTimeout: 0,
-                        removeContainer: false
+                        imageTimeout: 10000,
+                        removeContainer: false,
+                        onrendered: function(canvas) {
+                            console.log('Canvas rendered successfully');
+                        }
                     },
                     jsPDF: { 
                         unit: 'mm',
                         format: 'a4',
                         orientation: 'portrait',
-                        compress: true
+                        compress: false
                     },
                     pagebreak: {
-                        mode: ['css', 'legacy'],
+                        mode: ['avoid-all', 'css', 'legacy'],
                         before: '.resume-sheet',
                         after: '.resume-sheet',
-                        avoid: '.sidebar-block, .experience-item, .project-item, .education-item'
+                        avoid: ['.sidebar-block', '.experience-item', '.project-item', '.education-item']
                     }
                 };
 
-                console.log('Generating PDF with all pages...');
+                console.log('Generating PDF with enhanced settings...');
                 
-                // Create wrapper for all pages
-                const wrapper = document.createElement('div');
-                wrapper.style.cssText = `
-                    background: white;
-                    width: 210mm;
-                    margin: 0;
-                    padding: 0;
-                `;
-                
-                // Process all resume sheets
-                resumeSheets.forEach((sheet, index) => {
-                    const clone = sheet.cloneNode(true);
-                    
-                    // Ensure proper page break
-                    clone.style.cssText = `
-                        width: 210mm;
-                        min-height: 297mm;
-                        margin: 0;
-                        padding: 0;
-                        background: white;
-                        page-break-after: ${index < resumeSheets.length - 1 ? 'always' : 'auto'};
-                        page-break-inside: avoid;
-                        display: block;
-                        position: relative;
-                        box-sizing: border-box;
-                        break-after: ${index < resumeSheets.length - 1 ? 'page' : 'auto'};
-                    `;
-                    
-                    wrapper.appendChild(clone);
-                });
-                
-                // Generate PDF from the wrapper containing all pages
-                await html2pdf()
+                // Generate PDF with better handling
+                const pdf = await html2pdf()
                     .set(pdfOptions)
-                    .from(wrapper)
+                    .from(pdfContainer)
                     .toPdf()
                     .get('pdf')
-                    .then(function(pdf) {
-                        // Ensure all pages are included
-                        const totalPages = pdf.internal.getNumberOfPages();
+                    .then(function(pdfDoc) {
+                        const totalPages = pdfDoc.internal.getNumberOfPages();
                         console.log(`PDF generated with ${totalPages} pages`);
                         
-                        if (totalPages < 6) {
-                            console.warn(`Expected 6 pages but got ${totalPages}`);
+                        // Ensure proper page formatting
+                        for (let i = 1; i <= totalPages; i++) {
+                            pdfDoc.setPage(i);
+                            pdfDoc.setFontSize(8);
                         }
-                    })
-                    .save();
+                        
+                        return pdfDoc;
+                    });
+                
+                // Save the PDF
+                pdf.save();
+                
+                // Clean up
+                document.body.removeChild(pdfContainer);
                 
                 console.log('PDF generation completed successfully');
                 
@@ -1993,8 +2093,18 @@
                     headerActions.style.display = 'block';
                 }
                 
-                button.innerHTML = '<i class="fas fa-check-circle"></i><span>Complete 6-Page Resume Downloaded Successfully!</span>';
+                // Success state with green animation
+                button.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+                button.style.animation = 'none';
+                button.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-check-circle" style="animation: bounceIn 0.5s ease-out;"></i>
+                        <span>Complete 6-Page Resume Downloaded Successfully!</span>
+                    </div>
+                `;
                 setTimeout(() => {
+                    button.style.background = 'linear-gradient(135deg, var(--teal-primary), var(--teal-secondary))';
+                    button.style.transition = 'all 0.5s ease';
                     button.innerHTML = originalContent;
                     button.disabled = false;
                 }, 3000);
@@ -2002,14 +2112,31 @@
             } catch (error) {
                 console.error('PDF generation error:', error);
                 
+                // Clean up if container exists
+                const tempContainer = document.querySelector('div[style*="position: absolute"][style*="top: -9999px"]');
+                if (tempContainer) {
+                    document.body.removeChild(tempContainer);
+                }
+                
                 // Restore UI
                 const headerActions = document.querySelector('.header-actions');
                 if (headerActions) {
                     headerActions.style.display = 'block';
                 }
                 
-                button.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>Download Failed - Try Browser Print (Ctrl+P)</span>';
+                // Error state with red animation
+                button.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
+                button.style.animation = 'shake 0.5s ease-in-out';
+                button.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-exclamation-triangle" style="animation: pulse 1s ease-in-out infinite;"></i>
+                        <span>Download Failed - Try Browser Print (Ctrl+P)</span>
+                    </div>
+                `;
                 setTimeout(() => {
+                    button.style.background = 'linear-gradient(135deg, var(--teal-primary), var(--teal-secondary))';
+                    button.style.transition = 'all 0.5s ease';
+                    button.style.animation = 'none';
                     button.innerHTML = originalContent;
                     button.disabled = false;
                 }, 4000);
@@ -2020,11 +2147,11 @@
 1. Press Ctrl+P (Windows) or Cmd+P (Mac)
 2. Select "Save as PDF" as destination
 3. In "More settings", set Pages to "All"
-4. Set margins to "Minimum"
+4. Set margins to "Minimum" or "None"
 5. Make sure "Background graphics" is checked
 6. Click "Save"
 
-This will capture all 6 pages with proper formatting.`);
+This will capture all 6 pages with proper formatting starting from the top of each page.`);
             }
         }
 
