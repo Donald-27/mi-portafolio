@@ -489,16 +489,21 @@
                 print-color-adjust: exact !important;
             }
             
-            body {
+            html, body {
                 background: white !important;
-                font-size: 12px !important;
-                line-height: 1.4 !important;
+                font-size: 11px !important;
+                line-height: 1.3 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+                height: auto !important;
             }
             
             .resume-container {
                 margin: 0 !important;
                 padding: 0 !important;
                 max-width: none !important;
+                width: 100% !important;
             }
             
             .header-actions {
@@ -510,10 +515,14 @@
                 box-shadow: none !important;
                 page-break-after: always !important;
                 page-break-inside: avoid !important;
-                margin-bottom: 0 !important;
-                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 210mm !important;
                 min-height: 297mm !important;
                 max-height: 297mm !important;
+                background: white !important;
+                position: relative !important;
+                overflow: hidden !important;
             }
             
             .resume-sheet:last-child {
@@ -521,50 +530,115 @@
             }
             
             .page {
-                min-height: auto !important;
-                height: auto !important;
+                width: 100% !important;
+                height: 297mm !important;
                 display: grid !important;
-                grid-template-columns: 300px 1fr !important;
+                grid-template-columns: 80mm 130mm !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
             
             .sidebar {
-                background: linear-gradient(180deg, var(--navy-primary) 0%, var(--navy-secondary) 70%, var(--navy-tertiary) 100%) !important;
+                background: linear-gradient(180deg, #0a1628 0%, #1e293b 70%, #334155 100%) !important;
+                color: #f1f5f9 !important;
+                padding: 8mm 6mm !important;
                 -webkit-print-color-adjust: exact !important;
+                width: 80mm !important;
             }
             
             .content {
                 background: white !important;
-                padding: 30px !important;
+                padding: 8mm 6mm !important;
+                width: 130mm !important;
+                overflow: hidden !important;
             }
             
             .sidebar-block, .experience-item, .project-item, .education-item {
                 page-break-inside: avoid !important;
-                margin-bottom: 16px !important;
+                margin-bottom: 4mm !important;
+                break-inside: avoid !important;
+            }
+            
+            .section {
+                margin-bottom: 6mm !important;
             }
             
             .section-header {
                 page-break-after: avoid !important;
+                margin-bottom: 3mm !important;
             }
             
             h1, h2, h3, h4, h5, h6 {
                 page-break-after: avoid !important;
+                margin-bottom: 2mm !important;
             }
             
-            /* Ensure fonts render properly */
-            .name, .section h3, .item-title {
-                font-weight: 700 !important;
+            .item-header {
+                page-break-after: avoid !important;
             }
             
-            /* Preserve gradients and colors */
-            .avatar, .section-icon, .achievement-icon {
-                background: var(--teal-primary) !important;
+            .avatar {
+                width: 30mm !important;
+                height: 30mm !important;
+                background: #06b6d4 !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            
+            .section-icon, .achievement-icon {
+                background: #06b6d4 !important;
                 -webkit-print-color-adjust: exact !important;
             }
             
             .skill-tag, .skill-badge {
-                border: 1px solid var(--slate-300) !important;
-                background: var(--slate-100) !important;
+                border: 1px solid #cbd5e1 !important;
+                background: #f1f5f9 !important;
+                color: #334155 !important;
                 -webkit-print-color-adjust: exact !important;
+                font-size: 9px !important;
+                padding: 1mm 2mm !important;
+            }
+            
+            .name {
+                font-size: 20px !important;
+                font-weight: 800 !important;
+                color: #67e8f9 !important;
+            }
+            
+            .job-title {
+                font-size: 12px !important;
+                color: #67e8f9 !important;
+            }
+            
+            .contact-item {
+                font-size: 9px !important;
+                margin-bottom: 2mm !important;
+            }
+            
+            .item-title {
+                font-size: 14px !important;
+                font-weight: 700 !important;
+            }
+            
+            .item-company {
+                font-size: 12px !important;
+                color: #06b6d4 !important;
+            }
+            
+            .item-description {
+                font-size: 10px !important;
+                line-height: 1.4 !important;
+            }
+            
+            .footer-note, .footer-credits {
+                font-size: 8px !important;
+                color: #94a3b8 !important;
+            }
+            
+            /* Force color preservation */
+            .sidebar, .sidebar * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
         }
         
@@ -617,7 +691,7 @@
             <aside class="sidebar">
                 <div class="avatar">KD</div>
                 <div class="name">Kiprop Donald</div>
-                <div class="job-title">Award-Winning Full-Stack Developer</div>
+                <div class="job-title">Software Developer</div>
                 <div class="location">Eldoret, Kenya • Global Remote Available</div>
 
                 <!-- Contact Information -->
@@ -781,15 +855,17 @@
                         <h3>Professional Summary</h3>
                     </div>
                     <p style="font-size: 16px; line-height: 1.7; color: var(--slate-700); margin-bottom: 20px;">
-                        Award-winning full-stack software developer from Eldoret, Kenya, with a strong eye for clean design and functional code. Successfully transitioned from Actuarial Science to tech through intensive training at Moringa School. Specialized in building scalable applications for travel, healthcare, and productivity sectors using modern technologies like React, Flask, and comprehensive full-stack solutions.
+                          Full-stack software developer from Eldoret, Kenya, with a strong eye for clean design and functional code. Went through an intensive training at Moringa School. Specialized in building scalable applications for travel, healthcare, and productivity sectors using modern technologies like React, Flask, and comprehensive full-stack solutions. <br> Basically making the internet a better place, one React component at a time.
+
+
                     </p>
                     <p style="font-size: 15px; line-height: 1.6; color: var(--slate-600); margin-bottom: 20px;">
-                        <strong>Core Philosophy:</strong> "I Code by day && Debug by night. Ship meaningful things always." - Passionate about solving real-world problems through innovative digital solutions and committed to creating exceptional user experiences that make a difference.
+                        <strong>Core Philosophy:</strong> "I Code by day && Debug by night. Deliver quality code every time." - Passionate about solving real-world problems through innovative digital solutions and committed to creating exceptional user experiences that make a difference.
                     </p>
                     <div style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 20px; border-radius: 12px; border-left: 4px solid var(--teal-primary);">
                         <h5 style="margin: 0 0 12px 0; color: var(--navy-primary); font-size: 16px;">What Sets Me Apart:</h5>
                         <ul style="margin: 0; padding-left: 20px; color: var(--slate-700);">
-                            <li>Successfully delivered 25+ production-ready applications</li>
+                            <li>Successfully delivered 25+ production-ready applications with 200+ practice projects on Github</li>
                             <li>Expertise in both frontend aesthetics and backend architecture</li>
                             <li>Proven track record in healthcare, travel, and document generation systems</li>
                             <li>Strong focus on user-centered design and performance optimization</li>
@@ -861,11 +937,11 @@
                 <div class="sidebar-block">
                     <h4><i class="fas fa-cogs"></i>Methodology</h4>
                     <div>
-                        <span class="skill-tag">Agile Development</span>
+                        <span class="skill-tag">Continuous Deployment</span>
                         <span class="skill-tag">Test-Driven Development</span>
-                        <span class="skill-tag">Code Reviews</span>
-                        <span class="skill-tag">CI/CD Practices</span>
-                        <span class="skill-tag">User-Centered Design</span>
+                        <span class="skill-tag">Pair Programming</span>
+                        <span class="skill-tag">Scrum</span>
+                        <span class="skill-tag">Continuous Integration</span>
                         <span class="skill-tag">Performance Optimization</span>
                     </div>
                 </div>
@@ -919,11 +995,11 @@
                             <br><br>
                             <strong>Key Accomplishments:</strong>
                             <ul>
-                                <li>Built comprehensive healthcare management system serving 500+ patients</li>
-                                <li>Created travel booking platform processing 1000+ monthly transactions</li>
+                                <li>Built comprehensive healthcare management system servinga local clinic</li>
+                                <li>Created a functional travel booking platform processing </li>
                                 <li>Developed professional document generation tools for healthcare facilities</li>
                                 <li>Maintained 95%+ client satisfaction rate with zero critical bugs in production</li>
-                                <li>Mentored 20+ aspiring developers through community programs</li>
+                                <li>Mentored 10+ aspiring developers through community programs</li>
                             </ul>
                         </div>
                         <div class="item-skills">
@@ -1212,14 +1288,14 @@
                         <span class="skill-tag">Technical Writing</span>
                         <span class="skill-tag">API Documentation</span>
                         <span class="skill-tag">User Guides</span>
-                        <span class="skill-tag">Code Comments</span>
+                        <span class="skill-tag">Help Center Content</span>
                     </div>
                     <div class="skill-category">
                         <h5>Design</h5>
                         <span class="skill-tag">UI/UX Principles</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Color Theory</span>
-                        <span class="skill-tag">Typography</span>
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Adobe Illustrator</span>
                     </div>
                     <div class="skill-category">
                         <h5>Soft Skills</h5>
@@ -1371,9 +1447,9 @@
                         <div class="item-header">
                             <div>
                                 <h4 class="item-title">Bachelor of Science in Actuarial Science</h4>
-                                <div class="item-company">University of Nairobi</div>
+                                <div class="item-company">University of Eldoret</div>
                             </div>
-                            <div class="item-date">2018 - 2022</div>
+                            <div class="item-date">2022 - </div>
                         </div>
                         <div class="item-description">
                             Strong foundation in mathematics, statistics, and analytical thinking. This background provides excellent problem-solving skills and logical reasoning that directly transfer to software development.
@@ -1430,10 +1506,10 @@
                 <div class="sidebar-block">
                     <h4><i class="fas fa-users"></i>Community</h4>
                     <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
-                        <div style="margin-bottom: 8px;">• Technical mentoring for 20+ developers</div>
-                        <div style="margin-bottom: 8px;">• Free coding workshops in rural areas</div>
-                        <div style="margin-bottom: 8px;">• Pro bono websites for 5+ NGOs</div>
-                        <div style="margin-bottom: 8px;">• Active Medium and Dev.to contributor</div>
+                        <div style="margin-bottom: 8px;">• Leading STEM clubs at local school</div>
+                        <div style="margin-bottom: 8px;">• Coordinating volunteer-driven coding jams</div>
+                        <div style="margin-bottom: 8px;">• Advocating for sustainable tech practices in the community</div>
+                        <div style="margin-bottom: 8px;">• Active Medium contributor</div>
                         <div>• Digital literacy training programs</div>
                     </div>
                 </div>
@@ -1480,50 +1556,30 @@
                                     JM
                                 </div>
                                 <div>
-                                    <h5 style="margin: 0; color: var(--navy-primary); font-size: 16px; font-weight: 700;">Dr. John Mwangi</h5>
-                                    <div style="color: var(--teal-secondary); font-size: 14px; font-weight: 600;">Medical Director</div>
-                                    <div style="color: var(--slate-500); font-size: 13px;">Eldoret Medical Center</div>
+                                    <h5 style="margin: 0; color: var(--navy-primary); font-size: 16px; font-weight: 700;">Bernard Koegei</h5>
+                                    <div style="color: var(--teal-secondary); font-size: 14px; font-weight: 600;">Software Developer</div>
+                                    <div style="color: var(--slate-500); font-size: 13px;">W-elgido Developers</div>
                                 </div>
                             </div>
                             <div style="color: var(--slate-600); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
                                 "Kiprop delivered an exceptional healthcare management system that transformed our patient care processes. His attention to detail and understanding of medical workflows is outstanding."
                             </div>
                             <div style="color: var(--slate-500); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> j.mwangi@eldoretmedical.co.ke</div>
-                                <div><i class="fas fa-phone"></i> +254 722 123 456</div>
+                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> onesmuskiprono20@gmail.com</div>
+                                <div><i class="fas fa-phone"></i> +254 721 654 900</div>
                             </div>
                         </div>
 
+                
                         <!-- Testimonial 2 -->
-                        <div style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 24px; border-radius: 16px; border: 1px solid var(--slate-200); box-shadow: var(--shadow-sm);">
-                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
-                                    MK
-                                </div>
-                                <div>
-                                    <h5 style="margin: 0; color: var(--navy-primary); font-size: 16px; font-weight: 700;">Mary Kipchoge</h5>
-                                    <div style="color: var(--emerald-secondary); font-size: 14px; font-weight: 600;">Transport Manager</div>
-                                    <div style="color: var(--slate-500); font-size: 13px;">Rift Valley Travels</div>
-                                </div>
-                            </div>
-                            <div style="color: var(--slate-600); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
-                                "The MatatuConnekt platform revolutionized our booking system. Kiprop's technical expertise and understanding of the transport industry made this project a huge success."
-                            </div>
-                            <div style="color: var(--slate-500); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> m.kipchoge@riftvalleytravels.co.ke</div>
-                                <div><i class="fas fa-phone"></i> +254 733 987 654</div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial 3 -->
                         <div style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 24px; border-radius: 16px; border: 1px solid var(--slate-200); box-shadow: var(--shadow-sm);">
                             <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
                                 <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--amber-primary), var(--amber-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
                                     SK
                                 </div>
                                 <div>
-                                    <h5 style="margin: 0; color: var(--navy-primary); font-size: 16px; font-weight: 700;">Sarah Kiplagat</h5>
-                                    <div style="color: var(--amber-secondary); font-size: 14px; font-weight: 600;">Senior Developer</div>
+                                    <h5 style="margin: 0; color: var(--navy-primary); font-size: 16px; font-weight: 700;">Weldon Korir</h5>
+                                    <div style="color: var(--amber-secondary); font-size: 14px; font-weight: 600;">Software Developer</div>
                                     <div style="color: var(--slate-500); font-size: 13px;">Tech Innovators Kenya</div>
                                 </div>
                             </div>
@@ -1531,8 +1587,8 @@
                                 "Collaborated on multiple projects and mentorship programs. Kiprop's code quality, teamwork, and professional growth mindset are exemplary. Highly recommended!"
                             </div>
                             <div style="color: var(--slate-500); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> s.kiplagat@techinnovators.co.ke</div>
-                                <div><i class="fas fa-phone"></i> +254 733 456 789</div>
+                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> weldonkorir305@gmail.com</div>
+                                <div><i class="fas fa-phone"></i> +254 718 925 150</div>
                             </div>
                         </div>
                     </div>
@@ -1646,7 +1702,7 @@
                             <strong style="color: var(--teal-accent);">Best Contact:</strong> Email or WhatsApp
                         </div>
                         <div style="margin-bottom: 8px;">
-                            <strong style="color: var(--teal-accent);">Response Time:</strong> Within 24 hours
+                            <strong style="color: var(--teal-accent);">Response Time:</strong> Within 12 hours
                         </div>
                         <div style="margin-bottom: 8px;">
                             <strong style="color: var(--teal-accent);">Meeting:</strong> Video calls preferred
@@ -1686,17 +1742,17 @@
                                     PK
                                 </div>
                                 <div>
-                                    <h5 style="margin: 0; font-size: 16px; font-weight: 700;">Patrick Kiptoo</h5>
-                                    <div style="color: var(--teal-accent); font-size: 14px; font-weight: 600;">Lead Instructor</div>
-                                    <div style="color: var(--slate-300); font-size: 13px;">Moringa School</div>
+                                    <h5 style="margin: 0; font-size: 16px; font-weight: 700;">Bernard Kosgei</h5>
+                                    <div style="color: var(--teal-accent); font-size: 14px; font-weight: 600;">Software Developer</div>
+                                    <div style="color: var(--slate-300); font-size: 13px;">Fellow Developer</div>
                                 </div>
                             </div>
                             <div style="color: var(--slate-200); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
-                                Technical mentor and instructor. Can provide insights into learning progression, technical skills, and professional development during bootcamp training.
+                                Can provide insights into learning progression, technical skills, and professional development during bootcamp training.
                             </div>
                             <div style="color: var(--slate-300); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> p.kiptoo@moringaschool.com</div>
-                                <div><i class="fas fa-phone"></i> +254 711 234 567</div>
+                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> onesmuskiprono20@gmail.com</div>
+                                <div><i class="fas fa-phone"></i> +254 721 654 900</div>
                             </div>
                         </div>
 
@@ -1707,17 +1763,17 @@
                                     DM
                                 </div>
                                 <div>
-                                    <h5 style="margin: 0; font-size: 16px; font-weight: 700;">David Mutai</h5>
-                                    <div style="color: var(--slate-100); font-size: 14px; font-weight: 600;">Senior Software Engineer</div>
-                                    <div style="color: var(--slate-200); font-size: 13px;">Safaricom PLC</div>
+                                    <h5 style="margin: 0; font-size: 16px; font-weight: 700;">Eliphaz Kiprono</h5>
+                                    <div style="color: var(--slate-100); font-size: 14px; font-weight: 600;">Software Developer</div>
+                                    <div style="color: var(--slate-200); font-size: 13px;">Crown paints</div>
                                 </div>
                             </div>
                             <div style="color: var(--slate-100); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
                                 Industry mentor and technical advisor. Provided guidance on professional development and can speak to technical competency and growth potential.
                             </div>
                             <div style="color: var(--slate-200); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> d.mutai@safaricom.co.ke</div>
-                                <div><i class="fas fa-phone"></i> +254 722 345 678</div>
+                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> dorisjeptoo@gmail</div>
+                                <div><i class="fas fa-phone"></i> +254 796 700 452</div>
                             </div>
                         </div>
                     </div>
@@ -1740,10 +1796,10 @@
                                 Volunteer Work
                             </h5>
                             <div style="color: var(--slate-600); font-size: 14px; line-height: 1.6;">
-                                • Pro bono website development for 5+ local NGOs<br>
-                                • Technical mentoring for 20+ aspiring developers<br>
-                                • Free coding workshops for underserved communities<br>
-                                • Digital literacy training for rural schools
+                            
+                                • Guided over 7 beginner coders to build their skillss<br>
+                                • Volunteered as a tech support helper for community organizations<br>
+                                • Taught basic computer skills at my home area school<br>
                             </div>
                         </div>
 
@@ -1814,7 +1870,7 @@
             const originalContent = button.innerHTML;
             
             // Show loading state
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Generating Professional Resume PDF...</span>';
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Generating Complete 6-Page PDF...</span>';
             button.disabled = true;
             
             try {
@@ -1824,126 +1880,145 @@
                     headerActions.style.display = 'none';
                 }
                 
-                // Create a comprehensive container with all resume content
-                const fullResumeContainer = document.createElement('div');
-                fullResumeContainer.style.background = '#ffffff';
-                fullResumeContainer.style.width = '100%';
-                
-                // Get all resume sheets and clone them
+                // Get all resume sheets
                 const resumeSheets = document.querySelectorAll('.resume-sheet');
-                console.log(`Found ${resumeSheets.length} resume pages to convert`);
+                console.log(`Processing ${resumeSheets.length} resume pages`);
                 
+                // Create a single container with all pages
+                const pdfContainer = document.createElement('div');
+                pdfContainer.style.cssText = `
+                    width: 210mm;
+                    background: white;
+                    font-family: Inter, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                `;
+                
+                // Clone and process each page
                 resumeSheets.forEach((sheet, index) => {
-                    const clonedSheet = sheet.cloneNode(true);
+                    const pageClone = sheet.cloneNode(true);
                     
-                    // Remove any interactive elements that might cause issues
-                    const watermarks = clonedSheet.querySelectorAll('::before, ::after');
+                    // Set explicit styles for proper PDF rendering
+                    pageClone.style.cssText = `
+                        width: 210mm;
+                        min-height: 297mm;
+                        margin: 0;
+                        padding: 0;
+                        background: white;
+                        page-break-after: ${index < resumeSheets.length - 1 ? 'always' : 'auto'};
+                        page-break-inside: avoid;
+                        display: block;
+                        position: relative;
+                        box-sizing: border-box;
+                    `;
                     
-                    // Ensure proper page breaks
-                    if (index > 0) {
-                        clonedSheet.style.pageBreakBefore = 'always';
-                        clonedSheet.style.breakBefore = 'page';
+                    // Ensure page layout is preserved
+                    const pageContent = pageClone.querySelector('.page');
+                    if (pageContent) {
+                        pageContent.style.cssText = `
+                            display: grid;
+                            grid-template-columns: 80mm 130mm;
+                            width: 100%;
+                            min-height: 297mm;
+                            margin: 0;
+                            padding: 0;
+                        `;
                     }
                     
-                    // Add page identifier for debugging
-                    clonedSheet.setAttribute('data-page', index + 1);
+                    // Fix sidebar styling
+                    const sidebar = pageClone.querySelector('.sidebar');
+                    if (sidebar) {
+                        sidebar.style.cssText = `
+                            background: linear-gradient(180deg, #0a1628 0%, #1e293b 70%, #334155 100%);
+                            color: #f1f5f9;
+                            padding: 10mm 8mm;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 8mm;
+                        `;
+                    }
                     
-                    fullResumeContainer.appendChild(clonedSheet);
+                    // Fix content area styling
+                    const content = pageClone.querySelector('.content');
+                    if (content) {
+                        content.style.cssText = `
+                            padding: 10mm 8mm;
+                            background: white;
+                        `;
+                    }
+                    
+                    pdfContainer.appendChild(pageClone);
                 });
                 
-                // Enhanced PDF options for professional quality
+                // Optimized PDF options for all pages
                 const pdfOptions = {
-                    margin: [0.2, 0.2, 0.2, 0.2],
-                    filename: 'Kiprop_Donald_Professional_Resume_2025_Complete.pdf',
+                    margin: [5, 5, 5, 5],
+                    filename: 'Kiprop_Donald_Complete_Resume_2025.pdf',
                     image: { 
                         type: 'jpeg', 
-                        quality: 0.98,
-                        crossOrigin: 'anonymous'
+                        quality: 0.95
                     },
                     html2canvas: { 
-                        scale: 2.5,
+                        scale: 1.5,
                         useCORS: true,
                         allowTaint: true,
                         backgroundColor: '#ffffff',
                         letterRendering: true,
-                        logging: true,
-                        width: 1200,
-                        height: 1697, // A4 aspect ratio
+                        width: 794,  // A4 width in pixels at 96 DPI
+                        height: 1123, // A4 height in pixels at 96 DPI
                         scrollX: 0,
                         scrollY: 0
                     },
                     jsPDF: { 
                         unit: 'mm',
                         format: 'a4',
-                        orientation: 'portrait',
-                        compress: true,
-                        precision: 2
+                        orientation: 'portrait'
                     },
-                    pagebreak: { 
-                        mode: ['avoid-all', 'css', 'legacy'],
-                        before: '.resume-sheet',
-                        after: '.resume-sheet',
-                        avoid: ['.sidebar-block', '.experience-item', '.project-item']
+                    pagebreak: {
+                        mode: ['css', 'legacy'],
+                        before: '.resume-sheet:not(:first-child)',
+                        avoid: '.sidebar-block, .experience-item, .project-item'
                     }
                 };
 
-                console.log('Starting PDF generation with enhanced options...');
+                console.log('Generating PDF with all pages...');
                 
-                // Generate PDF with better error handling
-                await html2pdf()
+                // Generate the PDF
+                const pdf = await html2pdf()
                     .set(pdfOptions)
-                    .from(fullResumeContainer)
-                    .toPdf()
-                    .get('pdf')
-                    .then(function(pdf) {
-                        console.log(`PDF generated successfully with ${pdf.internal.getNumberOfPages()} pages`);
-                        
-                        // Add metadata to the PDF
-                        pdf.setProperties({
-                            title: 'Kiprop Donald - Professional Resume 2025',
-                            subject: 'Full-Stack Developer Resume',
-                            author: 'Kiprop Donald',
-                            keywords: 'React, Flask, Full-Stack Developer, Software Engineer',
-                            creator: 'Professional Resume Generator'
-                        });
-                        
-                        return pdf;
-                    })
-                    .save()
-                    .then(() => {
-                        console.log('PDF saved successfully');
-                        
-                        // Show header actions again
-                        if (headerActions) {
-                            headerActions.style.display = 'block';
-                        }
-                        
-                        // Success feedback with details
-                        button.innerHTML = '<i class="fas fa-check-circle"></i><span>6-Page Professional Resume Downloaded!</span>';
-                        setTimeout(() => {
-                            button.innerHTML = originalContent;
-                            button.disabled = false;
-                        }, 4000);
-                    });
+                    .from(pdfContainer)
+                    .save();
+                
+                console.log('PDF generation completed successfully');
+                
+                // Restore UI
+                if (headerActions) {
+                    headerActions.style.display = 'block';
+                }
+                
+                button.innerHTML = '<i class="fas fa-check-circle"></i><span>Complete 6-Page Resume Downloaded Successfully!</span>';
+                setTimeout(() => {
+                    button.innerHTML = originalContent;
+                    button.disabled = false;
+                }, 3000);
                 
             } catch (error) {
-                console.error('Error generating PDF:', error);
+                console.error('PDF generation error:', error);
                 
-                // Show header actions again
+                // Restore UI
                 const headerActions = document.querySelector('.header-actions');
                 if (headerActions) {
                     headerActions.style.display = 'block';
                 }
                 
-                // Enhanced error feedback
-                button.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>PDF Generation Failed - Please Try Again</span>';
+                button.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>Download Failed - Try Browser Print (Ctrl+P)</span>';
                 setTimeout(() => {
                     button.innerHTML = originalContent;
                     button.disabled = false;
                 }, 4000);
                 
-                // Provide fallback option
-                alert('PDF generation failed. You can use your browser\'s print function (Ctrl+P) and select "Save as PDF" as an alternative.');
+                // Show alternative method
+                alert('PDF download failed. Alternative: Use your browser\'s print function (Ctrl+P or Cmd+P) and select "Save as PDF" to get all 6 pages with proper formatting.');
             }
         }
 
