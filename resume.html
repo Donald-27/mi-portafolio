@@ -7,6 +7,20 @@
     <title>Kiprop Donald - Award-Winning Full-Stack Developer | Professional Resume</title>
     <meta name="description" content="Professional resume of Kiprop Donald - Award-winning full-stack developer specializing in React, Flask, and modern web technologies.">
     
+    <!-- Cool Resume Favicons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📄%3C/text%3E%3C/svg%3E">
+    <link rel="alternate icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E👨‍💻%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📋%3C/text%3E%3C/svg%3E">
+    
+    <!-- Meta tags -->
+    <meta name="keywords" content="Kiprop Donald Resume, Full-Stack Developer CV, React Developer, Flask Developer, Kenya Software Engineer">
+    <meta name="author" content="Kiprop Donald">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kiprop Donald - Professional Resume">
+    <meta property="og:description" content="6-page professional resume of award-winning full-stack developer Kiprop Donald.">
+    <meta property="og:type" content="profile">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1884,22 +1898,59 @@
                 const resumeSheets = document.querySelectorAll('.resume-sheet');
                 console.log(`Processing ${resumeSheets.length} resume pages`);
                 
-                // Create a single container with all pages
-                const pdfContainer = document.createElement('div');
-                pdfContainer.style.cssText = `
-                    width: 210mm;
+                // Enhanced PDF options specifically for multi-page capture
+                const pdfOptions = {
+                    margin: [3, 3, 3, 3],
+                    filename: 'Kiprop_Donald_Complete_Resume_2025.pdf',
+                    image: { 
+                        type: 'jpeg', 
+                        quality: 0.98
+                    },
+                    html2canvas: { 
+                        scale: 2,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: '#ffffff',
+                        letterRendering: true,
+                        logging: false,
+                        width: 794,
+                        height: 1123 * resumeSheets.length, // Adjust height for all pages
+                        scrollX: 0,
+                        scrollY: 0,
+                        imageTimeout: 0,
+                        removeContainer: false
+                    },
+                    jsPDF: { 
+                        unit: 'mm',
+                        format: 'a4',
+                        orientation: 'portrait',
+                        compress: true
+                    },
+                    pagebreak: {
+                        mode: ['css', 'legacy'],
+                        before: '.resume-sheet',
+                        after: '.resume-sheet',
+                        avoid: '.sidebar-block, .experience-item, .project-item, .education-item'
+                    }
+                };
+
+                console.log('Generating PDF with all pages...');
+                
+                // Create wrapper for all pages
+                const wrapper = document.createElement('div');
+                wrapper.style.cssText = `
                     background: white;
-                    font-family: Inter, sans-serif;
+                    width: 210mm;
                     margin: 0;
                     padding: 0;
                 `;
                 
-                // Clone and process each page
+                // Process all resume sheets
                 resumeSheets.forEach((sheet, index) => {
-                    const pageClone = sheet.cloneNode(true);
+                    const clone = sheet.cloneNode(true);
                     
-                    // Set explicit styles for proper PDF rendering
-                    pageClone.style.cssText = `
+                    // Ensure proper page break
+                    clone.style.cssText = `
                         width: 210mm;
                         min-height: 297mm;
                         margin: 0;
@@ -1910,83 +1961,27 @@
                         display: block;
                         position: relative;
                         box-sizing: border-box;
+                        break-after: ${index < resumeSheets.length - 1 ? 'page' : 'auto'};
                     `;
                     
-                    // Ensure page layout is preserved
-                    const pageContent = pageClone.querySelector('.page');
-                    if (pageContent) {
-                        pageContent.style.cssText = `
-                            display: grid;
-                            grid-template-columns: 80mm 130mm;
-                            width: 100%;
-                            min-height: 297mm;
-                            margin: 0;
-                            padding: 0;
-                        `;
-                    }
-                    
-                    // Fix sidebar styling
-                    const sidebar = pageClone.querySelector('.sidebar');
-                    if (sidebar) {
-                        sidebar.style.cssText = `
-                            background: linear-gradient(180deg, #0a1628 0%, #1e293b 70%, #334155 100%);
-                            color: #f1f5f9;
-                            padding: 10mm 8mm;
-                            display: flex;
-                            flex-direction: column;
-                            gap: 8mm;
-                        `;
-                    }
-                    
-                    // Fix content area styling
-                    const content = pageClone.querySelector('.content');
-                    if (content) {
-                        content.style.cssText = `
-                            padding: 10mm 8mm;
-                            background: white;
-                        `;
-                    }
-                    
-                    pdfContainer.appendChild(pageClone);
+                    wrapper.appendChild(clone);
                 });
                 
-                // Optimized PDF options for all pages
-                const pdfOptions = {
-                    margin: [5, 5, 5, 5],
-                    filename: 'Kiprop_Donald_Complete_Resume_2025.pdf',
-                    image: { 
-                        type: 'jpeg', 
-                        quality: 0.95
-                    },
-                    html2canvas: { 
-                        scale: 1.5,
-                        useCORS: true,
-                        allowTaint: true,
-                        backgroundColor: '#ffffff',
-                        letterRendering: true,
-                        width: 794,  // A4 width in pixels at 96 DPI
-                        height: 1123, // A4 height in pixels at 96 DPI
-                        scrollX: 0,
-                        scrollY: 0
-                    },
-                    jsPDF: { 
-                        unit: 'mm',
-                        format: 'a4',
-                        orientation: 'portrait'
-                    },
-                    pagebreak: {
-                        mode: ['css', 'legacy'],
-                        before: '.resume-sheet:not(:first-child)',
-                        avoid: '.sidebar-block, .experience-item, .project-item'
-                    }
-                };
-
-                console.log('Generating PDF with all pages...');
-                
-                // Generate the PDF
-                const pdf = await html2pdf()
+                // Generate PDF from the wrapper containing all pages
+                await html2pdf()
                     .set(pdfOptions)
-                    .from(pdfContainer)
+                    .from(wrapper)
+                    .toPdf()
+                    .get('pdf')
+                    .then(function(pdf) {
+                        // Ensure all pages are included
+                        const totalPages = pdf.internal.getNumberOfPages();
+                        console.log(`PDF generated with ${totalPages} pages`);
+                        
+                        if (totalPages < 6) {
+                            console.warn(`Expected 6 pages but got ${totalPages}`);
+                        }
+                    })
                     .save();
                 
                 console.log('PDF generation completed successfully');
@@ -2017,8 +2012,17 @@
                     button.disabled = false;
                 }, 4000);
                 
-                // Show alternative method
-                alert('PDF download failed. Alternative: Use your browser\'s print function (Ctrl+P or Cmd+P) and select "Save as PDF" to get all 6 pages with proper formatting.');
+                // Show alternative method with proper instructions
+                alert(`PDF download failed. Please use this alternative method:
+                
+1. Press Ctrl+P (Windows) or Cmd+P (Mac)
+2. Select "Save as PDF" as destination
+3. In "More settings", set Pages to "All"
+4. Set margins to "Minimum"
+5. Make sure "Background graphics" is checked
+6. Click "Save"
+
+This will capture all 6 pages with proper formatting.`);
             }
         }
 
