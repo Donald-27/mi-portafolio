@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiprop Donald - Award-Winning Full-Stack Developer | Professional Resume</title>
     <meta name="description" content="Professional resume of Kiprop Donald - Award-winning full-stack developer specializing in React, Flask, and modern web technologies.">
-    
+
     <!-- KD Resume Branded Favicons -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='resumeGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230a1628;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23resumeGrad)' rx='15'/%3E%3Ctext x='50' y='40' font-family='Arial,sans-serif' font-size='28' font-weight='bold' text-anchor='middle' fill='white'%3EKD%3C/text%3E%3Ctext x='50' y='65' font-family='Arial,sans-serif' font-size='12' font-weight='normal' text-anchor='middle' fill='%2367e8f9'%3ERESUME%3C/text%3E%3C/svg%3E">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- PDF Generation Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
+
     <style>
         /* Enhanced Variables */
         :root {
@@ -582,195 +581,217 @@
                 color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
-            
+
             @page {
                 size: A4;
                 margin: 0;
             }
-            
+
             html, body {
                 background: white !important;
                 font-size: 12pt !important;
-                line-height: 1.2 !important;
+                line-height: 1.3 !important;
                 margin: 0 !important;
                 padding: 0 !important;
                 width: 210mm !important;
                 height: auto !important;
             }
-            
+
             .resume-container {
                 margin: 0 !important;
                 padding: 0 !important;
                 max-width: none !important;
                 width: 210mm !important;
             }
-            
+
             .header-actions {
                 display: none !important;
             }
-            
+
             .resume-sheet {
                 border-radius: 0 !important;
                 box-shadow: none !important;
                 margin: 0 !important;
                 padding: 0 !important;
                 width: 210mm !important;
-                min-height: 297mm !important;
-                height: 297mm !important;
+                min-height: auto !important;
+                height: auto !important;
                 page-break-after: always !important;
                 page-break-inside: avoid !important;
-                overflow: hidden !important;
+                overflow: visible !important;
+                display: block !important;
             }
-            
+
             .resume-sheet:last-child {
                 page-break-after: auto !important;
             }
-            
+
             .resume-sheet::before {
-                font-size: 240px !important;
-                color: rgba(6, 182, 212, 0.03) !important;
+                font-size: 200px !important;
+                color: rgba(6, 182, 212, 0.02) !important;
             }
-            
+
             .page {
                 width: 210mm !important;
-                height: 297mm !important;
-                grid-template-columns: 80mm 130mm !important;
+                height: auto !important;
+                min-height: 280mm !important;
+                grid-template-columns: 75mm 135mm !important;
                 margin: 0 !important;
                 padding: 0 !important;
+                page-break-inside: avoid !important;
             }
-            
+
             .sidebar {
                 background: linear-gradient(180deg, #0a1628 0%, #1e293b 70%, #334155 100%) !important;
                 color: #f1f5f9 !important;
-                padding: 10mm !important;
-                width: 80mm !important;
-                height: 297mm !important;
+                padding: 8mm !important;
+                width: 75mm !important;
+                height: auto !important;
+                min-height: 280mm !important;
                 box-sizing: border-box !important;
+                overflow: visible !important;
             }
-            
+
             .content {
                 background: white !important;
                 color: black !important;
-                padding: 10mm !important;
-                width: 130mm !important;
-                height: 297mm !important;
+                padding: 8mm !important;
+                width: 135mm !important;
+                height: auto !important;
+                min-height: 280mm !important;
                 box-sizing: border-box !important;
-                overflow: hidden !important;
+                overflow: visible !important;
             }
-            
+
             .avatar {
                 width: 24mm !important;
                 height: 24mm !important;
                 font-size: 16px !important;
                 margin: 0 auto 6mm !important;
             }
-            
+
             .name {
                 font-size: 18px !important;
                 margin-bottom: 2mm !important;
                 color: #67e8f9 !important;
                 -webkit-text-fill-color: #67e8f9 !important;
             }
-            
+
             .job-title {
                 font-size: 11px !important;
                 color: #67e8f9 !important;
                 margin-bottom: 2mm !important;
             }
-            
+
             .location {
                 font-size: 9px !important;
                 color: #cbd5e1 !important;
                 margin-bottom: 6mm !important;
             }
-            
+
             .sidebar-block {
                 background: rgba(255, 255, 255, 0.1) !important;
                 margin-bottom: 5mm !important;
                 padding: 4mm !important;
             }
-            
+
             .sidebar-block h4 {
                 font-size: 10px !important;
                 color: #67e8f9 !important;
                 margin-bottom: 3mm !important;
             }
-            
+
             .contact-item {
                 font-size: 8px !important;
                 margin-bottom: 2mm !important;
             }
-            
+
             .skill-tag {
                 font-size: 7px !important;
                 padding: 1.5mm !important;
                 margin: 0.5mm !important;
+                border-radius: 4px !important;
             }
-            
+
             .section h3 {
                 font-size: 16px !important;
                 color: #0a1628 !important;
             }
-            
+
             .section-icon {
                 width: 10mm !important;
                 height: 10mm !important;
                 font-size: 12px !important;
             }
-            
+
+            .section {
+                page-break-inside: avoid !important;
+                margin-bottom: 5mm !important;
+                break-inside: avoid !important;
+            }
+
             .experience-item, .project-item, .education-item {
                 margin-bottom: 4mm !important;
-                padding: 5mm !important;
+                padding: 4mm !important;
                 page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                orphans: 3 !important;
+                widows: 3 !important;
             }
-            
+
             .item-title {
-                font-size: 12px !important;
+                font-size: 11px !important;
                 color: #0a1628 !important;
+                line-height: 1.2 !important;
             }
-            
+
             .item-company {
-                font-size: 10px !important;
-                color: #06b6d4 !important;
-            }
-            
-            .item-description {
                 font-size: 9px !important;
-                line-height: 1.3 !important;
-                color: #475569 !important;
+                color: #06b6d4 !important;
+                line-height: 1.2 !important;
             }
-            
+
+            .item-description {
+                font-size: 8px !important;
+                line-height: 1.4 !important;
+                color: #475569 !important;
+                margin-bottom: 3mm !important;
+            }
+
             .item-description ul {
                 margin: 2mm 0 !important;
                 padding-left: 4mm !important;
+                list-style-position: outside !important;
             }
-            
+
             .item-description li {
-                margin-bottom: 1mm !important;
+                margin-bottom: 1.5mm !important;
+                line-height: 1.4 !important;
+                break-inside: avoid !important;
             }
-            
+
             .skill-badge {
                 font-size: 7px !important;
                 padding: 1mm !important;
             }
-            
+
             .achievement-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 3mm !important;
             }
-            
+
             .achievement-card {
                 padding: 3mm !important;
             }
-            
+
             .achievement-title {
                 font-size: 9px !important;
             }
-            
+
             .achievement-desc {
                 font-size: 7px !important;
             }
-            
+
             .footer-note, .footer-credits {
                 font-size: 7px !important;
                 color: #94a3b8 !important;
@@ -782,11 +803,11 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
+
         @keyframes bounce {
-            0%, 80%, 100% { 
+            0%, 80%, 100% {
                 transform: scale(0);
-            } 40% { 
+            } 40% {
                 transform: scale(1);
             }
         }
@@ -796,16 +817,16 @@
             .page {
                 grid-template-columns: 1fr;
             }
-            
+
             .sidebar {
                 border-radius: 0;
             }
-            
+
             .item-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .achievement-grid {
                 grid-template-columns: 1fr;
             }
@@ -817,15 +838,15 @@
     <!-- Header Actions -->
     <div class="resume-container">
         <div class="header-actions">
-            <button class="download-button" onclick="downloadProfessionalPDF()" title="Download Complete Professional Resume as PDF">
+            <button class="download-button" onclick="downloadProfessionalPDF()" title="Download Complete Resume as Normal PDF Document">
                 <div class="button-content">
                     <i class="fas fa-file-pdf"></i>
-                    <span>Download Professional Resume (PDF)</span>
+                    <span>Download Resume (PDF)</span>
                 </div>
             </button>
             <div class="download-note">
-                <strong>Professional PDF</strong> with complete content, full styling, watermarks, and high-quality formatting<br>
-                <small style="opacity: 0.8;">Advanced rendering for perfect PDF output - realistic document appearance</small>
+                <strong>Normal PDF Document</strong> with organized pages and proper formatting<br>
+                <small style="opacity: 0.8;">Standard document layout - no zoom effects, properly fitted content</small>
             </div>
         </div>
     </div>
@@ -2008,349 +2029,566 @@
     </section>
 
     <script>
-        // Advanced PDF Generation with Smart Content Overflow Handling and Auto Page Breaks
+        // Enhanced PDF Generation with Natural Flow
         async function downloadProfessionalPDF() {
             const button = document.querySelector('.download-button');
             const buttonContent = button.querySelector('.button-content');
             const originalContent = buttonContent.innerHTML;
-            
-            // Disable button
+
             button.disabled = true;
-            
+
             try {
-                // Enhanced loading state
+                // Loading state
                 button.style.background = 'linear-gradient(45deg, #06b6d4, #0891b2)';
                 buttonContent.innerHTML = `
                     <div class="loading-spinner"></div>
-                    <span>Generating Professional PDF...</span>
+                    <span>Generating PDF...</span>
                 `;
+
+                // Hide the header actions temporarily
+                const headerActions = document.querySelector('.header-actions');
+                const originalDisplay = headerActions.style.display;
+                headerActions.style.display = 'none';
+
+                // Wait for layout
+                await new Promise(resolve => setTimeout(resolve, 500));
+
+                buttonContent.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    <span>Creating continuous layout...</span>
+                `;
+
+                // Create a temporary container for continuous layout
+                const tempContainer = document.createElement('div');
+                tempContainer.style.position = 'absolute';
+                tempContainer.style.left = '-9999px';
+                tempContainer.style.top = '0';
+                tempContainer.style.width = '210mm';
+                tempContainer.style.background = 'white';
+                tempContainer.style.fontFamily = '"Inter", system-ui, sans-serif';
+                tempContainer.style.fontSize = '12pt';
+                tempContainer.style.lineHeight = '1.4';
+                tempContainer.style.color = '#0f172a';
+
+                // Create continuous content by extracting all content sections
+                const resumeSheets = document.querySelectorAll('.resume-sheet');
+                let continuousContent = '';
                 
-                // Wait for content to stabilize
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                // Extract sidebar content from first sheet
+                const firstSidebar = resumeSheets[0].querySelector('.sidebar');
+                const sidebarContent = firstSidebar ? firstSidebar.innerHTML : '';
                 
+                // Extract all main content
+                let allMainContent = '';
+                resumeSheets.forEach(sheet => {
+                    const content = sheet.querySelector('.content');
+                    if (content) {
+                        allMainContent += content.innerHTML + '\n\n';
+                    }
+                });
+
+                // Create the continuous layout
+                tempContainer.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 75mm 135mm; min-height: 100vh; gap: 0;">
+                        <div class="sidebar-continuous" style="background: linear-gradient(180deg, #0a1628 0%, #1e293b 70%, #334155 100%); color: #f1f5f9; padding: 8mm; position: sticky; top: 0; height: fit-content;">
+                            ${sidebarContent}
+                        </div>
+                        <div class="content-continuous" style="background: white; color: #0f172a; padding: 8mm; line-height: 1.5;">
+                            ${allMainContent}
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(tempContainer);
+
+                // Apply print styles to temp container
+                const printStyle = document.createElement('style');
+                printStyle.id = 'temp-pdf-styles';
+                printStyle.textContent = `
+                    #temp-pdf-container * {
+                        -webkit-print-color-adjust: exact !important;
+                        color-adjust: exact !important;
+                        print-color-adjust: exact !important;
+                        box-sizing: border-box !important;
+                    }
+
+                    .sidebar-continuous .avatar {
+                        width: 20mm !important;
+                        height: 20mm !important;
+                        background: linear-gradient(135deg, #06b6d4, #f59e0b) !important;
+                        border-radius: 50% !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        color: white !important;
+                        font-size: 14px !important;
+                        font-weight: 900 !important;
+                        margin: 0 auto 6mm !important;
+                    }
+
+                    .sidebar-continuous .name {
+                        color: #67e8f9 !important;
+                        font-size: 16px !important;
+                        font-weight: 900 !important;
+                        text-align: center !important;
+                        margin-bottom: 2mm !important;
+                    }
+
+                    .sidebar-continuous .job-title {
+                        color: #67e8f9 !important;
+                        font-size: 10px !important;
+                        text-align: center !important;
+                        margin-bottom: 2mm !important;
+                    }
+
+                    .sidebar-continuous .location {
+                        color: #cbd5e1 !important;
+                        font-size: 8px !important;
+                        text-align: center !important;
+                        margin-bottom: 6mm !important;
+                    }
+
+                    .sidebar-continuous .sidebar-block {
+                        background: rgba(255, 255, 255, 0.1) !important;
+                        padding: 4mm !important;
+                        margin-bottom: 3mm !important;
+                        border-radius: 8px !important;
+                    }
+
+                    .sidebar-continuous .sidebar-block h4 {
+                        color: #67e8f9 !important;
+                        font-size: 9px !important;
+                        margin-bottom: 3mm !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        gap: 5px !important;
+                    }
+
+                    .sidebar-continuous .contact-item {
+                        font-size: 7px !important;
+                        margin-bottom: 1.5mm !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        gap: 5px !important;
+                        color: #cbd5e1 !important;
+                    }
+
+                    .sidebar-continuous .skill-tag {
+                        background: rgba(6, 182, 212, 0.2) !important;
+                        color: #67e8f9 !important;
+                        border: 1px solid rgba(6, 182, 212, 0.3) !important;
+                        font-size: 6px !important;
+                        padding: 1mm !important;
+                        margin: 0.5mm !important;
+                        border-radius: 4px !important;
+                        display: inline-block !important;
+                    }
+
+                    .content-continuous .section {
+                        margin-bottom: 5mm !important;
+                    }
+
+                    .content-continuous .section h3 {
+                        font-size: 14px !important;
+                        color: #0a1628 !important;
+                        font-weight: 800 !important;
+                        margin: 0 0 3mm 0 !important;
+                    }
+
+                    .content-continuous .section-header {
+                        display: flex !important;
+                        align-items: center !important;
+                        gap: 10px !important;
+                        margin-bottom: 3mm !important;
+                        padding-bottom: 1mm !important;
+                        border-bottom: 1px solid #e2e8f0 !important;
+                    }
+
+                    .content-continuous .section-icon {
+                        background: linear-gradient(135deg, #06b6d4, #0891b2) !important;
+                        width: 8mm !important;
+                        height: 8mm !important;
+                        font-size: 10px !important;
+                        border-radius: 50% !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        color: white !important;
+                    }
+
+                    .content-continuous .experience-item,
+                    .content-continuous .project-item,
+                    .content-continuous .education-item {
+                        background: white !important;
+                        border: 1px solid #e2e8f0 !important;
+                        padding: 4mm !important;
+                        margin-bottom: 3mm !important;
+                        border-radius: 8px !important;
+                        position: relative !important;
+                    }
+
+                    .content-continuous .experience-item::before {
+                        content: '' !important;
+                        position: absolute !important;
+                        left: 0 !important;
+                        top: 0 !important;
+                        width: 2mm !important;
+                        height: 100% !important;
+                        background: linear-gradient(180deg, #06b6d4, #f59e0b) !important;
+                    }
+
+                    .content-continuous .item-title {
+                        font-size: 10px !important;
+                        color: #0a1628 !important;
+                        font-weight: 700 !important;
+                        line-height: 1.2 !important;
+                        margin: 0 !important;
+                    }
+
+                    .content-continuous .item-company {
+                        font-size: 8px !important;
+                        color: #06b6d4 !important;
+                        line-height: 1.2 !important;
+                    }
+
+                    .content-continuous .item-date {
+                        font-size: 7px !important;
+                        color: #f59e0b !important;
+                    }
+
+                    .content-continuous .item-description {
+                        font-size: 7px !important;
+                        line-height: 1.4 !important;
+                        color: #475569 !important;
+                        margin-bottom: 3mm !important;
+                    }
+
+                    .content-continuous .item-description ul {
+                        margin: 1mm 0 !important;
+                        padding-left: 3mm !important;
+                    }
+
+                    .content-continuous .item-description li {
+                        margin-bottom: 0.5mm !important;
+                        line-height: 1.4 !important;
+                    }
+
+                    .content-continuous .skill-badge {
+                        background: #f1f5f9 !important;
+                        color: #334155 !important;
+                        border: 1px solid #e2e8f0 !important;
+                        font-size: 6px !important;
+                        padding: 1mm !important;
+                        border-radius: 12px !important;
+                        display: inline-block !important;
+                        margin: 0.5mm !important;
+                    }
+
+                    .content-continuous .achievement-grid {
+                        display: grid !important;
+                        grid-template-columns: repeat(2, 1fr) !important;
+                        gap: 3mm !important;
+                    }
+
+                    .content-continuous .achievement-card {
+                        background: #f8fafc !important;
+                        border: 1px solid #e2e8f0 !important;
+                        padding: 3mm !important;
+                        border-radius: 8px !important;
+                        text-align: center !important;
+                    }
+
+                    .content-continuous .achievement-icon {
+                        background: linear-gradient(135deg, #10b981, #059669) !important;
+                        width: 8mm !important;
+                        height: 8mm !important;
+                        font-size: 10px !important;
+                        border-radius: 50% !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        color: white !important;
+                        margin: 0 auto 1mm !important;
+                    }
+
+                    .content-continuous .footer-note,
+                    .content-continuous .footer-credits {
+                        font-size: 6px !important;
+                        color: #94a3b8 !important;
+                    }
+                `;
+                document.head.appendChild(printStyle);
+
+                tempContainer.id = 'temp-pdf-container';
+
+                buttonContent.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    <span>Capturing continuous content...</span>
+                `;
+
+                // Wait for content to render
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                // Capture the continuous layout
+                const canvas = await html2canvas(tempContainer, {
+                    scale: 1.5,
+                    useCORS: true,
+                    allowTaint: false,
+                    backgroundColor: '#ffffff',
+                    scrollX: 0,
+                    scrollY: 0,
+                    logging: false,
+                    width: tempContainer.scrollWidth,
+                    height: tempContainer.scrollHeight
+                });
+
+                // Clean up temporary elements
+                document.body.removeChild(tempContainer);
+                const tempStyle = document.getElementById('temp-pdf-styles');
+                if (tempStyle) {
+                    document.head.removeChild(tempStyle);
+                }
+
+                // Initialize jsPDF
                 const { jsPDF } = window.jspdf;
                 const pdf = new jsPDF({
                     orientation: 'portrait',
                     unit: 'mm',
-                    format: 'a4',
-                    compress: true,
-                    precision: 16
+                    format: 'a4'
                 });
-                
-                const resumeSheets = document.querySelectorAll('.resume-sheet');
-                console.log(`Processing ${resumeSheets.length} pages with smart content overflow handling...`);
-                
-                let totalPagesAdded = 0;
-                
-                // Process each page with enhanced overflow handling
-                for (let i = 0; i < resumeSheets.length; i++) {
-                    const sheet = resumeSheets[i];
-                    
-                    // Update progress
-                    buttonContent.innerHTML = `
-                        <div class="loading-spinner"></div>
-                        <span>Processing Page ${i + 1} of ${resumeSheets.length}... (${Math.round((i/resumeSheets.length) * 100)}%)</span>
-                    `;
-                    
-                    try {
-                        // Temporarily hide other sheets and prepare current sheet
-                        resumeSheets.forEach((otherSheet, index) => {
-                            if (index === i) {
-                                otherSheet.style.display = 'block';
-                                otherSheet.style.position = 'relative';
-                                otherSheet.style.visibility = 'visible';
-                                otherSheet.style.opacity = '1';
-                                otherSheet.style.zIndex = '999';
-                                otherSheet.style.background = 'white';
-                                otherSheet.style.borderRadius = '0';
-                                otherSheet.style.boxShadow = 'none';
-                                otherSheet.style.margin = '0';
-                                otherSheet.style.padding = '0';
-                                // Allow natural height for content measurement
-                                otherSheet.style.width = '210mm';
-                                otherSheet.style.minHeight = 'auto';
-                                otherSheet.style.height = 'auto';
-                                otherSheet.style.overflow = 'visible';
-                            } else {
-                                otherSheet.style.display = 'none';
-                            }
-                        });
-                        
-                        // Wait for layout changes
-                        await new Promise(resolve => setTimeout(resolve, 1000));
-                        
-                        // Measure actual content height
-                        const actualHeight = sheet.scrollHeight;
-                        const pageHeight = 1123; // A4 height in pixels at 96 DPI
-                        const maxAllowedHeight = pageHeight * 0.95; // 95% to account for margins
-                        
-                        console.log(`Page ${i + 1} actual height: ${actualHeight}px, page limit: ${maxAllowedHeight}px`);
-                        
-                        // If content fits in one page
-                        if (actualHeight <= maxAllowedHeight) {
-                            // Standard single page processing
-                            sheet.style.height = '297mm';
-                            sheet.style.overflow = 'hidden';
-                            
-                            await new Promise(resolve => setTimeout(resolve, 500));
-                            
-                            const canvas = await html2canvas(sheet, {
-                                scale: 3,
-                                useCORS: true,
-                                allowTaint: false,
-                                backgroundColor: '#ffffff',
-                                width: 794,
-                                height: 1123,
-                                scrollX: 0,
-                                scrollY: 0,
-                                logging: false,
-                                letterRendering: true,
-                                foreignObjectRendering: true,
-                                imageTimeout: 15000,
-                                onclone: (clonedDoc) => {
-                                    this.applyProfessionalStyling(clonedDoc);
-                                }
-                            });
-                            
-                            if (canvas && canvas.width > 0 && canvas.height > 0) {
-                                const imgData = canvas.toDataURL('image/jpeg', 0.98);
-                                
-                                if (totalPagesAdded > 0) {
-                                    pdf.addPage();
-                                }
-                                
-                                pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297, undefined, 'FAST');
-                                totalPagesAdded++;
-                                console.log(`Page ${i + 1} added as single page (${totalPagesAdded} total)`);
-                            }
-                        } else {
-                            // Content overflow - split into multiple pages
-                            const numberOfSubPages = Math.ceil(actualHeight / maxAllowedHeight);
-                            console.log(`Page ${i + 1} needs ${numberOfSubPages} sub-pages due to overflow`);
-                            
-                            for (let subPage = 0; subPage < numberOfSubPages; subPage++) {
-                                const startOffset = subPage * maxAllowedHeight;
-                                const endOffset = Math.min(startOffset + maxAllowedHeight, actualHeight);
-                                
-                                buttonContent.innerHTML = `
-                                    <div class="loading-spinner"></div>
-                                    <span>Processing Page ${i + 1}.${subPage + 1} (Content Overflow)...</span>
-                                `;
-                                
-                                // Create a viewport window for this section
-                                sheet.style.height = '297mm';
-                                sheet.style.overflow = 'hidden';
-                                sheet.style.transform = `translateY(-${startOffset}px)`;
-                                
-                                await new Promise(resolve => setTimeout(resolve, 800));
-                                
-                                const canvas = await html2canvas(sheet, {
-                                    scale: 3,
-                                    useCORS: true,
-                                    allowTaint: false,
-                                    backgroundColor: '#ffffff',
-                                    width: 794,
-                                    height: 1123,
-                                    scrollX: 0,
-                                    scrollY: 0,
-                                    logging: false,
-                                    letterRendering: true,
-                                    foreignObjectRendering: true,
-                                    imageTimeout: 15000,
-                                    onclone: (clonedDoc) => {
-                                        this.applyProfessionalStyling(clonedDoc);
-                                    }
-                                });
-                                
-                                if (canvas && canvas.width > 0 && canvas.height > 0) {
-                                    const imgData = canvas.toDataURL('image/jpeg', 0.98);
-                                    
-                                    if (totalPagesAdded > 0) {
-                                        pdf.addPage();
-                                    }
-                                    
-                                    pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297, undefined, 'FAST');
-                                    totalPagesAdded++;
-                                    console.log(`Sub-page ${i + 1}.${subPage + 1} added (${totalPagesAdded} total)`);
-                                }
-                                
-                                // Reset transform for next section
-                                sheet.style.transform = '';
-                            }
-                        }
-                        
-                    } catch (pageError) {
-                        console.error(`Error processing page ${i + 1}:`, pageError);
-                    }
-                    
-                    // Reset all sheet styles
-                    resumeSheets.forEach(otherSheet => {
-                        otherSheet.style.display = 'block';
-                        otherSheet.style.position = '';
-                        otherSheet.style.visibility = '';
-                        otherSheet.style.opacity = '';
-                        otherSheet.style.zIndex = '';
-                        otherSheet.style.width = '';
-                        otherSheet.style.minHeight = '';
-                        otherSheet.style.height = '';
-                        otherSheet.style.overflow = '';
-                        otherSheet.style.background = '';
-                        otherSheet.style.borderRadius = '';
-                        otherSheet.style.boxShadow = '';
-                        otherSheet.style.margin = '';
-                        otherSheet.style.padding = '';
-                        otherSheet.style.transform = '';
-                    });
-                    
-                    // Brief pause between pages
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                }
-                
-                // Generate professional filename
-                const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-                const filename = `Kiprop_Donald_Professional_Resume_${timestamp}.pdf`;
-                
-                // Final processing
+
                 buttonContent.innerHTML = `
                     <div class="loading-spinner"></div>
-                    <span>Finalizing PDF with ${totalPagesAdded} pages...</span>
+                    <span>Creating PDF with natural page breaks...</span>
                 `;
+
+                // Calculate how to split the image across pages
+                const imgWidth = 210; // A4 width in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                const pageHeight = 297; // A4 height in mm
+                const totalPages = Math.ceil(imgHeight / pageHeight);
+
+                let currentY = 0;
+                for (let pageNum = 0; pageNum < totalPages; pageNum++) {
+                    if (pageNum > 0) {
+                        pdf.addPage();
+                    }
+
+                    // Calculate the portion of the image for this page
+                    const sourceY = (pageNum * pageHeight * canvas.height) / imgHeight;
+                    const sourceHeight = Math.min((pageHeight * canvas.height) / imgHeight, canvas.height - sourceY);
+
+                    // Create a temporary canvas for this page portion
+                    const pageCanvas = document.createElement('canvas');
+                    const pageCtx = pageCanvas.getContext('2d');
+                    pageCanvas.width = canvas.width;
+                    pageCanvas.height = sourceHeight;
+
+                    // Draw the portion of the original canvas
+                    pageCtx.drawImage(
+                        canvas,
+                        0, sourceY, canvas.width, sourceHeight,
+                        0, 0, canvas.width, sourceHeight
+                    );
+
+                    // Add this portion to the PDF
+                    const pageImgData = pageCanvas.toDataURL('image/png', 1.0);
+                    const actualHeight = Math.min(pageHeight, imgHeight - (pageNum * pageHeight));
+                    pdf.addImage(pageImgData, 'PNG', 0, 0, imgWidth, actualHeight);
+
+                    buttonContent.innerHTML = `
+                        <div class="loading-spinner"></div>
+                        <span>Page ${pageNum + 1} of ${totalPages} processed</span>
+                    `;
+                }
+
+                // Restore header actions
+                headerActions.style.display = originalDisplay;
+
+                // Finalize PDF
+                buttonContent.innerHTML = `
+                    <div class="loading-spinner"></div>
+                    <span>Saving PDF...</span>
+                `;
+
+                await new Promise(resolve => setTimeout(resolve, 300));
+
+                // Generate filename and save
+                const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+                const filename = `Kiprop_Donald_Resume_${timestamp}.pdf`;
                 
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                
-                // Save the PDF
                 pdf.save(filename);
-                
-                console.log(`Professional PDF generation completed! ${totalPagesAdded} pages created with smart overflow handling.`);
-                
+
                 // Success state
                 button.style.background = 'linear-gradient(45deg, #10b981, #059669)';
                 buttonContent.innerHTML = `
                     <i class="fas fa-check-circle"></i>
-                    <span>Resume Downloaded! (${totalPagesAdded} pages)</span>
+                    <span>PDF Generated! (${totalPages} pages with natural flow)</span>
                 `;
-                
-                // Reset after success
-                setTimeout(() => {
-                    button.style.background = 'linear-gradient(135deg, var(--teal-primary), var(--teal-secondary))';
-                    buttonContent.innerHTML = originalContent;
-                    button.disabled = false;
-                }, 4000);
-                
+
+                console.log(`PDF generation completed with ${totalPages} pages and natural content flow`);
+
             } catch (error) {
-                console.error('Professional PDF generation failed:', error);
-                
-                // Error state with fallback to print
-                button.style.background = 'linear-gradient(45deg, #f59e0b, #d97706)';
+                console.error('PDF generation failed:', error);
+
+                // Clean up any temporary elements
+                const tempContainer = document.getElementById('temp-pdf-container');
+                if (tempContainer) {
+                    document.body.removeChild(tempContainer);
+                }
+                const tempStyle = document.getElementById('temp-pdf-styles');
+                if (tempStyle) {
+                    document.head.removeChild(tempStyle);
+                }
+
+                // Restore header actions in case of error
+                const headerActions = document.querySelector('.header-actions');
+                if (headerActions) {
+                    headerActions.style.display = '';
+                }
+
+                // Error state
+                button.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
                 buttonContent.innerHTML = `
-                    <i class="fas fa-print"></i>
-                    <span>Opening Print Dialog as Fallback...</span>
+                    <i class="fas fa-times-circle"></i>
+                    <span>Failed to generate PDF</span>
                 `;
-                
-                setTimeout(() => {
-                    // Trigger print as fallback
-                    window.print();
-                    
-                    // Reset after print
-                    setTimeout(() => {
-                        button.style.background = 'linear-gradient(135deg, var(--teal-primary), var(--teal-secondary))';
-                        buttonContent.innerHTML = originalContent;
-                        button.disabled = false;
-                    }, 3000);
-                }, 1500);
             }
+
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                button.style.background = 'linear-gradient(135deg, var(--teal-primary), var(--teal-secondary))';
+                buttonContent.innerHTML = originalContent;
+                button.disabled = false;
+            }, 3000);
         }
 
-        // Professional styling function for cloned documents
-        function applyProfessionalStyling(clonedDoc) {
+        // Dynamic document styling function for cloned documents
+        function applyDynamicDocumentStyling(clonedDoc) {
             const style = clonedDoc.createElement('style');
             style.textContent = `
+                /* General print styles */
                 * {
                     -webkit-print-color-adjust: exact !important;
                     color-adjust: exact !important;
                     print-color-adjust: exact !important;
                     box-sizing: border-box !important;
+                    font-family: 'Inter', system-ui, sans-serif !important;
                 }
-                
+
+                /* Ensure all elements are visible and fit within page bounds */
                 .resume-sheet {
                     width: 210mm !important;
-                    height: 297mm !important;
+                    height: auto !important;
+                    min-height: auto !important; /* Allow height to adjust */
                     background: white !important;
                     border-radius: 0 !important;
                     box-shadow: none !important;
-                    overflow: visible !important;
-                    font-family: 'Inter', system-ui, sans-serif !important;
-                    page-break-inside: avoid !important;
+                    overflow: visible !important; /* Allow content to flow */
+                    page-break-inside: avoid !important; /* Try to keep content within a page */
+                    padding-bottom: 5mm !important; /* Space at the bottom */
+                    position: relative !important; /* For watermark */
                 }
-                
+
                 .page {
                     width: 210mm !important;
-                    height: auto !important;
-                    min-height: 297mm !important;
+                    height: auto !important; /* Adjust height based on content */
+                    min-height: 280mm !important; /* A4 height in mm */
                     display: grid !important;
-                    grid-template-columns: 80mm 130mm !important;
+                    grid-template-columns: 75mm 135mm !important; /* Sidebar and content columns */
                     margin: 0 !important;
                     padding: 0 !important;
+                    gap: 0 !important;
+                    page-break-inside: avoid !important; /* Keep page content together */
                 }
-                
+
                 .sidebar {
                     background: linear-gradient(180deg, #0a1628 0%, #1e293b 70%, #334155 100%) !important;
                     color: #f1f5f9 !important;
-                    padding: 8mm !important;
-                    width: 80mm !important;
-                    min-height: 297mm !important;
-                    overflow: visible !important;
+                    padding: 6mm !important; /* Padding for sidebar content */
+                    width: 75mm !important;
+                    height: auto !important; /* Adjust to content height */
+                    min-height: auto !important;
+                    overflow: visible !important; /* Content can flow */
+                    page-break-inside: avoid !important; /* Keep sidebar content together */
                 }
-                
+
                 .content {
                     background: white !important;
-                    color: #0f172a !important;
-                    padding: 8mm !important;
-                    width: 130mm !important;
-                    min-height: 297mm !important;
-                    overflow: visible !important;
+                    color: #0f172a !important; /* Darker text for readability on print */
+                    padding: 6mm !important; /* Padding for main content */
+                    width: 135mm !important;
+                    height: auto !important; /* Adjust to content height */
+                    min-height: auto !important;
+                    overflow: visible !important; /* Content can flow */
+                    page-break-inside: avoid !important; /* Keep content together */
                 }
-                
+
+                /* Adjustments for elements within sidebar and content */
                 .avatar {
                     background: linear-gradient(135deg, #06b6d4, #f59e0b) !important;
                     width: 20mm !important;
                     height: 20mm !important;
                     font-size: 14px !important;
+                    border-radius: 50% !important;
+                    margin: 0 auto 6mm !important; /* Center avatar */
                 }
-                
+
                 .name {
                     color: #67e8f9 !important;
                     font-size: 16px !important;
                     font-weight: 900 !important;
+                    text-align: center !important;
+                    margin-bottom: 2mm !important;
                 }
-                
+
                 .job-title {
                     color: #67e8f9 !important;
                     font-size: 10px !important;
+                    text-align: center !important;
+                    margin-bottom: 2mm !important;
                 }
-                
+
                 .location {
                     color: #cbd5e1 !important;
                     font-size: 8px !important;
+                    text-align: center !important;
+                    margin-bottom: 6mm !important;
                 }
-                
+
                 .sidebar-block {
                     background: rgba(255, 255, 255, 0.1) !important;
                     padding: 4mm !important;
                     margin-bottom: 3mm !important;
-                    page-break-inside: avoid !important;
+                    border-radius: 8px !important; /* Slightly rounded corners */
+                    page-break-inside: avoid !important; /* Keep blocks together */
                 }
-                
+
                 .sidebar-block h4 {
                     color: #67e8f9 !important;
                     font-size: 9px !important;
+                    margin-bottom: 3mm !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    gap: 5px !important;
                 }
-                
+
+                .sidebar-block h4 i {
+                    color: #f59e0b !important;
+                }
+
                 .contact-item {
                     font-size: 7px !important;
                     margin-bottom: 1.5mm !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    gap: 5px !important;
                 }
-                
+
+                .contact-item i {
+                    color: #67e8f9 !important;
+                }
+
                 .skill-tag {
                     background: rgba(6, 182, 212, 0.2) !important;
                     color: #67e8f9 !important;
@@ -2358,154 +2596,200 @@
                     font-size: 6px !important;
                     padding: 1mm !important;
                     margin: 0.5mm !important;
+                    border-radius: 4px !important;
                 }
-                
+
                 .section {
-                    page-break-inside: avoid !important;
+                    page-break-inside: avoid !important; /* Prevent breaking within sections */
                     margin-bottom: 4mm !important;
+                    break-inside: avoid !important;
                 }
-                
+
                 .section h3 {
                     font-size: 14px !important;
                     color: #0a1628 !important;
                     font-weight: 800 !important;
+                    margin: 0 !important;
                 }
-                
+
+                .section-header {
+                    display: flex !important;
+                    align-items: center !important;
+                    gap: 10px !important;
+                    margin-bottom: 3mm !important;
+                    padding-bottom: 1mm !important;
+                    border-bottom: 1px solid #e2e8f0 !important;
+                }
+
                 .section-icon {
                     background: linear-gradient(135deg, #06b6d4, #0891b2) !important;
                     width: 8mm !important;
                     height: 8mm !important;
                     font-size: 10px !important;
+                    border-radius: 50% !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    color: white !important;
                 }
-                
+
                 .experience-item, .project-item, .education-item {
                     background: white !important;
                     border: 1px solid #e2e8f0 !important;
                     padding: 4mm !important;
                     margin-bottom: 3mm !important;
-                    page-break-inside: avoid !important;
+                    border-radius: 8px !important;
+                    page-break-inside: avoid !important; /* Keep items together */
+                    break-inside: avoid !important;
                 }
-                
+
                 .experience-item::before {
-                    background: linear-gradient(180deg, #06b6d4, #f59e0b) !important;
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
                     width: 2mm !important;
+                    height: 100%;
+                    background: linear-gradient(180deg, #06b6d4, #f59e0b) !important;
                 }
-                
+
                 .item-title {
                     font-size: 10px !important;
                     color: #0a1628 !important;
                     font-weight: 700 !important;
+                    line-height: 1.2 !important;
                 }
-                
+
                 .item-company {
                     font-size: 8px !important;
                     color: #06b6d4 !important;
+                    line-height: 1.2 !important;
                 }
-                
+
                 .item-date {
                     font-size: 7px !important;
                     color: #f59e0b !important;
                 }
-                
+
                 .item-description {
                     font-size: 7px !important;
                     line-height: 1.3 !important;
                     color: #475569 !important;
+                    margin-bottom: 3mm !important;
                 }
-                
+
                 .item-description ul {
                     margin: 1mm 0 !important;
                     padding-left: 3mm !important;
+                    list-style-position: outside !important; /* Ensure bullets are visible */
                 }
-                
+
                 .item-description li {
                     margin-bottom: 0.5mm !important;
+                    line-height: 1.3 !important;
                 }
-                
+
                 .skill-badge {
                     background: #f1f5f9 !important;
                     color: #334155 !important;
                     border: 1px solid #e2e8f0 !important;
                     font-size: 6px !important;
                     padding: 1mm !important;
+                    border-radius: 12px !important; /* More rounded badges */
                 }
-                
+
                 .achievement-card {
                     background: #f8fafc !important;
                     border: 1px solid #e2e8f0 !important;
                     padding: 3mm !important;
+                    border-radius: 8px !important;
                     page-break-inside: avoid !important;
+                    break-inside: avoid !important;
                 }
-                
+
                 .achievement-icon {
                     background: linear-gradient(135deg, #10b981, #059669) !important;
                     width: 8mm !important;
                     height: 8mm !important;
                     font-size: 10px !important;
+                    border-radius: 50% !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    color: white !important;
+                    margin: 0 auto 1mm !important;
                 }
-                
+
                 .achievement-title {
                     font-size: 8px !important;
                     color: #0a1628 !important;
+                    font-weight: 700 !important;
                 }
-                
+
                 .achievement-desc {
                     font-size: 6px !important;
                     color: #64748b !important;
+                    line-height: 1.3 !important;
                 }
-                
+
                 .footer-note, .footer-credits {
                     font-size: 6px !important;
                     color: #94a3b8 !important;
+                    margin-top: 2mm !important;
+                    padding-top: 1mm !important;
+                    border-top: 0.5px solid #e2e8f0 !important;
                 }
-                
+
                 .stat-item {
                     font-size: 7px !important;
+                    margin-bottom: 1mm !important;
+                    padding: 0.5mm 0 !important;
+                    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1) !important;
                 }
-                
+
                 .stat-number {
                     font-size: 10px !important;
                     color: #f59e0b !important;
                 }
-                
+
                 .progress-bar-skill {
                     height: 2mm !important;
                     background: rgba(255, 255, 255, 0.2) !important;
+                    border-radius: 2px !important;
                 }
-                
+
                 .progress-fill-skill {
                     background: linear-gradient(90deg, #06b6d4, #f59e0b) !important;
+                    border-radius: 2px !important;
                 }
-                
+
+                /* Watermark adjustment for print */
                 .resume-sheet::before {
-                    font-size: 200px !important;
-                    color: rgba(6, 182, 212, 0.025) !important;
-                }
-                
-                .header-actions {
-                    display: none !important;
+                    font-size: 150px !important; /* Smaller watermark for print */
+                    color: rgba(6, 182, 212, 0.03) !important; /* Lighter color */
+                    transform: translate(-50%, -50%) rotate(-25deg) !important; /* Ensure centering */
                 }
             `;
             clonedDoc.head.appendChild(style);
-            
-            // Remove any problematic elements
-            const elementsToRemove = clonedDoc.querySelectorAll('.loading-spinner, .loading-dots, .header-actions');
+
+            // Remove any elements that should not be in the PDF print
+            const elementsToRemove = clonedDoc.querySelectorAll('.header-actions, .loading-spinner, .loading-dots, .progress-bar');
             elementsToRemove.forEach(el => el.remove());
         }
 
         // Initialize professional enhancements
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Professional Resume System initialized - Ready for high-quality PDF generation');
-            
-            // Ensure header actions stay visible
+
+            // Ensure header actions stay visible for the interactive view
             const headerActions = document.querySelector('.header-actions');
             if (headerActions) {
                 headerActions.style.position = 'fixed';
                 headerActions.style.display = 'block';
                 headerActions.style.zIndex = '9999';
             }
-            
-            // Professional hover effects
+
+            // Professional hover effects for interactive elements
             const interactiveElements = document.querySelectorAll('.experience-item, .project-item, .education-item, .achievement-card');
             interactiveElements.forEach(element => {
                 element.addEventListener('mouseenter', function() {
@@ -2513,14 +2797,14 @@
                     this.style.boxShadow = 'var(--shadow-lg)';
                     this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                 });
-                
+
                 element.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0)';
                     this.style.boxShadow = 'var(--shadow-sm)';
                 });
             });
-            
-            // Print optimization
+
+            // Print optimization listener
             const mediaQuery = window.matchMedia('print');
             mediaQuery.addListener(function(mql) {
                 if (mql.matches) {
