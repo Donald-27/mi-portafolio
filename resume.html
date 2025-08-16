@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiprop Donald - Award-Winning Full-Stack Developer | Professional Resume</title>
+    <title>Kiprop Donald - Full-Stack Developer | Resume</title>
     <meta name="description" content="Professional resume of Kiprop Donald - Award-winning full-stack developer specializing in React, Flask, and modern web technologies.">
 
     <!-- KD Resume Branded Favicons -->
@@ -123,14 +123,14 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary));
+            background: linear-gradient(135deg, #1e293b, #475569);
             color: white;
             padding: 16px 32px;
-            border-radius: 16px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 15px;
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             cursor: pointer;
             border: none;
             transition: all 0.3s ease;
@@ -179,49 +179,122 @@
             font-weight: 700;
         }
 
-        /* Loading Animation Styles */
-        .loading-spinner {
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-top: 3px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        /* Unique Loading Animation Styles */
+        .loading-pulse {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .loading-dots {
+        .pulse-ring {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            position: relative;
+            animation: pulseRing 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulseDot 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+
+        .floating-particles {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .particle {
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { left: -10px; animation-delay: 0s; }
+        .particle:nth-child(2) { left: -5px; animation-delay: 0.3s; }
+        .particle:nth-child(3) { left: 0px; animation-delay: 0.6s; }
+        .particle:nth-child(4) { left: 5px; animation-delay: 0.9s; }
+        .particle:nth-child(5) { left: 10px; animation-delay: 1.2s; }
+
+        .morphing-shape {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            animation: morph 2s ease-in-out infinite;
+        }
+
+        .loading-waves {
             display: flex;
-            gap: 4px;
+            gap: 2px;
             align-items: center;
         }
 
-        .loading-dot {
+        .wave-bar {
+            width: 3px;
+            height: 16px;
+            background: white;
+            border-radius: 2px;
+            animation: wave 1.2s ease-in-out infinite;
+        }
+
+        .wave-bar:nth-child(1) { animation-delay: 0s; }
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        .loading-orbit {
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+
+        .orbit-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
             width: 6px;
             height: 6px;
             background: white;
             border-radius: 50%;
-            animation: bounce 1.4s ease-in-out infinite both;
+            transform: translate(-50%, -50%);
         }
 
-        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
-        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
-        .loading-dot:nth-child(3) { animation-delay: 0s; }
+        .orbit-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: rotate 1.5s linear infinite;
+        }
 
-        .progress-bar {
-            width: 100%;
+        .orbit-planet {
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            width: 4px;
             height: 4px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, white, var(--teal-accent));
-            border-radius: 2px;
-            width: 0%;
-            transition: width 0.3s ease;
+            background: white;
+            border-radius: 50%;
+            transform: translateX(-50%);
         }
 
         /* Page Layout */
@@ -798,17 +871,110 @@
             }
         }
 
-        /* Loading Animations */
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* Unique Loading Animations */
+        @keyframes pulseRing {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulseDot {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-8px) scale(1.2);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-4px) scale(0.9);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes morph {
+            0% {
+                border-radius: 50%;
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                border-radius: 20%;
+                transform: rotate(90deg) scale(1.1);
+            }
+            50% {
+                border-radius: 10%;
+                transform: rotate(180deg) scale(0.9);
+            }
+            75% {
+                border-radius: 30%;
+                transform: rotate(270deg) scale(1.05);
+            }
+            100% {
+                border-radius: 50%;
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: scaleY(0.5);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scaleY(1.5);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            75% {
+                transform: translateX(5px);
+            }
         }
 
         @keyframes bounce {
-            0%, 80%, 100% {
-                transform: scale(0);
-            } 40% {
+            0%, 100% {
                 transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
             }
         }
 
@@ -845,8 +1011,8 @@
                 </div>
             </button>
             <div class="download-note">
-                <strong>Normal PDF Document</strong> with organized pages and proper formatting<br>
-                <small style="opacity: 0.8;">Standard document layout - no zoom effects, properly fitted content</small>
+                <strong>Professional 7-Page Resume</strong> with comprehensive details and official formatting<br>
+                <small style="opacity: 0.8;">Official document layout - detailed content, professional styling</small>
             </div>
         </div>
     </div>
@@ -2022,14 +2188,425 @@
                 </div>
 
                 <!-- Footer -->
-                <div class="footer-note">Page 6 • References, Additional Information & Contact</div>
+                <div class="footer-note">Page 6 • Recognition, Testimonials & Personal Information</div>
+                <div class="footer-credits">Designed & Developed by Kiprop Donald • 2025</div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Page 7: Additional Projects & Skills -->
+    <section class="resume-sheet">
+        <div class="page">
+            <aside class="sidebar">
+                <!-- Additional Skills -->
+                <div class="sidebar-block">
+                    <h4><i class="fas fa-plus-circle"></i>Additional Skills</h4>
+                    <div class="skill-category">
+                        <h5>Documentation</h5>
+                        <span class="skill-tag">Technical Writing</span>
+                        <span class="skill-tag">API Documentation</span>
+                        <span class="skill-tag">User Guides</span>
+                        <span class="skill-tag">Help Center Content</span>
+                    </div>
+                    <div class="skill-category">
+                        <h5>Design</h5>
+                        <span class="skill-tag">UI/UX Principles</span>
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Adobe Illustrator</span>
+                    </div>
+                    <div class="skill-category">
+                        <h5>Soft Skills</h5>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Client Communication</span>
+                        <span class="skill-tag">Project Management</span>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="sidebar-block">
+                    <h4><i class="fas fa-certificate"></i>Certifications</h4>
+                    <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
+                        <div style="margin-bottom: 12px;">
+                            <strong>Full-Stack Development Certificate</strong><br>
+                            Moringa School (2024-2025)
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <strong>React Development</strong><br>
+                            Advanced Components & State Management
+                        </div>
+                        <div style="margin-bottom: 12px;">
+                            <strong>Flask Web Development</strong><br>
+                            API Design & Database Integration
+                        </div>
+                        <div>
+                            <strong>Git & Version Control</strong><br>
+                            Collaborative Development Practices
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="content">
+                <!-- Additional Projects -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h3>Additional Projects</h3>
+                    </div>
+
+                    <!-- Doctor Notes Generator -->
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <h4 class="item-title">Doctor Notes Generator</h4>
+                                <div class="item-company">Professional Documentation Tool</div>
+                            </div>
+                            <div class="item-date">2024</div>
+                        </div>
+                        <div class="item-description">
+                            Professional doctor notes generator with logos, stamps, watermarks, and digital signatures for healthcare facilities. Streamlines medical documentation with customizable templates and professional formatting.
+                            <br><br>
+                            <strong>Key Features:</strong>
+                            <ul>
+                                <li>Custom logo and letterhead integration</li>
+                                <li>Digital signature implementation</li>
+                                <li>Professional watermarks and stamps</li>
+                                <li>Template customization system</li>
+                                <li>PDF generation with high-quality output</li>
+                                <li>Medical compliance standards</li>
+                            </ul>
+                            <strong>Live Demo:</strong> <a href="https://doctor-notes-generator.netlify.app/" target="_blank" style="color: var(--teal-primary);">doctor-notes-generator.netlify.app</a>
+                        </div>
+                        <div class="item-skills">
+                            <span class="skill-badge">React</span>
+                            <span class="skill-badge">PDF Generation</span>
+                            <span class="skill-badge">Digital Signatures</span>
+                            <span class="skill-badge">Template Engine</span>
+                        </div>
+                    </div>
+
+                    <!-- LateShow Platform -->
+                    <div class="project-item">
+                        <div class="item-header">
+                            <div>
+                                <h4 class="item-title">LateShow Entertainment Platform</h4>
+                                <div class="item-company">Event Scheduling System</div>
+                            </div>
+                            <div class="item-date">2024</div>
+                        </div>
+                        <div class="item-description">
+                            Event scheduling and listing platform perfect for cinemas, theaters, and live events with real-time show times, seat booking, and comprehensive event management capabilities.
+                            <br><br>
+                            <strong>Key Features:</strong>
+                            <ul>
+                                <li>Real-time show scheduling and updates</li>
+                                <li>Seat reservation and booking system</li>
+                                <li>Event category management</li>
+                                <li>Venue and capacity management</li>
+                                <li>Ticket pricing and promotion system</li>
+                                <li>User reviews and ratings</li>
+                            </ul>
+                            <strong>Live Demo:</strong> <a href="https://lateshow.netlify.app/" target="_blank" style="color: var(--teal-primary);">lateshow.netlify.app</a>
+                        </div>
+                        <div class="item-skills">
+                            <span class="skill-badge">React</span>
+                            <span class="skill-badge">Event Management</span>
+                            <span class="skill-badge">Booking System</span>
+                            <span class="skill-badge">Real-time Updates</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Education</h3>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <h4 class="item-title">Full-Stack Software Development</h4>
+                                <div class="item-company">Moringa School</div>
+                            </div>
+                            <div class="item-date">2024 - 2025</div>
+                        </div>
+                        <div class="item-description">
+                            Intensive bootcamp covering modern web development technologies, software engineering principles, and professional development practices. Graduated with honors after completing multiple real-world projects.
+                            <br><br>
+                            <strong>Curriculum Highlights:</strong>
+                            <ul>
+                                <li>Frontend Development: React, JavaScript, HTML/CSS</li>
+                                <li>Backend Development: Flask, Python, SQLAlchemy</li>
+                                <li>Database Design and Management</li>
+                                <li>RESTful API Development</li>
+                                <li>Version Control with Git</li>
+                                <li>Testing and Debugging Methodologies</li>
+                                <li>Agile Development Practices</li>
+                            </ul>
+                        </div>
+                        <div class="item-skills">
+                            <span class="skill-badge">React</span>
+                            <span class="skill-badge">Flask</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">SQLAlchemy</span>
+                            <span class="skill-badge">Git</span>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="item-header">
+                            <div>
+                                <h4 class="item-title">Bachelor of Science in Actuarial Science</h4>
+                                <div class="item-company">University of Eldoret</div>
+                            </div>
+                            <div class="item-date">2022 - </div>
+                        </div>
+                        <div class="item-description">
+                            Strong foundation in mathematics, statistics, and analytical thinking. This background provides excellent problem-solving skills and logical reasoning that directly transfer to software development.
+                            <br><br>
+                            <strong>Relevant Skills Gained:</strong>
+                            <ul>
+                                <li>Advanced mathematical and statistical analysis</li>
+                                <li>Data modeling and interpretation</li>
+                                <li>Risk assessment and management</li>
+                                <li>Logical problem-solving approaches</li>
+                                <li>Financial systems understanding</li>
+                            </ul>
+                        </div>
+                        <div class="item-skills">
+                            <span class="skill-badge">Mathematics</span>
+                            <span class="skill-badge">Statistics</span>
+                            <span class="skill-badge">Data Analysis</span>
+                            <span class="skill-badge">Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer-note">Page 7 • Community Impact & Personal Information</div>
+                <div class="footer-credits">Designed & Developed by Kiprop Donald • 2025</div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Page 8: References & Contact -->
+    <section class="resume-sheet">
+        <div class="page">
+            <aside class="sidebar">
+                <!-- Quick Stats Summary -->
+                <div class="sidebar-block">
+                    <h4><i class="fas fa-chart-bar"></i>Summary Stats</h4>
+                    <div class="stat-item">
+                        <div>
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Resume Pages</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div>
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Total Projects</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div>
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Technologies</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div>
+                            <div class="stat-number">3+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div>
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Preferences -->
+                <div class="sidebar-block">
+                    <h4><i class="fas fa-handshake"></i>Contact Preferences</h4>
+                    <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
+                        <div style="margin-bottom: 8px;">
+                            <strong style="color: var(--teal-accent);">Best Contact:</strong> Email or WhatsApp
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <strong style="color: var(--teal-accent);">Response Time:</strong> Within 12 hours
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <strong style="color: var(--teal-accent);">Meeting:</strong> Video calls preferred
+                        </div>
+                        <div>
+                            <strong style="color: var(--teal-accent);">Availability:</strong> 24/7 for urgent matters
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Quote -->
+                <div class="sidebar-block">
+                    <h4><i class="fas fa-quote-right"></i>Final Thought</h4>
+                    <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6; font-style: italic; text-align: center;">
+                        "Every great developer you know got there by solving problems they were unqualified to solve until they actually did it."
+                        <br><br>
+                        <strong style="color: var(--teal-accent);">Ready to solve the next challenge together.</strong>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="content">
+                <!-- Professional References -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>Professional References</h3>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <!-- Reference 1 -->
+                        <div style="background: linear-gradient(135deg, var(--navy-primary), var(--navy-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
+                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+                                    BK
+                                </div>
+                                <div>
+                                    <h5 style="margin: 0; font-size: 16px; font-weight: 700;">Bernard Kosgei</h5>
+                                    <div style="color: var(--teal-accent); font-size: 14px; font-weight: 600;">Software Developer</div>
+                                    <div style="color: var(--slate-300); font-size: 13px;">Fellow Developer</div>
+                                </div>
+                            </div>
+                            <div style="color: var(--slate-200); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
+                                Can provide insights into learning progression, technical skills, and professional development during bootcamp training.
+                            </div>
+                            <div style="color: var(--slate-300); font-size: 12px;">
+                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> onesmuskiprono20@gmail.com</div>
+                                <div><i class="fas fa-phone"></i> +254 721 654 900</div>
+                            </div>
+                        </div>
+
+                        <!-- Reference 2 -->
+                        <div style="background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
+                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--amber-primary), var(--amber-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+                                    EK
+                                </div>
+                                <div>
+                                    <h5 style="margin: 0; font-size: 16px; font-weight: 700;">Eliphaz Kiprono</h5>
+                                    <div style="color: var(--slate-100); font-size: 14px; font-weight: 600;">Software Developer</div>
+                                    <div style="color: var(--slate-200); font-size: 13px;">Crown paints</div>
+                                </div>
+                            </div>
+                            <div style="color: var(--slate-100); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
+                                Industry mentor and technical advisor. Provided guidance on professional development and can speak to technical competency and growth potential.
+                            </div>
+                            <div style="color: var(--slate-200); font-size: 12px;">
+                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> dorisjeptoo@gmail</div>
+                                <div><i class="fas fa-phone"></i> +254 796 700 452</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h3>Additional Information</h3>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <!-- Volunteer Work -->
+                        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-heart" style="color: var(--emerald-primary);"></i>
+                                Volunteer Work
+                            </h5>
+                            <div style="color: var(--slate-600); font-size: 14px; line-height: 1.6;">
+                                • Guided over 7 beginner coders to build their skills<br>
+                                • Volunteered as a tech support helper for community organizations<br>
+                                • Taught basic computer skills at my home area school<br>
+                            </div>
+                        </div>
+
+                        <!-- Personal Projects -->
+                        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-lightbulb" style="color: var(--amber-primary);"></i>
+                                Personal Interests
+                            </h5>
+                            <div style="color: var(--slate-600); font-size: 14px; line-height: 1.6;">
+                                • AI and machine learning exploration<br>
+                                • Open source contribution and collaboration<br>
+                                • Tech community building and networking<br>
+                                • Continuous learning and skill development
+                            </div>
+                        </div>
+
+                        <!-- Hobbies -->
+                        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-gamepad" style="color: var(--teal-primary);"></i>
+                                Hobbies & Interests
+                            </h5>
+                            <div style="color: var(--slate-600); font-size: 14px; line-height: 1.6;">
+                                • Technology blogging and technical writing<br>
+                                • Photography and digital content creation<br>
+                                • Sports (running and football)<br>
+                                • Music and creative arts
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="section">
+                    <div style="background: linear-gradient(135deg, var(--navy-primary), var(--navy-secondary)); color: white; padding: 40px; border-radius: 16px; text-align: center; box-shadow: var(--shadow-xl);">
+                        <h3 style="margin: 0 0 16px 0; font-size: 28px; font-weight: 800;">Let's Build Something Amazing Together</h3>
+                        <p style="margin: 0 0 24px 0; font-size: 16px; color: var(--slate-200); line-height: 1.6;">
+                            Ready to transform your ideas into exceptional digital solutions? Let's discuss your next project and create something that makes a real impact.
+                        </p>
+                        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                            <a href="mailto:kipropdonald27@gmail.com" style="display: inline-flex; align-items: center; gap: 8px; background: var(--teal-primary); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                <i class="fas fa-envelope"></i>
+                                Send Email
+                            </a>
+                            <a href="https://wa.me/254724779523" style="display: inline-flex; align-items: center; gap: 8px; background: var(--emerald-primary); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </a>
+                            <a href="https://linkedin.com/in/kiprop-donald-56b898352" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: var(--amber-primary); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer-note">Page 8 • Contact & References</div>
                 <div class="footer-credits">Designed & Developed by Kiprop Donald • 2025</div>
             </main>
         </div>
     </section>
 
     <script>
-        // Enhanced PDF Generation with Award-Winning Design
+        // Enhanced PDF Generation with Unique Loading Animations
         async function downloadProfessionalPDF() {
             const button = document.querySelector('.download-button');
             const buttonContent = button.querySelector('.button-content');
@@ -2038,66 +2615,113 @@
             button.disabled = true;
 
             try {
-                // Loading state
-                button.style.background = 'linear-gradient(45deg, #06b6d4, #0891b2)';
+                // Phase 1: Pulse Ring Animation
+                button.style.background = 'linear-gradient(45deg, #1e293b, #475569)';
                 buttonContent.innerHTML = `
-                    <div class="loading-spinner"></div>
-                    <span>Generating Award-Winning PDF...</span>
+                    <div class="loading-pulse">
+                        <div class="pulse-ring"></div>
+                        <span>Initializing PDF Engine...</span>
+                    </div>
+                `;
+
+                await new Promise(resolve => setTimeout(resolve, 800));
+
+                // Phase 2: Floating Particles
+                buttonContent.innerHTML = `
+                    <div class="floating-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <span>Crafting Professional Layout...</span>
+                    </div>
+                `;
+
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                // Phase 3: Morphing Shape
+                buttonContent.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div class="morphing-shape"></div>
+                        <span>Generating 7-Page Resume...</span>
+                    </div>
+                `;
+
+                // Create professional PDF content
+                const pdfContent = await createProfessionalPDF();
+
+                // Phase 4: Wave Animation
+                buttonContent.innerHTML = `
+                    <div class="loading-waves">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <span style="margin-left: 8px;">Compiling Document...</span>
+                `;
+
+                await new Promise(resolve => setTimeout(resolve, 600));
+
+                // Phase 5: Orbital Animation
+                buttonContent.innerHTML = `
+                    <div class="loading-orbit">
+                        <div class="orbit-center"></div>
+                        <div class="orbit-ring">
+                            <div class="orbit-planet"></div>
+                        </div>
+                    </div>
+                    <span style="margin-left: 8px;">Finalizing PDF...</span>
                 `;
 
                 await new Promise(resolve => setTimeout(resolve, 500));
 
-                buttonContent.innerHTML = `
-                    <div class="loading-spinner"></div>
-                    <span>Creating premium resume design...</span>
-                `;
-
-                // Create award-winning PDF content
-                const pdfContent = await createAwardWinningPDF();
-
-                buttonContent.innerHTML = `
-                    <div class="loading-spinner"></div>
-                    <span>Finalizing professional document...</span>
-                `;
-
-                await new Promise(resolve => setTimeout(resolve, 300));
-
                 // Generate filename and save
                 const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-                const filename = `Kiprop_Donald_Premium_Resume_${timestamp}.pdf`;
-                
+                const filename = `Kiprop_Donald_Professional_Resume_${timestamp}.pdf`;
+
                 pdfContent.save(filename);
 
-                // Success state
-                button.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+                // Success state with sparkle effect
+                button.style.background = 'linear-gradient(45deg, #059669, #10b981)';
+                button.style.boxShadow = '0 0 20px rgba(5, 150, 105, 0.5)';
                 buttonContent.innerHTML = `
-                    <i class="fas fa-check-circle"></i>
-                    <span>Premium PDF Generated! (Multi-page award-winning design)</span>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-check-circle" style="animation: bounce 0.6s ease"></i>
+                        <span>✨ Premium PDF Ready! Download Complete ✨</span>
+                    </div>
                 `;
 
-                console.log('Award-winning PDF generation completed successfully');
+                console.log('Professional PDF generation completed successfully');
 
             } catch (error) {
                 console.error('PDF generation failed:', error);
 
-                // Error state
-                button.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
+                // Error state with shake effect
+                button.style.background = 'linear-gradient(45deg, #dc2626, #ef4444)';
+                button.style.animation = 'shake 0.5s ease-in-out';
                 buttonContent.innerHTML = `
-                    <i class="fas fa-times-circle"></i>
-                    <span>Failed to generate PDF</span>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Generation Failed - Please Try Again</span>
+                    </div>
                 `;
             }
 
-            // Reset button after 3 seconds
+            // Reset button after 4 seconds
             setTimeout(() => {
-                button.style.background = 'linear-gradient(135deg, var(--teal-primary), var(--teal-secondary))';
+                button.style.background = 'linear-gradient(135deg, #1e293b, #475569)';
+                button.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+                button.style.animation = 'none';
                 buttonContent.innerHTML = originalContent;
                 button.disabled = false;
-            }, 3000);
+            }, 4000);
         }
 
-        // Create Award-Winning PDF Function
-        async function createAwardWinningPDF() {
+        // Create Professional PDF Function
+        async function createProfessionalPDF() {
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF({
                 orientation: 'portrait',
@@ -2107,87 +2731,175 @@
 
             const pageWidth = 210;
             const pageHeight = 297;
-            const margin = 15;
+            const margin = 20;
             const contentWidth = pageWidth - (margin * 2);
 
-            // Define color palette for award-winning design
+            // Professional color palette - subtle and official
             const colors = {
-                primary: '#1a365d',      // Deep Navy
-                secondary: '#2d3748',    // Dark Gray
-                accent: '#ed8936',       // Warm Orange
-                success: '#38a169',      // Green
-                info: '#3182ce',         // Blue
-                light: '#f7fafc',        // Light Gray
+                primary: '#1e293b',      // Slate Gray
+                secondary: '#334155',    // Medium Gray
+                accent: '#0f766e',       // Professional Teal
+                text: '#0f172a',         // Nearly Black
+                muted: '#64748b',        // Light Gray
+                light: '#f8fafc',        // Very Light Gray
                 white: '#ffffff',
-                text: '#2d3748',
-                muted: '#718096'
+                border: '#e2e8f0'        // Light Border
             };
 
             let currentY = margin;
 
-            // Page 1: Cover Page with Modern Design
-            function addCoverPage() {
-                // Background gradient effect (simulated with rectangles)
-                pdf.setFillColor(26, 54, 93); // primary color
+            // Page 1: Professional Header Page
+            function addHeaderPage() {
+                // Clean white background
+                pdf.setFillColor(255, 255, 255);
                 pdf.rect(0, 0, pageWidth, pageHeight, 'F');
-                
-                // Decorative geometric shapes
-                pdf.setFillColor(237, 137, 54, 0.3); // accent with transparency
-                pdf.circle(180, 50, 30, 'F');
-                pdf.setFillColor(56, 161, 105, 0.2); // success with transparency
-                pdf.rect(20, 200, 60, 60, 'F');
 
-                // Main title
-                pdf.setTextColor(255, 255, 255);
-                pdf.setFontSize(48);
+                // Professional header with subtle accent
+                pdf.setFillColor(248, 250, 252); // Very light background
+                pdf.rect(0, 0, pageWidth, 80, 'F');
+
+                pdf.setFillColor(15, 118, 110); // Professional teal accent line
+                pdf.rect(0, 0, pageWidth, 4, 'F');
+
+                // Name and title
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(32);
                 pdf.setFont('helvetica', 'bold');
-                pdf.text('KIPROP', pageWidth/2, 100, { align: 'center' });
-                pdf.text('DONALD', pageWidth/2, 120, { align: 'center' });
+                pdf.text('KIPROP DONALD', pageWidth/2, 35, { align: 'center' });
 
-                // Subtitle
-                pdf.setFontSize(24);
+                pdf.setFontSize(16);
                 pdf.setFont('helvetica', 'normal');
-                pdf.text('Software Developer', pageWidth/2, 140, { align: 'center' });
+                pdf.setTextColor(100, 116, 139);
+                pdf.text('Full-Stack Software Developer', pageWidth/2, 50, { align: 'center' });
 
-                // Professional tagline
-                pdf.setFontSize(14);
-                pdf.setTextColor(237, 137, 54);
-                pdf.text('Building the Future, One Line of Code at a Time', pageWidth/2, 160, { align: 'center' });
+                pdf.setFontSize(12);
+                pdf.setTextColor(148, 163, 184);
+                pdf.text('Eldoret, Kenya • Available for Remote Work', pageWidth/2, 65, { align: 'center' });
 
-                // Contact strip
-                pdf.setFillColor(255, 255, 255, 0.9);
-                pdf.rect(0, 220, pageWidth, 40, 'F');
-                
-                pdf.setTextColor(26, 54, 93);
-                pdf.setFontSize(10);
+                currentY = 100;
+
+                // Contact Information Section
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(16);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('CONTACT INFORMATION', margin, currentY);
+
+                currentY += 10;
+
+                // Contact details in a clean layout
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(margin, currentY, contentWidth, 40, 'F');
+                pdf.setDrawColor(226, 232, 240);
+                pdf.setLineWidth(0.5);
+                pdf.rect(margin, currentY, contentWidth, 40, 'S');
+
+                pdf.setTextColor(15, 23, 42);
+                pdf.setFontSize(11);
                 pdf.setFont('helvetica', 'normal');
-                pdf.text('📧 kipropdonald27@gmail.com', 30, 235);
-                pdf.text('📱 +254 724 779 523', 30, 245);
-                pdf.text('🌐 github.com/Donald-27', 120, 235);
-                pdf.text('📍 Eldoret, Kenya', 120, 245);
 
-                // Year and version
+                const contactInfo = [
+                    'Email: kipropdonald27@gmail.com',
+                    'Phone: +254 724 779 523',
+                    'GitHub: github.com/Donald-27',
+                    'LinkedIn: linkedin.com/in/kiprop-donald-56b898352',
+                    'Medium: medium.com/@donnald27',
+                    'Location: Eldoret, Kenya (Open to relocation)'
+                ];
+
+                contactInfo.forEach((info, index) => {
+                    const x = margin + 10 + (index % 2) * (contentWidth / 2);
+                    const y = currentY + 10 + Math.floor(index / 2) * 8;
+                    pdf.text(info, x, y);
+                });
+
+                currentY += 60;
+
+                // Professional Summary
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(16);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('PROFESSIONAL SUMMARY', margin, currentY);
+
+                currentY += 10;
+
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(margin, currentY, contentWidth, 70, 'F');
+                pdf.setDrawColor(226, 232, 240);
+                pdf.setLineWidth(0.5);
+                pdf.rect(margin, currentY, contentWidth, 70, 'S');
+
+                pdf.setTextColor(15, 23, 42);
+                pdf.setFontSize(11);
+                pdf.setFont('helvetica', 'normal');
+
+                const summaryText = [
+                    'Passionate Full-Stack Software Developer with 3+ years of experience in creating',
+                    'scalable web applications using modern technologies. Specialized in React, Flask,',
+                    'and Python with a proven track record of delivering 25+ successful projects.',
+                    '',
+                    'Award-winning developer from Moringa School with expertise in healthcare,',
+                    'travel, and productivity applications. Known for clean code, innovative solutions,',
+                    'and exceptional client satisfaction rates of 100%. Strong foundation in',
+                    'Actuarial Science providing unique analytical perspectives to software development.'
+                ];
+
+                summaryText.forEach((line, index) => {
+                    if (line.trim()) {
+                        pdf.text(line, margin + 5, currentY + 10 + (index * 7));
+                    }
+                });
+
+                currentY += 90;
+
+                // Key Achievements
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(16);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('KEY ACHIEVEMENTS', margin, currentY);
+
+                currentY += 10;
+
+                const achievements = [
+                    '• Successfully delivered 25+ production-ready applications with zero critical bugs',
+                    '• Maintained 100% client satisfaction rate with consistent positive feedback',
+                    '• Graduated with honors from Moringa School intensive bootcamp program',
+                    '• Published technical articles on Medium with community engagement',
+                    '• Mentored 10+ aspiring developers through community programs',
+                    '• Built applications serving healthcare, travel, and productivity sectors'
+                ];
+
+                pdf.setTextColor(15, 23, 42);
+                pdf.setFontSize(11);
+                pdf.setFont('helvetica', 'normal');
+
+                achievements.forEach((achievement, index) => {
+                    pdf.text(achievement, margin, currentY + (index * 8));
+                });
+
+                // Footer
+                pdf.setTextColor(148, 163, 184);
                 pdf.setFontSize(8);
-                pdf.setTextColor(255, 255, 255);
-                pdf.text('Professional Resume 2025', pageWidth/2, 280, { align: 'center' });
-                pdf.text('Award-Winning Design Edition', pageWidth/2, 285, { align: 'center' });
+                pdf.text('Page 1 of 7 • Kiprop Donald Professional Resume • 2025', pageWidth/2, pageHeight - 10, { align: 'center' });
 
                 pdf.addPage();
                 currentY = margin;
             }
 
-            // Page 2: Professional Summary & Core Competencies
-            function addSummaryPage() {
-                // Header with accent color
-                pdf.setFillColor(237, 137, 54);
-                pdf.rect(0, 0, pageWidth, 30, 'F');
-                
-                pdf.setTextColor(255, 255, 255);
-                pdf.setFontSize(20);
-                pdf.setFont('helvetica', 'bold');
-                pdf.text('PROFESSIONAL SUMMARY', margin, 20);
+            // Page 2: Technical Skills & Competencies
+            function addSkillsPage() {
+                // Header
+                pdf.setFillColor(15, 118, 110);
+                pdf.rect(0, 0, pageWidth, 4, 'F');
 
-                currentY = 50;
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(0, 4, pageWidth, 25, 'F');
+
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(18);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('TECHNICAL SKILLS & COMPETENCIES', margin, 20);
+
+                currentY = 40;
 
                 // Professional Summary Box
                 pdf.setFillColor(247, 250, 252);
@@ -2199,7 +2911,7 @@
                 pdf.setTextColor(45, 55, 72);
                 pdf.setFontSize(11);
                 pdf.setFont('helvetica', 'normal');
-                
+
                 const summaryText = [
                     'Passionate Full-Stack Software Developer with 3+ years of experience in creating',
                     'scalable web applications using modern technologies. Specialized in React, Flask,',
@@ -2239,7 +2951,7 @@
                     // Category header with color
                     pdf.setFillColor(...skillGroup.color);
                     pdf.rect(xPos, yPos, contentWidth / 2 - 5, 8, 'F');
-                    
+
                     pdf.setTextColor(255, 255, 255);
                     pdf.setFontSize(10);
                     pdf.setFont('helvetica', 'bold');
@@ -2249,7 +2961,7 @@
                     pdf.setTextColor(45, 55, 72);
                     pdf.setFontSize(9);
                     pdf.setFont('helvetica', 'normal');
-                    
+
                     skillGroup.items.forEach((skill, index) => {
                         pdf.text(`• ${skill}`, xPos + 2, yPos + 15 + (index * 5));
                     });
@@ -2276,7 +2988,7 @@
                 achievements.forEach((achievement, index) => {
                     pdf.setFillColor(56, 161, 105, 0.1);
                     pdf.rect(margin, currentY + (index * 12), contentWidth, 10, 'F');
-                    
+
                     pdf.setTextColor(45, 55, 72);
                     pdf.setFontSize(10);
                     pdf.text(achievement, margin + 3, currentY + 7 + (index * 12));
@@ -2291,7 +3003,7 @@
                 // Header
                 pdf.setFillColor(56, 161, 105);
                 pdf.rect(0, 0, pageWidth, 30, 'F');
-                
+
                 pdf.setTextColor(255, 255, 255);
                 pdf.setFontSize(20);
                 pdf.setFont('helvetica', 'bold');
@@ -2345,7 +3057,7 @@
                         pdf.setLineWidth(2);
                         pdf.line(margin + 5, currentY + 20, margin + 5, currentY + 80);
                     }
-                    
+
                     pdf.setFillColor(237, 137, 54);
                     pdf.circle(margin + 5, currentY + 10, 3, 'F');
 
@@ -2391,7 +3103,7 @@
                 // Header
                 pdf.setFillColor(128, 90, 213);
                 pdf.rect(0, 0, pageWidth, 30, 'F');
-                
+
                 pdf.setTextColor(255, 255, 255);
                 pdf.setFontSize(20);
                 pdf.setFont('helvetica', 'bold');
@@ -2452,7 +3164,7 @@
                     pdf.setFontSize(8);
                     pdf.setFont('helvetica', 'bold');
                     pdf.text('Technologies:', margin + 5, currentY + 35);
-                    
+
                     project.technologies.forEach((tech, techIndex) => {
                         pdf.setFillColor(237, 137, 54, 0.2);
                         const techWidth = pdf.getStringUnitWidth(tech) * 8 * 0.352778 + 4;
@@ -2482,11 +3194,11 @@
             }
 
             // Page 5: Additional Projects & Technical Skills
-            function addSkillsPage() {
+            function addEducationPage() {
                 // Header
                 pdf.setFillColor(237, 137, 54);
                 pdf.rect(0, 0, pageWidth, 30, 'F');
-                
+
                 pdf.setTextColor(255, 255, 255);
                 pdf.setFontSize(20);
                 pdf.setFont('helvetica', 'bold');
@@ -2516,7 +3228,7 @@
                 additionalProjects.forEach((project, index) => {
                     pdf.setFillColor(49, 130, 206, 0.1);
                     pdf.rect(margin, currentY, contentWidth, 25, 'F');
-                    
+
                     pdf.setTextColor(26, 54, 93);
                     pdf.setFontSize(11);
                     pdf.setFont('helvetica', 'bold');
@@ -2555,7 +3267,7 @@
 
                 proficiencies.forEach((prof, index) => {
                     const barY = currentY + (index * 15);
-                    
+
                     // Skill name
                     pdf.setTextColor(45, 55, 72);
                     pdf.setFontSize(10);
@@ -2584,7 +3296,7 @@
                 // Header
                 pdf.setFillColor(49, 130, 206);
                 pdf.rect(0, 0, pageWidth, 30, 'F');
-                
+
                 pdf.setTextColor(255, 255, 255);
                 pdf.setFontSize(20);
                 pdf.setFont('helvetica', 'bold');
@@ -2680,7 +3392,7 @@
                 qualifications.forEach((qual, index) => {
                     pdf.setFillColor(56, 161, 105, 0.1);
                     pdf.rect(margin, currentY + (index * 12), contentWidth, 10, 'F');
-                    
+
                     pdf.setTextColor(45, 55, 72);
                     pdf.setFontSize(10);
                     pdf.text(qual, margin + 3, currentY + 7 + (index * 12));
@@ -2691,11 +3403,11 @@
             }
 
             // Page 7: Community Impact & Personal Information
-            function addPersonalPage() {
+            function addCommunityPage() {
                 // Header
                 pdf.setFillColor(56, 161, 105);
                 pdf.rect(0, 0, pageWidth, 30, 'F');
-                
+
                 pdf.setTextColor(255, 255, 255);
                 pdf.setFontSize(20);
                 pdf.setFont('helvetica', 'bold');
@@ -2718,12 +3430,12 @@
                         impact: 'Helped students transition into tech careers'
                     },
                     {
-                        activity: 'Community Tech Support',
+                        activity: 'Community Tech Support Initiative',
                         description: 'Volunteered as tech support helper for local organizations',
                         impact: 'Improved digital literacy in the community'
                     },
                     {
-                        activity: 'Educational Outreach',
+                        activity: 'Educational Outreach Program',
                         description: 'Taught basic computer skills at local schools',
                         impact: 'Introduced 50+ students to programming concepts'
                     }
@@ -2732,7 +3444,7 @@
                 volunteerWork.forEach((work, index) => {
                     pdf.setFillColor(56, 161, 105, 0.1);
                     pdf.rect(margin, currentY, contentWidth, 25, 'F');
-                    
+
                     pdf.setTextColor(26, 54, 93);
                     pdf.setFontSize(11);
                     pdf.setFont('helvetica', 'bold');
@@ -2812,7 +3524,7 @@
                 // Header
                 pdf.setFillColor(26, 54, 93);
                 pdf.rect(0, 0, pageWidth, 30, 'F');
-                
+
                 pdf.setTextColor(255, 255, 255);
                 pdf.setFontSize(20);
                 pdf.setFont('helvetica', 'bold');
@@ -2867,7 +3579,7 @@
                         company: 'Fellow Developer & Collaborator',
                         email: 'onesmuskiprono20@gmail.com',
                         phone: '+254 721 654 900',
-                        relationship: 'Can speak to technical skills and collaborative abilities'
+                        relationship: 'Can provide insights into technical skills, learning progression, and collaborative abilities during bootcamp training and project development.'
                     },
                     {
                         name: 'Weldon Korir',
@@ -2875,14 +3587,14 @@
                         company: 'Tech Innovators Kenya',
                         email: 'weldonkorir305@gmail.com',
                         phone: '+254 718 925 150',
-                        relationship: 'Mentorship and professional development advisor'
+                        relationship: 'Industry mentor and technical advisor who provided guidance on professional development and can speak to technical competency and growth potential.'
                     }
                 ];
 
                 references.forEach((ref, index) => {
                     pdf.setFillColor(49, 130, 206, 0.1);
                     pdf.rect(margin, currentY, contentWidth, 35, 'F');
-                    
+
                     pdf.setTextColor(26, 54, 93);
                     pdf.setFontSize(12);
                     pdf.setFont('helvetica', 'bold');
@@ -2896,8 +3608,8 @@
                     pdf.setTextColor(45, 55, 72);
                     pdf.setFontSize(9);
                     pdf.setFont('helvetica', 'normal');
-                    pdf.text(`📧 ${ref.email} | 📱 ${ref.phone}`, margin + 3, currentY + 25);
-                    pdf.text(ref.relationship, margin + 3, currentY + 31);
+                    pdf.text(`Email: ${ref.email}`, margin + 3, currentY + 25);
+                    pdf.text(`Phone: ${ref.phone}`, margin + 3, currentY + 31);
 
                     currentY += 40;
                 });
@@ -2907,12 +3619,12 @@
                 // Call to Action
                 pdf.setFillColor(237, 137, 54);
                 pdf.rect(margin, currentY, contentWidth, 30, 'F');
-                
+
                 pdf.setTextColor(255, 255, 255);
                 pdf.setFontSize(16);
                 pdf.setFont('helvetica', 'bold');
                 pdf.text('LET\'S BUILD SOMETHING AMAZING TOGETHER', pageWidth/2, currentY + 12, { align: 'center' });
-                
+
                 pdf.setFontSize(10);
                 pdf.setFont('helvetica', 'normal');
                 pdf.text('Ready to transform your ideas into exceptional digital solutions?', pageWidth/2, currentY + 22, { align: 'center' });
@@ -2924,17 +3636,792 @@
                 pdf.text('"Building the future, one line of code at a time"', pageWidth/2, 290, { align: 'center' });
             }
 
-            // Generate all pages
-            addCoverPage();
-            addSummaryPage();
+            // Generate all 7 pages
+            addHeaderPage();
+            addSkillsPage();
             addExperiencePage();
             addProjectsPage();
-            addSkillsPage();
             addEducationPage();
-            addPersonalPage();
-            addContactPage();
+            addCommunityPage();
+            return addReferencesPage();
 
-            return pdf;
+            // Page 3: Professional Experience
+            function addExperiencePage() {
+                // Header
+                pdf.setFillColor(15, 118, 110);
+                pdf.rect(0, 0, pageWidth, 4, 'F');
+
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(0, 4, pageWidth, 25, 'F');
+
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(18);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('PROFESSIONAL EXPERIENCE', margin, 20);
+
+                currentY = 40;
+
+                const experiences = [
+                    {
+                        title: 'Full-Stack Software Developer',
+                        company: 'Freelance & Contract Work',
+                        period: '2024 - Present',
+                        location: 'Remote',
+                        achievements: [
+                            'Developed 25+ web applications using React, Flask, and modern technologies',
+                            'Specialized in healthcare, travel, and productivity application domains',
+                            'Maintained 100% client satisfaction with zero critical production bugs',
+                            'Successfully delivered projects for local clinics and business organizations',
+                            'Mentored junior developers and contributed to the local tech community',
+                            'Implemented responsive designs ensuring cross-platform compatibility',
+                            'Optimized application performance resulting in 40% faster load times'
+                        ],
+                        technologies: ['React', 'Flask', 'Python', 'JavaScript', 'PostgreSQL', 'REST APIs']
+                    },
+                    {
+                        title: 'Full-Stack Development Student',
+                        company: 'Moringa School',
+                        period: '2024 - 2025',
+                        location: 'Nairobi, Kenya',
+                        achievements: [
+                            'Completed intensive full-stack bootcamp with honors recognition',
+                            'Mastered React, Flask, Python, and comprehensive database technologies',
+                            'Built multiple real-world projects with professional development standards',
+                            'Collaborated on team projects using Agile development methodologies',
+                            'Developed strong foundation in software engineering principles and best practices',
+                            'Participated in code reviews and maintained high code quality standards',
+                            'Completed capstone project demonstrating full-stack proficiency'
+                        ],
+                        technologies: ['React', 'Flask', 'SQLAlchemy', 'Git', 'Agile', 'Testing']
+                    }
+                ];
+
+                experiences.forEach((exp, index) => {
+                    // Experience container
+                    pdf.setFillColor(248, 250, 252);
+                    pdf.rect(margin, currentY, contentWidth, 85, 'F');
+                    pdf.setDrawColor(226, 232, 240);
+                    pdf.setLineWidth(0.5);
+                    pdf.rect(margin, currentY, contentWidth, 85, 'S');
+
+                    // Color accent bar
+                    pdf.setFillColor(15, 118, 110);
+                    pdf.rect(margin, currentY, 4, 85, 'F');
+
+                    // Job title and company
+                    pdf.setTextColor(30, 41, 59);
+                    pdf.setFontSize(12);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(exp.title, margin + 10, currentY + 10);
+
+                    pdf.setTextColor(15, 118, 110);
+                    pdf.setFontSize(10);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(exp.company, margin + 10, currentY + 18);
+
+                    // Period and location
+                    pdf.setTextColor(100, 116, 139);
+                    pdf.setFontSize(9);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.text(`${exp.period} • ${exp.location}`, contentWidth - 20, currentY + 10);
+
+                    // Achievements
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.setFontSize(9);
+                    pdf.setFont('helvetica', 'normal');
+
+                    exp.achievements.forEach((achievement, achIndex) => {
+                        if (achIndex < 6) { // Limit to 6 achievements per experience
+                            pdf.text(`• ${achievement}`, margin + 10, currentY + 28 + (achIndex * 6));
+                        }
+                    });
+
+                    // Technologies used
+                    pdf.setTextColor(100, 116, 139);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'italic');
+                    pdf.text(`Technologies: ${exp.technologies.join(', ')}`, margin + 10, currentY + 75);
+
+                    currentY += 95;
+                });
+
+                // Footer
+                pdf.setTextColor(148, 163, 184);
+                pdf.setFontSize(8);
+                pdf.text('Page 3 of 7 • Professional Experience', pageWidth/2, pageHeight - 10, { align: 'center' });
+
+                pdf.addPage();
+                currentY = margin;
+            }
+
+            // Page 4: Featured Projects
+            function addProjectsPage() {
+                // Header
+                pdf.setFillColor(15, 118, 110);
+                pdf.rect(0, 0, pageWidth, 4, 'F');
+
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(0, 4, pageWidth, 25, 'F');
+
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(18);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('FEATURED PROJECTS', margin, 20);
+
+                currentY = 40;
+
+                const projects = [
+                    {
+                        name: 'Deliveroo Courier Services',
+                        category: 'Full-Stack Delivery Platform',
+                        url: 'deliveroo-courier-services.netlify.app',
+                        description: 'A comprehensive courier and delivery management platform with real-time tracking, intelligent courier assignment, and performance analytics. Built for scalability and user experience.',
+                        features: [
+                            'Real-time package tracking with live GPS updates',
+                            'Intelligent courier assignment algorithm for optimization',
+                            'Comprehensive performance analytics and reporting dashboard',
+                            'Mobile-responsive design for all device types',
+                            'Secure payment integration and processing system',
+                            'Admin panel for comprehensive platform management'
+                        ],
+                        technologies: ['React', 'Flask', 'Tailwind CSS', 'JWT Authentication', 'Real-time APIs'],
+                        impact: 'Streamlined delivery operations for local businesses'
+                    },
+                    {
+                        name: 'MatatuConnekt',
+                        category: 'Travel Booking Platform',
+                        url: 'relaxed-cuchufli-e6b142.netlify.app',
+                        description: 'A comprehensive travel booking platform for matatus and buses across Kenya with real-time vehicle registration, route management, and passenger booking capabilities.',
+                        features: [
+                            'Real-time vehicle registration and verification system',
+                            'Advanced route planning and optimization algorithms',
+                            'Integrated passenger booking and payment processing',
+                            'Comprehensive driver and vehicle management tools',
+                            'Schedule management with automated notifications',
+                            'User rating and review system for quality assurance'
+                        ],
+                        technologies: ['React', 'MongoDB', 'Node.js', 'Payment Gateway', 'Geolocation APIs'],
+                        impact: 'Digitized transportation booking for Kenyan travelers'
+                    }
+                ];
+
+                projects.forEach((project, index) => {
+                    // Project header
+                    pdf.setFillColor(248, 250, 252);
+                    pdf.rect(margin, currentY, contentWidth, 95, 'F');
+                    pdf.setDrawColor(226, 232, 240);
+                    pdf.setLineWidth(0.5);
+                    pdf.rect(margin, currentY, contentWidth, 95, 'S');
+
+                    // Project accent
+                    pdf.setFillColor(15, 118, 110);
+                    pdf.rect(margin, currentY, contentWidth, 3, 'F');
+
+                    // Project name and category
+                    pdf.setTextColor(30, 41, 59);
+                    pdf.setFontSize(12);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(project.name, margin + 5, currentY + 12);
+
+                    pdf.setTextColor(15, 118, 110);
+                    pdf.setFontSize(9);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(project.category, margin + 5, currentY + 20);
+
+                    // URL
+                    pdf.setTextColor(100, 116, 139);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'italic');
+                    pdf.text(`Live Demo: ${project.url}`, contentWidth - 60, currentY + 12);
+
+                    // Description
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.setFontSize(9);
+                    pdf.setFont('helvetica', 'normal');
+                    const descLines = pdf.splitTextToSize(project.description, contentWidth - 10);
+                    pdf.text(descLines, margin + 5, currentY + 30);
+
+                    // Key features
+                    pdf.setTextColor(30, 41, 59);
+                    pdf.setFontSize(9);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text('Key Features:', margin + 5, currentY + 45);
+
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'normal');
+                    project.features.slice(0, 4).forEach((feature, featIndex) => {
+                        pdf.text(`• ${feature}`, margin + 5, currentY + 53 + (featIndex * 5));
+                    });
+
+                    // Technologies
+                    pdf.setTextColor(15, 118, 110);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(`Tech Stack: ${project.technologies.join(' • ')}`, margin + 5, currentY + 78);
+
+                    // Impact
+                    pdf.setTextColor(100, 116, 139);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'italic');
+                    pdf.text(`Impact: ${project.impact}`, margin + 5, currentY + 88);
+
+                    currentY += 105;
+                });
+
+                // Footer
+                pdf.setTextColor(148, 163, 184);
+                pdf.setFontSize(8);
+                pdf.text('Page 4 of 7 • Featured Projects Portfolio', pageWidth/2, pageHeight - 10, { align: 'center' });
+
+                pdf.addPage();
+                currentY = margin;
+            }
+
+            // Page 5: Additional Projects & Education
+            function addEducationPage() {
+                // Header
+                pdf.setFillColor(15, 118, 110);
+                pdf.rect(0, 0, pageWidth, 4, 'F');
+
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(0, 4, pageWidth, 25, 'F');
+
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(18);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('ADDITIONAL PROJECTS & EDUCATION', margin, 20);
+
+                currentY = 40;
+
+                // Additional Projects Section
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(14);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('ADDITIONAL PROJECTS', margin, currentY);
+
+                currentY += 15;
+
+                const additionalProjects = [
+                    {
+                        name: 'VirtualCare Healthcare System',
+                        description: 'Complete hospital management system with appointment booking, patient records, emergency handling, and telemedicine capabilities.',
+                        tech: 'React, Flask, SQLAlchemy, Healthcare Standards, Security',
+                        url: 'ephemeral-snickerdoodle-b34edb.netlify.app'
+                    },
+                    {
+                        name: 'Doctor Notes Generator',
+                        description: 'Professional medical documentation tool with custom logos, digital stamps, watermarks, and signatures for healthcare facilities.',
+                        tech: 'React, PDF Generation, Digital Signatures, Template Engine',
+                        url: 'doctor-notes-generator.netlify.app'
+                    },
+                    {
+                        name: 'LateShow Entertainment Platform',
+                        description: 'Event scheduling and listing platform for cinemas, theaters, and live events with real-time show times and seat booking.',
+                        tech: 'React, Event Management, Booking System, Real-time Updates',
+                        url: 'lateshow.netlify.app'
+                    }
+                ];
+
+                additionalProjects.forEach((project, index) => {
+                    pdf.setFillColor(248, 250, 252);
+                    pdf.rect(margin, currentY, contentWidth, 25, 'F');
+                    pdf.setDrawColor(226, 232, 240);
+                    pdf.setLineWidth(0.5);
+                    pdf.rect(margin, currentY, contentWidth, 25, 'S');
+
+                    // Project accent
+                    pdf.setFillColor(15, 118, 110);
+                    pdf.rect(margin, currentY, 3, 25, 'F');
+
+                    pdf.setTextColor(30, 41, 59);
+                    pdf.setFontSize(10);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(project.name, margin + 8, currentY + 8);
+
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.text(project.description, margin + 8, currentY + 15);
+
+                    pdf.setTextColor(15, 118, 110);
+                    pdf.setFontSize(7);
+                    pdf.text(`Tech: ${project.tech}`, margin + 8, currentY + 20);
+
+                    currentY += 30;
+                });
+
+                currentY += 10;
+
+                // Education Section
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(14);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('EDUCATION & CERTIFICATIONS', margin, currentY);
+
+                currentY += 15;
+
+                const education = [
+                    {
+                        degree: 'Full-Stack Software Development Certificate',
+                        institution: 'Moringa School',
+                        period: '2024 - 2025',
+                        details: [
+                            'Completed intensive bootcamp covering modern web development technologies',
+                            'Frontend Development: React, JavaScript, HTML/CSS, Responsive Design',
+                            'Backend Development: Flask, Python, SQLAlchemy, API Development',
+                            'Database Management: PostgreSQL, SQLite, Data Modeling',
+                            'Development Tools: Git, Version Control, Testing, Debugging Methodologies',
+                            'Graduated with honors and multiple real-world project completions'
+                        ],
+                        grade: 'Graduated with Honors'
+                    },
+                    {
+                        degree: 'Bachelor of Science in Actuarial Science',
+                        institution: 'University of Eldoret',
+                        period: '2022 - Present',
+                        details: [
+                            'Strong foundation in advanced mathematics and statistical analysis',
+                            'Data modeling, interpretation, and statistical computing',
+                            'Risk assessment and management principles',
+                            'Financial systems understanding and mathematical modeling',
+                            'Analytical thinking and logical problem-solving methodologies',
+                            'Research methodology and quantitative analysis techniques'
+                        ],
+                        grade: 'In Progress'
+                    }
+                ];
+
+                education.forEach((edu, index) => {
+                    pdf.setFillColor(248, 250, 252);
+                    pdf.rect(margin, currentY, contentWidth, 55, 'F');
+                    pdf.setDrawColor(226, 232, 240);
+                    pdf.setLineWidth(0.5);
+                    pdf.rect(margin, currentY, contentWidth, 55, 'S');
+
+                    // Education accent
+                    pdf.setFillColor(79, 70, 229);
+                    pdf.rect(margin, currentY, 4, 55, 'F');
+
+                    // Degree and institution
+                    pdf.setTextColor(30, 41, 59);
+                    pdf.setFontSize(11);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(edu.degree, margin + 8, currentY + 10);
+
+                    pdf.setTextColor(79, 70, 229);
+                    pdf.setFontSize(9);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(edu.institution, margin + 8, currentY + 18);
+
+                    // Period and grade
+                    pdf.setTextColor(100, 116, 139);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.text(`${edu.period} • ${edu.grade}`, contentWidth - 35, currentY + 10);
+
+                    // Details
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'normal');
+                    edu.details.slice(0, 5).forEach((detail, detailIndex) => {
+                        pdf.text(`• ${detail}`, margin + 8, currentY + 26 + (detailIndex * 5));
+                    });
+
+                    currentY += 65;
+                });
+
+                // Footer
+                pdf.setTextColor(148, 163, 184);
+                pdf.setFontSize(8);
+                pdf.text('Page 5 of 7 • Additional Projects & Educational Background', pageWidth/2, pageHeight - 10, { align: 'center' });
+
+                pdf.addPage();
+                currentY = margin;
+            }
+
+            // Page 6: Community Impact & Personal Information
+            function addCommunityPage() {
+                // Header
+                pdf.setFillColor(15, 118, 110);
+                pdf.rect(0, 0, pageWidth, 4, 'F');
+
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(0, 4, pageWidth, 25, 'F');
+
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(18);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('COMMUNITY IMPACT & PERSONAL DEVELOPMENT', margin, 20);
+
+                currentY = 40;
+
+                // Volunteer Work Section
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(14);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('VOLUNTEER WORK & COMMUNITY ENGAGEMENT', margin, currentY);
+
+                currentY += 15;
+
+                const volunteerWork = [
+                    {
+                        activity: 'Technical Mentorship Program',
+                        description: 'Guided over 10 beginner coders through foundational programming concepts',
+                        impact: 'Helped 7+ students successfully transition into tech careers',
+                        duration: '2023 - Present'
+                    },
+                    {
+                        activity: 'Community Tech Support Initiative',
+                        description: 'Volunteered as tech support specialist for local organizations and NGOs',
+                        impact: 'Improved digital literacy and operational efficiency for 5+ organizations',
+                        duration: '2024 - Present'
+                    },
+                    {
+                        activity: 'Educational Outreach Program',
+                        description: 'Taught basic computer skills and programming concepts at local schools',
+                        impact: 'Introduced 50+ students to programming and digital literacy',
+                        duration: '2024'
+                    }
+                ];
+
+                volunteerWork.forEach((work, index) => {
+                    pdf.setFillColor(248, 250, 252);
+                    pdf.rect(margin, currentY, contentWidth, 30, 'F');
+                    pdf.setDrawColor(226, 232, 240);
+                    pdf.setLineWidth(0.5);
+                    pdf.rect(margin, currentY, contentWidth, 30, 'S');
+
+                    // Volunteer accent
+                    pdf.setFillColor(34, 197, 94);
+                    pdf.rect(margin, currentY, 4, 30, 'F');
+
+                    pdf.setTextColor(30, 41, 59);
+                    pdf.setFontSize(10);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(work.activity, margin + 8, currentY + 8);
+
+                    pdf.setTextColor(100, 116, 139);
+                    pdf.setFontSize(7);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.text(work.duration, contentWidth - 25, currentY + 8);
+
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.text(work.description, margin + 8, currentY + 15);
+
+                    pdf.setTextColor(34, 197, 94);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'italic');
+                    pdf.text(`Impact: ${work.impact}`, margin + 8, currentY + 23);
+
+                    currentY += 35;
+                });
+
+                currentY += 10;
+
+                // Published Articles Section
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(14);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('PUBLISHED ARTICLES & TECHNICAL WRITING', margin, currentY);
+
+                currentY += 15;
+
+                const articles = [
+                    {
+                        title: 'From Sick Notes to Emergencies: Building a Full-Stack Healthcare App',
+                        platform: 'Medium',
+                        description: 'Deep dive into healthcare management systems using Flask & React',
+                        url: 'medium.com/@donnald27/healthcare-app-development',
+                        engagement: 'Community engagement and positive feedback'
+                    },
+                    {
+                        title: 'From MatatuConnect to Full-Stack Dev: Cyber Café to Code Journey',
+                        platform: 'Medium',
+                        description: 'Personal career transition story and development insights',
+                        url: 'medium.com/@donnald27/career-transition-journey',
+                        engagement: 'Inspirational content for career changers'
+                    },
+                    {
+                        title: '"It Worked in My Head": A Developer\'s Tale of Debugging',
+                        platform: 'Medium',
+                        description: 'Humorous yet educational debugging experiences and best practices',
+                        url: 'medium.com/@donnald27/debugging-developer-tale',
+                        engagement: 'Popular among developer community'
+                    }
+                ];
+
+                articles.forEach((article, index) => {
+                    pdf.setFillColor(248, 250, 252);
+                    pdf.rect(margin, currentY, contentWidth, 25, 'F');
+                    pdf.setDrawColor(226, 232, 240);
+                    pdf.setLineWidth(0.5);
+                    pdf.rect(margin, currentY, contentWidth, 25, 'S');
+
+                    // Article accent
+                    pdf.setFillColor(168, 85, 247);
+                    pdf.rect(margin, currentY, 4, 25, 'F');
+
+                    pdf.setTextColor(30, 41, 59);
+                    pdf.setFontSize(9);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(article.title, margin + 8, currentY + 8);
+
+                    pdf.setTextColor(168, 85, 247);
+                    pdf.setFontSize(7);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(article.platform, contentWidth - 20, currentY + 8);
+
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.text(article.description, margin + 8, currentY + 15);
+
+                    pdf.setTextColor(100, 116, 139);
+                    pdf.setFontSize(7);
+                    pdf.setFont('helvetica', 'italic');
+                    pdf.text(article.engagement, margin + 8, currentY + 21);
+
+                    currentY += 30;
+                });
+
+                currentY += 10;
+
+                // Personal Interests & Philosophy
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(14);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('PERSONAL INTERESTS & PROFESSIONAL PHILOSOPHY', margin, currentY);
+
+                currentY += 15;
+
+                // Philosophy box
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(margin, currentY, contentWidth, 35, 'F');
+                pdf.setDrawColor(226, 232, 240);
+                pdf.setLineWidth(0.5);
+                pdf.rect(margin, currentY, contentWidth, 35, 'S');
+
+                // Philosophy accent
+                pdf.setFillColor(249, 115, 22);
+                pdf.rect(margin, currentY, 4, 35, 'F');
+
+                pdf.setTextColor(15, 118, 110);
+                pdf.setFontSize(10);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('Professional Philosophy', margin + 8, currentY + 10);
+
+                pdf.setTextColor(15, 23, 42);
+                pdf.setFontSize(9);
+                pdf.setFont('helvetica', 'italic');
+                pdf.text('"Code is poetry written in logic. Every line should tell a story,', margin + 8, currentY + 18);
+                pdf.text('solve a problem, and inspire innovation."', margin + 8, currentY + 26);
+
+                currentY += 45;
+
+                // Core Values
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(10);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('Core Values & Interests:', margin, currentY);
+
+                currentY += 10;
+
+                const values = [
+                    'Innovation: Always seeking creative solutions to complex problems',
+                    'Quality: Committed to delivering exceptional code and user experiences',
+                    'Growth: Continuous learning and professional development mindset',
+                    'Impact: Building solutions that make a real difference in people\'s lives',
+                    'Collaboration: Believing in the power of teamwork and knowledge sharing',
+                    'Technology Exploration: AI, machine learning, and emerging technologies',
+                    'Community Building: Contributing to tech communities and mentorship',
+                    'Creative Pursuits: Photography, music, and digital content creation'
+                ];
+
+                values.forEach((value, index) => {
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.text(`• ${value}`, margin, currentY + (index * 6));
+                });
+
+                // Footer
+                pdf.setTextColor(148, 163, 184);
+                pdf.setFontSize(8);
+                pdf.text('Page 6 of 7 • Community Impact & Personal Development', pageWidth/2, pageHeight - 10, { align: 'center' });
+
+                pdf.addPage();
+                currentY = margin;
+            }
+
+            // Page 7: References & Contact
+            function addReferencesPage() {
+                // Header
+                pdf.setFillColor(15, 118, 110);
+                pdf.rect(0, 0, pageWidth, 4, 'F');
+
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(0, 4, pageWidth, 25, 'F');
+
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(18);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('PROFESSIONAL REFERENCES & CONTACT', margin, 20);
+
+                currentY = 40;
+
+                // Professional References
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(14);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('PROFESSIONAL REFERENCES', margin, currentY);
+
+                currentY += 15;
+
+                const references = [
+                    {
+                        name: 'Bernard Kosgei',
+                        title: 'Software Developer',
+                        company: 'Fellow Developer & Collaborator',
+                        email: 'onesmuskiprono20@gmail.com',
+                        phone: '+254 721 654 900',
+                        relationship: 'Can provide insights into technical skills, learning progression, and collaborative abilities during bootcamp training and project development.'
+                    },
+                    {
+                        name: 'Weldon Korir',
+                        title: 'Software Developer',
+                        company: 'Tech Innovators Kenya',
+                        email: 'weldonkorir305@gmail.com',
+                        phone: '+254 718 925 150',
+                        relationship: 'Industry mentor and technical advisor who provided guidance on professional development and can speak to technical competency and growth potential.'
+                    }
+                ];
+
+                references.forEach((ref, index) => {
+                    pdf.setFillColor(248, 250, 252);
+                    pdf.rect(margin, currentY, contentWidth, 45, 'F');
+                    pdf.setDrawColor(226, 232, 240);
+                    pdf.setLineWidth(0.5);
+                    pdf.rect(margin, currentY, contentWidth, 45, 'S');
+
+                    // Reference accent
+                    pdf.setFillColor(79, 70, 229);
+                    pdf.rect(margin, currentY, 4, 45, 'F');
+
+                    pdf.setTextColor(30, 41, 59);
+                    pdf.setFontSize(11);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(ref.name, margin + 8, currentY + 10);
+
+                    pdf.setTextColor(79, 70, 229);
+                    pdf.setFontSize(9);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.text(`${ref.title} - ${ref.company}`, margin + 8, currentY + 18);
+
+                    pdf.setTextColor(15, 23, 42);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.text(`Email: ${ref.email}`, margin + 8, currentY + 26);
+                    pdf.text(`Phone: ${ref.phone}`, margin + 8, currentY + 32);
+
+                    pdf.setTextColor(100, 116, 139);
+                    pdf.setFontSize(8);
+                    pdf.setFont('helvetica', 'italic');
+                    const relationshipLines = pdf.splitTextToSize(ref.relationship, contentWidth - 15);
+                    pdf.text(relationshipLines, margin + 8, currentY + 38);
+
+                    currentY += 55;
+                });
+
+                currentY += 10;
+
+                // Contact Information
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(14);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('CONTACT INFORMATION & AVAILABILITY', margin, currentY);
+
+                currentY += 15;
+
+                pdf.setFillColor(248, 250, 252);
+                pdf.rect(margin, currentY, contentWidth, 70, 'F');
+                pdf.setDrawColor(226, 232, 240);
+                pdf.setLineWidth(0.5);
+                pdf.rect(margin, currentY, contentWidth, 70, 'S');
+
+                // Contact accent
+                pdf.setFillColor(15, 118, 110);
+                pdf.rect(margin, currentY, 4, 70, 'F');
+
+                pdf.setTextColor(30, 41, 59);
+                pdf.setFontSize(12);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('READY FOR YOUR NEXT PROJECT', margin + 8, currentY + 12);
+
+                pdf.setTextColor(15, 23, 42);
+                pdf.setFontSize(10);
+                pdf.setFont('helvetica', 'normal');
+
+                const contactDetails = [
+                    'Primary Email: kipropdonald27@gmail.com',
+                    'Phone/WhatsApp: +254 724 779 523',
+                    'Location: Eldoret, Kenya (Open to remote work globally)',
+                    'GitHub Portfolio: github.com/Donald-27',
+                    'LinkedIn Profile: linkedin.com/in/kiprop-donald-56b898352',
+                    'Medium Articles: medium.com/@donnald27',
+                    '',
+                    'Availability: Available for full-time, part-time, or project-based work',
+                    'Response Time: Within 12 hours for all inquiries',
+                    'Preferred Communication: Email, WhatsApp, or video calls',
+                    'Work Preferences: Remote, hybrid, or on-site arrangements welcome'
+                ];
+
+                contactDetails.forEach((detail, index) => {
+                    if (detail.trim()) {
+                        pdf.text(detail, margin + 8, currentY + 22 + (index * 6));
+                    }
+                });
+
+                currentY += 80;
+
+                // Call to Action
+                pdf.setFillColor(15, 118, 110);
+                pdf.rect(margin, currentY, contentWidth, 25, 'F');
+
+                pdf.setTextColor(255, 255, 255);
+                pdf.setFontSize(14);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('LET\'S BUILD SOMETHING AMAZING TOGETHER', pageWidth/2, currentY + 10, { align: 'center' });
+
+                pdf.setFontSize(10);
+                pdf.setFont('helvetica', 'normal');
+                pdf.text('Ready to transform your ideas into exceptional digital solutions?', pageWidth/2, currentY + 18, { align: 'center' });
+
+                currentY += 35;
+
+                // Final Footer
+                pdf.setTextColor(148, 163, 184);
+                pdf.setFontSize(8);
+                pdf.text('Page 7 of 7 • Professional References & Contact Information', pageWidth/2, currentY, { align: 'center' });
+
+                pdf.setTextColor(15, 118, 110);
+                pdf.setFontSize(9);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('Designed & Developed by Kiprop Donald • 2025 • "Building the future, one line of code at a time"', pageWidth/2, currentY + 8, { align: 'center' });
+
+                return pdf;
+            }
+
+            // Generate all 7 pages
+            addHeaderPage();
+            addSkillsPage();
+            addExperiencePage();
+            addProjectsPage();
+            addEducationPage();
+            addCommunityPage();
+            return addReferencesPage();
         }
 
         // Dynamic document styling function for cloned documents
@@ -2959,7 +4446,7 @@
                     border-radius: 0 !important;
                     box-shadow: none !important;
                     overflow: visible !important; /* Allow content to flow */
-                    page-break-inside: avoid !important; /* Try to keep content within a page */
+                    page-break-inside: avoid !important; /* Keep content within a page */
                     padding-bottom: 5mm !important; /* Space at the bottom */
                     position: relative !important; /* For watermark */
                 }

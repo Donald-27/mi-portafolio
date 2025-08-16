@@ -14,7 +14,7 @@ CORS(app)
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 EMAIL_ADDRESS = "kipropdonald27@gmail.com"
-EMAIL_PASSWORD = "hnsr tnmt tztf bkhh"  # Your app password
+EMAIL_PASSWORD = "hnsr tnmt tztf bkhh"
 
 @app.route('/api/send-email', methods=['POST'])
 def send_email():
