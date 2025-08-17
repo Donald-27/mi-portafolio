@@ -562,6 +562,9 @@
                     this.sessionData.interactions = [...data.interactions];
                     this.sessionData.totalInteractions = data.interactions.length;
                 }
+                if (data.totalPortfolioViews) {
+                    this.sessionData.totalPortfolioViews = data.totalPortfolioViews;
+                }
                 
                 this.saveSessionData();
                 this.updateMainStats();
@@ -574,11 +577,13 @@
                 return JSON.parse(localStorage.getItem('portfolioSessionData') || JSON.stringify({
                     totalSessions: 0,
                     totalViews: 0,
+                    totalPortfolioViews: 0,
                     totalInteractions: 0,
                     sessionTimes: [],
                     sectionViews: {},
                     interactions: [],
-                    lastSession: null
+                    lastSession: null,
+                    allPortfolioVisits: []
                 }));
             }
 
@@ -598,7 +603,7 @@
                 const report = currentSession.generateReport ? currentSession.generateReport() : {};
                 
                 // Get current session data
-                const currentViews = Object.values(this.sessionData.sectionViews).reduce((a, b) => a + b, 0) || 0;
+                const currentPortfolioViews = this.sessionData.totalPortfolioViews || 0;
                 const currentSessions = this.sessionData.totalSessions || 1;
                 const currentAvgTime = this.calculateAverageTime();
                 const currentInteractions = this.sessionData.totalInteractions || 0;
@@ -606,8 +611,8 @@
                 // Get previous session data for comparison
                 const previousSessionData = this.getPreviousSessionData();
                 
-                // Update main statistics
-                document.getElementById('totalViews').textContent = currentViews;
+                // Update main statistics - use portfolio visits for Total Page Views
+                document.getElementById('totalViews').textContent = currentPortfolioViews;
                 document.getElementById('uniqueVisitors').textContent = currentSessions;
                 document.getElementById('avgTime').textContent = this.formatTime(currentAvgTime);
                 document.getElementById('interactions').textContent = currentInteractions;
@@ -631,8 +636,12 @@
                 const previousAvgTime = sessionTimes.length > 1 ? 
                     sessionTimes.slice(0, -1).reduce((a, b) => a + b, 0) / (sessionTimes.length - 1) / 1000 : 0;
                 
+                // Get previous portfolio views (subtract current session visit)
+                const currentPortfolioViews = this.sessionData.totalPortfolioViews || 0;
+                const previousPortfolioViews = Math.max(0, currentPortfolioViews - 1);
+                
                 return {
-                    views: Math.max(0, (this.sessionData.totalViews || 0) - Object.values(this.sessionData.sectionViews).reduce((a, b) => a + b, 0)),
+                    views: previousPortfolioViews,
                     sessions: Math.max(1, (this.sessionData.totalSessions || 1) - 1),
                     avgTime: previousAvgTime,
                     interactions: Math.max(0, (this.sessionData.totalInteractions || 0) - (this.sessionData.interactions || []).length)

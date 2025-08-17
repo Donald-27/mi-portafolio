@@ -88,6 +88,9 @@ class PortfolioAnalytics {
     }
 
     initializeTracking() {
+        // Track actual portfolio visit (someone opening the link)
+        this.trackPortfolioVisit();
+        
         // Track page load with detailed info
         this.trackPageView('portfolio_loaded');
         this.trackInteraction('session_start', `${window.location.href}`, {
@@ -325,6 +328,28 @@ class PortfolioAnalytics {
         this.notifyDashboard();
     }
 
+    trackPortfolioVisit() {
+        // Track actual portfolio visits (when someone opens the link)
+        const stored = JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
+        stored.totalPortfolioViews = (stored.totalPortfolioViews || 0) + 1;
+        stored.allPortfolioVisits = stored.allPortfolioVisits || [];
+        stored.allPortfolioVisits.push({
+            timestamp: Date.now(),
+            sessionId: this.sessionId,
+            visitorId: this.visitorId,
+            referrer: document.referrer,
+            userAgent: navigator.userAgent
+        });
+        
+        // Keep only last 100 visits for storage efficiency
+        if (stored.allPortfolioVisits.length > 100) {
+            stored.allPortfolioVisits = stored.allPortfolioVisits.slice(-100);
+        }
+        
+        localStorage.setItem('portfolioSessionData', JSON.stringify(stored));
+        console.log(`📊 Portfolio visit tracked: ${stored.totalPortfolioViews} total visits`);
+    }
+
     trackInteraction(action, element, metadata = {}) {
         const interaction = {
             action,
@@ -443,6 +468,7 @@ class PortfolioAnalytics {
     generateReport() {
         const currentTime = Date.now();
         const sessionDuration = currentTime - this.startTime;
+        const stored = JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
         
         const report = {
             sessionId: this.sessionId,
@@ -450,6 +476,7 @@ class PortfolioAnalytics {
             totalTimeOnSite: sessionDuration,
             totalInteractions: this.interactions.length,
             totalPageViews: Object.values(this.pageViews).reduce((a, b) => a + b, 0),
+            totalPortfolioViews: stored.totalPortfolioViews || 0,
             mostViewedSection: this.getMostViewedSection(),
             pageViews: { ...this.pageViews },
             interactions: [...this.interactions],
