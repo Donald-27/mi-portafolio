@@ -143,13 +143,14 @@
             right: 0;
             z-index: 1000;
             backdrop-filter: blur(20px);
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
+            min-height: 70px;
         }
 
         .nav-container.scrolled {
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 10, 0.98);
             backdrop-filter: blur(30px);
         }
 
@@ -160,6 +161,7 @@
             padding: 1rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            min-height: 70px;
         }
 
         .logo {
@@ -233,7 +235,8 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            padding: 0 2rem;
+            padding: 100px 2rem 2rem 2rem;
+            margin-top: 0;
         }
 
         .hero-content {
@@ -1550,27 +1553,53 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .nav-menu {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
             .nav-menu {
                 position: fixed;
-                top: 100%;
+                top: 70px;
                 left: 0;
                 right: 0;
-                background: rgba(10, 10, 10, 0.95);
-                backdrop-filter: blur(20px);
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(30px);
                 flex-direction: column;
                 padding: 2rem;
-                transform: translateY(-100%);
+                transform: translateX(-100%);
                 transition: var(--transition);
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
+                height: calc(100vh - 70px);
+                overflow-y: auto;
+                gap: 1rem;
             }
 
             .nav-menu.active {
-                transform: translateY(0);
+                transform: translateX(0);
+            }
+
+            .nav-link {
+                padding: 1rem;
+                font-size: 1.1rem;
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .menu-toggle {
                 display: flex;
+                z-index: 1001;
             }
 
             .menu-toggle.active span:nth-child(1) {
@@ -1583,6 +1612,17 @@
 
             .menu-toggle.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero {
+                padding-top: 120px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 3.5rem);
+                line-height: 1.2;
+                margin-bottom: 2rem;
             }
 
             .hero-content {
@@ -1863,7 +1903,7 @@
                     <div class="metric-label">Projects Delivered</div>
                 </div>
                 <div class="metric-item">
-                    <div class="metric-number">50+</div>
+                    <div class="metric-number">100+</div>
                     <div class="metric-label">GitHub Repositories</div>
                 </div>
                 <div class="metric-item">
