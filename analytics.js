@@ -88,8 +88,13 @@ class PortfolioAnalytics {
     }
 
     initializeTracking() {
-        // Track page load
+        // Track page load with detailed info
         this.trackPageView('portfolio_loaded');
+        this.trackInteraction('session_start', `${window.location.href}`, {
+            referrer: document.referrer,
+            userAgent: navigator.userAgent,
+            timestamp: Date.now()
+        });
 
         // Track scroll depth
         this.initializeScrollTracking();
@@ -106,10 +111,19 @@ class PortfolioAnalytics {
         // Track form interactions
         this.initializeFormTracking();
 
+        // Track mouse movement patterns (simplified)
+        this.initializeMouseTracking();
+
         // Save data before page unload
         window.addEventListener('beforeunload', () => {
+            this.trackInteraction('session_end', 'page_unload');
             this.saveSessionData();
         });
+
+        // Auto-save every 30 seconds
+        setInterval(() => {
+            this.saveSessionData();
+        }, 30000);
     }
 
     initializeScrollTracking() {
@@ -188,6 +202,36 @@ class PortfolioAnalytics {
         });
     }
 
+    initializeMouseTracking() {
+        let mouseMovements = 0;
+        let lastMouseTime = Date.now();
+
+        document.addEventListener('mousemove', () => {
+            const now = Date.now();
+            if (now - lastMouseTime > 100) { // Throttle to every 100ms
+                mouseMovements++;
+                lastMouseTime = now;
+
+                // Track significant mouse activity
+                if (mouseMovements % 50 === 0) {
+                    this.trackInteraction('mouse_activity', `${mouseMovements} movements`);
+                }
+            }
+        });
+
+        // Track clicks with more detail
+        document.addEventListener('click', (event) => {
+            const rect = event.target.getBoundingClientRect();
+            this.trackInteraction('detailed_click', event.target.tagName, {
+                x: event.clientX,
+                y: event.clientY,
+                elementType: event.target.tagName,
+                elementClass: event.target.className,
+                elementId: event.target.id
+            });
+        });
+    }
+
     initializeTimeTracking() {
         // Track time spent in each section
         const sectionObserver = new IntersectionObserver((entries) => {
@@ -252,16 +296,20 @@ class PortfolioAnalytics {
     async syncWithBackend() {
         try {
             const data = this.generateReport();
-            await fetch('/api/analytics', {
+            const response = await fetch('/api/analytics', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data)
             });
+            
+            if (response.ok) {
+                console.log('📊 Analytics data synced with backend');
+            }
         } catch (error) {
             // Silently handle backend sync errors
-            console.debug('Backend sync failed:', error);
+            console.debug('Backend sync failed, using local storage only:', error);
         }
     }
 

@@ -1,14 +1,13 @@
-
+from flask import Flask, render_template, send_from_directory, jsonify, request
+from flask_cors import CORS
 import os
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from flask import Flask, request, jsonify
-from flask_cors import CORS
 import urllib.parse
 
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # Enable CORS for cross-origin requests
 
 # Email configuration
 SMTP_SERVER = "smtp.gmail.com"
@@ -16,6 +15,34 @@ SMTP_PORT = 587
 EMAIL_ADDRESS = "kipropdonald27@gmail.com"
 EMAIL_PASSWORD = "hnsr tnmt tztf bkhh"
 
+# Serve the main portfolio page
+@app.route('/')
+def home():
+    return send_from_directory('.', 'index.html')
+
+# Serve analytics dashboard
+@app.route('/analytics')
+@app.route('/analytics.html')
+def analytics():
+    return send_from_directory('.', 'analytics.html')
+
+# Serve analytics JavaScript
+@app.route('/analytics.js')
+def analytics_js():
+    return send_from_directory('.', 'analytics.js')
+
+# Serve resume page
+@app.route('/resume')
+@app.route('/resume.html')
+def resume():
+    return send_from_directory('.', 'resume.html')
+
+# Serve static files (images, etc.)
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('.', filename)
+
+# API endpoint for email sending (used by contact form)
 @app.route('/api/send-email', methods=['POST'])
 def send_email():
     try:
@@ -95,6 +122,7 @@ Sent from your portfolio contact form
         print(f"Error: {str(e)}")
         return jsonify({'error': 'Failed to send message'}), 500
 
+# API endpoint for analytics data (for future backend integration)
 @app.route('/api/analytics', methods=['POST'])
 def save_analytics():
     try:
@@ -113,14 +141,24 @@ def save_analytics():
         print(f"Analytics error: {str(e)}")
         return jsonify({'error': 'Failed to save analytics data'}), 500
 
-@app.route('/api/health', methods=['GET'])
-def health_check():
-    return jsonify({'status': 'healthy'})
+# API endpoint for contact form (this is a placeholder and not fully implemented as per original code)
+@app.route('/api/contact', methods=['POST'])
+def contact():
+    try:
+        data = request.get_json()
+        # Handle contact form submission (e.g., call send_email or other logic)
+        print(f"Contact form submitted: {data}")
+        # For demonstration, let's assume it calls the send_email logic if not already handled
+        # In a real scenario, you'd integrate this properly.
+        # This part is kept minimal to match the original intent of having a /api/contact route.
+        return jsonify({"success": True, "message": "Contact form data received"})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
 
-@app.route('/favicon.ico')
-def favicon():
-    # Return a simple response for favicon to prevent 404 errors
-    return '', 204
+# Remove favicon route if not strictly needed or handled by static serving
+# @app.route('/favicon.ico')
+# def favicon():
+#     return '', 204
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
