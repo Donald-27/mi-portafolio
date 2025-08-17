@@ -599,10 +599,7 @@
             }
 
             updateMainStats() {
-                const currentSession = this.analytics || { pageViews: {}, interactions: [], generateReport: () => ({}) };
-                const report = currentSession.generateReport ? currentSession.generateReport() : {};
-                
-                // Get current session data
+                // Only use stored data, don't create new analytics instances on dashboard
                 const currentPortfolioViews = this.sessionData.totalPortfolioViews || 0;
                 const currentSessions = this.sessionData.totalSessions || 1;
                 const currentAvgTime = this.calculateAverageTime();
@@ -618,7 +615,7 @@
                 document.getElementById('interactions').textContent = currentInteractions;
 
                 // Calculate real percentage changes
-                const viewsChange = this.calculatePercentageChange(currentViews, previousSessionData.views);
+                const viewsChange = this.calculatePercentageChange(currentPortfolioViews, previousSessionData.views);
                 const sessionsChange = this.calculatePercentageChange(currentSessions, previousSessionData.sessions);
                 const timeChange = this.calculatePercentageChange(currentAvgTime, previousSessionData.avgTime);
                 const interactionsChange = this.calculatePercentageChange(currentInteractions, previousSessionData.interactions);

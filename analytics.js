@@ -550,14 +550,42 @@ class PortfolioAnalytics {
     }
 }
 
-// Initialize analytics when script loads
+// Initialize analytics when script loads (only on portfolio pages, not analytics dashboard)
 if (typeof window !== 'undefined') {
-    window.portfolioAnalytics = new PortfolioAnalytics();
+    // Check if we're on the analytics dashboard page
+    const isAnalyticsDashboard = window.location.pathname.includes('analytics.html') || 
+                                document.title.includes('Analytics Dashboard') ||
+                                document.querySelector('.dashboard');
     
-    // Make it globally accessible for debugging
-    window.getAnalyticsReport = () => window.portfolioAnalytics.generateReport();
-    window.exportAnalytics = () => window.portfolioAnalytics.exportData();
-    window.clearAnalytics = () => window.portfolioAnalytics.clearAllData();
+    if (!isAnalyticsDashboard) {
+        window.portfolioAnalytics = new PortfolioAnalytics();
+        console.log('📊 Portfolio Analytics ready! Use window.getAnalyticsReport() to see data');
+    } else {
+        console.log('📊 Analytics Dashboard detected - tracking disabled to prevent false data');
+    }
     
-    console.log('📊 Portfolio Analytics ready! Use window.getAnalyticsReport() to see data');
+    // Make debugging functions globally accessible regardless of page
+    window.getAnalyticsReport = () => {
+        if (window.portfolioAnalytics) {
+            return window.portfolioAnalytics.generateReport();
+        } else {
+            return JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
+        }
+    };
+    window.exportAnalytics = () => {
+        if (window.portfolioAnalytics) {
+            return window.portfolioAnalytics.exportData();
+        } else {
+            console.log('Analytics not active on this page');
+        }
+    };
+    window.clearAnalytics = () => {
+        if (window.portfolioAnalytics) {
+            return window.portfolioAnalytics.clearAllData();
+        } else {
+            localStorage.removeItem('portfolioSessionData');
+            localStorage.removeItem('portfolioVisitorId');
+            console.log('🧹 Analytics data cleared from storage');
+        }
+    };
 }
