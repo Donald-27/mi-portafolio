@@ -38,12 +38,27 @@ class PortfolioAnalytics {
             const stored = localStorage.getItem('portfolioSessionData');
             if (stored) {
                 const data = JSON.parse(stored);
-                this.pageViews = data.sectionViews || {};
-                this.interactions = data.interactions || [];
+                this.pageViews = {}; // Start fresh for current session
+                this.interactions = []; // Start fresh for current session
+                
+                // Store historical data but start fresh session tracking
+                if (!data.previousSession) {
+                    data.previousSession = {
+                        views: data.totalViews || 0,
+                        interactions: data.totalInteractions || 0,
+                        duration: data.lastSessionDuration || 0,
+                        sessions: data.totalSessions || 0
+                    };
+                }
                 
                 // Increment session count
                 data.totalSessions = (data.totalSessions || 0) + 1;
                 data.lastSession = Date.now();
+                
+                // Update cumulative data
+                data.allTimeViews = (data.allTimeViews || 0) + (data.totalViews || 0);
+                data.allTimeInteractions = (data.allTimeInteractions || 0) + (data.totalInteractions || 0);
+                
                 localStorage.setItem('portfolioSessionData', JSON.stringify(data));
             } else {
                 // First time visitor
@@ -51,11 +66,19 @@ class PortfolioAnalytics {
                     totalSessions: 1,
                     totalViews: 0,
                     totalInteractions: 0,
+                    allTimeViews: 0,
+                    allTimeInteractions: 0,
                     sessionTimes: [],
                     sectionViews: {},
                     interactions: [],
                     lastSession: Date.now(),
-                    firstVisit: Date.now()
+                    firstVisit: Date.now(),
+                    previousSession: {
+                        views: 0,
+                        interactions: 0,
+                        duration: 0,
+                        sessions: 0
+                    }
                 };
                 localStorage.setItem('portfolioSessionData', JSON.stringify(initialData));
             }
@@ -311,6 +334,14 @@ class PortfolioAnalytics {
             const sessionDuration = Date.now() - this.startTime;
             const stored = JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
             
+            // Store previous session data for comparison
+            stored.previousSession = {
+                views: stored.totalViews || 0,
+                interactions: stored.totalInteractions || 0,
+                duration: stored.lastSessionDuration || 0,
+                sessions: stored.totalSessions || 1
+            };
+            
             // Add current session time to session times array
             stored.sessionTimes = stored.sessionTimes || [];
             stored.sessionTimes.push(sessionDuration);
@@ -324,6 +355,7 @@ class PortfolioAnalytics {
             stored.sectionViews = this.pageViews;
             stored.interactions = this.interactions;
             stored.totalInteractions = this.interactions.length;
+            stored.totalViews = Object.values(this.pageViews).reduce((a, b) => a + b, 0);
             
             localStorage.setItem('portfolioSessionData', JSON.stringify(stored));
             console.log('💾 Session data saved');

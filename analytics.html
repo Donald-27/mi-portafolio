@@ -597,21 +597,72 @@
                 const currentSession = this.analytics || { pageViews: {}, interactions: [], generateReport: () => ({}) };
                 const report = currentSession.generateReport ? currentSession.generateReport() : {};
                 
-                // Update main statistics
-                document.getElementById('totalViews').textContent = Object.values(this.sessionData.sectionViews).reduce((a, b) => a + b, 0) || 0;
-                document.getElementById('uniqueVisitors').textContent = this.sessionData.totalSessions || 1;
-                document.getElementById('avgTime').textContent = this.formatTime(this.calculateAverageTime());
-                document.getElementById('interactions').textContent = this.sessionData.totalInteractions || 0;
-
-                // Calculate changes (simplified for demo)
-                const prevTotal = this.sessionData.totalViews || 0;
-                const currentTotal = Object.values(this.sessionData.sectionViews).reduce((a, b) => a + b, 0);
-                const change = prevTotal > 0 ? ((currentTotal - prevTotal) / prevTotal * 100).toFixed(1) : 0;
+                // Get current session data
+                const currentViews = Object.values(this.sessionData.sectionViews).reduce((a, b) => a + b, 0) || 0;
+                const currentSessions = this.sessionData.totalSessions || 1;
+                const currentAvgTime = this.calculateAverageTime();
+                const currentInteractions = this.sessionData.totalInteractions || 0;
                 
-                document.getElementById('viewsChange').textContent = `+${Math.abs(change)}%`;
-                document.getElementById('visitorsChange').textContent = `+${Math.random() * 10 + 5 | 0}%`;
-                document.getElementById('timeChange').textContent = `+${Math.random() * 15 + 5 | 0}%`;
-                document.getElementById('interactionsChange').textContent = `+${Math.random() * 20 + 10 | 0}%`;
+                // Get previous session data for comparison
+                const previousSessionData = this.getPreviousSessionData();
+                
+                // Update main statistics
+                document.getElementById('totalViews').textContent = currentViews;
+                document.getElementById('uniqueVisitors').textContent = currentSessions;
+                document.getElementById('avgTime').textContent = this.formatTime(currentAvgTime);
+                document.getElementById('interactions').textContent = currentInteractions;
+
+                // Calculate real percentage changes
+                const viewsChange = this.calculatePercentageChange(currentViews, previousSessionData.views);
+                const sessionsChange = this.calculatePercentageChange(currentSessions, previousSessionData.sessions);
+                const timeChange = this.calculatePercentageChange(currentAvgTime, previousSessionData.avgTime);
+                const interactionsChange = this.calculatePercentageChange(currentInteractions, previousSessionData.interactions);
+                
+                // Update change indicators with real data
+                this.updateChangeIndicator('viewsChange', viewsChange);
+                this.updateChangeIndicator('visitorsChange', sessionsChange);
+                this.updateChangeIndicator('timeChange', timeChange);
+                this.updateChangeIndicator('interactionsChange', interactionsChange);
+            }
+
+            getPreviousSessionData() {
+                // Get historical data for comparison
+                const sessionTimes = this.sessionData.sessionTimes || [];
+                const previousAvgTime = sessionTimes.length > 1 ? 
+                    sessionTimes.slice(0, -1).reduce((a, b) => a + b, 0) / (sessionTimes.length - 1) / 1000 : 0;
+                
+                return {
+                    views: Math.max(0, (this.sessionData.totalViews || 0) - Object.values(this.sessionData.sectionViews).reduce((a, b) => a + b, 0)),
+                    sessions: Math.max(1, (this.sessionData.totalSessions || 1) - 1),
+                    avgTime: previousAvgTime,
+                    interactions: Math.max(0, (this.sessionData.totalInteractions || 0) - (this.sessionData.interactions || []).length)
+                };
+            }
+
+            calculatePercentageChange(current, previous) {
+                if (previous === 0 || previous === null || previous === undefined) {
+                    return current > 0 ? 100 : 0;
+                }
+                return ((current - previous) / previous * 100);
+            }
+
+            updateChangeIndicator(elementId, change) {
+                const element = document.getElementById(elementId);
+                const changeElement = element.closest('.stat-change');
+                
+                if (change > 0) {
+                    element.textContent = `+${change.toFixed(1)}%`;
+                    changeElement.className = 'stat-change positive';
+                    changeElement.querySelector('i').className = 'fas fa-arrow-up';
+                } else if (change < 0) {
+                    element.textContent = `${change.toFixed(1)}%`;
+                    changeElement.className = 'stat-change negative';
+                    changeElement.querySelector('i').className = 'fas fa-arrow-down';
+                } else {
+                    element.textContent = '0%';
+                    changeElement.className = 'stat-change';
+                    changeElement.querySelector('i').className = 'fas fa-minus';
+                }
             }
 
             calculateAverageTime() {
