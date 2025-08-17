@@ -14,6 +14,9 @@ class PortfolioAnalytics {
         // Initialize tracking
         this.initializeTracking();
         
+        // Send data to backend every 30 seconds
+        this.initializeBackendSync();
+        
         console.log('📊 Portfolio Analytics initialized with real tracking');
     }
 
@@ -77,6 +80,9 @@ class PortfolioAnalytics {
         // Track page visibility
         this.initializeVisibilityTracking();
 
+        // Track form interactions
+        this.initializeFormTracking();
+
         // Save data before page unload
         window.addEventListener('beforeunload', () => {
             this.saveSessionData();
@@ -100,7 +106,7 @@ class PortfolioAnalytics {
                 scrollMilestones.forEach(milestone => {
                     if (scrollPercent >= milestone && !reachedMilestones.has(milestone)) {
                         reachedMilestones.add(milestone);
-                        this.trackInteraction('scroll_milestone', `${milestone}%_scrolled`);
+                        this.trackInteraction('scroll_milestone', `${milestone}% scrolled`);
                     }
                 });
             }
@@ -131,14 +137,30 @@ class PortfolioAnalytics {
                 this.trackInteraction('button_click', `${buttonText}`);
             } else if (element.matches('.project-card') || element.closest('.project-card')) {
                 const projectCard = element.matches('.project-card') ? element : element.closest('.project-card');
-                const projectTitle = projectCard.querySelector('.project-title')?.textContent || 'Unknown Project';
+                const projectTitle = projectCard.querySelector('.project-title, h3, h4')?.textContent || 'Unknown Project';
                 this.trackInteraction('project_view', projectTitle);
-            } else if (element.matches('.nav-link') || element.closest('.nav-link')) {
-                const navLink = element.matches('.nav-link') ? element : element.closest('.nav-link');
+            } else if (element.matches('.nav-link, nav a') || element.closest('.nav-link, nav a')) {
+                const navLink = element.matches('.nav-link, nav a') ? element : element.closest('.nav-link, nav a');
                 const navText = navLink.textContent.trim();
                 this.trackInteraction('navigation', navText);
             } else {
                 this.trackInteraction('click', elementInfo);
+            }
+        });
+    }
+
+    initializeFormTracking() {
+        // Track contact form interactions
+        document.addEventListener('focus', (event) => {
+            if (event.target.matches('input, textarea, select')) {
+                const fieldName = event.target.name || event.target.id || event.target.type;
+                this.trackInteraction('form_field_focus', `Contact form - ${fieldName}`);
+            }
+        });
+
+        document.addEventListener('submit', (event) => {
+            if (event.target.matches('form')) {
+                this.trackInteraction('form_submit', 'Contact form submitted');
             }
         });
     }
@@ -148,7 +170,10 @@ class PortfolioAnalytics {
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const sectionId = entry.target.id || entry.target.className.split(' ')[0];
+                    const sectionId = entry.target.id || 
+                                    entry.target.className.split(' ')[0] || 
+                                    entry.target.getAttribute('data-section') ||
+                                    'unknown_section';
                     this.trackPageView(sectionId);
                     this.currentSection = sectionId;
                     this.sectionStartTime = Date.now();
@@ -163,9 +188,18 @@ class PortfolioAnalytics {
         }, { threshold: 0.5 });
 
         // Observe all main sections
-        document.querySelectorAll('section[id], .hero, .about, .projects, .experience').forEach(section => {
+        const sectionsToObserve = document.querySelectorAll('section[id], .hero, .about, .projects, .experience, .contact, .skills, header, main');
+        sectionsToObserve.forEach(section => {
             sectionObserver.observe(section);
         });
+
+        // If no sections found, observe main content areas
+        if (sectionsToObserve.length === 0) {
+            const fallbackSections = document.querySelectorAll('div[class*="section"], div[class*="container"], main, article');
+            fallbackSections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        }
     }
 
     initializeVisibilityTracking() {
@@ -176,6 +210,36 @@ class PortfolioAnalytics {
                 this.trackInteraction('page_visible', 'user_returned_tab');
             }
         });
+    }
+
+    initializeBackendSync() {
+        // Send data to backend every 30 seconds
+        setInterval(() => {
+            this.syncWithBackend();
+        }, 30000);
+
+        // Also sync when page becomes visible
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                this.syncWithBackend();
+            }
+        });
+    }
+
+    async syncWithBackend() {
+        try {
+            const data = this.generateReport();
+            await fetch('/api/analytics', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+        } catch (error) {
+            // Silently handle backend sync errors
+            console.debug('Backend sync failed:', error);
+        }
     }
 
     trackPageView(section) {
@@ -199,6 +263,8 @@ class PortfolioAnalytics {
             sessionId: this.sessionId,
             visitorId: this.visitorId,
             url: window.location.href,
+            userAgent: navigator.userAgent,
+            viewport: `${window.innerWidth}x${window.innerHeight}`,
             ...metadata
         };
 
@@ -261,6 +327,9 @@ class PortfolioAnalytics {
             
             localStorage.setItem('portfolioSessionData', JSON.stringify(stored));
             console.log('💾 Session data saved');
+
+            // Also send final data to backend
+            this.syncWithBackend();
         } catch (error) {
             console.warn('Failed to save session data:', error);
         }
@@ -276,6 +345,15 @@ class PortfolioAnalytics {
             // Also try to send message to analytics window if opened separately
             if (window.opener && window.opener.analyticsDashboard) {
                 window.opener.analyticsDashboard.updateFromPortfolio();
+            }
+
+            // Post message to any open analytics windows
+            if (typeof BroadcastChannel !== 'undefined') {
+                const channel = new BroadcastChannel('portfolio_analytics');
+                channel.postMessage({
+                    type: 'UPDATE_ANALYTICS',
+                    data: this.generateReport()
+                });
             }
         } catch (error) {
             // Dashboard not available, that's okay

@@ -95,6 +95,24 @@ Sent from your portfolio contact form
         print(f"Error: {str(e)}")
         return jsonify({'error': 'Failed to send message'}), 500
 
+@app.route('/api/analytics', methods=['POST'])
+def save_analytics():
+    try:
+        data = request.get_json()
+        
+        # Here you could save to a database if needed
+        # For now, we'll just acknowledge receipt
+        print(f"📊 Analytics data received: {data.get('totalInteractions', 0)} interactions, {data.get('totalPageViews', 0)} page views")
+        
+        return jsonify({
+            'success': True,
+            'message': 'Analytics data received'
+        })
+        
+    except Exception as e:
+        print(f"Analytics error: {str(e)}")
+        return jsonify({'error': 'Failed to save analytics data'}), 500
+
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({'status': 'healthy'})

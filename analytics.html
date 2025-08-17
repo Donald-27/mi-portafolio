@@ -223,9 +223,14 @@
         .chart-container {
             background: rgba(255, 255, 255, 0.05);
             border-radius: var(--border-radius);
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
+            height: 300px; /* Fixed height to prevent excessive space */
+        }
+
+        .chart-container canvas {
+            max-height: 200px !important; /* Limit canvas height */
         }
 
         .chart-title {
@@ -532,8 +537,37 @@
                 this.analytics = window.portfolioAnalytics || new PortfolioAnalytics();
                 this.charts = {};
                 
+                this.initializeBroadcastChannel();
                 this.initializeDashboard();
                 this.startRealTimeUpdates();
+            }
+
+            initializeBroadcastChannel() {
+                if (typeof BroadcastChannel !== 'undefined') {
+                    this.channel = new BroadcastChannel('portfolio_analytics');
+                    this.channel.addEventListener('message', (event) => {
+                        if (event.data.type === 'UPDATE_ANALYTICS') {
+                            this.handleRealTimeUpdate(event.data.data);
+                        }
+                    });
+                }
+            }
+
+            handleRealTimeUpdate(data) {
+                // Update session data with real-time data
+                if (data.pageViews) {
+                    this.sessionData.sectionViews = { ...data.pageViews };
+                }
+                if (data.interactions) {
+                    this.sessionData.interactions = [...data.interactions];
+                    this.sessionData.totalInteractions = data.interactions.length;
+                }
+                
+                this.saveSessionData();
+                this.updateMainStats();
+                this.updateCharts();
+                this.updateActivity();
+                this.updateRealTimeMetrics();
             }
 
             getSessionData() {
