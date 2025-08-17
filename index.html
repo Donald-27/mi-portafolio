@@ -211,6 +211,39 @@
             width: 100%;
         }
 
+        /* Special styling for Analytics link */
+        .nav-link[href="analytics.html"] {
+            position: relative;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            font-weight: 600 !important;
+        }
+
+        .nav-link[href="analytics.html"]:hover {
+            transform: translateY(-2px) scale(1.05);
+            filter: drop-shadow(0 4px 8px rgba(79, 172, 254, 0.3));
+        }
+
+        .nav-link[href="analytics.html"]::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 8px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link[href="analytics.html"]:hover::before {
+            opacity: 0.1;
+        }
+
         /* Mobile Menu */
         .menu-toggle {
             display: none;
@@ -1597,6 +1630,17 @@
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
+            .nav-link[href="analytics.html"] {
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                border-radius: 8px;
+                margin: 0.5rem 0;
+                border: 1px solid rgba(79, 172, 254, 0.3);
+            }
+
+            .nav-link[href="analytics.html"] i {
+                margin-right: 0.5rem;
+            }
+
             .menu-toggle {
                 display: flex;
                 z-index: 1001;
@@ -1826,6 +1870,9 @@
                 <li><a href="#blog" class="nav-link">Blog</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
                 <li><a href="/resume" class="nav-link">Resume</a></li>
+                <li><a href="analytics.html" class="nav-link" target="_blank" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600;">
+                    <i class="fas fa-chart-line"></i> Analytics
+                </a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
                 <span></span>
@@ -2441,6 +2488,27 @@
                             <span class="skill-tag">Data Analysis</span>
                             <span class="skill-tag">Risk Assessment</span>
                             <span class="skill-tag">Mathematical Modeling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3 class="education-title">Kenya Certificate of Secondary Education (KCSE)</h3>
+                        <p class="education-institution">Secondary Education</p>
+                        <p class="education-date">Grade: B (Plain)</p>
+                        <p class="education-description">
+                            Completed secondary education with a strong foundation in mathematics, sciences, and languages. 
+                            Achieved a B grade demonstrating solid academic performance across all subjects.
+                        </p>
+                        <div class="education-skills">
+                            <span class="skill-tag">Mathematics</span>
+                            <span class="skill-tag">Sciences</span>
+                            <span class="skill-tag">Languages</span>
+                            <span class="skill-tag">Critical Thinking</span>
                         </div>
                     </div>
                 </div>
