@@ -3318,23 +3318,16 @@
                     {
                         degree: 'Full-Stack Software Engineering Certificate',
                         institution: 'Moringa School',
-                        period: '2024 - 2025',
+                        period: '',
                         grade: 'Graduated with Honors (Top 10%)',
                         details: 'Intensive program covering React, Flask, Python, database management, and modern development practices'
                     },
                     {
                         degree: 'Kenya Certificate of Secondary Education (KCSE)',
                         institution: 'Terige Boys High School',
-                        period: '2018 - 2021',
+                        period: '',
                         grade: 'B',
                         details: 'Secondary education completion with a strong overall grade, demonstrating foundational analytical and problem-solving skills.'
-                    },
-                    {
-                        degree: 'Bachelor of Science in Actuarial Science',
-                        institution: 'University of Eldoret',
-                        period: '2022 - Present',
-                        grade: 'Strong Academic Performance',
-                        details: 'Mathematical foundation providing analytical skills applicable to software development and problem-solving'
                     }
                 ];
 
@@ -3360,7 +3353,8 @@
                     pdf.setTextColor(...colors.muted);
                     pdf.setFont('times', 'normal');
                     pdf.setFontSize(8);
-                    pdf.text(`${edu.period} | ${edu.grade}`, margin + 4, y + 17);
+                    const periodText = edu.period ? `${edu.period} | ${edu.grade}` : edu.grade;
+                    pdf.text(periodText, margin + 4, y + 17);
 
                     pdf.setTextColor(...colors.text);
                     pdf.setFontSize(8);
