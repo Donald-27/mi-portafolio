@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- KD Resume Branded Favicons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='resumeGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230a1628;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23resumeGrad)' rx='15'/%3E%3Ctext x='50' y='40' font-family='Arial,sans-serif' font-size='28' font-weight='bold' text-anchor='middle' fill='white'%3EKD%3C/text%3E%3Ctext x='50' y='65' font-family='Arial,sans-serif' font-size='12' font-weight='normal' text-anchor='middle' fill='%2367e8f9'%3ERESUME%3C/text%3E%3C/svg%3E">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiprop Donald - Full-Stack Developer | Resume</title>
     <meta name="description" content="Professional resume of Kiprop Donald - Award-winning full-stack developer specializing in React, Flask, and modern web technologies.">
 
-    <!-- KD Resume Branded Favicons -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='resumeGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230a1628;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23resumeGrad)' rx='15'/%3E%3Ctext x='50' y='40' font-family='Arial,sans-serif' font-size='28' font-weight='bold' text-anchor='middle' fill='white'%3EKD%3C/text%3E%3Ctext x='50' y='65' font-family='Arial,sans-serif' font-size='12' font-weight='normal' text-anchor='middle' fill='%2367e8f9'%3ERESUME%3C/text%3E%3C/svg%3E">
+    
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -654,229 +655,234 @@
             margin-top: 10px;
         }
 
-        /* Professional PDF Styles for Perfect Output */
-        @media print, .pdf-mode {
-            *, *::before, *::after {
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
+/* Professional PDF Styles for Perfect Output */
+@media print {
+    *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 
-            @page {
-                size: A4;
-                margin: 0;
-            }
+    @page {
+        size: A4;
+        margin: 0;
+    }
 
-            html, body {
-                background: white !important;
-                font-size: 12pt !important;
-                line-height: 1.3 !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                width: 210mm !important;
-                height: auto !important;
-            }
+    html, body {
+        background: white !important;
+        font-size: 12pt !important;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 210mm !important;
+        height: auto !important;
+    }
 
-            .resume-container {
-                margin: 0 !important;
-                padding: 0 !important;
-                max-width: none !important;
-                width: 210mm !important;
-            }
+    .resume-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+        width: 210mm !important;
+    }
 
-            .header-actions {
-                display: none !important;
-            }
+    .header-actions {
+        display: none !important;
+    }
 
-            .resume-sheet {
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                width: 210mm !important;
-                min-height: auto !important;
-                height: auto !important;
-                page-break-after: always !important;
-                page-break-inside: avoid !important;
-                overflow: visible !important;
-                display: block !important;
-            }
+    .resume-sheet {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 210mm !important;
+        min-height: auto !important;
+        height: auto !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        overflow: visible !important;
+        display: block !important;
+    }
 
-            .resume-sheet:last-child {
-                page-break-after: auto !important;
-            }
+    .resume-sheet:last-child {
+        page-break-after: auto !important;
+    }
 
-            .resume-sheet::before {
-                font-size: 200px !important;
-                color: rgba(6, 182, 212, 0.02) !important;
-            }
+    .resume-sheet::before {
+        font-size: 200px !important;
+        color: rgba(6, 182, 212, 0.02) !important;
+    }
 
-            .page {
-                width: 210mm !important;
-                height: auto !important;
-                min-height: 280mm !important;
-                grid-template-columns: 75mm 135mm !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                page-break-inside: avoid !important;
-            }
+    .page {
+        width: 210mm !important;
+        height: auto !important;
+        min-height: 280mm !important;
+        grid-template-columns: 75mm 135mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        page-break-inside: avoid !important;
+    }
 
-            .sidebar {
-                background: linear-gradient(180deg, #0a1628 0%, #1e293b 70%, #334155 100%) !important;
-                color: #f1f5f9 !important;
-                padding: 8mm !important;
-                width: 75mm !important;
-                height: auto !important;
-                min-height: 280mm !important;
-                box-sizing: border-box !important;
-                overflow: visible !important;
-            }
+    .sidebar {
+        background: linear-gradient(180deg, #0a1628 0%, #1e293b 70%, #334155 100%) !important;
+        color: #f1f5f9 !important;
+        padding: 8mm !important;
+        width: 75mm !important;
+        height: auto !important;
+        min-height: 280mm !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
 
-            .content {
-                background: white !important;
-                color: black !important;
-                padding: 8mm !important;
-                width: 135mm !important;
-                height: auto !important;
-                min-height: 280mm !important;
-                box-sizing: border-box !important;
-                overflow: visible !important;
-            }
+    .content {
+        background: white !important;
+        color: black !important;
+        padding: 8mm !important;
+        width: 135mm !important;
+        height: auto !important;
+        min-height: 280mm !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
 
-            .avatar {
-                width: 24mm !important;
-                height: 24mm !important;
-                font-size: 16px !important;
-                margin: 0 auto 6mm !important;
-            }
+    .avatar {
+        width: 24mm !important;
+        height: 24mm !important;
+        font-size: 16px !important;
+        margin: 0 auto 6mm !important;
+    }
 
-            .name {
-                font-size: 18px !important;
-                margin-bottom: 2mm !important;
-                color: #67e8f9 !important;
-                -webkit-text-fill-color: #67e8f9 !important;
-            }
+    .name {
+        font-size: 18px !important;
+        margin-bottom: 2mm !important;
+        color: #67e8f9 !important;
+        -webkit-text-fill-color: #67e8f9 !important;
+    }
 
-            .job-title {
-                font-size: 11px !important;
-                color: #67e8f9 !important;
-                margin-bottom: 2mm !important;
-            }
+    .job-title {
+        font-size: 11px !important;
+        color: #67e8f9 !important;
+        margin-bottom: 2mm !important;
+    }
 
-            .location {
-                font-size: 9px !important;
-                color: #cbd5e1 !important;
-                margin-bottom: 6mm !important;
-            }
+    .location {
+        font-size: 9px !important;
+        color: #cbd5e1 !important;
+        margin-bottom: 6mm !important;
+    }
 
-            .sidebar-block {
-                background: rgba(255, 255, 255, 0.1) !important;
-                margin-bottom: 5mm !important;
-                padding: 4mm !important;
-            }
+    .sidebar-block {
+        background: rgba(255, 255, 255, 0.1) !important;
+        margin-bottom: 5mm !important;
+        padding: 4mm !important;
+    }
 
-            .sidebar-block h4 {
-                font-size: 10px !important;
-                color: #67e8f9 !important;
-                margin-bottom: 3mm !important;
-            }
+    .sidebar-block h4 {
+        font-size: 10px !important;
+        color: #67e8f9 !important;
+        margin-bottom: 3mm !important;
+    }
 
-            .contact-item {
-                font-size: 8px !important;
-                margin-bottom: 2mm !important;
-            }
+    .contact-item {
+        font-size: 8px !important;
+        margin-bottom: 2mm !important;
+    }
 
-            .skill-tag {
-                font-size: 7px !important;
-                padding: 1.5mm !important;
-                margin: 0.5mm !important;
-                border-radius: 4px !important;
-            }
+    .skill-tag {
+        font-size: 7px !important;
+        padding: 1.5mm !important;
+        margin: 0.5mm !important;
+        border-radius: 4px !important;
+    }
 
-            .section h3 {
-                font-size: 16px !important;
-                color: #0a1628 !important;
-            }
+    .section h3 {
+        font-size: 16px !important;
+        color: #0a1628 !important;
+    }
 
-            .section-icon {
-                width: 10mm !important;
-                height: 10mm !important;
-                font-size: 12px !important;
-            }
+    .section-icon {
+        width: 10mm !important;
+        height: 10mm !important;
+        font-size: 12px !important;
+    }
 
-            .section {
-                page-break-inside: avoid !important;
-                margin-bottom: 5mm !important;
-                break-inside: avoid !important;
-            }
+    .section {
+        page-break-inside: avoid !important;
+        margin-bottom: 5mm !important;
+        break-inside: avoid !important;
+    }
 
-            .experience-item, .project-item, .education-item {
-                margin-bottom: 4mm !important;
-                padding: 4mm !important;
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-                orphans: 3 !important;
-                widows: 3 !important;
-            }
+    .experience-item, .project-item, .education-item {
+        margin-bottom: 4mm !important;
+        padding: 4mm !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        orphans: 3 !important;
+        widows: 3 !important;
+    }
 
-            .item-title {
-                font-size: 11px !important;
-                color: #0a1628 !important;
-                line-height: 1.2 !important;
-            }
+    .item-title {
+        font-size: 11px !important;
+        color: #0a1628 !important;
+        line-height: 1.2 !important;
+    }
 
-            .item-company {
-                font-size: 9px !important;
-                color: #06b6d4 !important;
-                line-height: 1.2 !important;
-            }
+    .item-company {
+        font-size: 9px !important;
+        color: #06b6d4 !important;
+        line-height: 1.2 !important;
+    }
 
-            .item-description {
-                font-size: 8px !important;
-                line-height: 1.4 !important;
-                color: #475569 !important;
-                margin-bottom: 3mm !important;
-            }
+    .item-description {
+        font-size: 8px !important;
+        line-height: 1.4 !important;
+        color: #475569 !important;
+        margin-bottom: 3mm !important;
+    }
 
-            .item-description ul {
-                margin: 2mm 0 !important;
-                padding-left: 4mm !important;
-                list-style-position: outside !important;
-            }
+    .item-description ul {
+        margin: 2mm 0 !important;
+        padding-left: 4mm !important;
+        list-style-position: outside !important;
+    }
 
-            .item-description li {
-                margin-bottom: 1.5mm !important;
-                line-height: 1.4 !important;
-                break-inside: avoid !important;
-            }
+    .item-description li {
+        margin-bottom: 1.5mm !important;
+        line-height: 1.4 !important;
+        break-inside: avoid !important;
+    }
 
-            .skill-badge {
-                font-size: 7px !important;
-                padding: 1mm !important;
-            }
+    .skill-badge {
+        font-size: 7px !important;
+        padding: 1mm !important;
+    }
 
-            .achievement-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 3mm !important;
-            }
+    .achievement-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 3mm !important;
+    }
 
-            .achievement-card {
-                padding: 3mm !important;
-            }
+    .achievement-card {
+        padding: 3mm !important;
+    }
 
-            .achievement-title {
-                font-size: 9px !important;
-            }
+    .achievement-title {
+        font-size: 9px !important;
+    }
 
-            .achievement-desc {
-                font-size: 7px !important;
-            }
+    .achievement-desc {
+        font-size: 7px !important;
+    }
 
-            .footer-note, .footer-credits {
-                font-size: 7px !important;
-                color: #94a3b8 !important;
-            }
-        }
+    .footer-note, .footer-credits {
+        font-size: 7px !important;
+        color: #94a3b8 !important;
+    }
+}
+
+/* Duplicate for screen preview when .pdf-mode is active */
+.pdf-mode {
+    all: unset;
+}
 
         /* Unique Loading Animations */
         @keyframes spin {
