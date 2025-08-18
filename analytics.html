@@ -24,9 +24,7 @@
             --bg-accent: #2a2a2a;
             
             --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.3);
-            --shadow-hard: 0 20px 60px rgba(0, 0, 0, 0.5);
             --shadow-glow: 0 0 30px rgba(100, 255, 218, 0.3);
-            
             --border-radius: 20px;
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -45,7 +43,6 @@
             min-height: 100vh;
         }
 
-        /* Animated Background */
         body::before {
             content: '';
             position: fixed;
@@ -67,7 +64,6 @@
             66% { transform: translateX(30px) translateY(30px); }
         }
 
-        /* Header */
         .header {
             padding: 2rem;
             text-align: center;
@@ -86,11 +82,6 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
-        }
-
-        .header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
         }
 
         .back-button {
@@ -115,14 +106,12 @@
             box-shadow: var(--shadow-soft);
         }
 
-        /* Dashboard Container */
         .dashboard {
             padding: 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -197,25 +186,9 @@
             margin-bottom: 0.5rem;
         }
 
-        .stat-change {
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .stat-change.positive {
-            color: #10b981;
-        }
-
-        .stat-change.negative {
-            color: #ef4444;
-        }
-
-        /* Charts Grid */
-        .charts-grid {
+        .charts-section {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
@@ -226,11 +199,6 @@
             padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            height: 300px; /* Fixed height to prevent excessive space */
-        }
-
-        .chart-container canvas {
-            max-height: 200px !important; /* Limit canvas height */
         }
 
         .chart-title {
@@ -240,8 +208,7 @@
             color: var(--text-accent);
         }
 
-        /* Visitors Table */
-        .visitors-section {
+        .insights-section {
             background: rgba(255, 255, 255, 0.05);
             border-radius: var(--border-radius);
             padding: 2rem;
@@ -250,37 +217,34 @@
             margin-bottom: 3rem;
         }
 
-        .visitors-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .visitors-table th,
-        .visitors-table td {
-            padding: 1rem;
-            text-align: left;
+        .insight-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .visitors-table th {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-accent);
+        .insight-item:last-child {
+            border-bottom: none;
+        }
+
+        .insight-label {
+            color: var(--text-secondary);
+        }
+
+        .insight-value {
             font-weight: 600;
+            color: var(--text-accent);
         }
 
-        .visitors-table tr:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Real-time Metrics */
-        .realtime-section {
+        .live-data {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .realtime-card {
+        .live-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: var(--border-radius);
             padding: 1.5rem;
@@ -288,87 +252,6 @@
             backdrop-filter: blur(20px);
         }
 
-        .metric-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .metric-item:last-child {
-            border-bottom: none;
-        }
-
-        .metric-label {
-            color: var(--text-secondary);
-        }
-
-        .metric-value {
-            font-weight: 600;
-            color: var(--text-accent);
-        }
-
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(100, 255, 218, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--text-accent);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .back-button {
-                position: static;
-                transform: none;
-                margin-bottom: 1rem;
-                align-self: flex-start;
-            }
-
-            .header {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .dashboard {
-                padding: 1rem;
-            }
-        }
-
-        /* Animation Keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-in {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        /* Pulse Animation for Real-time Data */
         .pulse {
             animation: pulse 2s infinite;
         }
@@ -384,328 +267,280 @@
                 box-shadow: 0 0 0 0 rgba(100, 255, 218, 0);
             }
         }
+
+        .no-data {
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .back-button {
+                position: static;
+                transform: none;
+                margin-bottom: 1rem;
+            }
+
+            .header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .charts-section {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <a href="index.html" class="back-button">
             <i class="fas fa-arrow-left"></i>
             Back to Portfolio
         </a>
-        <h1>📊 Portfolio Analytics Dashboard</h1>
-        <p>Real-time insights into portfolio performance and visitor engagement</p>
+        <h1>📊 Portfolio Analytics</h1>
+        <p>Real-time insights into portfolio interactions and user engagement</p>
     </header>
 
-    <!-- Dashboard -->
     <main class="dashboard">
-        <!-- Key Stats -->
+        <!-- Key Metrics -->
         <section class="stats-grid">
-            <div class="stat-card animate-in">
-                <div class="stat-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <div class="stat-number" id="totalViews">0</div>
-                <div class="stat-label">Total Page Views</div>
-                <div class="stat-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span id="viewsChange">+0%</span>
-                    vs last session
-                </div>
-            </div>
-
-            <div class="stat-card animate-in">
-                <div class="stat-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <div class="stat-number" id="uniqueVisitors">0</div>
-                <div class="stat-label">Unique Visitors</div>
-                <div class="stat-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span id="visitorsChange">+0%</span>
-                    vs last session
-                </div>
-            </div>
-
-            <div class="stat-card animate-in">
-                <div class="stat-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <div class="stat-number" id="avgTime">0s</div>
-                <div class="stat-label">Avg. Time on Site</div>
-                <div class="stat-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span id="timeChange">+0%</span>
-                    vs last session
-                </div>
-            </div>
-
-            <div class="stat-card animate-in">
+            <div class="stat-card">
                 <div class="stat-icon">
                     <i class="fas fa-mouse-pointer"></i>
                 </div>
-                <div class="stat-number" id="interactions">0</div>
+                <div class="stat-number" id="totalInteractions">0</div>
                 <div class="stat-label">Total Interactions</div>
-                <div class="stat-change positive">
-                    <i class="fas fa-arrow-up"></i>
-                    <span id="interactionsChange">+0%</span>
-                    vs last session
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-eye"></i>
                 </div>
+                <div class="stat-number" id="sectionsViewed">0</div>
+                <div class="stat-label">Sections Viewed</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-number" id="sessionTime">0s</div>
+                <div class="stat-label">Session Duration</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="stat-number" id="projectClicks">0</div>
+                <div class="stat-label">Project Interactions</div>
             </div>
         </section>
 
-        <!-- Charts Section -->
-        <section class="charts-grid">
+        <!-- Charts -->
+        <section class="charts-section">
             <div class="chart-container">
                 <h3 class="chart-title">📈 Section Views</h3>
-                <canvas id="sectionsChart" width="400" height="200"></canvas>
+                <canvas id="sectionChart" width="400" height="200"></canvas>
             </div>
 
             <div class="chart-container">
-                <h3 class="chart-title">🎯 User Interactions</h3>
-                <canvas id="interactionsChart" width="400" height="200"></canvas>
+                <h3 class="chart-title">🎯 Interaction Types</h3>
+                <canvas id="interactionChart" width="400" height="200"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">🚀 Project Interactions</h3>
+                <canvas id="projectChart" width="400" height="200"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">🧭 Navigation Clicks</h3>
+                <canvas id="navigationChart" width="400" height="200"></canvas>
             </div>
         </section>
 
-        <!-- Recent Activity -->
-        <section class="visitors-section">
-            <h3 class="chart-title">📊 Recent Activity</h3>
-            <div id="activityList">
-                <p style="color: var(--text-secondary); font-style: italic;">Loading activity data...</p>
+        <!-- Key Insights -->
+        <section class="insights-section">
+            <h3 class="chart-title">🔍 Key Insights</h3>
+            <div id="insights">
+                <div class="insight-item">
+                    <span class="insight-label">Most Viewed Section</span>
+                    <span class="insight-value" id="topSection">None</span>
+                </div>
+                <div class="insight-item">
+                    <span class="insight-label">Most Clicked Project</span>
+                    <span class="insight-value" id="topProject">None</span>
+                </div>
+                <div class="insight-item">
+                    <span class="insight-label">Average Time per Section</span>
+                    <span class="insight-value" id="avgTimePerSection">0s</span>
+                </div>
+                <div class="insight-item">
+                    <span class="insight-label">Scroll Completion</span>
+                    <span class="insight-value" id="scrollCompletion">0%</span>
+                </div>
             </div>
         </section>
 
-        <!-- Real-time Metrics -->
-        <section class="realtime-section">
-            <div class="realtime-card pulse">
-                <h3 class="chart-title">🔴 Live Session Data</h3>
-                <div class="metric-item">
-                    <span class="metric-label">Current Session Duration</span>
-                    <span class="metric-value" id="sessionDuration">0s</span>
-                </div>
-                <div class="metric-item">
-                    <span class="metric-label">Pages Visited This Session</span>
-                    <span class="metric-value" id="pagesThisSession">0</span>
-                </div>
-                <div class="metric-item">
-                    <span class="metric-label">Interactions This Session</span>
-                    <span class="metric-value" id="interactionsThisSession">0</span>
-                </div>
-                <div class="metric-item">
-                    <span class="metric-label">Most Viewed Section</span>
-                    <span class="metric-value" id="topSection">None</span>
+        <!-- Live Session Data -->
+        <section class="live-data">
+            <div class="live-card pulse">
+                <h3 class="chart-title">🔴 Current Session</h3>
+                <div id="currentSession">
+                    <div class="insight-item">
+                        <span class="insight-label">Session ID</span>
+                        <span class="insight-value" id="sessionId">-</span>
+                    </div>
+                    <div class="insight-item">
+                        <span class="insight-label">Current Section</span>
+                        <span class="insight-value" id="currentSection">-</span>
+                    </div>
+                    <div class="insight-item">
+                        <span class="insight-label">Last Interaction</span>
+                        <span class="insight-value" id="lastInteraction">-</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="realtime-card">
-                <h3 class="chart-title">📈 Session Statistics</h3>
-                <div class="metric-item">
-                    <span class="metric-label">Total Sessions</span>
-                    <span class="metric-value" id="totalSessions">0</span>
-                </div>
-                <div class="metric-item">
-                    <span class="metric-label">Average Session Time</span>
-                    <span class="metric-value" id="avgSessionTime">0s</span>
-                </div>
-                <div class="metric-item">
-                    <span class="metric-label">Bounce Rate</span>
-                    <span class="metric-value" id="bounceRate">0%</span>
-                </div>
-                <div class="metric-item">
-                    <span class="metric-label">Return Visitor Rate</span>
-                    <span class="metric-value" id="returnRate">0%</span>
-                </div>
-            </div>
-
-            <div class="realtime-card">
-                <h3 class="chart-title">🎯 Popular Actions</h3>
-                <div id="popularActions">
-                    <p style="color: var(--text-secondary); font-style: italic;">Loading action data...</p>
+            <div class="live-card">
+                <h3 class="chart-title">📱 Device Info</h3>
+                <div id="deviceInfo">
+                    <div class="insight-item">
+                        <span class="insight-label">Screen Size</span>
+                        <span class="insight-value" id="screenSize">-</span>
+                    </div>
+                    <div class="insight-item">
+                        <span class="insight-label">Viewport</span>
+                        <span class="insight-value" id="viewport">-</span>
+                    </div>
+                    <div class="insight-item">
+                        <span class="insight-label">User Agent</span>
+                        <span class="insight-value" id="userAgent">-</span>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Load analytics.js -->
-    <script src="analytics.js"></script>
     <script>
-        // Real Analytics Dashboard Implementation
-        class RealAnalyticsDashboard {
+        class AnalyticsDashboard {
             constructor() {
-                this.startTime = Date.now();
-                this.sessionData = this.getSessionData();
-                this.analytics = window.portfolioAnalytics || new PortfolioAnalytics();
                 this.charts = {};
-                
-                this.initializeBroadcastChannel();
-                this.initializeDashboard();
-                this.startRealTimeUpdates();
+                this.updateInterval = null;
+                this.initialize();
             }
 
-            initializeBroadcastChannel() {
-                if (typeof BroadcastChannel !== 'undefined') {
-                    this.channel = new BroadcastChannel('portfolio_analytics');
-                    this.channel.addEventListener('message', (event) => {
-                        if (event.data.type === 'UPDATE_ANALYTICS') {
-                            this.handleRealTimeUpdate(event.data.data);
-                        }
-                    });
-                }
-            }
-
-            handleRealTimeUpdate(data) {
-                // Update session data with real-time data
-                if (data.pageViews) {
-                    this.sessionData.sectionViews = { ...data.pageViews };
-                }
-                if (data.interactions) {
-                    this.sessionData.interactions = [...data.interactions];
-                    this.sessionData.totalInteractions = data.interactions.length;
-                }
-                if (data.totalPortfolioViews) {
-                    this.sessionData.totalPortfolioViews = data.totalPortfolioViews;
-                }
-                
-                this.saveSessionData();
-                this.updateMainStats();
-                this.updateCharts();
-                this.updateActivity();
-                this.updateRealTimeMetrics();
-            }
-
-            getSessionData() {
-                return JSON.parse(localStorage.getItem('portfolioSessionData') || JSON.stringify({
-                    totalSessions: 0,
-                    totalViews: 0,
-                    totalPortfolioViews: 0,
-                    totalInteractions: 0,
-                    sessionTimes: [],
-                    sectionViews: {},
-                    interactions: [],
-                    lastSession: null,
-                    allPortfolioVisits: []
-                }));
-            }
-
-            saveSessionData() {
-                localStorage.setItem('portfolioSessionData', JSON.stringify(this.sessionData));
-            }
-
-            initializeDashboard() {
-                this.updateMainStats();
+            initialize() {
+                this.loadStoredData();
                 this.createCharts();
-                this.updateActivity();
-                this.updateRealTimeMetrics();
+                this.startRealTimeUpdates();
+                console.log('📊 Analytics Dashboard initialized');
             }
 
-            updateMainStats() {
-                // Only use stored data, don't create new analytics instances on dashboard
-                const currentPortfolioViews = this.sessionData.totalPortfolioViews || 0;
-                const currentSessions = this.sessionData.totalSessions || 1;
-                const currentAvgTime = this.calculateAverageTime();
-                const currentInteractions = this.sessionData.totalInteractions || 0;
-                
-                // Get previous session data for comparison
-                const previousSessionData = this.getPreviousSessionData();
-                
-                // Update main statistics - use portfolio visits for Total Page Views
-                document.getElementById('totalViews').textContent = currentPortfolioViews;
-                document.getElementById('uniqueVisitors').textContent = currentSessions;
-                document.getElementById('avgTime').textContent = this.formatTime(currentAvgTime);
-                document.getElementById('interactions').textContent = currentInteractions;
-
-                // Calculate real percentage changes
-                const viewsChange = this.calculatePercentageChange(currentPortfolioViews, previousSessionData.views);
-                const sessionsChange = this.calculatePercentageChange(currentSessions, previousSessionData.sessions);
-                const timeChange = this.calculatePercentageChange(currentAvgTime, previousSessionData.avgTime);
-                const interactionsChange = this.calculatePercentageChange(currentInteractions, previousSessionData.interactions);
-                
-                // Update change indicators with real data
-                this.updateChangeIndicator('viewsChange', viewsChange);
-                this.updateChangeIndicator('visitorsChange', sessionsChange);
-                this.updateChangeIndicator('timeChange', timeChange);
-                this.updateChangeIndicator('interactionsChange', interactionsChange);
-            }
-
-            getPreviousSessionData() {
-                // Get historical data for comparison
-                const sessionTimes = this.sessionData.sessionTimes || [];
-                const previousAvgTime = sessionTimes.length > 1 ? 
-                    sessionTimes.slice(0, -1).reduce((a, b) => a + b, 0) / (sessionTimes.length - 1) / 1000 : 0;
-                
-                // Get previous portfolio views (subtract current session visit)
-                const currentPortfolioViews = this.sessionData.totalPortfolioViews || 0;
-                const previousPortfolioViews = Math.max(0, currentPortfolioViews - 1);
-                
-                return {
-                    views: previousPortfolioViews,
-                    sessions: Math.max(1, (this.sessionData.totalSessions || 1) - 1),
-                    avgTime: previousAvgTime,
-                    interactions: Math.max(0, (this.sessionData.totalInteractions || 0) - (this.sessionData.interactions || []).length)
-                };
-            }
-
-            calculatePercentageChange(current, previous) {
-                if (previous === 0 || previous === null || previous === undefined) {
-                    return current > 0 ? 100 : 0;
-                }
-                return ((current - previous) / previous * 100);
-            }
-
-            updateChangeIndicator(elementId, change) {
-                const element = document.getElementById(elementId);
-                const changeElement = element.closest('.stat-change');
-                
-                if (change > 0) {
-                    element.textContent = `+${change.toFixed(1)}%`;
-                    changeElement.className = 'stat-change positive';
-                    changeElement.querySelector('i').className = 'fas fa-arrow-up';
-                } else if (change < 0) {
-                    element.textContent = `${change.toFixed(1)}%`;
-                    changeElement.className = 'stat-change negative';
-                    changeElement.querySelector('i').className = 'fas fa-arrow-down';
-                } else {
-                    element.textContent = '0%';
-                    changeElement.className = 'stat-change';
-                    changeElement.querySelector('i').className = 'fas fa-minus';
+            loadStoredData() {
+                try {
+                    const stored = localStorage.getItem('portfolioAnalytics');
+                    this.data = stored ? JSON.parse(stored) : null;
+                    
+                    if (this.data) {
+                        this.updateMetrics();
+                        this.updateInsights();
+                        this.updateLiveData();
+                    } else {
+                        this.showNoDataMessage();
+                    }
+                } catch (error) {
+                    console.warn('Failed to load analytics data:', error);
+                    this.showNoDataMessage();
                 }
             }
 
-            calculateAverageTime() {
-                if (this.sessionData.sessionTimes.length === 0) return 0;
-                const sum = this.sessionData.sessionTimes.reduce((a, b) => a + b, 0);
-                return Math.round(sum / this.sessionData.sessionTimes.length / 1000); // Convert to seconds
+            updateMetrics() {
+                if (!this.data) return;
+
+                document.getElementById('totalInteractions').textContent = this.data.interactions?.length || 0;
+                document.getElementById('sectionsViewed').textContent = Object.keys(this.data.sectionViews || {}).length;
+                document.getElementById('sessionTime').textContent = this.formatTime(this.data.totalSessionTime || 0);
+                document.getElementById('projectClicks').textContent = Object.values(this.data.projectInteractions || {}).reduce((a, b) => a + b, 0);
             }
 
-            formatTime(seconds) {
-                if (seconds < 60) return `${seconds}s`;
-                const minutes = Math.floor(seconds / 60);
-                const remainingSeconds = seconds % 60;
-                return `${minutes}m ${remainingSeconds}s`;
+            updateInsights() {
+                if (!this.data) return;
+
+                const sectionViews = this.data.sectionViews || {};
+                const projectInteractions = this.data.projectInteractions || {};
+                const timeSpentPerSection = this.data.timeSpentPerSection || {};
+
+                // Most viewed section
+                const topSection = Object.keys(sectionViews).reduce((a, b) => 
+                    sectionViews[a] > sectionViews[b] ? a : b, 'None');
+                document.getElementById('topSection').textContent = topSection;
+
+                // Most clicked project
+                const topProject = Object.keys(projectInteractions).reduce((a, b) => 
+                    projectInteractions[a] > projectInteractions[b] ? a : b, 'None');
+                document.getElementById('topProject').textContent = topProject || 'None';
+
+                // Average time per section
+                const totalTime = Object.values(timeSpentPerSection).reduce((a, b) => a + b, 0);
+                const avgTime = totalTime / Math.max(Object.keys(timeSpentPerSection).length, 1);
+                document.getElementById('avgTimePerSection').textContent = this.formatTime(avgTime);
+
+                // Scroll completion
+                const scrollMilestones = this.data.interactions?.filter(i => 
+                    i.category === 'engagement' && i.action === 'scroll_milestone') || [];
+                const maxScroll = Math.max(...scrollMilestones.map(s => s.details?.percentage || 0), 0);
+                document.getElementById('scrollCompletion').textContent = `${maxScroll}%`;
+            }
+
+            updateLiveData() {
+                if (!this.data) return;
+
+                document.getElementById('sessionId').textContent = this.data.sessionId?.substring(0, 12) + '...' || '-';
+                
+                const lastInteraction = this.data.interactions?.[this.data.interactions.length - 1];
+                if (lastInteraction) {
+                    document.getElementById('lastInteraction').textContent = lastInteraction.action;
+                    document.getElementById('currentSection').textContent = lastInteraction.details?.sectionId || 'Unknown';
+                }
+
+                // Device info
+                document.getElementById('screenSize').textContent = `${screen.width}x${screen.height}`;
+                document.getElementById('viewport').textContent = `${window.innerWidth}x${window.innerHeight}`;
+                document.getElementById('userAgent').textContent = navigator.userAgent.substring(0, 30) + '...';
             }
 
             createCharts() {
-                this.createSectionsChart();
-                this.createInteractionsChart();
+                this.createSectionChart();
+                this.createInteractionChart();
+                this.createProjectChart();
+                this.createNavigationChart();
             }
 
-            createSectionsChart() {
-                const ctx = document.getElementById('sectionsChart').getContext('2d');
-                const sectionData = this.sessionData.sectionViews;
+            createSectionChart() {
+                const ctx = document.getElementById('sectionChart').getContext('2d');
+                const sectionViews = this.data?.sectionViews || {};
                 
-                this.charts.sections = new Chart(ctx, {
+                this.charts.section = new Chart(ctx, {
                     type: 'doughnut',
                     data: {
-                        labels: Object.keys(sectionData).length > 0 ? Object.keys(sectionData) : ['No Data'],
+                        labels: Object.keys(sectionViews).length ? Object.keys(sectionViews) : ['No Data'],
                         datasets: [{
-                            data: Object.keys(sectionData).length > 0 ? Object.values(sectionData) : [1],
+                            data: Object.keys(sectionViews).length ? Object.values(sectionViews) : [1],
                             backgroundColor: [
-                                '#64ffda',
-                                '#667eea', 
-                                '#f093fb',
-                                '#4facfe',
-                                '#56ab2f',
-                                '#f7971e'
+                                '#64ffda', '#667eea', '#f093fb', '#4facfe', '#56ab2f', '#f7971e'
                             ],
                             borderWidth: 0
                         }]
@@ -716,38 +551,29 @@
                         plugins: {
                             legend: {
                                 position: 'bottom',
-                                labels: {
-                                    color: '#b8b8b8',
-                                    padding: 15,
-                                    usePointStyle: true,
-                                    font: {
-                                        size: 12
-                                    }
-                                }
+                                labels: { color: '#b8b8b8', padding: 15, usePointStyle: true }
                             }
                         }
                     }
                 });
             }
 
-            createInteractionsChart() {
-                const ctx = document.getElementById('interactionsChart').getContext('2d');
-                const interactions = this.sessionData.interactions || [];
+            createInteractionChart() {
+                const ctx = document.getElementById('interactionChart').getContext('2d');
+                const interactions = this.data?.interactions || [];
                 
-                // Group interactions by type
-                const interactionTypes = {};
-                interactions.forEach(interaction => {
-                    const type = interaction.action || 'Unknown';
-                    interactionTypes[type] = (interactionTypes[type] || 0) + 1;
+                const categories = {};
+                interactions.forEach(i => {
+                    categories[i.category] = (categories[i.category] || 0) + 1;
                 });
 
-                this.charts.interactions = new Chart(ctx, {
+                this.charts.interaction = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: Object.keys(interactionTypes).length > 0 ? Object.keys(interactionTypes) : ['No Interactions'],
+                        labels: Object.keys(categories).length ? Object.keys(categories) : ['No Data'],
                         datasets: [{
                             label: 'Interactions',
-                            data: Object.keys(interactionTypes).length > 0 ? Object.values(interactionTypes) : [0],
+                            data: Object.keys(categories).length ? Object.values(categories) : [0],
                             backgroundColor: '#64ffda',
                             borderColor: '#ffffff',
                             borderWidth: 1
@@ -756,214 +582,143 @@
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { beginAtZero: true, ticks: { color: '#b8b8b8' }, grid: { color: 'rgba(255, 255, 255, 0.1)' } },
+                            x: { ticks: { color: '#b8b8b8' }, grid: { color: 'rgba(255, 255, 255, 0.1)' } }
+                        }
+                    }
+                });
+            }
+
+            createProjectChart() {
+                const ctx = document.getElementById('projectChart').getContext('2d');
+                const projectInteractions = this.data?.projectInteractions || {};
+
+                this.charts.project = new Chart(ctx, {
+                    type: 'horizontalBar',
+                    data: {
+                        labels: Object.keys(projectInteractions).length ? Object.keys(projectInteractions) : ['No Data'],
+                        datasets: [{
+                            label: 'Clicks',
+                            data: Object.keys(projectInteractions).length ? Object.values(projectInteractions) : [0],
+                            backgroundColor: '#f093fb',
+                            borderColor: '#ffffff',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { beginAtZero: true, ticks: { color: '#b8b8b8' }, grid: { color: 'rgba(255, 255, 255, 0.1)' } },
+                            x: { ticks: { color: '#b8b8b8' }, grid: { color: 'rgba(255, 255, 255, 0.1)' } }
+                        }
+                    }
+                });
+            }
+
+            createNavigationChart() {
+                const ctx = document.getElementById('navigationChart').getContext('2d');
+                const navigationClicks = this.data?.navigationClicks || {};
+
+                this.charts.navigation = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: Object.keys(navigationClicks).length ? Object.keys(navigationClicks) : ['No Data'],
+                        datasets: [{
+                            data: Object.keys(navigationClicks).length ? Object.values(navigationClicks) : [1],
+                            backgroundColor: ['#4facfe', '#56ab2f', '#f7971e', '#667eea', '#f093fb'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
                         plugins: {
                             legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    color: '#b8b8b8',
-                                    stepSize: 1
-                                },
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)'
-                                }
-                            },
-                            x: {
-                                ticks: {
-                                    color: '#b8b8b8',
-                                    maxRotation: 45
-                                },
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)'
-                                }
+                                position: 'bottom',
+                                labels: { color: '#b8b8b8', padding: 15, usePointStyle: true }
                             }
                         }
                     }
                 });
             }
 
-            updateActivity() {
-                const activityList = document.getElementById('activityList');
-                const interactions = this.sessionData.interactions.slice(-10) || []; // Last 10 interactions
-                
-                if (interactions.length === 0) {
-                    activityList.innerHTML = '<p style="color: var(--text-secondary); font-style: italic;">No activity recorded yet. Start browsing the portfolio to see real-time data!</p>';
-                    return;
-                }
-
-                const activityHTML = interactions.map(interaction => {
-                    const timeAgo = this.getTimeAgo(interaction.timestamp);
-                    return `
-                        <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; border-left: 3px solid var(--text-accent);">
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="color: var(--text-primary); font-weight: 600;">${interaction.action || 'Page View'}</span>
-                                <span style="color: var(--text-secondary); font-size: 0.8rem;">${timeAgo}</span>
-                            </div>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0.3rem 0 0 0;">${interaction.element || 'Unknown section'}</p>
-                        </div>
-                    `;
-                }).join('');
-
-                activityList.innerHTML = activityHTML;
-            }
-
-            getTimeAgo(timestamp) {
-                if (!timestamp) return 'Unknown time';
-                const now = Date.now();
-                const diff = now - timestamp;
-                const seconds = Math.floor(diff / 1000);
-                const minutes = Math.floor(seconds / 60);
-                const hours = Math.floor(minutes / 60);
-
-                if (hours > 0) return `${hours}h ago`;
-                if (minutes > 0) return `${minutes}m ago`;
-                return `${seconds}s ago`;
-            }
-
-            updateRealTimeMetrics() {
-                const currentTime = Date.now();
-                const sessionDuration = Math.floor((currentTime - this.startTime) / 1000);
-                
-                // Update live session data
-                document.getElementById('sessionDuration').textContent = this.formatTime(sessionDuration);
-                document.getElementById('pagesThisSession').textContent = Object.keys(this.sessionData.sectionViews).length || 0;
-                document.getElementById('interactionsThisSession').textContent = this.sessionData.interactions.filter(i => i.timestamp > this.startTime).length || 0;
-                
-                // Find most viewed section
-                const sectionViews = this.sessionData.sectionViews;
-                const topSection = Object.keys(sectionViews).reduce((a, b) => (sectionViews[a] || 0) > (sectionViews[b] || 0) ? a : b, 'None');
-                document.getElementById('topSection').textContent = topSection || 'None';
-
-                // Update session statistics
-                document.getElementById('totalSessions').textContent = this.sessionData.totalSessions || 1;
-                document.getElementById('avgSessionTime').textContent = this.formatTime(this.calculateAverageTime());
-                
-                // Calculate bounce rate (simplified)
-                const bounceRate = this.sessionData.totalSessions > 0 ? 
-                    Math.max(0, 100 - (Object.keys(this.sessionData.sectionViews).length * 10)) : 0;
-                document.getElementById('bounceRate').textContent = `${bounceRate.toFixed(1)}%`;
-                
-                // Return visitor rate (simplified)
-                const returnRate = Math.min(100, this.sessionData.totalSessions * 5);
-                document.getElementById('returnRate').textContent = `${returnRate.toFixed(1)}%`;
-
-                // Update popular actions
-                this.updatePopularActions();
-            }
-
-            updatePopularActions() {
-                const popularActions = document.getElementById('popularActions');
-                const interactions = this.sessionData.interactions || [];
-                
-                // Count actions
-                const actionCounts = {};
-                interactions.forEach(interaction => {
-                    const action = interaction.action || 'Page View';
-                    actionCounts[action] = (actionCounts[action] || 0) + 1;
-                });
-
-                // Sort by count
-                const sortedActions = Object.entries(actionCounts)
-                    .sort(([,a], [,b]) => b - a)
-                    .slice(0, 5);
-
-                if (sortedActions.length === 0) {
-                    popularActions.innerHTML = '<p style="color: var(--text-secondary); font-style: italic;">No actions recorded yet</p>';
-                    return;
-                }
-
-                const actionsHTML = sortedActions.map(([action, count]) => `
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <span style="color: var(--text-secondary);">${action}</span>
-                        <span style="color: var(--text-accent); font-weight: 600;">${count}</span>
-                    </div>
-                `).join('');
-
-                popularActions.innerHTML = actionsHTML;
-            }
-
             startRealTimeUpdates() {
-                // Update every 5 seconds
-                setInterval(() => {
-                    this.updateRealTimeMetrics();
-                    this.updateActivity();
-                }, 5000);
-
-                // Update charts every 30 seconds
-                setInterval(() => {
+                this.updateInterval = setInterval(() => {
+                    this.loadStoredData();
                     this.updateCharts();
-                }, 30000);
+                }, 5000);
             }
 
             updateCharts() {
-                // Update sections chart
-                if (this.charts.sections) {
-                    const sectionData = this.sessionData.sectionViews;
-                    this.charts.sections.data.labels = Object.keys(sectionData);
-                    this.charts.sections.data.datasets[0].data = Object.values(sectionData);
-                    this.charts.sections.update();
+                if (!this.data) return;
+
+                // Update section chart
+                const sectionViews = this.data.sectionViews || {};
+                if (this.charts.section) {
+                    this.charts.section.data.labels = Object.keys(sectionViews);
+                    this.charts.section.data.datasets[0].data = Object.values(sectionViews);
+                    this.charts.section.update();
                 }
 
-                // Update interactions chart
-                if (this.charts.interactions) {
-                    const interactions = this.sessionData.interactions || [];
-                    const interactionTypes = {};
-                    interactions.forEach(interaction => {
-                        const type = interaction.action || 'Unknown';
-                        interactionTypes[type] = (interactionTypes[type] || 0) + 1;
-                    });
+                // Update interaction chart
+                const interactions = this.data.interactions || [];
+                const categories = {};
+                interactions.forEach(i => {
+                    categories[i.category] = (categories[i.category] || 0) + 1;
+                });
+                if (this.charts.interaction) {
+                    this.charts.interaction.data.labels = Object.keys(categories);
+                    this.charts.interaction.data.datasets[0].data = Object.values(categories);
+                    this.charts.interaction.update();
+                }
 
-                    this.charts.interactions.data.labels = Object.keys(interactionTypes);
-                    this.charts.interactions.data.datasets[0].data = Object.values(interactionTypes);
-                    this.charts.interactions.update();
+                // Update project chart
+                const projectInteractions = this.data.projectInteractions || {};
+                if (this.charts.project) {
+                    this.charts.project.data.labels = Object.keys(projectInteractions);
+                    this.charts.project.data.datasets[0].data = Object.values(projectInteractions);
+                    this.charts.project.update();
+                }
+
+                // Update navigation chart
+                const navigationClicks = this.data.navigationClicks || {};
+                if (this.charts.navigation) {
+                    this.charts.navigation.data.labels = Object.keys(navigationClicks);
+                    this.charts.navigation.data.datasets[0].data = Object.values(navigationClicks);
+                    this.charts.navigation.update();
                 }
             }
 
-            // Method to be called from main portfolio page
-            updateFromPortfolio() {
-                if (window.portfolioAnalytics) {
-                    const report = window.portfolioAnalytics.generateReport();
-                    
-                    // Update session data
-                    this.sessionData.sectionViews = { ...window.portfolioAnalytics.pageViews };
-                    this.sessionData.interactions = [...window.portfolioAnalytics.interactions];
-                    this.sessionData.totalInteractions = report.totalInteractions || 0;
-                    
-                    this.saveSessionData();
-                    this.updateMainStats();
-                    this.updateCharts();
-                }
+            showNoDataMessage() {
+                document.querySelector('.dashboard').innerHTML = `
+                    <div class="no-data">
+                        <h2>📊 No Analytics Data Available</h2>
+                        <p>Visit your portfolio to start generating analytics data!</p>
+                        <a href="index.html" class="back-button" style="position: static; transform: none; margin-top: 1rem;">
+                            <i class="fas fa-arrow-left"></i>
+                            Go to Portfolio
+                        </a>
+                    </div>
+                `;
+            }
+
+            formatTime(milliseconds) {
+                const seconds = Math.floor(milliseconds / 1000);
+                if (seconds < 60) return `${seconds}s`;
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                return `${minutes}m ${remainingSeconds}s`;
             }
         }
 
         // Initialize dashboard when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            const dashboard = new RealAnalyticsDashboard();
-            
-            // Make dashboard globally accessible
-            window.analyticsDashboard = dashboard;
-            
-            // Add animations to cards
-            const cards = document.querySelectorAll('.stat-card, .chart-container, .realtime-card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('animate-in');
-                }, index * 100);
-            });
-
-            console.log('📊 Real Analytics Dashboard Loaded');
-            console.log('💡 Data is now sourced from actual user interactions');
-        });
-
-        // Listen for messages from main portfolio (if opened in iframe or popup)
-        window.addEventListener('message', (event) => {
-            if (event.data.type === 'ANALYTICS_UPDATE' && window.analyticsDashboard) {
-                window.analyticsDashboard.updateFromPortfolio();
-            }
+            new AnalyticsDashboard();
+            console.log('📊 Analytics Dashboard loaded - showing real portfolio data');
         });
     </script>
 </body>

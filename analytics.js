@@ -1,23 +1,20 @@
 
-// Enhanced Portfolio Analytics - Real Data Tracking
+// Portfolio Analytics - Real User Interaction Tracking
 class PortfolioAnalytics {
     constructor() {
-        this.startTime = Date.now();
-        this.interactions = [];
-        this.pageViews = {};
         this.sessionId = this.generateSessionId();
         this.visitorId = this.getOrCreateVisitorId();
+        this.sessionStart = Date.now();
+        this.interactions = [];
+        this.sectionViews = {};
+        this.navigationClicks = {};
+        this.projectInteractions = {};
+        this.timeSpentPerSection = {};
+        this.currentSection = null;
+        this.sectionStartTime = null;
         
-        // Load existing data
-        this.loadStoredData();
-        
-        // Initialize tracking
-        this.initializeTracking();
-        
-        // Send data to backend every 30 seconds
-        this.initializeBackendSync();
-        
-        console.log('📊 Portfolio Analytics initialized with real tracking');
+        this.initialize();
+        console.log('📊 Portfolio Analytics initialized - tracking real interactions only');
     }
 
     generateSessionId() {
@@ -33,106 +30,179 @@ class PortfolioAnalytics {
         return visitorId;
     }
 
-    loadStoredData() {
-        try {
-            const stored = localStorage.getItem('portfolioSessionData');
-            if (stored) {
-                const data = JSON.parse(stored);
-                this.pageViews = {}; // Start fresh for current session
-                this.interactions = []; // Start fresh for current session
-                
-                // Store historical data but start fresh session tracking
-                if (!data.previousSession) {
-                    data.previousSession = {
-                        views: data.totalViews || 0,
-                        interactions: data.totalInteractions || 0,
-                        duration: data.lastSessionDuration || 0,
-                        sessions: data.totalSessions || 0
-                    };
-                }
-                
-                // Increment session count
-                data.totalSessions = (data.totalSessions || 0) + 1;
-                data.lastSession = Date.now();
-                
-                // Update cumulative data
-                data.allTimeViews = (data.allTimeViews || 0) + (data.totalViews || 0);
-                data.allTimeInteractions = (data.allTimeInteractions || 0) + (data.totalInteractions || 0);
-                
-                localStorage.setItem('portfolioSessionData', JSON.stringify(data));
-            } else {
-                // First time visitor
-                const initialData = {
-                    totalSessions: 1,
-                    totalViews: 0,
-                    totalInteractions: 0,
-                    allTimeViews: 0,
-                    allTimeInteractions: 0,
-                    sessionTimes: [],
-                    sectionViews: {},
-                    interactions: [],
-                    lastSession: Date.now(),
-                    firstVisit: Date.now(),
-                    previousSession: {
-                        views: 0,
-                        interactions: 0,
-                        duration: 0,
-                        sessions: 0
-                    }
-                };
-                localStorage.setItem('portfolioSessionData', JSON.stringify(initialData));
-            }
-        } catch (error) {
-            console.warn('Failed to load stored analytics data:', error);
+    initialize() {
+        // Track initial page load
+        this.trackEvent('page_load', 'portfolio_visit', {
+            url: window.location.href,
+            referrer: document.referrer,
+            timestamp: this.sessionStart
+        });
+
+        // Set up all tracking
+        this.setupNavigationTracking();
+        this.setupSectionTracking();
+        this.setupProjectTracking();
+        this.setupContactFormTracking();
+        this.setupScrollTracking();
+        this.setupTimeTracking();
+        this.setupInteractiveElementTracking();
+        
+        // Auto-save and sync
+        this.setupAutoSave();
+        
+        // Save data on page unload
+        window.addEventListener('beforeunload', () => {
+            this.saveSessionData();
+        });
+    }
+
+    trackEvent(category, action, details = {}) {
+        const event = {
+            category,
+            action,
+            details,
+            timestamp: Date.now(),
+            sessionId: this.sessionId,
+            visitorId: this.visitorId,
+            sessionTime: Date.now() - this.sessionStart
+        };
+
+        this.interactions.push(event);
+        console.log(`🎯 ${category}: ${action}`, details);
+        
+        // Keep only last 500 interactions to prevent memory issues
+        if (this.interactions.length > 500) {
+            this.interactions = this.interactions.slice(-250);
         }
     }
 
-    initializeTracking() {
-        // Track actual portfolio visit (someone opening the link)
-        this.trackPortfolioVisit();
-        
-        // Track page load with detailed info
-        this.trackPageView('portfolio_loaded');
-        this.trackInteraction('session_start', `${window.location.href}`, {
-            referrer: document.referrer,
-            userAgent: navigator.userAgent,
-            timestamp: Date.now()
+    setupNavigationTracking() {
+        // Track navigation menu clicks
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const target = link.getAttribute('href');
+                const linkText = link.textContent.trim();
+                
+                this.navigationClicks[linkText] = (this.navigationClicks[linkText] || 0) + 1;
+                
+                this.trackEvent('navigation', 'nav_click', {
+                    target: target,
+                    linkText: linkText,
+                    totalClicks: this.navigationClicks[linkText]
+                });
+            });
         });
 
-        // Track scroll depth
-        this.initializeScrollTracking();
-
-        // Track clicks
-        this.initializeClickTracking();
-
-        // Track time on page
-        this.initializeTimeTracking();
-
-        // Track page visibility
-        this.initializeVisibilityTracking();
-
-        // Track form interactions
-        this.initializeFormTracking();
-
-        // Track mouse movement patterns (simplified)
-        this.initializeMouseTracking();
-
-        // Save data before page unload
-        window.addEventListener('beforeunload', () => {
-            this.trackInteraction('session_end', 'page_unload');
-            this.saveSessionData();
-        });
-
-        // Auto-save every 30 seconds
-        setInterval(() => {
-            this.saveSessionData();
-        }, 30000);
+        // Track mobile menu usage
+        const menuToggle = document.getElementById('menuToggle');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                this.trackEvent('navigation', 'mobile_menu_toggle');
+            });
+        }
     }
 
-    initializeScrollTracking() {
+    setupSectionTracking() {
+        // Track when users enter different sections
+        const sections = document.querySelectorAll('section[id], .hero');
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const sectionId = entry.target.id || entry.target.className.split(' ')[0];
+                
+                if (entry.isIntersecting) {
+                    // User entered section
+                    if (this.currentSection && this.sectionStartTime) {
+                        // Calculate time spent in previous section
+                        const timeSpent = Date.now() - this.sectionStartTime;
+                        this.timeSpentPerSection[this.currentSection] = 
+                            (this.timeSpentPerSection[this.currentSection] || 0) + timeSpent;
+                    }
+                    
+                    this.currentSection = sectionId;
+                    this.sectionStartTime = Date.now();
+                    this.sectionViews[sectionId] = (this.sectionViews[sectionId] || 0) + 1;
+                    
+                    this.trackEvent('section', 'section_view', {
+                        sectionId: sectionId,
+                        viewCount: this.sectionViews[sectionId]
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => sectionObserver.observe(section));
+    }
+
+    setupProjectTracking() {
+        // Track project card interactions
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            const projectTitle = card.querySelector('.project-title')?.textContent || `Project ${index + 1}`;
+            
+            // Track project views (hover)
+            card.addEventListener('mouseenter', () => {
+                this.trackEvent('project', 'project_hover', {
+                    projectTitle: projectTitle,
+                    projectIndex: index
+                });
+            });
+
+            // Track project link clicks
+            card.querySelectorAll('.project-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const linkType = link.textContent.includes('GitHub') ? 'github' :
+                                   link.textContent.includes('Live') ? 'demo' : 'other';
+                    
+                    this.projectInteractions[projectTitle] = 
+                        (this.projectInteractions[projectTitle] || 0) + 1;
+                    
+                    this.trackEvent('project', 'project_link_click', {
+                        projectTitle: projectTitle,
+                        linkType: linkType,
+                        url: link.href,
+                        totalInteractions: this.projectInteractions[projectTitle]
+                    });
+                });
+            });
+        });
+    }
+
+    setupContactFormTracking() {
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            // Track form field focus
+            contactForm.querySelectorAll('input, textarea').forEach(field => {
+                field.addEventListener('focus', () => {
+                    this.trackEvent('contact', 'form_field_focus', {
+                        fieldName: field.name || field.id,
+                        fieldType: field.type || field.tagName.toLowerCase()
+                    });
+                });
+            });
+
+            // Track form submission
+            contactForm.addEventListener('submit', () => {
+                this.trackEvent('contact', 'form_submit', {
+                    formType: 'contact_form'
+                });
+            });
+        }
+
+        // Track contact info clicks
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const contactType = item.querySelector('h4')?.textContent || 'unknown';
+                this.trackEvent('contact', 'contact_info_click', {
+                    contactType: contactType
+                });
+            });
+        });
+    }
+
+    setupScrollTracking() {
         let maxScroll = 0;
-        let scrollMilestones = [25, 50, 75, 90, 100];
-        let reachedMilestones = new Set();
+        const scrollMilestones = [25, 50, 75, 100];
+        const reachedMilestones = new Set();
 
         window.addEventListener('scroll', () => {
             const scrollPercent = Math.round(
@@ -142,392 +212,207 @@ class PortfolioAnalytics {
             if (scrollPercent > maxScroll) {
                 maxScroll = scrollPercent;
                 
-                // Track scroll milestones
                 scrollMilestones.forEach(milestone => {
                     if (scrollPercent >= milestone && !reachedMilestones.has(milestone)) {
                         reachedMilestones.add(milestone);
-                        this.trackInteraction('scroll_milestone', `${milestone}% scrolled`);
+                        this.trackEvent('engagement', 'scroll_milestone', {
+                            percentage: milestone,
+                            maxScroll: scrollPercent
+                        });
                     }
                 });
             }
         });
     }
 
-    initializeClickTracking() {
-        document.addEventListener('click', (event) => {
-            const element = event.target;
-            let elementInfo = '';
-
-            // Get meaningful element information
-            if (element.id) {
-                elementInfo = `#${element.id}`;
-            } else if (element.className) {
-                elementInfo = `.${element.className.split(' ')[0]}`;
-            } else if (element.tagName) {
-                elementInfo = element.tagName.toLowerCase();
-            }
-
-            // Special tracking for important elements
-            if (element.matches('a[href]')) {
-                const href = element.getAttribute('href');
-                this.trackInteraction('link_click', `${elementInfo} -> ${href}`);
-            } else if (element.matches('button') || element.closest('button')) {
-                const button = element.matches('button') ? element : element.closest('button');
-                const buttonText = button.textContent.trim().substring(0, 30);
-                this.trackInteraction('button_click', `${buttonText}`);
-            } else if (element.matches('.project-card') || element.closest('.project-card')) {
-                const projectCard = element.matches('.project-card') ? element : element.closest('.project-card');
-                const projectTitle = projectCard.querySelector('.project-title, h3, h4')?.textContent || 'Unknown Project';
-                this.trackInteraction('project_view', projectTitle);
-            } else if (element.matches('.nav-link, nav a') || element.closest('.nav-link, nav a')) {
-                const navLink = element.matches('.nav-link, nav a') ? element : element.closest('.nav-link, nav a');
-                const navText = navLink.textContent.trim();
-                this.trackInteraction('navigation', navText);
-            } else {
-                this.trackInteraction('click', elementInfo);
-            }
-        });
-    }
-
-    initializeFormTracking() {
-        // Track contact form interactions
-        document.addEventListener('focus', (event) => {
-            if (event.target.matches('input, textarea, select')) {
-                const fieldName = event.target.name || event.target.id || event.target.type;
-                this.trackInteraction('form_field_focus', `Contact form - ${fieldName}`);
-            }
-        });
-
-        document.addEventListener('submit', (event) => {
-            if (event.target.matches('form')) {
-                this.trackInteraction('form_submit', 'Contact form submitted');
-            }
-        });
-    }
-
-    initializeMouseTracking() {
-        let mouseMovements = 0;
-        let lastMouseTime = Date.now();
-
-        document.addEventListener('mousemove', () => {
-            const now = Date.now();
-            if (now - lastMouseTime > 100) { // Throttle to every 100ms
-                mouseMovements++;
-                lastMouseTime = now;
-
-                // Track significant mouse activity
-                if (mouseMovements % 50 === 0) {
-                    this.trackInteraction('mouse_activity', `${mouseMovements} movements`);
-                }
-            }
-        });
-
-        // Track clicks with more detail
-        document.addEventListener('click', (event) => {
-            const rect = event.target.getBoundingClientRect();
-            this.trackInteraction('detailed_click', event.target.tagName, {
-                x: event.clientX,
-                y: event.clientY,
-                elementType: event.target.tagName,
-                elementClass: event.target.className,
-                elementId: event.target.id
-            });
-        });
-    }
-
-    initializeTimeTracking() {
-        // Track time spent in each section
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sectionId = entry.target.id || 
-                                    entry.target.className.split(' ')[0] || 
-                                    entry.target.getAttribute('data-section') ||
-                                    'unknown_section';
-                    this.trackPageView(sectionId);
-                    this.currentSection = sectionId;
-                    this.sectionStartTime = Date.now();
-                } else if (this.currentSection === (entry.target.id || entry.target.className.split(' ')[0])) {
-                    // User left this section
-                    const timeSpent = Date.now() - (this.sectionStartTime || Date.now());
-                    if (timeSpent > 2000) { // Only track if spent more than 2 seconds
-                        this.trackInteraction('time_spent', `${this.currentSection}:${Math.round(timeSpent/1000)}s`);
-                    }
-                }
-            });
-        }, { threshold: 0.5 });
-
-        // Observe all main sections
-        const sectionsToObserve = document.querySelectorAll('section[id], .hero, .about, .projects, .experience, .contact, .skills, header, main');
-        sectionsToObserve.forEach(section => {
-            sectionObserver.observe(section);
-        });
-
-        // If no sections found, observe main content areas
-        if (sectionsToObserve.length === 0) {
-            const fallbackSections = document.querySelectorAll('div[class*="section"], div[class*="container"], main, article');
-            fallbackSections.forEach(section => {
-                sectionObserver.observe(section);
-            });
-        }
-    }
-
-    initializeVisibilityTracking() {
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                this.trackInteraction('page_hidden', 'user_switched_tab');
-            } else {
-                this.trackInteraction('page_visible', 'user_returned_tab');
-            }
-        });
-    }
-
-    initializeBackendSync() {
-        // Send data to backend every 30 seconds
+    setupTimeTracking() {
+        // Track total time on site every 30 seconds
         setInterval(() => {
-            this.syncWithBackend();
+            const timeOnSite = Math.floor((Date.now() - this.sessionStart) / 1000);
+            this.trackEvent('engagement', 'time_milestone', {
+                timeOnSite: timeOnSite,
+                currentSection: this.currentSection
+            });
+        }, 30000);
+    }
+
+    setupInteractiveElementTracking() {
+        // Track hero button clicks
+        document.querySelectorAll('.hero .btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.trackEvent('engagement', 'hero_button_click', {
+                    buttonText: btn.textContent.trim(),
+                    buttonHref: btn.href
+                });
+            });
+        });
+
+        // Track interactive feature clicks
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const featureTitle = card.querySelector('.feature-title')?.textContent || 'unknown';
+                this.trackEvent('interactive', 'feature_click', {
+                    featureTitle: featureTitle
+                });
+            });
+        });
+
+        // Track social media clicks
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const platform = this.detectSocialPlatform(link.href);
+                this.trackEvent('social', 'social_click', {
+                    platform: platform,
+                    url: link.href
+                });
+            });
+        });
+
+        // Track blog article clicks
+        document.querySelectorAll('.blog-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const articleTitle = link.closest('.blog-card')?.querySelector('.blog-title')?.textContent || 'unknown';
+                this.trackEvent('content', 'blog_click', {
+                    articleTitle: articleTitle,
+                    url: link.href
+                });
+            });
+        });
+
+        // Track resume/CV downloads
+        document.querySelectorAll('a[href*="resume"], a[href*="cv"]').forEach(link => {
+            link.addEventListener('click', () => {
+                this.trackEvent('conversion', 'resume_download', {
+                    linkText: link.textContent.trim()
+                });
+            });
+        });
+    }
+
+    detectSocialPlatform(url) {
+        if (url.includes('github')) return 'github';
+        if (url.includes('linkedin')) return 'linkedin';
+        if (url.includes('twitter') || url.includes('x.com')) return 'twitter';
+        if (url.includes('whatsapp') || url.includes('wa.me')) return 'whatsapp';
+        if (url.includes('mailto:')) return 'email';
+        if (url.includes('tel:')) return 'phone';
+        return 'other';
+    }
+
+    setupAutoSave() {
+        // Save data every 30 seconds
+        setInterval(() => {
+            this.saveSessionData();
         }, 30000);
 
-        // Also sync when page becomes visible
-        document.addEventListener('visibilitychange', () => {
-            if (!document.hidden) {
-                this.syncWithBackend();
-            }
-        });
+        // Send data to backend every minute
+        setInterval(() => {
+            this.syncWithBackend();
+        }, 60000);
+    }
+
+    saveSessionData() {
+        try {
+            const sessionData = {
+                sessionId: this.sessionId,
+                visitorId: this.visitorId,
+                sessionStart: this.sessionStart,
+                lastUpdate: Date.now(),
+                interactions: this.interactions,
+                sectionViews: this.sectionViews,
+                navigationClicks: this.navigationClicks,
+                projectInteractions: this.projectInteractions,
+                timeSpentPerSection: this.timeSpentPerSection,
+                totalSessionTime: Date.now() - this.sessionStart
+            };
+
+            localStorage.setItem('portfolioAnalytics', JSON.stringify(sessionData));
+            console.log('💾 Analytics data saved');
+        } catch (error) {
+            console.warn('Failed to save analytics data:', error);
+        }
     }
 
     async syncWithBackend() {
         try {
-            const data = this.generateReport();
+            const reportData = this.generateReport();
             const response = await fetch('/api/analytics', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(reportData)
             });
             
             if (response.ok) {
-                console.log('📊 Analytics data synced with backend');
+                console.log('📊 Analytics synced with backend');
             }
         } catch (error) {
-            // Silently handle backend sync errors
-            console.debug('Backend sync failed, using local storage only:', error);
-        }
-    }
-
-    trackPageView(section) {
-        this.pageViews[section] = (this.pageViews[section] || 0) + 1;
-        
-        // Update stored data
-        this.updateStoredSectionViews();
-        
-        console.log(`📊 Section viewed: ${section} (${this.pageViews[section]} times)`);
-        
-        // Notify analytics dashboard if it exists
-        this.notifyDashboard();
-    }
-
-    trackPortfolioVisit() {
-        // Track actual portfolio visits (when someone opens the link)
-        const stored = JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
-        stored.totalPortfolioViews = (stored.totalPortfolioViews || 0) + 1;
-        stored.allPortfolioVisits = stored.allPortfolioVisits || [];
-        stored.allPortfolioVisits.push({
-            timestamp: Date.now(),
-            sessionId: this.sessionId,
-            visitorId: this.visitorId,
-            referrer: document.referrer,
-            userAgent: navigator.userAgent
-        });
-        
-        // Keep only last 100 visits for storage efficiency
-        if (stored.allPortfolioVisits.length > 100) {
-            stored.allPortfolioVisits = stored.allPortfolioVisits.slice(-100);
-        }
-        
-        localStorage.setItem('portfolioSessionData', JSON.stringify(stored));
-        console.log(`📊 Portfolio visit tracked: ${stored.totalPortfolioViews} total visits`);
-    }
-
-    trackInteraction(action, element, metadata = {}) {
-        const interaction = {
-            action,
-            element,
-            timestamp: Date.now(),
-            timeOnSite: Date.now() - this.startTime,
-            sessionId: this.sessionId,
-            visitorId: this.visitorId,
-            url: window.location.href,
-            userAgent: navigator.userAgent,
-            viewport: `${window.innerWidth}x${window.innerHeight}`,
-            ...metadata
-        };
-
-        this.interactions.push(interaction);
-        
-        // Limit interactions to prevent memory issues
-        if (this.interactions.length > 1000) {
-            this.interactions = this.interactions.slice(-500);
-        }
-
-        // Update stored data
-        this.updateStoredInteractions();
-        
-        console.log(`🎯 Interaction tracked: ${action} on ${element}`);
-        
-        // Notify analytics dashboard if it exists
-        this.notifyDashboard();
-    }
-
-    updateStoredSectionViews() {
-        try {
-            const stored = JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
-            stored.sectionViews = this.pageViews;
-            stored.totalViews = Object.values(this.pageViews).reduce((a, b) => a + b, 0);
-            localStorage.setItem('portfolioSessionData', JSON.stringify(stored));
-        } catch (error) {
-            console.warn('Failed to update stored section views:', error);
-        }
-    }
-
-    updateStoredInteractions() {
-        try {
-            const stored = JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
-            stored.interactions = this.interactions;
-            stored.totalInteractions = this.interactions.length;
-            localStorage.setItem('portfolioSessionData', JSON.stringify(stored));
-        } catch (error) {
-            console.warn('Failed to update stored interactions:', error);
-        }
-    }
-
-    saveSessionData() {
-        try {
-            const sessionDuration = Date.now() - this.startTime;
-            const stored = JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
-            
-            // Store previous session data for comparison
-            stored.previousSession = {
-                views: stored.totalViews || 0,
-                interactions: stored.totalInteractions || 0,
-                duration: stored.lastSessionDuration || 0,
-                sessions: stored.totalSessions || 1
-            };
-            
-            // Add current session time to session times array
-            stored.sessionTimes = stored.sessionTimes || [];
-            stored.sessionTimes.push(sessionDuration);
-            
-            // Keep only last 50 sessions
-            if (stored.sessionTimes.length > 50) {
-                stored.sessionTimes = stored.sessionTimes.slice(-50);
-            }
-            
-            stored.lastSessionDuration = sessionDuration;
-            stored.sectionViews = this.pageViews;
-            stored.interactions = this.interactions;
-            stored.totalInteractions = this.interactions.length;
-            stored.totalViews = Object.values(this.pageViews).reduce((a, b) => a + b, 0);
-            
-            localStorage.setItem('portfolioSessionData', JSON.stringify(stored));
-            console.log('💾 Session data saved');
-
-            // Also send final data to backend
-            this.syncWithBackend();
-        } catch (error) {
-            console.warn('Failed to save session data:', error);
-        }
-    }
-
-    notifyDashboard() {
-        // Try to update analytics dashboard if it's open
-        try {
-            if (window.analyticsDashboard) {
-                window.analyticsDashboard.updateFromPortfolio();
-            }
-            
-            // Also try to send message to analytics window if opened separately
-            if (window.opener && window.opener.analyticsDashboard) {
-                window.opener.analyticsDashboard.updateFromPortfolio();
-            }
-
-            // Post message to any open analytics windows
-            if (typeof BroadcastChannel !== 'undefined') {
-                const channel = new BroadcastChannel('portfolio_analytics');
-                channel.postMessage({
-                    type: 'UPDATE_ANALYTICS',
-                    data: this.generateReport()
-                });
-            }
-        } catch (error) {
-            // Dashboard not available, that's okay
+            console.debug('Backend sync failed (offline mode):', error);
         }
     }
 
     generateReport() {
-        const currentTime = Date.now();
-        const sessionDuration = currentTime - this.startTime;
-        const stored = JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
+        const sessionTime = Date.now() - this.sessionStart;
         
-        const report = {
-            sessionId: this.sessionId,
-            visitorId: this.visitorId,
-            totalTimeOnSite: sessionDuration,
-            totalInteractions: this.interactions.length,
-            totalPageViews: Object.values(this.pageViews).reduce((a, b) => a + b, 0),
-            totalPortfolioViews: stored.totalPortfolioViews || 0,
-            mostViewedSection: this.getMostViewedSection(),
-            pageViews: { ...this.pageViews },
-            interactions: [...this.interactions],
-            sessionStartTime: this.startTime,
-            currentTime: currentTime,
-            userAgent: navigator.userAgent,
-            referrer: document.referrer,
-            screenResolution: `${screen.width}x${screen.height}`,
-            viewportSize: `${window.innerWidth}x${window.innerHeight}`,
-            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-            language: navigator.language
+        return {
+            sessionInfo: {
+                sessionId: this.sessionId,
+                visitorId: this.visitorId,
+                sessionStart: this.sessionStart,
+                sessionDuration: sessionTime,
+                totalInteractions: this.interactions.length
+            },
+            engagement: {
+                sectionViews: this.sectionViews,
+                timeSpentPerSection: this.timeSpentPerSection,
+                mostViewedSection: this.getMostViewedSection(),
+                navigationClicks: this.navigationClicks,
+                totalScrollEvents: this.interactions.filter(i => i.category === 'engagement' && i.action === 'scroll_milestone').length
+            },
+            projects: {
+                projectInteractions: this.projectInteractions,
+                mostInteractedProject: this.getMostInteractedProject()
+            },
+            conversions: {
+                contactFormInteractions: this.interactions.filter(i => i.category === 'contact').length,
+                resumeDownloads: this.interactions.filter(i => i.category === 'conversion').length,
+                socialClicks: this.interactions.filter(i => i.category === 'social').length
+            },
+            technicalInfo: {
+                userAgent: navigator.userAgent,
+                screenResolution: `${screen.width}x${screen.height}`,
+                viewportSize: `${window.innerWidth}x${window.innerHeight}`,
+                referrer: document.referrer,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            },
+            allInteractions: this.interactions
         };
-
-        return report;
     }
 
     getMostViewedSection() {
-        if (Object.keys(this.pageViews).length === 0) return null;
-        
-        return Object.keys(this.pageViews).reduce((a, b) => 
-            this.pageViews[a] > this.pageViews[b] ? a : b
-        );
+        return Object.keys(this.sectionViews).reduce((a, b) => 
+            this.sectionViews[a] > this.sectionViews[b] ? a : b, null);
     }
 
-    getDetailedAnalytics() {
-        const stored = JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
-        const currentReport = this.generateReport();
-        
+    getMostInteractedProject() {
+        return Object.keys(this.projectInteractions).reduce((a, b) => 
+            this.projectInteractions[a] > this.projectInteractions[b] ? a : b, null);
+    }
+
+    // Public methods for debugging
+    getSessionSummary() {
         return {
-            current: currentReport,
-            historical: {
-                totalSessions: stored.totalSessions || 1,
-                averageSessionTime: this.calculateAverageSessionTime(stored.sessionTimes || []),
-                totalHistoricalViews: stored.totalViews || 0,
-                totalHistoricalInteractions: stored.totalInteractions || 0,
-                firstVisit: stored.firstVisit || Date.now(),
-                lastSession: stored.lastSession || Date.now(),
-                returnVisitor: (stored.totalSessions || 1) > 1
-            }
+            sessionDuration: Math.floor((Date.now() - this.sessionStart) / 1000),
+            totalInteractions: this.interactions.length,
+            sectionsViewed: Object.keys(this.sectionViews).length,
+            projectsInteracted: Object.keys(this.projectInteractions).length,
+            mostViewedSection: this.getMostViewedSection()
         };
     }
 
-    calculateAverageSessionTime(sessionTimes) {
-        if (sessionTimes.length === 0) return 0;
-        const sum = sessionTimes.reduce((a, b) => a + b, 0);
-        return Math.round(sum / sessionTimes.length);
-    }
-
-    // Method to export data for analysis
     exportData() {
-        const data = this.getDetailedAnalytics();
+        const data = this.generateReport();
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         
@@ -540,52 +425,32 @@ class PortfolioAnalytics {
         console.log('📊 Analytics data exported');
     }
 
-    // Method to clear all data (for testing)
-    clearAllData() {
-        localStorage.removeItem('portfolioSessionData');
+    clearData() {
+        localStorage.removeItem('portfolioAnalytics');
         localStorage.removeItem('portfolioVisitorId');
-        this.pageViews = {};
-        this.interactions = [];
-        console.log('🧹 All analytics data cleared');
+        console.log('🧹 Analytics data cleared');
     }
 }
 
-// Initialize analytics when script loads (only on portfolio pages, not analytics dashboard)
+// Initialize analytics only on portfolio page (not dashboard)
 if (typeof window !== 'undefined') {
-    // Check if we're on the analytics dashboard page
     const isAnalyticsDashboard = window.location.pathname.includes('analytics.html') || 
-                                document.title.includes('Analytics Dashboard') ||
-                                document.querySelector('.dashboard');
+                                document.title.includes('Analytics Dashboard');
     
     if (!isAnalyticsDashboard) {
         window.portfolioAnalytics = new PortfolioAnalytics();
-        console.log('📊 Portfolio Analytics ready! Use window.getAnalyticsReport() to see data');
+        
+        // Global debugging functions
+        window.getAnalyticsReport = () => window.portfolioAnalytics.generateReport();
+        window.getSessionSummary = () => window.portfolioAnalytics.getSessionSummary();
+        window.exportAnalytics = () => window.portfolioAnalytics.exportData();
+        window.clearAnalytics = () => window.portfolioAnalytics.clearData();
+        
+        console.log('📊 Portfolio Analytics ready! Debug with:');
+        console.log('- window.getSessionSummary()');
+        console.log('- window.getAnalyticsReport()');
+        console.log('- window.exportAnalytics()');
     } else {
-        console.log('📊 Analytics Dashboard detected - tracking disabled to prevent false data');
+        console.log('📊 Analytics Dashboard - tracking disabled');
     }
-    
-    // Make debugging functions globally accessible regardless of page
-    window.getAnalyticsReport = () => {
-        if (window.portfolioAnalytics) {
-            return window.portfolioAnalytics.generateReport();
-        } else {
-            return JSON.parse(localStorage.getItem('portfolioSessionData') || '{}');
-        }
-    };
-    window.exportAnalytics = () => {
-        if (window.portfolioAnalytics) {
-            return window.portfolioAnalytics.exportData();
-        } else {
-            console.log('Analytics not active on this page');
-        }
-    };
-    window.clearAnalytics = () => {
-        if (window.portfolioAnalytics) {
-            return window.portfolioAnalytics.clearAllData();
-        } else {
-            localStorage.removeItem('portfolioSessionData');
-            localStorage.removeItem('portfolioVisitorId');
-            console.log('🧹 Analytics data cleared from storage');
-        }
-    };
 }
