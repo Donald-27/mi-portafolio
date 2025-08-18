@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kiprop Donald - Full-Stack Developer | Resume</title>
-    <meta name="description"
-        content="Professional resume of Kiprop Donald - Award-winning full-stack developer specializing in React, Flask, and modern web technologies.">
+    <meta name="description" content="Professional resume of Kiprop Donald - Award-winning full-stack developer specializing in React, Flask, and modern web technologies.">
 
     <!-- KD Resume Branded Favicons -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='resumeGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230a1628;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23resumeGrad)' rx='15'/%3E%3Ctext x='50' y='40' font-family='Arial,sans-serif' font-size='28' font-weight='bold' text-anchor='middle' fill='white'%3EKD%3C/text%3E%3Ctext x='50' y='65' font-family='Arial,sans-serif' font-size='12' font-weight='normal' text-anchor='middle' fill='%2367e8f9'%3ERESUME%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='resumeGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230a1628;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2306b6d4;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23resumeGrad)' rx='15'/%3E%3Ctext x='50' y='40' font-family='Arial,sans-serif' font-size='28' font-weight='bold' text-anchor='middle' fill='white'%3EKD%3C/text%3E%3Ctext x='50' y='65' font-family='Arial,sans-serif' font-size='12' font-weight='normal' text-anchor='middle' fill='%2367e8f9'%3ERESUME%3C/text%3E%3C/svg%3E">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -58,8 +53,7 @@
         }
 
         /* Base Styles */
-        html,
-        body {
+        html, body {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -161,7 +155,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s;
         }
 
@@ -202,7 +196,7 @@
         .pulse-ring {
             width: 20px;
             height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             position: relative;
             animation: pulseRing 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
@@ -237,30 +231,11 @@
             animation: float 2s ease-in-out infinite;
         }
 
-        .particle:nth-child(1) {
-            left: -10px;
-            animation-delay: 0s;
-        }
-
-        .particle:nth-child(2) {
-            left: -5px;
-            animation-delay: 0.3s;
-        }
-
-        .particle:nth-child(3) {
-            left: 0px;
-            animation-delay: 0.6s;
-        }
-
-        .particle:nth-child(4) {
-            left: 5px;
-            animation-delay: 0.9s;
-        }
-
-        .particle:nth-child(5) {
-            left: 10px;
-            animation-delay: 1.2s;
-        }
+        .particle:nth-child(1) { left: -10px; animation-delay: 0s; }
+        .particle:nth-child(2) { left: -5px; animation-delay: 0.3s; }
+        .particle:nth-child(3) { left: 0px; animation-delay: 0.6s; }
+        .particle:nth-child(4) { left: 5px; animation-delay: 0.9s; }
+        .particle:nth-child(5) { left: 10px; animation-delay: 1.2s; }
 
         .morphing-shape {
             width: 20px;
@@ -284,25 +259,11 @@
             animation: wave 1.2s ease-in-out infinite;
         }
 
-        .wave-bar:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .wave-bar:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .wave-bar:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .wave-bar:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-
-        .wave-bar:nth-child(5) {
-            animation-delay: 0.4s;
-        }
+        .wave-bar:nth-child(1) { animation-delay: 0s; }
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
 
         .loading-orbit {
             position: relative;
@@ -327,7 +288,7 @@
             left: 0;
             width: 20px;
             height: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             animation: rotate 1.5s linear infinite;
         }
@@ -549,9 +510,7 @@
             margin: 0;
         }
 
-        .experience-item,
-        .project-item,
-        .education-item {
+        .experience-item, .project-item, .education-item {
             background: white;
             border-radius: 16px;
             padding: 28px;
@@ -696,12 +655,8 @@
         }
 
         /* Professional PDF Styles for Perfect Output */
-        @media print,
-        .pdf-mode {
-
-            *,
-            *::before,
-            *::after {
+        @media print, .pdf-mode {
+            *, *::before, *::after {
                 -webkit-print-color-adjust: exact !important;
                 color-adjust: exact !important;
                 print-color-adjust: exact !important;
@@ -712,8 +667,7 @@
                 margin: 0;
             }
 
-            html,
-            body {
+            html, body {
                 background: white !important;
                 font-size: 12pt !important;
                 line-height: 1.3 !important;
@@ -856,9 +810,7 @@
                 break-inside: avoid !important;
             }
 
-            .experience-item,
-            .project-item,
-            .education-item {
+            .experience-item, .project-item, .education-item {
                 margin-bottom: 4mm !important;
                 padding: 4mm !important;
                 page-break-inside: avoid !important;
@@ -920,8 +872,7 @@
                 font-size: 7px !important;
             }
 
-            .footer-note,
-            .footer-credits {
+            .footer-note, .footer-credits {
                 font-size: 7px !important;
                 color: #94a3b8 !important;
             }
@@ -929,13 +880,8 @@
 
         /* Unique Loading Animations */
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @keyframes pulseRing {
@@ -943,12 +889,10 @@
                 transform: scale(1);
                 opacity: 1;
             }
-
             50% {
                 transform: scale(1.3);
                 opacity: 0.7;
             }
-
             100% {
                 transform: scale(1);
                 opacity: 1;
@@ -959,29 +903,23 @@
             0% {
                 transform: translate(-50%, -50%) scale(1);
             }
-
             50% {
                 transform: translate(-50%, -50%) scale(0.8);
             }
-
             100% {
                 transform: translate(-50%, -50%) scale(1);
             }
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0) scale(1);
                 opacity: 0.3;
             }
-
             25% {
                 transform: translateY(-8px) scale(1.2);
                 opacity: 1;
             }
-
             75% {
                 transform: translateY(-4px) scale(0.9);
                 opacity: 0.8;
@@ -993,22 +931,18 @@
                 border-radius: 50%;
                 transform: rotate(0deg) scale(1);
             }
-
             25% {
                 border-radius: 20%;
                 transform: rotate(90deg) scale(1.1);
             }
-
             50% {
                 border-radius: 10%;
                 transform: rotate(180deg) scale(0.9);
             }
-
             75% {
                 border-radius: 30%;
                 transform: rotate(270deg) scale(1.05);
             }
-
             100% {
                 border-radius: 50%;
                 transform: rotate(360deg) scale(1);
@@ -1016,13 +950,10 @@
         }
 
         @keyframes wave {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: scaleY(0.5);
                 opacity: 0.7;
             }
-
             50% {
                 transform: scaleY(1.5);
                 opacity: 1;
@@ -1033,35 +964,27 @@
             0% {
                 transform: rotate(0deg);
             }
-
             100% {
                 transform: rotate(360deg);
             }
         }
 
         @keyframes shake {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateX(0);
             }
-
             25% {
                 transform: translateX(-5px);
             }
-
             75% {
                 transform: translateX(5px);
             }
         }
 
         @keyframes bounce {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
             }
-
             50% {
                 transform: scale(1.2);
             }
@@ -1093,8 +1016,7 @@
     <!-- Header Actions -->
     <div class="resume-container">
         <div class="header-actions">
-            <button class="download-button" onclick="downloadProfessionalPDF()"
-                title="Download Complete Resume as Normal PDF Document">
+            <button class="download-button" onclick="downloadProfessionalPDF()" title="Download Complete Resume as Normal PDF Document">
                 <div class="button-content">
                     <i class="fas fa-file-pdf"></i>
                     <span>Download Resume (PDF)</span>
@@ -1133,18 +1055,15 @@
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-linkedin"></i>
-                        <a class="contact-link" href="https://linkedin.com/in/kiprop-donald-56b898352"
-                            target="_blank">linkedin.com/in/kiprop-donald</a>
+                        <a class="contact-link" href="https://linkedin.com/in/kiprop-donald-56b898352" target="_blank">linkedin.com/in/kiprop-donald</a>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-github"></i>
-                        <a class="contact-link" href="https://github.com/Donald-27"
-                            target="_blank">github.com/Donald-27</a>
+                        <a class="contact-link" href="https://github.com/Donald-27" target="_blank">github.com/Donald-27</a>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-medium"></i>
-                        <a class="contact-link" href="https://medium.com/@donnald27"
-                            target="_blank">medium.com/@donnald27</a>
+                        <a class="contact-link" href="https://medium.com/@donnald27" target="_blank">medium.com/@donnald27</a>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-whatsapp"></i>
@@ -1280,27 +1199,17 @@
                         <h3>Professional Summary</h3>
                     </div>
                     <p style="font-size: 15px; line-height: 1.6; color: var(--slate-700); margin-bottom: 16px;">
-                        Full-stack software developer from Eldoret, Kenya, with expertise in React, Flask, and Python.
-                        Distinguished Moringa School graduate specializing in scalable applications for healthcare,
-                        travel, and productivity sectors. Successfully delivered 25+ production-ready applications with
-                        consistent client satisfaction.
+                        Full-stack software developer from Eldoret, Kenya, with expertise in React, Flask, and Python. Distinguished Moringa School graduate specializing in scalable applications for healthcare, travel, and productivity sectors. Successfully delivered 25+ production-ready applications with consistent client satisfaction.
                     </p>
                     <p style="font-size: 14px; line-height: 1.5; color: var(--slate-600); margin-bottom: 16px;">
-                        <strong>Core Philosophy:</strong> "I Code by day && Debug by night. Deliver quality code every
-                        time." - Passionate about solving real-world problems through innovative digital solutions.
+                        <strong>Core Philosophy:</strong> "I Code by day && Debug by night. Deliver quality code every time." - Passionate about solving real-world problems through innovative digital solutions.
                     </p>
-                    <div
-                        style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 16px; border-radius: 12px; border-left: 4px solid var(--teal-primary);">
-                        <h5 style="margin: 0 0 10px 0; color: var(--navy-primary); font-size: 15px;">What Sets Me Apart:
-                        </h5>
-                        <ul
-                            style="margin: 0; padding-left: 18px; color: var(--slate-700); font-size: 13px; line-height: 1.4;">
-                            <li style="margin-bottom: 4px;">25+ production applications with 200+ GitHub repositories
-                            </li>
-                            <li style="margin-bottom: 4px;">Expertise in both frontend aesthetics and backend
-                                architecture</li>
-                            <li style="margin-bottom: 4px;">Proven track record in healthcare, travel, and document
-                                systems</li>
+                    <div style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 16px; border-radius: 12px; border-left: 4px solid var(--teal-primary);">
+                        <h5 style="margin: 0 0 10px 0; color: var(--navy-primary); font-size: 15px;">What Sets Me Apart:</h5>
+                        <ul style="margin: 0; padding-left: 18px; color: var(--slate-700); font-size: 13px; line-height: 1.4;">
+                            <li style="margin-bottom: 4px;">25+ production applications with 200+ GitHub repositories</li>
+                            <li style="margin-bottom: 4px;">Expertise in both frontend aesthetics and backend architecture</li>
+                            <li style="margin-bottom: 4px;">Proven track record in healthcare, travel, and document systems</li>
                             <li style="margin-bottom: 4px;">Strong focus on user-centered design and performance</li>
                             <li>Active technical writer and community contributor</li>
                         </ul>
@@ -1321,32 +1230,28 @@
                                 <i class="fas fa-code" style="font-size: 20px;"></i>
                             </div>
                             <div class="achievement-title" style="font-size: 16px;">25+ Projects</div>
-                            <div class="achievement-desc" style="font-size: 12px;">Successfully delivered across
-                                multiple industries</div>
+                            <div class="achievement-desc" style="font-size: 12px;">Successfully delivered across multiple industries</div>
                         </div>
                         <div class="achievement-card" style="padding: 20px;">
                             <div class="achievement-icon" style="width: 48px; height: 48px; margin-bottom: 12px;">
                                 <i class="fas fa-users" style="font-size: 20px;"></i>
                             </div>
                             <div class="achievement-title" style="font-size: 16px;">100% Satisfaction</div>
-                            <div class="achievement-desc" style="font-size: 12px;">Consistent client ratings and repeat
-                                business</div>
+                            <div class="achievement-desc" style="font-size: 12px;">Consistent client ratings and repeat business</div>
                         </div>
                         <div class="achievement-card" style="padding: 20px;">
                             <div class="achievement-icon" style="width: 48px; height: 48px; margin-bottom: 12px;">
                                 <i class="fas fa-graduation-cap" style="font-size: 20px;"></i>
                             </div>
                             <div class="achievement-title" style="font-size: 16px;">Moringa Graduate</div>
-                            <div class="achievement-desc" style="font-size: 12px;">Top 10% graduate from intensive
-                                bootcamp</div>
+                            <div class="achievement-desc" style="font-size: 12px;">Top 10% graduate from intensive bootcamp</div>
                         </div>
                         <div class="achievement-card" style="padding: 20px;">
                             <div class="achievement-icon" style="width: 48px; height: 48px; margin-bottom: 12px;">
                                 <i class="fas fa-blog" style="font-size: 20px;"></i>
                             </div>
                             <div class="achievement-title" style="font-size: 16px;">Technical Writer</div>
-                            <div class="achievement-desc" style="font-size: 12px;">Published articles and community
-                                contributions</div>
+                            <div class="achievement-desc" style="font-size: 12px;">Published articles and community contributions</div>
                         </div>
                     </div>
                 </div>
@@ -1360,10 +1265,8 @@
                         <h3>Core Competencies</h3>
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-                        <div
-                            style="background: white; padding: 16px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 8px 0; font-size: 14px; display: flex; align-items: center; gap: 8px;">
+                        <div style="background: white; padding: 16px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 8px 0; font-size: 14px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fab fa-react" style="color: var(--teal-primary);"></i>
                                 Frontend Development
                             </h5>
@@ -1371,10 +1274,8 @@
                                 React, JavaScript, TypeScript, Tailwind CSS, Responsive Design, UI/UX Principles
                             </div>
                         </div>
-                        <div
-                            style="background: white; padding: 16px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 8px 0; font-size: 14px; display: flex; align-items: center; gap: 8px;">
+                        <div style="background: white; padding: 16px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 8px 0; font-size: 14px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fas fa-server" style="color: var(--emerald-primary);"></i>
                                 Backend Development
                             </h5>
@@ -1400,8 +1301,7 @@
                 <div class="sidebar-block">
                     <h4><i class="fas fa-lightbulb"></i>Philosophy</h4>
                     <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
-                        "Code is poetry written in logic. Every line should tell a story, solve a problem, and inspire
-                        innovation."
+                        "Code is poetry written in logic. Every line should tell a story, solve a problem, and inspire innovation."
                     </div>
                 </div>
 
@@ -1422,12 +1322,9 @@
                 <div class="sidebar-block">
                     <h4><i class="fas fa-industry"></i>Industry Focus</h4>
                     <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
-                        <div style="margin-bottom: 8px;"><strong>Healthcare:</strong> Patient management, appointment
-                            systems, medical documentation</div>
-                        <div style="margin-bottom: 8px;"><strong>Transportation:</strong> Booking platforms, vehicle
-                            registration, logistics</div>
-                        <div style="margin-bottom: 8px;"><strong>Entertainment:</strong> Event scheduling, cinema
-                            listings, show management</div>
+                        <div style="margin-bottom: 8px;"><strong>Healthcare:</strong> Patient management, appointment systems, medical documentation</div>
+                        <div style="margin-bottom: 8px;"><strong>Transportation:</strong> Booking platforms, vehicle registration, logistics</div>
+                        <div style="margin-bottom: 8px;"><strong>Entertainment:</strong> Event scheduling, cinema listings, show management</div>
                         <div><strong>Productivity:</strong> Document generation, workflow automation</div>
                     </div>
                 </div>
@@ -1466,9 +1363,7 @@
                             <div class="item-date">2025 - Present</div>
                         </div>
                         <div class="item-description">
-                            Developing end-to-end web applications using React, Flask, and modern web technologies.
-                            Successfully delivered 25+ projects across healthcare, travel, and productivity domains with
-                            consistent client satisfaction and repeat business.
+                            Developing end-to-end web applications using React, Flask, and modern web technologies. Successfully delivered 25+ projects across healthcare, travel, and productivity domains with consistent client satisfaction and repeat business.
                             <br><br>
                             <strong>Key Accomplishments:</strong>
                             <ul>
@@ -1501,9 +1396,7 @@
                             <div class="item-date">2024 - 2025</div>
                         </div>
                         <div class="item-description">
-                            Completed intensive full-stack development bootcamp covering modern web technologies,
-                            software engineering principles, and professional development practices. Graduated with
-                            honors after building multiple real-world projects.
+                            Completed intensive full-stack development bootcamp covering modern web technologies, software engineering principles, and professional development practices. Graduated with honors after building multiple real-world projects.
                             <br><br>
                             <strong>Key Learning Areas:</strong>
                             <ul>
@@ -1535,9 +1428,7 @@
                             <div class="item-date">2022 - 2024</div>
                         </div>
                         <div class="item-description">
-                            Started learning programming fundamentals through online resources, built small projects,
-                            and discovered passion for creating digital solutions that solve real problems. Transitioned
-                            from Actuarial Science background to technology.
+                            Started learning programming fundamentals through online resources, built small projects, and discovered passion for creating digital solutions that solve real problems. Transitioned from Actuarial Science background to technology.
                             <br><br>
                             <strong>Learning Milestones:</strong>
                             <ul>
@@ -1662,9 +1553,7 @@
                             <div class="item-date">2024 - 2025</div>
                         </div>
                         <div class="item-description">
-                            A world-class courier and delivery management platform with real-time tracking, smart
-                            courier assignment, and performance analytics. Built for speed, beauty, and scalability with
-                            comprehensive admin dashboard and user-friendly interface.
+                            A world-class courier and delivery management platform with real-time tracking, smart courier assignment, and performance analytics. Built for speed, beauty, and scalability with comprehensive admin dashboard and user-friendly interface.
                             <br><br>
                             <strong>Key Features:</strong>
                             <ul>
@@ -1675,9 +1564,7 @@
                                 <li>Secure payment integration and processing</li>
                                 <li>Admin panel for comprehensive management</li>
                             </ul>
-                            <strong>Live Demo:</strong> <a href="https://deliveroo-courier-services.netlify.app/"
-                                target="_blank"
-                                style="color: var(--teal-primary);">deliveroo-courier-services.netlify.app</a>
+                            <strong>Live Demo:</strong> <a href="https://deliveroo-courier-services.netlify.app/" target="_blank" style="color: var(--teal-primary);">deliveroo-courier-services.netlify.app</a>
                         </div>
                         <div class="item-skills">
                             <span class="skill-badge">React</span>
@@ -1699,9 +1586,7 @@
                             <div class="item-date">2025</div>
                         </div>
                         <div class="item-description">
-                            A comprehensive travel booking platform for matatus and buses across Kenya with real-time
-                            vehicle registration, route management, and passenger booking system. Addresses local
-                            transportation challenges with modern technology.
+                            A comprehensive travel booking platform for matatus and buses across Kenya with real-time vehicle registration, route management, and passenger booking system. Addresses local transportation challenges with modern technology.
                             <br><br>
                             <strong>Key Features:</strong>
                             <ul>
@@ -1712,9 +1597,7 @@
                                 <li>Schedule management and notifications</li>
                                 <li>Rating and review system</li>
                             </ul>
-                            <strong>Live Demo:</strong> <a href="https://relaxed-cuchufli-e6b142.netlify.app"
-                                target="_blank"
-                                style="color: var(--teal-primary);">relaxed-cuchufli-e6b142.netlify.app</a>
+                            <strong>Live Demo:</strong> <a href="https://relaxed-cuchufli-e6b142.netlify.app" target="_blank" style="color: var(--teal-primary);">relaxed-cuchufli-e6b142.netlify.app</a>
                         </div>
                         <div class="item-skills">
                             <span class="skill-badge">React</span>
@@ -1735,8 +1618,7 @@
                             <div class="item-date">2024</div>
                         </div>
                         <div class="item-description">
-                            Complete hospital management system for patients and doctors with appointment booking,
-                            emergency handling, patient records, and comprehensive healthcare workflow management.
+                            Complete hospital management system for patients and doctors with appointment booking, emergency handling, patient records, and comprehensive healthcare workflow management.
                             <br><br>
                             <strong>Key Features:</strong>
                             <ul>
@@ -1747,9 +1629,7 @@
                                 <li>Prescription management system</li>
                                 <li>Hospital resource allocation</li>
                             </ul>
-                            <strong>Live Demo:</strong> <a href="https://ephemeral-snickerdoodle-b34edb.netlify.app/"
-                                target="_blank"
-                                style="color: var(--teal-primary);">ephemeral-snickerdoodle-b34edb.netlify.app</a>
+                            <strong>Live Demo:</strong> <a href="https://ephemeral-snickerdoodle-b34edb.netlify.app/" target="_blank" style="color: var(--teal-primary);">ephemeral-snickerdoodle-b34edb.netlify.app</a>
                         </div>
                         <div class="item-skills">
                             <span class="skill-badge">React</span>
@@ -1842,9 +1722,7 @@
                             <div class="item-date">2025</div>
                         </div>
                         <div class="item-description">
-                            Professional doctor notes generator with logos, stamps, watermarks, and digital signatures
-                            for healthcare facilities. Streamlines medical documentation with customizable templates and
-                            professional formatting.
+                            Professional doctor notes generator with logos, stamps, watermarks, and digital signatures for healthcare facilities. Streamlines medical documentation with customizable templates and professional formatting.
                             <br><br>
                             <strong>Key Features:</strong>
                             <ul>
@@ -1855,9 +1733,7 @@
                                 <li>PDF generation with high-quality output</li>
                                 <li>Medical compliance standards</li>
                             </ul>
-                            <strong>Live Demo:</strong> <a href="https://doctor-notes-generator.netlify.app/"
-                                target="_blank"
-                                style="color: var(--teal-primary);">doctor-notes-generator.netlify.app</a>
+                            <strong>Live Demo:</strong> <a href="https://doctor-notes-generator.netlify.app/" target="_blank" style="color: var(--teal-primary);">doctor-notes-generator.netlify.app</a>
                         </div>
                         <div class="item-skills">
                             <span class="skill-badge">React</span>
@@ -1877,8 +1753,7 @@
                             <div class="item-date">2025</div>
                         </div>
                         <div class="item-description">
-                            Event scheduling and listing platform perfect for cinemas, theaters, and live events with
-                            real-time show times, seat booking, and comprehensive event management capabilities.
+                            Event scheduling and listing platform perfect for cinemas, theaters, and live events with real-time show times, seat booking, and comprehensive event management capabilities.
                             <br><br>
                             <strong>Key Features:</strong>
                             <ul>
@@ -1889,8 +1764,7 @@
                                 <li>Ticket pricing and promotion system</li>
                                 <li>User reviews and ratings</li>
                             </ul>
-                            <strong>Live Demo:</strong> <a href="https://lateshow.netlify.app/" target="_blank"
-                                style="color: var(--teal-primary);">lateshow.netlify.app</a>
+                            <strong>Live Demo:</strong> <a href="https://lateshow.netlify.app/" target="_blank" style="color: var(--teal-primary);">lateshow.netlify.app</a>
                         </div>
                         <div class="item-skills">
                             <span class="skill-badge">React</span>
@@ -1919,9 +1793,7 @@
                             <div class="item-date">2024 - 2025</div>
                         </div>
                         <div class="item-description">
-                            Intensive bootcamp covering modern web development technologies, software engineering
-                            principles, and professional development practices. Graduated with honors after completing
-                            multiple real-world projects.
+                            Intensive bootcamp covering modern web development technologies, software engineering principles, and professional development practices. Graduated with honors after completing multiple real-world projects.
                             <br><br>
                             <strong>Curriculum Highlights:</strong>
                             <ul>
@@ -1952,9 +1824,7 @@
                             <div class="item-date">2021 - Present</div>
                         </div>
                         <div class="item-description">
-                            Strong foundation in mathematics, statistics, and analytical thinking. This background
-                            provides excellent problem-solving skills and logical reasoning that directly transfer to
-                            software development.
+                            Strong foundation in mathematics, statistics, and analytical thinking. This background provides excellent problem-solving skills and logical reasoning that directly transfer to software development.
                             <br><br>
                             <strong>Relevant Skills Gained:</strong>
                             <ul>
@@ -1982,8 +1852,7 @@
                             <div class="item-date"></div>
                         </div>
                         <div class="item-description">
-                            Completed secondary education with grade B, demonstrating strong academic performance across
-                            core subjects. Developed foundational analytical and problem-solving skills.
+                            Completed secondary education with grade B, demonstrating strong academic performance across core subjects. Developed foundational analytical and problem-solving skills.
                             <br><br>
                             <strong>Academic Highlights:</strong>
                             <ul>
@@ -2016,20 +1885,16 @@
                     <h4><i class="fas fa-heart"></i>Core Values</h4>
                     <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
                         <div style="margin-bottom: 12px;">
-                            <strong style="color: var(--teal-accent);">Innovation:</strong> Always seeking creative
-                            solutions to complex problems
+                            <strong style="color: var(--teal-accent);">Innovation:</strong> Always seeking creative solutions to complex problems
                         </div>
                         <div style="margin-bottom: 12px;">
-                            <strong style="color: var(--teal-accent);">Quality:</strong> Committed to delivering
-                            exceptional code and user experiences
+                            <strong style="color: var(--teal-accent);">Quality:</strong> Committed to delivering exceptional code and user experiences
                         </div>
                         <div style="margin-bottom: 12px;">
-                            <strong style="color: var(--teal-accent);">Growth:</strong> Continuous learning and skill
-                            development
+                            <strong style="color: var(--teal-accent);">Growth:</strong> Continuous learning and skill development
                         </div>
                         <div>
-                            <strong style="color: var(--teal-accent);">Impact:</strong> Building solutions that make a
-                            real difference
+                            <strong style="color: var(--teal-accent);">Impact:</strong> Building solutions that make a real difference
                         </div>
                     </div>
                 </div>
@@ -2040,8 +1905,7 @@
                     <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
                         <div style="margin-bottom: 8px;">• Leading STEM clubs at local school</div>
                         <div style="margin-bottom: 8px;">• Coordinating volunteer-driven coding jams</div>
-                        <div style="margin-bottom: 8px;">• Advocating for sustainable tech practices in the community
-                        </div>
+                        <div style="margin-bottom: 8px;">• Advocating for sustainable tech practices in the community</div>
                         <div style="margin-bottom: 8px;">• Active Medium contributor</div>
                         <div>• Digital literacy training programs</div>
                     </div>
@@ -2083,60 +1947,43 @@
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                         <!-- Testimonial 1 -->
-                        <div
-                            style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 24px; border-radius: 16px; border: 1px solid var(--slate-200); box-shadow: var(--shadow-sm);">
+                        <div style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 24px; border-radius: 16px; border: 1px solid var(--slate-200); box-shadow: var(--shadow-sm);">
                             <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-                                <div
-                                    style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
                                     BK
                                 </div>
                                 <div>
-                                    <h5
-                                        style="margin: 0; color: var(--navy-primary); font-size: 16px; font-weight: 700;">
-                                        Bernard Koegei</h5>
-                                    <div style="color: var(--teal-secondary); font-size: 14px; font-weight: 600;">
-                                        Software Developer</div>
+                                    <h5 style="margin: 0; color: var(--navy-primary); font-size: 16px; font-weight: 700;">Bernard Koegei</h5>
+                                    <div style="color: var(--teal-secondary); font-size: 14px; font-weight: 600;">Software Developer</div>
                                     <div style="color: var(--slate-500); font-size: 13px;">W-elgido Developers</div>
                                 </div>
                             </div>
-                            <div
-                                style="color: var(--slate-600); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
-                                "Kiprop delivered an exceptional healthcare management system that transformed our
-                                patient care processes. His attention to detail and understanding of medical workflows
-                                is outstanding."
+                            <div style="color: var(--slate-600); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
+                                "Kiprop delivered an exceptional healthcare management system that transformed our patient care processes. His attention to detail and understanding of medical workflows is outstanding."
                             </div>
                             <div style="color: var(--slate-500); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i>
-                                    onesmuskiprono20@gmail.com</div>
+                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> onesmuskiprono20@gmail.com</div>
                                 <div><i class="fas fa-phone"></i> +254 721 654 900</div>
                             </div>
                         </div>
 
                         <!-- Testimonial 2 -->
-                        <div
-                            style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 24px; border-radius: 16px; border: 1px solid var(--slate-200); box-shadow: var(--shadow-sm);">
+                        <div style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 24px; border-radius: 16px; border: 1px solid var(--slate-200); box-shadow: var(--shadow-sm);">
                             <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-                                <div
-                                    style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--amber-primary), var(--amber-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--amber-primary), var(--amber-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
                                     WK
                                 </div>
                                 <div>
-                                    <h5
-                                        style="margin: 0; color: var(--navy-primary); font-size: 16px; font-weight: 700;">
-                                        Weldon Korir</h5>
-                                    <div style="color: var(--amber-secondary); font-size: 14px; font-weight: 600;">
-                                        Software Developer</div>
+                                    <h5 style="margin: 0; color: var(--navy-primary); font-size: 16px; font-weight: 700;">Weldon Korir</h5>
+                                    <div style="color: var(--amber-secondary); font-size: 14px; font-weight: 600;">Software Developer</div>
                                     <div style="color: var(--slate-500); font-size: 13px;">Tech Innovators Kenya</div>
                                 </div>
                             </div>
-                            <div
-                                style="color: var(--slate-600); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
-                                "Collaborated on multiple projects and mentorship programs. Kiprop's code quality,
-                                teamwork, and professional growth mindset are exemplary. Highly recommended!"
+                            <div style="color: var(--slate-600); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
+                                "Collaborated on multiple projects and mentorship programs. Kiprop's code quality, teamwork, and professional growth mindset are exemplary. Highly recommended!"
                             </div>
                             <div style="color: var(--slate-500); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i>
-                                    weldonkorir305@gmail.com</div>
+                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> weldonkorir305@gmail.com</div>
                                 <div><i class="fas fa-phone"></i> +254 718 925 150</div>
                             </div>
                         </div>
@@ -2154,59 +2001,44 @@
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                         <!-- Article 1 -->
-                        <div
-                            style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fab fa-medium" style="color: var(--teal-primary);"></i>
                                 Healthcare Apps with Flask & React
                             </h5>
-                            <div
-                                style="color: var(--slate-600); font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
-                                Deep dive into building comprehensive healthcare management systems using modern
-                                technologies and best practices.
+                            <div style="color: var(--slate-600); font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
+                                Deep dive into building comprehensive healthcare management systems using modern technologies and best practices.
                             </div>
                             <div style="color: var(--teal-primary); font-size: 13px;">
-                                <a href="https://medium.com/@donnald27/from-sick-notes-to-emergencies-building-a-full-stack-healthcare-app-with-flask-react-7b6e131a58fe"
-                                    target="_blank">Read on Medium →</a>
+                                <a href="https://medium.com/@donnald27/from-sick-notes-to-emergencies-building-a-full-stack-healthcare-app-with-flask-react-7b6e131a58fe" target="_blank">Read on Medium →</a>
                             </div>
                         </div>
 
                         <!-- Article 2 -->
-                        <div
-                            style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fab fa-medium" style="color: var(--emerald-primary);"></i>
                                 From Cyber Café to Full-Stack Dev
                             </h5>
-                            <div
-                                style="color: var(--slate-600); font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
-                                Personal journey from fixing printers to building production-level applications and
-                                career transition insights.
+                            <div style="color: var(--slate-600); font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
+                                Personal journey from fixing printers to building production-level applications and career transition insights.
                             </div>
                             <div style="color: var(--emerald-primary); font-size: 13px;">
-                                <a href="https://medium.com/@donnald27/from-matatuconnect-to-full-stack-dev-how-i-went-from-cyber-café-to-code-083e96c614ea"
-                                    target="_blank">Read on Medium →</a>
+                                <a href="https://medium.com/@donnald27/from-matatuconnect-to-full-stack-dev-how-i-went-from-cyber-café-to-code-083e96c614ea" target="_blank">Read on Medium →</a>
                             </div>
                         </div>
 
                         <!-- Article 3 -->
-                        <div
-                            style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fab fa-medium" style="color: var(--amber-primary);"></i>
                                 "It Worked in My Head": Developer's Tale
                             </h5>
-                            <div
-                                style="color: var(--slate-600); font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
-                                Humorous yet insightful look at debugging, learning from mistakes, and the beautiful
-                                chaos of development.
+                            <div style="color: var(--slate-600); font-size: 14px; line-height: 1.6; margin-bottom: 12px;">
+                                Humorous yet insightful look at debugging, learning from mistakes, and the beautiful chaos of development.
                             </div>
                             <div style="color: var(--amber-primary); font-size: 13px;">
-                                <a href="https://medium.com/@donnald27/it-worked-in-my-head-a-developers-tale-2658444c1059"
-                                    target="_blank">Read on Medium →</a>
+                                <a href="https://medium.com/@donnald27/it-worked-in-my-head-a-developers-tale-2658444c1059" target="_blank">Read on Medium →</a>
                             </div>
                         </div>
                     </div>
@@ -2219,435 +2051,9 @@
         </div>
     </section>
 
-    <!-- Page 6: Additional Projects & Skills -->
-    <section class="resume-sheet">
-        <div class="page">
-            <aside class="sidebar">
-                <!-- Additional Skills -->
-                <div class="sidebar-block">
-                    <h4><i class="fas fa-plus-circle"></i>Additional Skills</h4>
-                    <div class="skill-category">
-                        <h5>Documentation</h5>
-                        <span class="skill-tag">Technical Writing</span>
-                        <span class="skill-tag">API Documentation</span>
-                        <span class="skill-tag">User Guides</span>
-                        <span class="skill-tag">Help Center Content</span>
-                    </div>
-                    <div class="skill-category">
-                        <h5>Design</h5>
-                        <span class="skill-tag">UI/UX Principles</span>
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">Canva</span>
-                        <span class="skill-tag">Adobe Illustrator</span>
-                    </div>
-                    <div class="skill-category">
-                        <h5>Soft Skills</h5>
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Team Collaboration</span>
-                        <span class="skill-tag">Client Communication</span>
-                        <span class="skill-tag">Project Management</span>
-                    </div>
-                </div>
+    
 
-                <!-- Certifications -->
-                <div class="sidebar-block">
-                    <h4><i class="fas fa-certificate"></i>Certifications</h4>
-                    <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
-                        <div style="margin-bottom: 12px;">
-                            <strong>Full-Stack Development Certificate</strong><br>
-                            Moringa School (2024-2025)
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <strong>React Development</strong><br>
-                            Advanced Components & State Management
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <strong>Flask Web Development</strong><br>
-                            API Design & Database Integration
-                        </div>
-                        <div>
-                            <strong>Git & Version Control</strong><br>
-                            Collaborative Development Practices
-                        </div>
-                    </div>
-                </div>
-            </aside>
-
-            <main class="content">
-                <!-- Additional Projects -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-folder-open"></i>
-                        </div>
-                        <h3>Additional Projects</h3>
-                    </div>
-
-                    <!-- Doctor Notes Generator -->
-                    <div class="project-item">
-                        <div class="item-header">
-                            <div>
-                                <h4 class="item-title">Doctor Notes Generator</h4>
-                                <div class="item-company">Professional Documentation Tool</div>
-                            </div>
-                            <div class="item-date">2024</div>
-                        </div>
-                        <div class="item-description">
-                            Professional doctor notes generator with logos, stamps, watermarks, and digital signatures
-                            for healthcare facilities. Streamlines medical documentation with customizable templates and
-                            professional formatting.
-                            <br><br>
-                            <strong>Key Features:</strong>
-                            <ul>
-                                <li>Custom logo and letterhead integration</li>
-                                <li>Digital signature implementation</li>
-                                <li>Professional watermarks and stamps</li>
-                                <li>Template customization system</li>
-                                <li>PDF generation with high-quality output</li>
-                                <li>Medical compliance standards</li>
-                            </ul>
-                            <strong>Live Demo:</strong> <a href="https://doctor-notes-generator.netlify.app/"
-                                target="_blank"
-                                style="color: var(--teal-primary);">doctor-notes-generator.netlify.app</a>
-                        </div>
-                        <div class="item-skills">
-                            <span class="skill-badge">React</span>
-                            <span class="skill-badge">PDF Generation</span>
-                            <span class="skill-badge">Digital Signatures</span>
-                            <span class="skill-badge">Template Engine</span>
-                        </div>
-                    </div>
-
-                    <!-- LateShow Platform -->
-                    <div class="project-item">
-                        <div class="item-header">
-                            <div>
-                                <h4 class="item-title">LateShow Entertainment Platform</h4>
-                                <div class="item-company">Event Scheduling System</div>
-                            </div>
-                            <div class="item-date">2024</div>
-                        </div>
-                        <div class="item-description">
-                            Event scheduling and listing platform perfect for cinemas, theaters, and live events with
-                            real-time show times, seat booking, and comprehensive event management capabilities.
-                            <br><br>
-                            <strong>Key Features:</strong>
-                            <ul>
-                                <li>Real-time show scheduling and updates</li>
-                                <li>Seat reservation and booking system</li>
-                                <li>Event category management</li>
-                                <li>Venue and capacity management</li>
-                                <li>Ticket pricing and promotion system</li>
-                                <li>User reviews and ratings</li>
-                            </ul>
-                            <strong>Live Demo:</strong> <a href="https://lateshow.netlify.app/" target="_blank"
-                                style="color: var(--teal-primary);">lateshow.netlify.app</a>
-                        </div>
-                        <div class="item-skills">
-                            <span class="skill-badge">React</span>
-                            <span class="skill-badge">Event Management</span>
-                            <span class="skill-badge">Booking System</span>
-                            <span class="skill-badge">Real-time Updates</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Education -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>Education</h3>
-                    </div>
-
-                    <div class="education-item">
-                        <div class="item-header">
-                            <div>
-                                <h4 class="item-title">Full-Stack Software Development</h4>
-                                <div class="item-company">Moringa School</div>
-                            </div>
-                            <div class="item-date">2024 - 2025</div>
-                        </div>
-                        <div class="item-description">
-                            Intensive bootcamp covering modern web development technologies, software engineering
-                            principles, and professional development practices. Graduated with honors after completing
-                            multiple real-world projects.
-                            <br><br>
-                            <strong>Curriculum Highlights:</strong>
-                            <ul>
-                                <li>Frontend Development: React, JavaScript, HTML/CSS</li>
-                                <li>Backend Development: Flask, Python, SQLAlchemy</li>
-                                <li>Database Design and Management</li>
-                                <li>RESTful API Development</li>
-                                <li>Version Control with Git</li>
-                                <li>Testing and Debugging Methodologies</li>
-                                <li>Agile Development Practices</li>
-                            </ul>
-                        </div>
-                        <div class="item-skills">
-                            <span class="skill-badge">React</span>
-                            <span class="skill-badge">Flask</span>
-                            <span class="skill-badge">Python</span>
-                            <span class="skill-badge">SQLAlchemy</span>
-                            <span class="skill-badge">Git</span>
-                        </div>
-                    </div>
-
-                    <div class="education-item">
-                        <div class="item-header">
-                            <div>
-                                <h4 class="item-title">Bachelor of Science in Actuarial Science</h4>
-                                <div class="item-company">University of Eldoret</div>
-                            </div>
-                            <div class="item-date">2022 - Present</div>
-                        </div>
-                        <div class="item-description">
-                            Strong foundation in mathematics, statistics, and analytical thinking. This background
-                            provides excellent problem-solving skills and logical reasoning that directly transfer to
-                            software development.
-                            <br><br>
-                            <strong>Relevant Skills Gained:</strong>
-                            <ul>
-                                <li>Advanced mathematical and statistical analysis</li>
-                                <li>Data modeling and interpretation</li>
-                                <li>Risk assessment and management</li>
-                                <li>Logical problem-solving approaches</li>
-                                <li>Financial systems understanding</li>
-                            </ul>
-                        </div>
-                        <div class="item-skills">
-                            <span class="skill-badge">Mathematics</span>
-                            <span class="skill-badge">Statistics</span>
-                            <span class="skill-badge">Data Analysis</span>
-                            <span class="skill-badge">Problem Solving</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Footer -->
-                <div class="footer-note">Page 6 • Community Impact & Personal Information</div>
-                <div class="footer-credits">Designed & Developed by Kiprop Donald • 2025</div>
-            </main>
-        </div>
-    </section>
-
-    <!-- Page 7: Professional Portfolio Showcase -->
-    <section class="resume-sheet">
-        <div class="page">
-            <aside class="sidebar">
-                <!-- Professional Development -->
-                <div class="sidebar-block">
-                    <h4><i class="fas fa-chart-line"></i>Professional Growth</h4>
-                    <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
-                        <div style="margin-bottom: 12px;">
-                            <strong style="color: var(--teal-accent);">2022:</strong> Started self-learning programming
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <strong style="color: var(--teal-accent);">2024:</strong> Enrolled at Moringa School
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <strong style="color: var(--teal-accent);">2025:</strong> Graduated with honors
-                        </div>
-                        <div>
-                            <strong style="color: var(--teal-accent);">Present:</strong> Full-stack professional
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GitHub Portfolio -->
-                <div class="sidebar-block">
-                    <h4><i class="fab fa-github"></i>GitHub Portfolio</h4>
-                    <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
-                        <div style="margin-bottom: 8px;">• 200+ repositories</div>
-                        <div style="margin-bottom: 8px;">• 25+ production applications</div>
-                        <div style="margin-bottom: 8px;">• Open source contributions</div>
-                        <div style="margin-bottom: 8px;">• Collaborative projects</div>
-                        <div>• Continuous learning documentation</div>
-                    </div>
-                </div>
-
-                <!-- Technical Highlights -->
-                <div class="sidebar-block">
-                    <h4><i class="fas fa-star"></i>Technical Highlights</h4>
-                    <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
-                        <div style="margin-bottom: 12px;">
-                            <strong style="color: var(--amber-primary);">React Mastery</strong><br>
-                            Complex state management & components
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <strong style="color: var(--amber-primary);">Flask Excellence</strong><br>
-                            RESTful APIs & database integration
-                        </div>
-                        <div style="margin-bottom: 12px;">
-                            <strong style="color: var(--amber-primary);">UI/UX Design</strong><br>
-                            Responsive & accessible interfaces
-                        </div>
-                        <div>
-                            <strong style="color: var(--amber-primary);">Problem Solving</strong><br>
-                            Creative solutions to complex challenges
-                        </div>
-                    </div>
-                </div>
-            </aside>
-
-            <main class="content">
-                <!-- Project Portfolio Overview -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-code-branch"></i>
-                        </div>
-                        <h3>Project Portfolio Overview</h3>
-                    </div>
-
-                    <div
-                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
-                        <!-- Healthcare Projects -->
-                        <div
-                            style="background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                                <i class="fas fa-heartbeat" style="font-size: 24px;"></i>
-                                <h5 style="margin: 0; font-size: 18px; font-weight: 700;">Healthcare Solutions</h5>
-                            </div>
-                            <div style="font-size: 14px; line-height: 1.5; margin-bottom: 12px;">
-                                Comprehensive medical systems including patient management, appointment scheduling, and
-                                professional documentation tools.
-                            </div>
-                            <div style="font-size: 12px; opacity: 0.9;">
-                                3 Major Projects | Full-Stack Implementation
-                            </div>
-                        </div>
-
-                        <!-- Travel & Transportation -->
-                        <div
-                            style="background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                                <i class="fas fa-route" style="font-size: 24px;"></i>
-                                <h5 style="margin: 0; font-size: 18px; font-weight: 700;">Travel Platforms</h5>
-                            </div>
-                            <div style="font-size: 14px; line-height: 1.5; margin-bottom: 12px;">
-                                Booking systems, vehicle registration, and delivery management platforms with real-time
-                                tracking capabilities.
-                            </div>
-                            <div style="font-size: 12px; opacity: 0.9;">
-                                5 Major Projects | Payment Integration
-                            </div>
-                        </div>
-
-                        <!-- Entertainment & Media -->
-                        <div
-                            style="background: linear-gradient(135deg, var(--amber-primary), var(--amber-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                                <i class="fas fa-film" style="font-size: 24px;"></i>
-                                <h5 style="margin: 0; font-size: 18px; font-weight: 700;">Entertainment Apps</h5>
-                            </div>
-                            <div style="font-size: 14px; line-height: 1.5; margin-bottom: 12px;">
-                                Event scheduling, cinema listings, and show management systems with interactive user
-                                experiences.
-                            </div>
-                            <div style="font-size: 12px; opacity: 0.9;">
-                                2 Major Projects | Event Management
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Technical Architecture -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-sitemap"></i>
-                        </div>
-                        <h3>Technical Architecture Expertise</h3>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <!-- Frontend Architecture -->
-                        <div
-                            style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 16px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
-                                <i class="fab fa-react" style="color: var(--teal-primary);"></i>
-                                Frontend Architecture
-                            </h5>
-                            <div style="color: var(--slate-600); font-size: 13px; line-height: 1.6;">
-                                <div style="margin-bottom: 8px;">• Component-based design patterns</div>
-                                <div style="margin-bottom: 8px;">• State management with hooks</div>
-                                <div style="margin-bottom: 8px;">• Responsive grid systems</div>
-                                <div style="margin-bottom: 8px;">• Performance optimization</div>
-                                <div>• Accessibility compliance</div>
-                            </div>
-                        </div>
-
-                        <!-- Backend Architecture -->
-                        <div
-                            style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 16px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
-                                <i class="fas fa-server" style="color: var(--emerald-primary);"></i>
-                                Backend Architecture
-                            </h5>
-                            <div style="color: var(--slate-600); font-size: 13px; line-height: 1.6;">
-                                <div style="margin-bottom: 8px;">• RESTful API design</div>
-                                <div style="margin-bottom: 8px;">• Database optimization</div>
-                                <div style="margin-bottom: 8px;">• Authentication systems</div>
-                                <div style="margin-bottom: 8px;">• Error handling & logging</div>
-                                <div>• Security best practices</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Performance Metrics -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <h3>Project Performance Metrics</h3>
-                    </div>
-
-                    <div
-                        style="background: linear-gradient(135deg, var(--slate-50), var(--slate-100)); padding: 24px; border-radius: 16px; border: 1px solid var(--slate-200);">
-                        <div
-                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center;">
-                            <div>
-                                <div
-                                    style="font-size: 28px; font-weight: 800; color: var(--emerald-primary); margin-bottom: 4px;">
-                                    100%</div>
-                                <div style="color: var(--slate-600); font-size: 13px;">On-Time Delivery</div>
-                            </div>
-                            <div>
-                                <div
-                                    style="font-size: 28px; font-weight: 800; color: var(--teal-primary); margin-bottom: 4px;">
-                                    95%</div>
-                                <div style="color: var(--slate-600); font-size: 13px;">Client Satisfaction</div>
-                            </div>
-                            <div>
-                                <div
-                                    style="font-size: 28px; font-weight: 800; color: var(--amber-primary); margin-bottom: 4px;">
-                                    0</div>
-                                <div style="color: var(--slate-600); font-size: 13px;">Critical Bugs</div>
-                            </div>
-                            <div>
-                                <div
-                                    style="font-size: 28px; font-weight: 800; color: var(--navy-primary); margin-bottom: 4px;">
-                                    25+</div>
-                                <div style="color: var(--slate-600); font-size: 13px;">Projects Delivered</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Footer -->
-                <div class="footer-note">Page 7 • Portfolio Showcase & Technical Architecture</div>
-                <div class="footer-credits">Designed & Developed by Kiprop Donald • 2025</div>
-            </main>
-        </div>
-    </section>
-
-    <!-- Page 8: Contact & References -->
+    <!-- Page 6: Contact & References -->
     <section class="resume-sheet">
         <div class="page">
             <aside class="sidebar">
@@ -2708,10 +2114,8 @@
                 <!-- Final Quote -->
                 <div class="sidebar-block">
                     <h4><i class="fas fa-quote-right"></i>Final Thought</h4>
-                    <div
-                        style="color: var(--slate-200); font-size: 13px; line-height: 1.6; font-style: italic; text-align: center;">
-                        "Every great developer you know got there by solving problems they were unqualified to solve
-                        until they actually did it."
+                    <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6; font-style: italic; text-align: center;">
+                        "Every great developer you know got there by solving problems they were unqualified to solve until they actually did it."
                         <br><br>
                         <strong style="color: var(--teal-accent);">Ready to solve the next challenge together.</strong>
                     </div>
@@ -2730,195 +2134,40 @@
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                         <!-- Reference 1 -->
-                        <div
-                            style="background: linear-gradient(135deg, var(--navy-primary), var(--navy-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
+                        <div style="background: linear-gradient(135deg, var(--navy-primary), var(--navy-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
                             <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-                                <div
-                                    style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
                                     BK
                                 </div>
                                 <div>
                                     <h5 style="margin: 0; font-size: 16px; font-weight: 700;">Bernard Kosgei</h5>
-                                    <div style="color: var(--teal-accent); font-size: 14px; font-weight: 600;">Software
-                                        Developer</div>
+                                    <div style="color: var(--teal-accent); font-size: 14px; font-weight: 600;">Software Developer</div>
                                     <div style="color: var(--slate-300); font-size: 13px;">Fellow Developer</div>
                                 </div>
                             </div>
-                            <div
-                                style="color: var(--slate-200); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
-                                Can provide insights into learning progression, technical skills, and professional
-                                development during bootcamp training.
+                            <div style="color: var(--slate-200); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
+                                Can provide insights into learning progression, technical skills, and professional development during bootcamp training.
                             </div>
                             <div style="color: var(--slate-300); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i>
-                                    onesmuskiprono20@gmail.com</div>
+                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> onesmuskiprono20@gmail.com</div>
                                 <div><i class="fas fa-phone"></i> +254 721 654 900</div>
                             </div>
                         </div>
 
                         <!-- Reference 2 -->
-                        <div
-                            style="background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
+                        <div style="background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
                             <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-                                <div
-                                    style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--amber-primary), var(--amber-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+                                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--amber-primary), var(--amber-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
                                     EK
                                 </div>
                                 <div>
                                     <h5 style="margin: 0; font-size: 16px; font-weight: 700;">Eliphaz Kiprono</h5>
-                                    <div style="color: var(--slate-100); font-size: 14px; font-weight: 600;">Software
-                                        Developer</div>
+                                    <div style="color: var(--slate-100); font-size: 14px; font-weight: 600;">Software Developer</div>
                                     <div style="color: var(--slate-200); font-size: 13px;">Crown paints</div>
                                 </div>
                             </div>
-                            <div
-                                style="color: var(--slate-100); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
-                                Industry mentor and technical advisor. Provided guidance on professional development and
-                                can speak to technical competency and growth potential.
-                            </div>
-                            <div style="color: var(--slate-200); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> dorisjeptoo@gmail</div>
-                                <div><i class="fas fa-phone"></i> +254 796 700 452</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Footer -->
-                <div class="footer-note">Page 6 • Community Impact & Personal Information</div>
-                <div class="footer-credits">Designed & Developed by Kiprop Donald • 2025</div>
-            </main>
-        </div>
-    </section>
-
-    <!-- Page 7: Contact & References -->
-    <section class="resume-sheet">
-        <div class="page">
-            <aside class="sidebar">
-                <!-- Quick Stats Summary -->
-                <div class="sidebar-block">
-                    <h4><i class="fas fa-chart-bar"></i>Summary Stats</h4>
-                    <div class="stat-item">
-                        <div>
-                            <div class="stat-number">7</div>
-                            <div class="stat-label">Resume Pages</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div>
-                            <div class="stat-number">25+</div>
-                            <div class="stat-label">Total Projects</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div>
-                            <div class="stat-number">15+</div>
-                            <div class="stat-label">Technologies</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div>
-                            <div class="stat-number">3+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div>
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Client Satisfaction</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Preferences -->
-                <div class="sidebar-block">
-                    <h4><i class="fas fa-handshake"></i>Contact Preferences</h4>
-                    <div style="color: var(--slate-200); font-size: 13px; line-height: 1.6;">
-                        <div style="margin-bottom: 8px;">
-                            <strong style="color: var(--teal-accent);">Best Contact:</strong> Email or WhatsApp
-                        </div>
-                        <div style="margin-bottom: 8px;">
-                            <strong style="color: var(--teal-accent);">Response Time:</strong> Within 12 hours
-                        </div>
-                        <div style="margin-bottom: 8px;">
-                            <strong style="color: var(--teal-accent);">Meeting:</strong> Video calls preferred
-                        </div>
-                        <div>
-                            <strong style="color: var(--teal-accent);">Availability:</strong> 24/7 for urgent matters
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Final Quote -->
-                <div class="sidebar-block">
-                    <h4><i class="fas fa-quote-right"></i>Final Thought</h4>
-                    <div
-                        style="color: var(--slate-200); font-size: 13px; line-height: 1.6; font-style: italic; text-align: center;">
-                        "Every great developer you know got there by solving problems they were unqualified to solve
-                        until they actually did it."
-                        <br><br>
-                        <strong style="color: var(--teal-accent);">Ready to solve the next challenge together.</strong>
-                    </div>
-                </div>
-            </aside>
-
-            <main class="content">
-                <!-- Professional References -->
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <h3>Professional References</h3>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                        <!-- Reference 1 -->
-                        <div
-                            style="background: linear-gradient(135deg, var(--navy-primary), var(--navy-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
-                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-                                <div
-                                    style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--teal-primary), var(--teal-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
-                                    BK
-                                </div>
-                                <div>
-                                    <h5 style="margin: 0; font-size: 16px; font-weight: 700;">Bernard Kosgei</h5>
-                                    <div style="color: var(--teal-accent); font-size: 14px; font-weight: 600;">Software
-                                        Developer</div>
-                                    <div style="color: var(--slate-300); font-size: 13px;">Fellow Developer</div>
-                                </div>
-                            </div>
-                            <div
-                                style="color: var(--slate-200); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
-                                Can provide insights into learning progression, technical skills, and professional
-                                development during bootcamp training.
-                            </div>
-                            <div style="color: var(--slate-300); font-size: 12px;">
-                                <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i>
-                                    onesmuskiprono20@gmail.com</div>
-                                <div><i class="fas fa-phone"></i> +254 721 654 900</div>
-                            </div>
-                        </div>
-
-                        <!-- Reference 2 -->
-                        <div
-                            style="background: linear-gradient(135deg, var(--emerald-primary), var(--emerald-secondary)); color: white; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lg);">
-                            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-                                <div
-                                    style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--amber-primary), var(--amber-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
-                                    EK
-                                </div>
-                                <div>
-                                    <h5 style="margin: 0; font-size: 16px; font-weight: 700;">Eliphaz Kiprono</h5>
-                                    <div style="color: var(--slate-100); font-size: 14px; font-weight: 600;">Software
-                                        Developer</div>
-                                    <div style="color: var(--slate-200); font-size: 13px;">Crown paints</div>
-                                </div>
-                            </div>
-                            <div
-                                style="color: var(--slate-100); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
-                                Industry mentor and technical advisor. Provided guidance on professional development and
-                                can speak to technical competency and growth potential.
+                            <div style="color: var(--slate-100); font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
+                                Industry mentor and technical advisor. Provided guidance on professional development and can speak to technical competency and growth potential.
                             </div>
                             <div style="color: var(--slate-200); font-size: 12px;">
                                 <div style="margin-bottom: 4px;"><i class="fas fa-envelope"></i> dorisjeptoo@gmail</div>
@@ -2939,10 +2188,8 @@
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                         <!-- Volunteer Work -->
-                        <div
-                            style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fas fa-heart" style="color: var(--emerald-primary);"></i>
                                 Volunteer Work
                             </h5>
@@ -2954,10 +2201,8 @@
                         </div>
 
                         <!-- Personal Projects -->
-                        <div
-                            style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fas fa-lightbulb" style="color: var(--amber-primary);"></i>
                                 Personal Interests
                             </h5>
@@ -2970,10 +2215,8 @@
                         </div>
 
                         <!-- Hobbies -->
-                        <div
-                            style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
-                            <h5
-                                style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--slate-200);">
+                            <h5 style="color: var(--navy-primary); margin: 0 0 12px 0; font-size: 16px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fas fa-gamepad" style="color: var(--teal-primary);"></i>
                                 Hobbies & Interests
                             </h5>
@@ -2989,27 +2232,21 @@
 
                 <!-- Call to Action -->
                 <div class="section">
-                    <div
-                        style="background: linear-gradient(135deg, var(--navy-primary), var(--navy-secondary)); color: white; padding: 40px; border-radius: 16px; text-align: center; box-shadow: var(--shadow-xl);">
-                        <h3 style="margin: 0 0 16px 0; font-size: 28px; font-weight: 800;">Let's Build Something Amazing
-                            Together</h3>
+                    <div style="background: linear-gradient(135deg, var(--navy-primary), var(--navy-secondary)); color: white; padding: 40px; border-radius: 16px; text-align: center; box-shadow: var(--shadow-xl);">
+                        <h3 style="margin: 0 0 16px 0; font-size: 28px; font-weight: 800;">Let's Build Something Amazing Together</h3>
                         <p style="margin: 0 0 24px 0; font-size: 16px; color: var(--slate-200); line-height: 1.6;">
-                            Ready to transform your ideas into exceptional digital solutions? Let's discuss your next
-                            project and create something that makes a real impact.
+                            Ready to transform your ideas into exceptional digital solutions? Let's discuss your next project and create something that makes a real impact.
                         </p>
                         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                            <a href="mailto:kipropdonald27@gmail.com"
-                                style="display: inline-flex; align-items: center; gap: 8px; background: var(--teal-primary); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                            <a href="mailto:kipropdonald27@gmail.com" style="display: inline-flex; align-items: center; gap: 8px; background: var(--teal-primary); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
                                 <i class="fas fa-envelope"></i>
                                 Send Email
                             </a>
-                            <a href="https://wa.me/254724779523"
-                                style="display: inline-flex; align-items: center; gap: 8px; background: var(--emerald-primary); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                            <a href="https://wa.me/254724779523" style="display: inline-flex; align-items: center; gap: 8px; background: var(--emerald-primary); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
                                 <i class="fab fa-whatsapp"></i>
                                 WhatsApp
                             </a>
-                            <a href="https://linkedin.com/in/kiprop-donald-56b898352" target="_blank"
-                                style="display: inline-flex; align-items: center; gap: 8px; background: var(--amber-primary); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                            <a href="https://linkedin.com/in/kiprop-donald-56b898352" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: var(--amber-primary); color: white; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
                                 <i class="fab fa-linkedin"></i>
                                 LinkedIn
                             </a>
@@ -3148,7 +2385,7 @@
                 pdf.setTextColor(...colors.muted);
                 pdf.setFont('times', 'normal');
                 pdf.setFontSize(8);
-                pdf.text('kipropdonald27@gmail.com | +254 724 779 523 | GitHub: Donald-27', pageWidth / 2, pageHeight - 8, { align: 'center' });
+                pdf.text('kipropdonald27@gmail.com | +254 724 779 523 | GitHub: Donald-27', pageWidth/2, pageHeight - 8, { align: 'center' });
             }
 
             // Section Header Function
@@ -3174,16 +2411,16 @@
                 pdf.setTextColor(...colors.white);
                 pdf.setFont('times', 'bold');
                 pdf.setFontSize(24);
-                pdf.text('KIPROP DONALD', pageWidth / 2, 20, { align: 'center' });
+                pdf.text('KIPROP DONALD', pageWidth/2, 20, { align: 'center' });
 
                 // Title
                 pdf.setFont('times', 'normal');
                 pdf.setFontSize(14);
-                pdf.text('Full-Stack Software Developer', pageWidth / 2, 30, { align: 'center' });
+                pdf.text('Full-Stack Software Developer', pageWidth/2, 30, { align: 'center' });
 
                 // Location
                 pdf.setFontSize(10);
-                pdf.text('Eldoret, Kenya | Remote Available', pageWidth / 2, 40, { align: 'center' });
+                pdf.text('Eldoret, Kenya | Remote Available', pageWidth/2, 40, { align: 'center' });
 
                 currentY = 60;
 
@@ -3595,11 +2832,11 @@
                 pdf.setTextColor(...colors.white);
                 pdf.setFont('times', 'bold');
                 pdf.setFontSize(12);
-                pdf.text('Ready to Build Exceptional Solutions', pageWidth / 2, currentY + 10, { align: 'center' });
+                pdf.text('Ready to Build Exceptional Solutions', pageWidth/2, currentY + 10, { align: 'center' });
 
                 pdf.setFont('times', 'normal');
                 pdf.setFontSize(9);
-                pdf.text('Let\'s discuss how I can contribute to your next project', pageWidth / 2, currentY + 18, { align: 'center' });
+                pdf.text('Let\'s discuss how I can contribute to your next project', pageWidth/2, currentY + 18, { align: 'center' });
 
                 addFooter(4);
             }
@@ -3614,5 +2851,4 @@
         }
     </script>
 </body>
-
 </html>
