@@ -1844,6 +1844,49 @@
     </style>
 <!-- Analytics Script -->
     <script src="analytics.js"></script>
+    <!-- Initialize portfolio-specific tracking -->
+    <script>
+        // Additional portfolio-specific tracking
+        document.addEventListener('DOMContentLoaded', () => {
+            // Track dev humor button clicks
+            const devHumorBtn = document.querySelector('.dev-humor-btn');
+            if (devHumorBtn) {
+                devHumorBtn.addEventListener('click', () => {
+                    if (window.portfolioAnalytics) {
+                        window.portfolioAnalytics.trackInteraction('engagement', 'dev_humor_click', {
+                            timestamp: Date.now()
+                        });
+                    }
+                });
+            }
+
+            // Track theme toggle if it exists
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    if (window.portfolioAnalytics) {
+                        window.portfolioAnalytics.trackInteraction('ui', 'theme_toggle', {
+                            timestamp: Date.now()
+                        });
+                    }
+                });
+            }
+
+            // Track analytics dashboard link clicks
+            const analyticsLinks = document.querySelectorAll('a[href*="analytics"]');
+            analyticsLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.portfolioAnalytics) {
+                        window.portfolioAnalytics.trackInteraction('navigation', 'analytics_dashboard_click', {
+                            timestamp: Date.now()
+                        });
+                    }
+                });
+            });
+
+            console.log('📊 Portfolio-specific analytics tracking initialized');
+        });
+    </script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -2397,29 +2440,27 @@
                         <h3 class="timeline-title">Full-Stack Software Engineering Student</h3>
                         <p class="timeline-company">Moringa School</p>
                         <p class="timeline-description">
-                            Completed intensive program covering modern web development technologies. 
+                            Completed intensive program covering modern web development, database design, 
+                            API development, and software engineering best practices. 
                             Built multiple projects using React, Python, Flask, and databases. 
 
                         </p>
                     </div>
                 </div>
 
-
-<div class="timeline-item">
-    <div class="timeline-dot"></div>
-    <div class="timeline-content">
-        <div class="timeline-date">2021 - 2025</div>
-        <h3 class="timeline-title">Actuarial Science</h3>
-        <p class="timeline-company">University of Eldoret</p>
-        <p class="timeline-description">
-            Studied Actuarial Science, developing strong analytical and mathematical skills. 
-            This background provides unique perspective on data analysis, statistical modeling, 
-            and risk assessment in software development.
-        </p>
-    </div>
-</div>
-
-
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2025</div>
+                        <h3 class="timeline-title">Actuarial Science</h3>
+                        <p class="timeline-company">University of Eldoret</p>
+                        <p class="timeline-description">
+                            Studied Actuarial Science, developing strong analytical and mathematical skills. 
+                            This background provides unique perspective on data analysis, statistical modeling, 
+                            and risk assessment in software development.
+                        </p>
+                    </div>
+                </div>
 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -2431,6 +2472,21 @@
                             Began self-learning programming through online resources, building foundational 
                             projects and discovering passion for software development. Transitioned from 
                             theoretical mathematics to practical programming applications.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018 - 2021</div>
+                        <h3 class="timeline-title">Kenya Certificate of Secondary Education (KCSE)</h3>
+                        <p class="timeline-company">Terige Boys High School</p>
+                        <p class="timeline-description">
+                            Completed secondary education with grade B, demonstrating strong academic performance 
+                            and developing foundational analytical and problem-solving skills through mathematics 
+                            and sciences. This educational foundation laid the groundwork for my technical career 
+                            and logical thinking approach to programming.
                         </p>
                     </div>
                 </div>
@@ -2498,17 +2554,16 @@
                     </div>
                     <div class="education-content">
                         <h3 class="education-title">Kenya Certificate of Secondary Education (KCSE)</h3>
-                        <p class="education-institution">Secondary Education</p>
-                        <p class="education-date">Grade: B (Plain)</p>
+                        <p class="education-institution">Terige Boys High School</p>
+                        <p class="education-date">2018 - 2021 | Grade: B</p>
                         <p class="education-description">
-                            Completed secondary education with a strong foundation in mathematics, sciences, and languages. 
-                            Achieved a B grade demonstrating solid academic performance across all subjects.
+                            Completed Kenya Certificate of Secondary Education (KCSE) with grade B at Terige Boys High School. Developed strong analytical and problem-solving skills through mathematics and sciences, laying the foundation for my technical career.
                         </p>
                         <div class="education-skills">
                             <span class="skill-tag">Mathematics</span>
-                            <span class="skill-tag">Sciences</span>
-                            <span class="skill-tag">Languages</span>
-                            <span class="skill-tag">Critical Thinking</span>
+                            <span class="skill-tag">Physics</span>
+                            <span class="skill-tag">Chemistry</span>
+                            <span class="skill-tag">Leadership</span>
                         </div>
                     </div>
                 </div>
@@ -3067,8 +3122,6 @@
         </div>
     </footer>
 
-    <!-- Load analytics.js -->
-    <script src="analytics.js"></script>
     <script>
         // Loading Screen
         window.addEventListener('load', () => {

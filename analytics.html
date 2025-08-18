@@ -717,18 +717,37 @@
             }
 
             startRealTimeUpdates() {
+                // Update every 1 second for true real-time feel
                 this.updateInterval = setInterval(() => {
                     this.loadStoredData();
                     this.updateCharts();
-                }, 2000); // Update every 2 seconds for real-time feel
+                    this.updateLiveData();
+                }, 1000);
                 
-                // Also listen for storage changes (when data is updated from other tabs)
+                // Listen for storage changes (when data is updated from other tabs)
                 window.addEventListener('storage', (e) => {
                     if (e.key === 'portfolioAnalytics') {
                         this.loadStoredData();
                         this.updateCharts();
+                        this.updateLiveData();
                     }
                 });
+
+                // Also poll for data changes in the same tab
+                this.pollForChanges();
+            }
+
+            pollForChanges() {
+                let lastDataString = '';
+                setInterval(() => {
+                    const currentDataString = localStorage.getItem('portfolioAnalytics');
+                    if (currentDataString && currentDataString !== lastDataString) {
+                        lastDataString = currentDataString;
+                        this.loadStoredData();
+                        this.updateCharts();
+                        this.updateLiveData();
+                    }
+                }, 500);
             }
 
             updateCharts() {
