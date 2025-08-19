@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
     <title>Kiprop Donald - Elite Software Developer</title>
 
     <!-- KD Branded Favicons -->
@@ -1607,7 +1607,13 @@
 
         @media (max-width: 768px) {
             body {
-                font-size: 12px;
+                font-size: 14px;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+            }
+
+            html {
+                height: -webkit-fill-available;
             }
 
             .navbar {
@@ -1681,9 +1687,10 @@
             }
 
             .hero {
-                padding: 55px 0.8rem 1rem 0.8rem;
+                padding: 60px 1rem 2rem 1rem;
                 text-align: center;
-                min-height: auto;
+                min-height: calc(100vh - 60px);
+                min-height: calc(100dvh - 60px);
             }
 
             .hero-subtitle {
@@ -1692,16 +1699,16 @@
             }
 
             .hero-title {
-                font-size: clamp(1.2rem, 5vw, 2rem);
-                line-height: 1.1;
-                margin-bottom: 0.8rem;
+                font-size: clamp(1.4rem, 6vw, 2.2rem);
+                line-height: 1.2;
+                margin-bottom: 1rem;
             }
 
             .hero-description {
-                font-size: 0.8rem;
-                line-height: 1.4;
-                margin-bottom: 0.8rem;
-                padding: 0 0.3rem;
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 1.2rem;
+                padding: 0 0.5rem;
             }
 
             .hero-content {
@@ -1737,11 +1744,12 @@
             }
 
             .btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.75rem;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.85rem;
                 width: 100%;
-                max-width: 200px;
+                max-width: 250px;
                 justify-content: center;
+                min-height: 44px;
             }
 
             .profile-image {
@@ -1760,7 +1768,7 @@
             }
 
             .section {
-                padding: 2rem 0.8rem;
+                padding: 3rem 1rem;
             }
 
             .section-subtitle {
@@ -2137,6 +2145,38 @@
             }
         }
 
+        /* Mobile-specific fixes */
+        @media screen and (max-width: 768px) {
+            html {
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+            }
+
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                overscroll-behavior: none;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            * {
+                -webkit-tap-highlight-color: transparent;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            input, textarea {
+                -webkit-user-select: text;
+                -moz-user-select: text;
+                -ms-user-select: text;
+                user-select: text;
+            }
+        }
+
         /* Extra small screens */
         @media (max-width: 480px) {
             body {
@@ -2195,6 +2235,30 @@
             .floating-icon {
                 font-size: 1rem;
                 padding: 0.6rem;
+            }
+        }
+
+        /* Mobile performance optimizations */
+        @media (max-width: 768px) {
+            .floating-icons,
+            .particles,
+            .profile-decorator {
+                display: none;
+            }
+
+            .hero::before,
+            body::before {
+                animation: none;
+            }
+
+            * {
+                will-change: auto;
+            }
+
+            .project-card:hover,
+            .feature-card:hover,
+            .skill-category:hover {
+                transform: none;
             }
         }
 
