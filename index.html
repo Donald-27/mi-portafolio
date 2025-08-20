@@ -1783,39 +1783,50 @@
                 padding: 0;
             }
 
-            /* About Section - Side by Side Layout */
+            /* About Section - Mobile Optimized Layout */
             .about-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.8rem;
+                grid-template-columns: 1fr;
+                gap: 1rem;
                 align-items: start;
             }
 
             .about-text {
-                font-size: 0.7rem;
-                line-height: 1.3;
+                font-size: 0.75rem;
+                line-height: 1.4;
+                order: 1;
             }
 
             .about-text p {
-                margin-bottom: 0.6rem;
+                margin-bottom: 0.8rem;
+            }
+
+            /* Mobile-specific layout for code and skills */
+            .about-mobile-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+                order: 2;
             }
 
             .about-skills {
                 grid-template-columns: 1fr;
-                gap: 0.6rem;
+                gap: 0.5rem;
             }
 
             .skill-category {
-                padding: 0.6rem;
+                padding: 0.5rem;
+                border-radius: 8px;
             }
 
             .skill-category h3 {
-                font-size: 0.75rem;
+                font-size: 0.65rem;
                 margin-bottom: 0.3rem;
             }
 
             .skill-tag {
-                font-size: 0.55rem;
-                padding: 0.15rem 0.3rem;
+                font-size: 0.5rem;
+                padding: 0.1rem 0.25rem;
+                margin: 0.1rem;
             }
 
             /* Code Editor - Ultra Compact Mobile View */
@@ -2301,6 +2312,52 @@
             }
         }
 
+        /* Desktop-only styles for About section */
+        @media (min-width: 769px) {
+            .about-content {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 4rem !important;
+            }
+
+            .about-mobile-container {
+                display: block !important;
+                grid-template-columns: none !important;
+            }
+
+            .about-text {
+                order: 0 !important;
+            }
+
+            .about-skills {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+                gap: 2rem !important;
+            }
+
+            .skill-category {
+                padding: 2rem !important;
+            }
+
+            .skill-category h3 {
+                font-size: 1.3rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .skill-tag {
+                font-size: 0.9rem !important;
+                padding: 0.5rem 1rem !important;
+            }
+
+            .code-editor {
+                padding: 1.5rem !important;
+                font-size: 1rem !important;
+            }
+
+            .code-header span {
+                font-size: 0.9rem !important;
+                margin-left: 1rem !important;
+            }
+        }
+
         /* Mobile performance optimizations */
         @media (max-width: 768px) {
             .floating-icons,
@@ -2681,74 +2738,76 @@
                         software that makes a positive real-world impact. Whether working on travel booking systems, 
                         healthcare applications, or productivity tools, I approach each project with dedication and innovation.
                     </p>
+                </div>
 
+                <!-- Mobile-optimized container for code and skills -->
+                <div class="about-mobile-container">
                     <div class="code-editor">
                         <div class="code-header">
                             <div class="code-dot red"></div>
                             <div class="code-dot yellow"></div>
                             <div class="code-dot green"></div>
-                            <span style="margin-left: 1rem; font-size: 0.9rem; color: #888;">my_philosophy.py</span>
+                            <span style="margin-left: 0.5rem; font-size: 0.7rem; color: #888;">my_philosophy.py</span>
                         </div>
                         <div class="code-content">
                             <span class="code-keyword">class</span> <span class="code-function">Developer</span>:<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">__init__</span>(self):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.name = <span class="code-string">"Kiprop Donald"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.passion = <span class="code-string">"Creating impactful solutions"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.motto = <span class="code-string">"Code by day, Debug by night"</span><br><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment"># Always learning, always growing</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">build_future</span>(self):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"One line of code at a time"</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="about-skills">
-                    <div class="skill-category">
-                        <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
-                        <div class="skill-list">
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Next.js</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">Tailwind CSS</span>
-                            <span class="skill-tag">HTML5</span>
-                            <span class="skill-tag">CSS3</span>
+                            &nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">__init__</span>(self):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;self.name = <span class="code-string">"Kiprop Donald"</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;self.passion = <span class="code-string">"Creating solutions"</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;self.motto = <span class="code-string">"Code & Debug"</span><br><br>
+                            &nbsp;&nbsp;<span class="code-comment"># Always learning</span><br>
+                            &nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">build_future</span>(self):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"One line at a time"</span>
                         </div>
                     </div>
 
-                    <div class="skill-category">
-                        <h3><i class="fas fa-server"></i> Backend</h3>
-                        <div class="skill-list">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Flask</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">SQLAlchemy</span>
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">REST APIs</span>
-                            <span class="skill-tag">SQLite</span>
+                    <div class="about-skills">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+                            <div class="skill-list">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Next.js</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">Tailwind CSS</span>
+                                <span class="skill-tag">HTML5</span>
+                                <span class="skill-tag">CSS3</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="skill-category">
-                        <h3><i class="fas fa-tools"></i> Tools & DevOps</h3>
-                        <div class="skill-list">
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">GitHub</span>
-                            <span class="skill-tag">VS Code</span>
-                            <span class="skill-tag">Code Editor</span>
-                            <span class="skill-tag">Linux</span>
-
+                        <div class="skill-category">
+                            <h3><i class="fas fa-server"></i> Backend</h3>
+                            <div class="skill-list">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Flask</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">SQLAlchemy</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">REST APIs</span>
+                                <span class="skill-tag">SQLite</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="skill-category">
-                        <h3><i class="fas fa-brain"></i> Soft Skills</h3>
-                        <div class="skill-list">
-                            <span class="skill-tag">Problem Solving</span>
-                            <span class="skill-tag">Team Leadership</span>
-                            <span class="skill-tag">Communication</span>
-                            <span class="skill-tag">Project Management</span>
-                            <span class="skill-tag">Mentoring</span>
+                        <div class="skill-category">
+                            <h3><i class="fas fa-tools"></i> Tools & DevOps</h3>
+                            <div class="skill-list">
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">GitHub</span>
+                                <span class="skill-tag">VS Code</span>
+                                <span class="skill-tag">Code Editor</span>
+                                <span class="skill-tag">Linux</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3><i class="fas fa-brain"></i> Soft Skills</h3>
+                            <div class="skill-list">
+                                <span class="skill-tag">Problem Solving</span>
+                                <span class="skill-tag">Team Leadership</span>
+                                <span class="skill-tag">Communication</span>
+                                <span class="skill-tag">Project Management</span>
+                                <span class="skill-tag">Mentoring</span>
+                            </div>
                         </div>
                     </div>
                 </div>
