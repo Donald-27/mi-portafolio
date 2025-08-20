@@ -1611,8 +1611,8 @@
             }
             
             body {
-                font-size: 14px;
-                line-height: 1.4;
+                font-size: 13px;
+                line-height: 1.3;
                 overflow-x: hidden;
             }
 
@@ -1762,86 +1762,87 @@
                 padding: 0.8rem;
             }
 
-            /* Sections - Better Spacing */
+            /* Sections - Compact Mobile Spacing */
             .about, .projects, .experience, .certifications, .blog, .interactive-section, .additional-info, .testimonials, .contact {
-                padding: 3rem 1rem;
+                padding: 2rem 1rem;
             }
 
             .section-subtitle {
-                font-size: 0.75rem;
-                margin-bottom: 0.5rem;
+                font-size: 0.7rem;
+                margin-bottom: 0.3rem;
             }
 
             .section-title {
-                font-size: clamp(1.4rem, 5vw, 1.8rem);
-                margin-bottom: 0.8rem;
+                font-size: clamp(1.2rem, 4vw, 1.5rem);
+                margin-bottom: 0.6rem;
             }
 
             .section-description {
-                font-size: 0.85rem;
-                line-height: 1.5;
+                font-size: 0.8rem;
+                line-height: 1.4;
                 padding: 0;
             }
 
-            /* About Section - Maintain Desktop Structure */
+            /* About Section - Compact Mobile Layout */
             .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                align-items: start;
             }
 
             .about-text {
-                font-size: 0.9rem;
-                line-height: 1.6;
+                font-size: 0.8rem;
+                line-height: 1.4;
             }
 
             .about-text p {
-                margin-bottom: 1rem;
+                margin-bottom: 0.8rem;
             }
 
             .about-skills {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
             }
 
             .skill-category {
-                padding: 1.2rem;
+                padding: 0.8rem;
             }
 
             .skill-category h3 {
-                font-size: 1rem;
-                margin-bottom: 0.8rem;
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
             }
 
             .skill-tag {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.6rem;
+                font-size: 0.65rem;
+                padding: 0.2rem 0.4rem;
             }
 
-            /* Code Editor - Better Mobile View */
+            /* Code Editor - Compact Mobile View */
             .code-editor {
-                padding: 1rem;
-                margin: 1.5rem 0;
-                font-size: 0.75rem;
+                padding: 0.6rem;
+                margin: 1rem 0;
+                font-size: 0.65rem;
             }
 
             .code-header {
-                margin-bottom: 0.8rem;
-                padding-bottom: 0.5rem;
+                margin-bottom: 0.5rem;
+                padding-bottom: 0.3rem;
             }
 
             .code-header span {
-                font-size: 0.8rem;
-                margin-left: 0.5rem;
+                font-size: 0.7rem;
+                margin-left: 0.3rem;
             }
 
             .code-content {
-                line-height: 1.4;
-                font-size: 0.75rem;
+                line-height: 1.2;
+                font-size: 0.65rem;
             }
 
             .code-dot {
-                width: 8px;
-                height: 8px;
+                width: 6px;
+                height: 6px;
             }
 
             /* Projects - Grid Layout Maintained */
@@ -1851,18 +1852,18 @@
             }
 
             .project-content {
-                padding: 1.5rem;
+                padding: 1rem;
             }
 
             .project-title {
-                font-size: 1.2rem;
-                margin-bottom: 0.8rem;
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
             }
 
             .project-description {
-                font-size: 0.9rem;
-                line-height: 1.5;
-                margin-bottom: 1rem;
+                font-size: 0.8rem;
+                line-height: 1.4;
+                margin-bottom: 0.8rem;
             }
 
             .project-details {
@@ -1915,22 +1916,22 @@
             }
 
             .timeline-content {
-                padding: 1.2rem;
+                padding: 0.8rem;
             }
 
             .timeline-title {
-                font-size: 1.1rem;
-                margin-bottom: 0.3rem;
+                font-size: 0.95rem;
+                margin-bottom: 0.2rem;
             }
 
             .timeline-company {
-                font-size: 0.85rem;
-                margin-bottom: 0.8rem;
+                font-size: 0.75rem;
+                margin-bottom: 0.5rem;
             }
 
             .timeline-description {
-                font-size: 0.9rem;
-                line-height: 1.5;
+                font-size: 0.8rem;
+                line-height: 1.4;
             }
 
             .timeline-date {
@@ -2022,30 +2023,30 @@
                 font-size: 0.8rem;
             }
 
-            /* Cards - Consistent Sizing */
+            /* Cards - Compact Mobile Sizing */
             .feature-grid, .info-grid, .education-grid, .blog-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
             }
 
             .feature-card, .info-card, .education-card, .blog-card {
-                padding: 1.5rem;
+                padding: 1rem;
             }
 
             .feature-title, .info-title, .education-title, .blog-title {
-                font-size: 1.1rem;
-                margin-bottom: 0.8rem;
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
             }
 
             .feature-description, .info-content, .education-description, .blog-excerpt {
-                font-size: 0.9rem;
-                line-height: 1.5;
+                font-size: 0.75rem;
+                line-height: 1.3;
             }
 
             .feature-icon, .info-icon, .education-icon {
-                font-size: 1.5rem;
-                width: 50px;
-                height: 50px;
+                font-size: 1.2rem;
+                width: 40px;
+                height: 40px;
             }
 
             /* Testimonials */
@@ -2778,22 +2779,6 @@
                             A comprehensive travel booking and vehicle registration platform that streamlines 
                             chaotic travel logistics with dynamic booking capabilities and real-time management.
                         </p>
-
-                        <div class="project-details">
-                            <div class="detail-section">
-                                <h4><i class="fas fa-bullseye"></i> Challenge</h4>
-                                <p>Disorganized matatu travel booking system in Kenya with no digital tracking or advance booking options.</p>
-                            </div>
-                            <div class="detail-section">
-                                <h4><i class="fas fa-lightbulb"></i> Solution</h4>
-                                <p>Built a full-stack platform with real-time vehicle tracking, advance booking, and payment integration.</p>
-                            </div>
-                            <div class="detail-section">
-                                <h4><i class="fas fa-chart-line"></i> Impact</h4>
-                                <p>Reduced booking time by 70% and improved passenger satisfaction through reliable scheduling.</p>
-                            </div>
-                        </div>
-
                         <div class="project-tech">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Flask</span>
@@ -2814,10 +2799,6 @@
                             <a href="https://relaxed-cuchufli-e6b142.netlify.app/" class="project-link" target="_blank">
                                 <i class="fas fa-external-link-alt"></i>
                                 Live Demo
-                            </a>
-                            <a href="#case-study-matatu" class="project-link" onclick="showCaseStudy('matatu')">
-                                <i class="fas fa-file-alt"></i>
-                                Case Study
                             </a>
                         </div>
                     </div>
