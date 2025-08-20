@@ -553,10 +553,16 @@
         }
 
         .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .about-horizontal-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            gap: 2rem;
+            align-items: start;
         }
 
         .about-text {
@@ -1785,9 +1791,8 @@
 
             /* About Section - Mobile Optimized Layout */
             .about-content {
-                grid-template-columns: 1fr;
+                flex-direction: column;
                 gap: 1rem;
-                align-items: start;
             }
 
             .about-text {
@@ -1801,7 +1806,7 @@
             }
 
             /* Mobile-specific layout for code and skills */
-            .about-mobile-container {
+            .about-horizontal-container {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 0.8rem;
@@ -2315,17 +2320,20 @@
         /* Desktop-only styles for About section */
         @media (min-width: 769px) {
             .about-content {
-                grid-template-columns: 1fr 1fr !important;
-                gap: 4rem !important;
+                flex-direction: column !important;
+                gap: 3rem !important;
             }
 
-            .about-mobile-container {
-                display: block !important;
-                grid-template-columns: none !important;
+            .about-horizontal-container {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 3rem !important;
             }
 
             .about-text {
                 order: 0 !important;
+                font-size: 1.1rem !important;
+                line-height: 1.8 !important;
             }
 
             .about-skills {
@@ -2724,6 +2732,7 @@
             </div>
 
             <div class="about-content">
+                <!-- Paragraph section above everything -->
                 <div class="about-text">
                     <p>
                         Hello! I'm <span class="highlight">Kiprop Donald</span>, a software developer who enjoys blending creativity with technical expertise to create efficient, scalable applications. I strive to deliver solutions that not only meet user needs but also provide seamless experiences.
@@ -2740,8 +2749,8 @@
                     </p>
                 </div>
 
-                <!-- Mobile-optimized container for code and skills -->
-                <div class="about-mobile-container">
+                <!-- Horizontal container for code editor and skills side by side -->
+                <div class="about-horizontal-container">
                     <div class="code-editor">
                         <div class="code-header">
                             <div class="code-dot red"></div>
@@ -2969,7 +2978,8 @@
                     <div class="project-content">
                         <h3 class="project-title">Deliveroo Courier Services</h3>
                         <p class="project-description">
-                            Deliveroo Courier Services is a versatile app designed to connect users with reliable couriers for delivering packages, documents, food, and more. It offers real-time tracking, efficient courier assignment, and optimized route management to ensure quick and secure deliveries of any item. The app focuses on seamless communication and timely updates, making sending and receiving parcels hassle-free for everyone.
+                            A comprehensive courier and delivery management platform with real-time tracking, 
+                            smart courier assignment, and route optimization for efficient package delivery.
                         </p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
