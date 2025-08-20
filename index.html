@@ -1607,43 +1607,39 @@
 
         @media (max-width: 768px) {
             body {
-                font-size: 12px;
-                min-height: 100vh;
-                min-height: -webkit-fill-available;
+                font-size: 14px;
+                line-height: 1.5;
             }
 
-            html {
-                height: -webkit-fill-available;
-            }
-
+            /* Navigation - Improved */
             .navbar {
-                padding: 0.4rem 0.6rem;
-                min-height: 45px;
+                padding: 0.8rem 1rem;
+                min-height: 60px;
             }
 
             .nav-container {
-                min-height: 45px;
+                min-height: 60px;
             }
 
             .logo {
-                font-size: 1rem;
+                font-size: 1.3rem;
             }
 
             .nav-menu {
                 position: fixed;
-                top: 45px;
+                top: 60px;
                 left: 0;
                 right: 0;
                 background: rgba(10, 10, 10, 0.98);
                 backdrop-filter: blur(30px);
                 flex-direction: column;
-                padding: 0.8rem;
+                padding: 1rem;
                 transform: translateX(-100%);
                 transition: var(--transition);
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
-                height: calc(100vh - 45px);
+                height: calc(100vh - 60px);
                 overflow-y: auto;
-                gap: 0.3rem;
+                gap: 0.5rem;
             }
 
             .nav-menu.active {
@@ -1651,22 +1647,18 @@
             }
 
             .nav-link {
-                padding: 0.4rem;
-                font-size: 0.7rem;
+                padding: 0.8rem;
+                font-size: 0.9rem;
                 text-align: center;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .nav-link[href="analytics.html"] {
                 background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-                border-radius: 6px;
-                margin: 0.2rem 0;
+                border-radius: 8px;
+                margin: 0.3rem 0;
                 border: 1px solid rgba(79, 172, 254, 0.3);
-                font-size: 0.65rem;
-            }
-
-            .nav-link[href="analytics.html"] i {
-                margin-right: 0.2rem;
+                font-size: 0.85rem;
             }
 
             .menu-toggle {
@@ -1686,498 +1678,494 @@
                 transform: rotate(-45deg) translate(7px, -6px);
             }
 
+            /* Hero Section - Better Proportions */
             .hero {
-                padding: 50px 0.8rem 1.5rem 0.8rem;
-                text-align: center;
-                min-height: calc(100vh - 50px);
-                min-height: calc(100dvh - 50px);
-            }
-
-            .hero-subtitle {
-                font-size: 0.65rem;
-                margin-bottom: 0.3rem;
-            }
-
-            .hero-title {
-                font-size: clamp(1.2rem, 5.5vw, 1.8rem);
-                line-height: 1.1;
-                margin-bottom: 0.8rem;
-            }
-
-            .hero-description {
-                font-size: 0.8rem;
-                line-height: 1.4;
-                margin-bottom: 1rem;
-                padding: 0 0.3rem;
+                padding: 80px 1.5rem 2rem 1.5rem;
+                min-height: calc(100vh - 60px);
             }
 
             .hero-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
                 text-align: center;
-                gap: 0.6rem;
-                max-width: 100%;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 2.8rem);
+                line-height: 1.2;
+                margin-bottom: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+                padding: 0 0.5rem;
             }
 
             .hero-stats {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 0.3rem;
-                margin-bottom: 0.8rem;
+                gap: 0.8rem;
+                margin-bottom: 1.5rem;
             }
 
             .stat-item {
-                padding: 0.4rem;
+                padding: 1rem 0.8rem;
             }
 
             .stat-number {
-                font-size: 0.9rem;
-                margin-bottom: 0.1rem;
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
             }
 
             .stat-label {
-                font-size: 0.55rem;
+                font-size: 0.8rem;
             }
 
             .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.4rem;
+                flex-direction: row;
+                gap: 1rem;
+                justify-content: center;
             }
 
             .btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.75rem;
-                width: 100%;
-                max-width: 220px;
-                justify-content: center;
-                min-height: 40px;
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                flex: 1;
+                max-width: 160px;
+                min-height: 48px;
             }
 
             .profile-image {
-                width: 140px;
-                height: 140px;
+                width: 200px;
+                height: 200px;
             }
 
             .profile-decorator {
-                width: 180px;
-                height: 180px;
+                width: 240px;
+                height: 240px;
             }
 
             .floating-icon {
-                font-size: 0.8rem;
-                padding: 0.4rem;
+                font-size: 1.2rem;
+                padding: 0.8rem;
             }
 
+            /* Sections - Better Spacing */
             .section {
-                padding: 2rem 0.8rem;
+                padding: 4rem 1.5rem;
             }
 
             .section-subtitle {
-                font-size: 0.55rem;
-                margin-bottom: 0.3rem;
+                font-size: 0.8rem;
+                margin-bottom: 0.8rem;
             }
 
             .section-title {
-                font-size: clamp(0.9rem, 3.5vw, 1.3rem);
-                margin-bottom: 0.5rem;
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
+                margin-bottom: 1rem;
             }
 
             .section-description {
-                font-size: 0.65rem;
-                line-height: 1.2;
-                padding: 0 0.2rem;
+                font-size: 0.95rem;
+                line-height: 1.6;
+                padding: 0 1rem;
             }
 
+            /* About Section - Maintain Desktop Structure */
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 0.8rem;
+                gap: 2rem;
             }
 
             .about-text {
-                font-size: 0.65rem;
-                line-height: 1.2;
-                order: 2;
+                font-size: 0.9rem;
+                line-height: 1.6;
             }
 
             .about-text p {
-                margin-bottom: 0.5rem;
-                text-align: justify;
+                margin-bottom: 1rem;
             }
 
             .about-skills {
-                gap: 0.5rem;
-                order: 1;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
 
             .skill-category {
-                padding: 0.5rem;
+                padding: 1.2rem;
             }
 
             .skill-category h3 {
-                font-size: 0.7rem;
-                margin-bottom: 0.3rem;
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
             }
 
             .skill-tag {
-                font-size: 0.5rem;
-                padding: 0.15rem 0.3rem;
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
             }
 
-            /* Better code editor mobile styling */
+            /* Code Editor - Better Mobile View */
             .code-editor {
-                padding: 0.5rem;
-                margin: 0.6rem 0;
-                font-size: 0.5rem;
-                order: 3;
+                padding: 1rem;
+                margin: 1.5rem 0;
+                font-size: 0.75rem;
             }
 
             .code-header {
-                margin-bottom: 0.3rem;
-                padding-bottom: 0.2rem;
+                margin-bottom: 0.8rem;
+                padding-bottom: 0.5rem;
             }
 
             .code-header span {
-                font-size: 0.5rem;
-                margin-left: 0.3rem;
+                font-size: 0.8rem;
+                margin-left: 0.5rem;
             }
 
             .code-content {
-                line-height: 1.1;
-                font-size: 0.5rem;
+                line-height: 1.4;
+                font-size: 0.75rem;
             }
 
             .code-dot {
-                width: 5px;
-                height: 5px;
+                width: 8px;
+                height: 8px;
             }
 
+            /* Projects - Grid Layout Maintained */
             .projects-grid {
                 grid-template-columns: 1fr;
-                gap: 0.6rem;
+                gap: 1.5rem;
             }
 
             .project-content {
-                padding: 0.6rem;
+                padding: 1.5rem;
             }
 
             .project-title {
-                font-size: 0.85rem;
-                margin-bottom: 0.3rem;
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
             }
 
             .project-description {
-                font-size: 0.65rem;
-                line-height: 1.2;
-                margin-bottom: 0.6rem;
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
             }
 
             .project-details {
-                margin: 0.6rem 0;
+                margin: 1rem 0;
             }
 
             .detail-section {
-                padding: 0.4rem;
-                margin-bottom: 0.4rem;
+                padding: 0.8rem;
+                margin-bottom: 0.8rem;
             }
 
             .detail-section h4 {
-                font-size: 0.6rem;
-                margin-bottom: 0.1rem;
+                font-size: 0.8rem;
+                margin-bottom: 0.3rem;
             }
 
             .detail-section p {
-                font-size: 0.6rem;
-                line-height: 1.1;
+                font-size: 0.8rem;
+                line-height: 1.4;
             }
 
             .tech-tag {
-                font-size: 0.5rem;
-                padding: 0.1rem 0.3rem;
+                font-size: 0.7rem;
+                padding: 0.2rem 0.5rem;
             }
 
             .project-links {
-                gap: 0.3rem;
-                flex-wrap: wrap;
+                gap: 0.5rem;
+                flex-wrap: nowrap;
             }
 
             .project-link {
-                padding: 0.3rem 0.5rem;
-                font-size: 0.6rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
                 flex: 1;
-                min-width: 70px;
+                min-width: 100px;
             }
 
+            /* Timeline - Cleaner Mobile View */
             .timeline::before {
-                left: 12px;
+                left: 20px;
             }
 
             .timeline-item {
                 width: 100%;
                 left: 0 !important;
-                padding-left: 1.8rem;
+                padding-left: 3rem;
                 padding-right: 0;
-                margin-bottom: 0.8rem;
+                margin-bottom: 2rem;
             }
 
             .timeline-content {
-                padding: 0.6rem;
+                padding: 1.2rem;
             }
 
             .timeline-title {
-                font-size: 0.8rem;
-                margin-bottom: 0.1rem;
+                font-size: 1.1rem;
+                margin-bottom: 0.3rem;
             }
 
             .timeline-company {
-                font-size: 0.6rem;
-                margin-bottom: 0.3rem;
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
             }
 
             .timeline-description {
-                font-size: 0.65rem;
-                line-height: 1.2;
+                font-size: 0.9rem;
+                line-height: 1.5;
             }
 
             .timeline-date {
-                font-size: 0.55rem;
+                font-size: 0.8rem;
             }
 
             .timeline-dot {
-                left: 2px !important;
+                left: 10px !important;
                 right: auto !important;
-                width: 12px;
-                height: 12px;
+                width: 16px;
+                height: 16px;
             }
 
+            /* Contact - Better Layout */
             .contact-container {
                 grid-template-columns: 1fr;
-                gap: 0.6rem;
+                gap: 2rem;
             }
 
             .contact-info, .contact-form {
-                padding: 0.6rem;
+                padding: 1.5rem;
             }
 
             .contact-item {
-                padding: 0.6rem;
-                margin-bottom: 0.6rem;
+                padding: 1rem;
+                margin-bottom: 1rem;
             }
 
             .contact-icon {
-                font-size: 0.9rem;
-                min-width: 18px;
+                font-size: 1.2rem;
+                min-width: 24px;
             }
 
             .contact-item h4 {
-                font-size: 0.75rem;
+                font-size: 1rem;
             }
 
             .contact-item p {
-                font-size: 0.65rem;
+                font-size: 0.9rem;
             }
 
             .form-label {
-                font-size: 0.65rem;
-                margin-bottom: 0.1rem;
-            }
-
-            .form-input {
-                padding: 0.5rem;
-                font-size: 0.65rem;
-            }
-
-            .social-links {
-                gap: 0.3rem;
-            }
-
-            .social-link {
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
-            }
-
-            .footer-text {
-                font-size: 0.55rem;
-                text-align: center;
-                padding: 0 0.6rem;
-            }
-
-            .metrics-section {
-                padding: 0.6rem;
-                margin: 0.6rem 0;
-            }
-
-            .metrics-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 0.3rem;
-            }
-
-            .metric-item {
-                padding: 0.4rem;
-            }
-
-            .metric-number {
-                font-size: 0.85rem;
-                margin-bottom: 0.1rem;
-            }
-
-            .metric-label {
-                font-size: 0.55rem;
-            }
-
-            .feature-grid, .info-grid, .education-grid, .blog-grid {
-                grid-template-columns: 1fr;
-                gap: 0.6rem;
-            }
-
-            .feature-card, .info-card, .education-card, .blog-card {
-                padding: 0.6rem;
-            }
-
-            .feature-title, .info-title, .education-title, .blog-title {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
                 margin-bottom: 0.3rem;
             }
 
+            .form-input {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            /* Footer */
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+
+            .footer-text {
+                font-size: 0.85rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            /* Metrics - Two Column Grid */
+            .metrics-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .metric-item {
+                padding: 1rem;
+            }
+
+            .metric-number {
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .metric-label {
+                font-size: 0.8rem;
+            }
+
+            /* Cards - Consistent Sizing */
+            .feature-grid, .info-grid, .education-grid, .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card, .info-card, .education-card, .blog-card {
+                padding: 1.5rem;
+            }
+
+            .feature-title, .info-title, .education-title, .blog-title {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+
             .feature-description, .info-content, .education-description, .blog-excerpt {
-                font-size: 0.65rem;
-                line-height: 1.2;
+                font-size: 0.9rem;
+                line-height: 1.5;
             }
 
             .feature-icon, .info-icon, .education-icon {
-                font-size: 0.9rem;
-                width: 35px;
-                height: 35px;
+                font-size: 1.5rem;
+                width: 50px;
+                height: 50px;
             }
 
+            /* Testimonials */
             .testimonial {
-                padding: 0.8rem 0.6rem;
+                padding: 2rem 1.5rem;
             }
 
             .testimonial-text {
-                font-size: 0.7rem;
-                line-height: 1.3;
-                margin-bottom: 0.6rem;
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
             }
 
             .author-avatar {
-                width: 35px;
-                height: 35px;
-                font-size: 0.7rem;
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
             }
 
             .author-info h4 {
-                font-size: 0.7rem;
-                margin-bottom: 0.1rem;
+                font-size: 1rem;
+                margin-bottom: 0.2rem;
             }
 
             .author-info p {
-                font-size: 0.55rem;
+                font-size: 0.85rem;
             }
 
-            /* Additional optimizations for mobile compactness */
+            /* Achievements and Additional Sections */
             .achievements-section {
-                margin-top: 1.2rem !important;
+                margin-top: 3rem;
             }
 
             .achievements-grid {
-                gap: 0.6rem !important;
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             .achievement-item {
-                padding: 0.6rem !important;
+                padding: 1.2rem;
             }
 
             .achievement-item h4 {
-                font-size: 0.7rem !important;
+                font-size: 1rem;
             }
 
             .achievement-item p {
-                font-size: 0.6rem !important;
-                line-height: 1.1 !important;
+                font-size: 0.85rem;
+                line-height: 1.4;
             }
 
             .volunteer-item, .interest-item, .hobby-item {
-                padding: 0.4rem !important;
-                margin-bottom: 0.3rem !important;
-                font-size: 0.6rem !important;
+                padding: 0.8rem;
+                margin-bottom: 0.8rem;
+                font-size: 0.85rem;
             }
 
             .philosophy-quote {
-                font-size: 0.7rem !important;
-                padding-left: 0.5rem !important;
-                margin-bottom: 0.6rem !important;
+                font-size: 1rem;
+                padding-left: 1rem;
+                margin-bottom: 1.5rem;
             }
 
             .value-item {
-                padding: 0.4rem !important;
-                font-size: 0.6rem !important;
+                padding: 0.8rem;
+                font-size: 0.85rem;
             }
 
             .references-grid {
-                gap: 0.6rem !important;
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             .reference-card {
-                padding: 0.6rem !important;
+                padding: 1.5rem;
             }
 
             .reference-avatar {
-                width: 45px !important;
-                height: 45px !important;
-                font-size: 0.9rem !important;
+                width: 70px;
+                height: 70px;
+                font-size: 1.3rem;
             }
 
             .blog-content {
-                padding: 0.6rem !important;
+                padding: 1.5rem;
             }
 
             .blog-meta {
-                font-size: 0.6rem !important;
+                font-size: 0.8rem;
             }
 
             .education-content {
-                padding: 0.6rem !important;
+                padding: 1.5rem;
             }
 
             .cert-item {
-                padding: 0.4rem !important;
-                font-size: 0.6rem !important;
+                padding: 0.8rem;
+                font-size: 0.85rem;
             }
 
-            /* Section specific mobile optimizations */
-            .metrics-section .section-title {
-                font-size: clamp(0.85rem, 3.5vw, 1.2rem);
-            }
-
-            .metrics-section .section-description {
-                font-size: 0.6rem;
-            }
-
+            /* Project Status and Badges */
             .project-badge {
-                font-size: 0.5rem !important;
-                padding: 0.2rem 0.5rem !important;
+                font-size: 0.7rem;
+                padding: 0.3rem 0.8rem;
             }
 
             .project-status {
-                font-size: 0.5rem !important;
+                font-size: 0.8rem;
             }
 
             .blog-category {
-                font-size: 0.5rem !important;
-                padding: 0.2rem 0.4rem !important;
+                font-size: 0.7rem;
+                padding: 0.3rem 0.8rem;
             }
 
             .education-institution {
-                font-size: 0.6rem !important;
+                font-size: 0.9rem;
             }
 
             .education-date {
-                font-size: 0.55rem !important;
+                font-size: 0.8rem;
             }
 
             .education-skills .skill-tag {
-                font-size: 0.45rem !important;
-                padding: 0.1rem 0.25rem !important;
+                font-size: 0.7rem;
+                padding: 0.2rem 0.5rem;
             }
         }
 
