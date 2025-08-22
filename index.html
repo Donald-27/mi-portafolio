@@ -553,16 +553,16 @@
         }
 
         .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-right-content {
             display: flex;
             flex-direction: column;
             gap: 2rem;
-        }
-
-        .about-horizontal-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: start;
         }
 
         .about-text {
@@ -1791,8 +1791,9 @@
 
             /* About Section - Mobile Optimized Layout */
             .about-content {
-                flex-direction: column;
-                gap: 1rem;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 1rem !important;
             }
 
             .about-text {
@@ -1806,10 +1807,10 @@
             }
 
             /* Mobile-specific layout for code and skills */
-            .about-horizontal-container {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 0.8rem;
+            .about-right-content {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0.8rem !important;
                 order: 2;
             }
 
@@ -2317,54 +2318,7 @@
             }
         }
 
-        /* Desktop-only styles for About section */
-        @media (min-width: 769px) {
-            .about-content {
-                flex-direction: column !important;
-                gap: 3rem !important;
-            }
-
-            .about-horizontal-container {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr !important;
-                gap: 3rem !important;
-            }
-
-            .about-text {
-                order: 0 !important;
-                font-size: 1.1rem !important;
-                line-height: 1.8 !important;
-            }
-
-            .about-skills {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
-                gap: 2rem !important;
-            }
-
-            .skill-category {
-                padding: 2rem !important;
-            }
-
-            .skill-category h3 {
-                font-size: 1.3rem !important;
-                margin-bottom: 1rem !important;
-            }
-
-            .skill-tag {
-                font-size: 0.9rem !important;
-                padding: 0.5rem 1rem !important;
-            }
-
-            .code-editor {
-                padding: 1.5rem !important;
-                font-size: 1rem !important;
-            }
-
-            .code-header span {
-                font-size: 0.9rem !important;
-                margin-left: 1rem !important;
-            }
-        }
+        
 
         /* Mobile performance optimizations */
         @media (max-width: 768px) {
@@ -2732,7 +2686,6 @@
             </div>
 
             <div class="about-content">
-                <!-- Paragraph section above everything -->
                 <div class="about-text">
                     <p>
                         Hello! I'm <span class="highlight">Kiprop Donald</span>, a software developer who enjoys blending creativity with technical expertise to create efficient, scalable applications. I strive to deliver solutions that not only meet user needs but also provide seamless experiences.
@@ -2749,8 +2702,7 @@
                     </p>
                 </div>
 
-                <!-- Horizontal container for code editor and skills side by side -->
-                <div class="about-horizontal-container">
+                <div class="about-right-content">
                     <div class="code-editor">
                         <div class="code-header">
                             <div class="code-dot red"></div>
