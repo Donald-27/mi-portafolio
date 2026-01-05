@@ -573,10 +573,10 @@
             font-size: 1.1rem;
             line-height: 1.8;
             color: var(--text-secondary);
-            max-width: 760px; /* keep paragraph at a readable measure */
-            margin: 0 auto; /* center the paragraph block */
-            text-align: center; /* center text for a balanced layout */
-            padding-left: 6px;
+            max-width: 100%; /* use full width available in grid */
+            margin: 0; /* remove auto centering */
+            text-align: left; /* left-align for better readability on large screens */
+            padding: 0;
         }
 
         .about-text p {
@@ -615,13 +615,16 @@
         .code-editor {
             margin: 1.5rem auto 0;
             padding: 1rem 1.25rem;
-            max-width: 720px; /* reduced to a reasonable reading width */
+            max-width: 560px; /* comfortable reading width for code snippets */
+            width: 100%;
             border-radius: 14px;
         }
 
         .code-editor .code-content {
-            max-width: 680px;
+            max-width: 520px;
             margin: 0 auto;
+            white-space: pre-wrap; /* preserve indentation but allow wrapping */
+            overflow-wrap: anywhere; /* wrap long tokens if needed */
         }
 
         .skill-category {
@@ -969,6 +972,8 @@
         .code-content {
             color: #d4d4d4;
             line-height: 1.6;
+            white-space: pre-wrap; /* ensure long lines wrap nicely */
+            word-break: break-word;
         }
 
         .code-keyword { color: #569cd6; }
@@ -1885,6 +1890,9 @@
                 font-size: 0.75rem;
                 line-height: 1.4;
                 order: 1;
+                text-align: center; /* center text on mobile for balance */
+                margin: 0 auto; /* center the block on mobile */
+                max-width: 100%; /* use full available width */
             }
 
             .about-text p {
@@ -1922,9 +1930,11 @@
 
             /* Code Editor - Ultra Compact Mobile View */
             .code-editor {
-                padding: 0.4rem;
+                padding: 0.8rem;
                 margin: 0.8rem 0;
                 font-size: 0.55rem;
+                max-width: 100% !important; /* ensure full-width on very small screens */
+                box-sizing: border-box;
             }
 
             .code-header {
