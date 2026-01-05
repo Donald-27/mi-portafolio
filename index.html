@@ -584,11 +584,16 @@
             font-weight: 600;
         }
 
-        .about-skills {
-            display: grid;
-            /* Make skills appear as a 2x2 grid on larger screens */
-            grid-template-columns: repeat(2, minmax(200px, 1fr));
+        /* Skill containers row: horizontal on wide screens, grid on smaller screens */
+        .skill-row {
+            display: flex;
             gap: 1.25rem;
+            align-items: stretch;
+        }
+
+        .skill-row .skill-category {
+            flex: 1 1 0;
+            min-width: 180px;
         }
 
         .skill-category {
@@ -620,14 +625,22 @@
             gap: 0.5rem;
         }
 
-        /* Ensure About skills collapse to single column on very small screens */
-        @media (max-width: 520px) {
+        /* Switch to a 2-column grid on tablets and single column on narrow phones */
+        @media (max-width: 900px) {
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .about-skills {
+            .skill-row {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(180px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .skill-row {
                 grid-template-columns: 1fr;
             }
         }
@@ -2747,73 +2760,73 @@
                     </p>
                 </div>
 
-                <div class="about-right-content">
-                    <div class="code-editor">
-                        <div class="code-header">
-                            <div class="code-dot red"></div>
-                            <div class="code-dot yellow"></div>
-                            <div class="code-dot green"></div>
-                            <span style="margin-left: 0.5rem; font-size: 0.7rem; color: #888;">my_philosophy.py</span>
-                        </div>
-                        <div class="code-content">
-                            <span class="code-keyword">class</span> <span class="code-function">Developer</span>:<br>
-                            &nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">__init__</span>(self):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;self.name = <span class="code-string">"Kiprop Donald"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;self.passion = <span class="code-string">"Creating solutions"</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;self.motto = <span class="code-string">"Code & Debug"</span><br><br>
-                            &nbsp;&nbsp;<span class="code-comment"># Always learning</span><br>
-                            &nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">build_future</span>(self):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"One line at a time"</span>
+                <!-- Code snippet placed directly below the paragraphs -->
+                <div class="code-editor" style="margin-top:1.5rem;">
+                    <div class="code-header">
+                        <div class="code-dot red"></div>
+                        <div class="code-dot yellow"></div>
+                        <div class="code-dot green"></div>
+                        <span style="margin-left: 0.5rem; font-size: 0.7rem; color: #888;">my_philosophy.py</span>
+                    </div>
+                    <div class="code-content">
+                        <span class="code-keyword">class</span> <span class="code-function">Developer</span>:<br>
+                        &nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">__init__</span>(self):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;self.name = <span class="code-string">"Kiprop Donald"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;self.passion = <span class="code-string">"Creating solutions"</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;self.motto = <span class="code-string">"Code & Debug"</span><br><br>
+                        &nbsp;&nbsp;<span class="code-comment"># Always learning</span><br>
+                        &nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">build_future</span>(self):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"One line at a time"</span>
+                    </div>
+                </div>
+
+                <!-- Skill containers: horizontal on wide screens, grid on small screens -->
+                <div class="skill-row" style="margin-top:1.75rem;">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
                         </div>
                     </div>
 
-                    <div class="about-skills">
-                        <div class="skill-category">
-                            <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
-                            <div class="skill-list">
-                                <span class="skill-tag">React</span>
-                                <span class="skill-tag">Next.js</span>
-                                <span class="skill-tag">JavaScript</span>
-                                <span class="skill-tag">TypeScript</span>
-                                <span class="skill-tag">Tailwind CSS</span>
-                                <span class="skill-tag">HTML5</span>
-                                <span class="skill-tag">CSS3</span>
-                            </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-server"></i> Backend</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">SQLAlchemy</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">SQLite</span>
                         </div>
+                    </div>
 
-                        <div class="skill-category">
-                            <h3><i class="fas fa-server"></i> Backend</h3>
-                            <div class="skill-list">
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">Flask</span>
-                                <span class="skill-tag">Node.js</span>
-                                <span class="skill-tag">SQLAlchemy</span>
-                                <span class="skill-tag">PostgreSQL</span>
-                                <span class="skill-tag">REST APIs</span>
-                                <span class="skill-tag">SQLite</span>
-                            </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Tools & DevOps</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Code Editor</span>
+                            <span class="skill-tag">Linux</span>
                         </div>
+                    </div>
 
-                        <div class="skill-category">
-                            <h3><i class="fas fa-tools"></i> Tools & DevOps</h3>
-                            <div class="skill-list">
-                                <span class="skill-tag">Git</span>
-                                <span class="skill-tag">GitHub</span>
-                                <span class="skill-tag">VS Code</span>
-                                <span class="skill-tag">Code Editor</span>
-                                <span class="skill-tag">Linux</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-category">
-                            <h3><i class="fas fa-brain"></i> Soft Skills</h3>
-                            <div class="skill-list">
-                                <span class="skill-tag">Problem Solving</span>
-                                <span class="skill-tag">Team Leadership</span>
-                                <span class="skill-tag">Communication</span>
-                                <span class="skill-tag">Project Management</span>
-                                <span class="skill-tag">Mentoring</span>
-                            </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-brain"></i> Soft Skills</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Team Leadership</span>
+                            <span class="skill-tag">Communication</span>
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Mentoring</span>
                         </div>
                     </div>
                 </div>
