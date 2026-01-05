@@ -1309,9 +1309,12 @@
 
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            /* Force a 2x2 layout when possible while remaining responsive.
+               Each column will be at least 240px and grow to fill available space. */
+            grid-template-columns: repeat(2, minmax(240px, 1fr));
             gap: 2rem;
             margin-top: 4rem;
+            align-items: stretch;
         }
 
         .education-card {
@@ -1322,6 +1325,10 @@
             backdrop-filter: blur(10px);
             transition: var(--transition);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* ensure cards stretch to equal height in the grid */
         }
 
         .education-card:hover {
@@ -1345,6 +1352,13 @@
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
             color: white;
+        }
+
+        /* Fallback for very small screens to avoid cramped 2-column layout */
+        @media (max-width: 420px) {
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .education-title {
