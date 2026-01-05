@@ -587,13 +587,36 @@
         /* Skill containers row: horizontal on wide screens, grid on smaller screens */
         .skill-row {
             display: flex;
-            gap: 1.25rem;
+            gap: 1.5rem;
             align-items: stretch;
+            justify-content: space-between;
+        }
+
+        /* Ensure code snippet and skill row span the full about-content grid so they can be centered */
+        .about-content > .code-editor,
+        .about-content > .skill-row {
+            grid-column: 1 / -1;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .skill-row .skill-category {
-            flex: 1 1 0;
-            min-width: 180px;
+            flex: 1 1 22%; /* give each card a reasonable base size on wide screens */
+            min-width: 220px;
+            margin: 0; /* reset any inline spacing */
+        }
+
+        /* Make the code editor content centered and limited in width */
+        .code-editor {
+            margin: 1.5rem auto 0;
+            padding: 1rem 1.25rem;
+            max-width: 900px;
+        }
+
+        .code-editor .code-content {
+            max-width: 820px;
+            margin: 0 auto;
         }
 
         .skill-category {
