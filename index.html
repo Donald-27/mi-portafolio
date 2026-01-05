@@ -425,7 +425,7 @@
         .profile-container {
             position: relative;
             z-index: 2;
-            margin-top: 3.5rem; /* nudge profile image slightly down to avoid top being cut off */
+            margin-top: 3.5rem;
         }
 
         .profile-image {
@@ -433,6 +433,8 @@
             height: 400px;
             border-radius: 50%;
             object-fit: cover;
+            /* shift image content down so the top of the head isn't cropped */
+            object-position: center 40%;
             border: 5px solid transparent;
             background: var(--accent-gradient);
             padding: 5px;
