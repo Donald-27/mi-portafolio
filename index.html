@@ -577,6 +577,7 @@
             margin: 0; /* remove auto centering */
             text-align: left; /* left-align for better readability on large screens */
             padding: 0;
+            grid-column: 1 / -1;
         }
 
         .about-text p {
@@ -597,7 +598,14 @@
         }
 
         /* Ensure code snippet and skill row span the full about-content grid so they can be centered */
-        .about-content > .code-editor,
+        .about-content > .code-editor {
+            grid-column: 1 / -1;
+            width: 100%;
+            max-width: clamp(320px, 60vw, 550px);
+            margin: 0 auto;
+            text-align: left;
+        }
+
         .about-content > .skill-row {
             grid-column: 1 / -1;
             width: 100%;
@@ -611,20 +619,24 @@
             margin: 0; /* reset any inline spacing */
         }
 
-        /* Make the code editor content centered and limited in width */
+        /* Make the code editor content centered and limited in width (adaptive) */
         .code-editor {
             margin: 1.5rem auto 0;
-            padding: 1rem 1.25rem;
-            max-width: 560px; /* comfortable reading width for code snippets */
+            padding: 0.75rem 1rem;
+            /* adaptive width: fits content while remaining responsive */
+            max-width: clamp(320px, 60vw, 550px);
             width: 100%;
+            box-sizing: border-box;
             border-radius: 14px;
+            overflow-x: auto; /* allow horizontal scroll for long code lines */
+            text-align: left;
+            font-size: 0.9rem;
         }
 
         .code-editor .code-content {
-            max-width: 520px;
-            margin: 0 auto;
-            white-space: pre-wrap; /* preserve indentation but allow wrapping */
-            overflow-wrap: anywhere; /* wrap long tokens if needed */
+            margin: 0;
+            white-space: pre; /* preserve exact spacing and indentation */
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .skill-category {
@@ -943,19 +955,25 @@
         .code-editor {
             background: #1e1e1e;
             border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin: 2rem 0;
+            padding: 1rem 0.75rem;
+            margin: 2rem auto;
             font-family: 'JetBrains Mono', monospace;
             overflow-x: auto;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            /* keep visual width consistent with adaptive container rules */
+            max-width: clamp(320px, 60vw, 550px);
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 0.9rem;
         }
 
         .code-header {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -971,9 +989,9 @@
 
         .code-content {
             color: #d4d4d4;
-            line-height: 1.6;
-            white-space: pre-wrap; /* ensure long lines wrap nicely */
-            word-break: break-word;
+            line-height: 1.4;
+            white-space: pre; /* preserve spacing and indentation */
+            font-size: 0.85rem;
         }
 
         .code-keyword { color: #569cd6; }
@@ -1931,10 +1949,11 @@
             /* Code Editor - Ultra Compact Mobile View */
             .code-editor {
                 padding: 0.8rem;
-                margin: 0.8rem 0;
+                margin: 0.8rem auto;
                 font-size: 0.55rem;
-                max-width: 100% !important; /* ensure full-width on very small screens */
+                max-width: clamp(320px, 60vw, 550px) !important; /* adaptive width, fits content */
                 box-sizing: border-box;
+                text-align: center;
             }
 
             .code-header {
@@ -2690,86 +2709,6 @@
         </div>
     </section>
 
-    <!-- Professional Metrics -->
-    <section class="metrics-section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Professional Impact & Achievements</h2>
-                <p class="section-description">Measurable results and recognition from my development work</p>
-            </div>
-
-            <div class="metrics-grid">
-                <div class="metric-item">
-                    <div class="metric-number">25+</div>
-                    <div class="metric-label">Projects Delivered</div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-number">200+</div>
-                    <div class="metric-label">GitHub Repositories</div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-number">15+</div>
-                    <div class="metric-label">Happy Clients</div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-number">100%</div>
-                    <div class="metric-label">Client Satisfaction</div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-number">3+</div>
-                    <div class="metric-label">Years Experience</div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-number">10+</div>
-                    <div class="metric-label">Mentees Guided</div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-number">9000+</div>
-                    <div class="metric-label">Lines of Code</div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-number">95%</div>
-                    <div class="metric-label">Bug-Free Deployments</div>
-                </div>
-            </div>
-
-            <!-- Achievements Section -->
-            <div class="achievements-section" style="margin-top: 4rem;">
-                <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.8rem; color: var(--text-accent);">🏆 Key Achievements</h3>
-                <div class="achievements-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                    <div class="achievement-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--text-accent);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fas fa-trophy" style="color: #f7971e; font-size: 1.5rem;"></i>
-                            <h4 style="margin: 0; color: var(--text-primary);">Outstanding Graduate</h4>
-                        </div>
-                        <p style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Top 10% of Full-Stack Software Engineering cohort at Moringa School (2024-2025)</p>
-                    </div>
-                    <div class="achievement-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--text-accent);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fas fa-rocket" style="color: #4facfe; font-size: 1.5rem;"></i>
-                            <h4 style="margin: 0; color: var(--text-primary);">Fast Deployment Record</h4>
-                        </div>
-                        <p style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Deployed 15+ applications with 48-hour average delivery time</p>
-                    </div>
-                    <div class="achievement-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--text-accent);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fas fa-users" style="color: #56ab2f; font-size: 1.5rem;"></i>
-                            <h4 style="margin: 0; color: var(--text-primary);">Mentorship Excellence</h4>
-                        </div>
-                        <p style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Successfully mentored 10+ junior developers to land their first tech roles</p>
-                    </div>
-                    <div class="achievement-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--text-accent);">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <i class="fas fa-code" style="color: #f093fb; font-size: 1.5rem;"></i>
-                            <h4 style="margin: 0; color: var(--text-primary);">Open Source Contributor</h4>
-                        </div>
-                        <p style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Active contributor to 5+ open source projects with 200+ commits</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- About Section -->
     <section id="about" class="about">
         <div class="section-container">
@@ -2866,6 +2805,86 @@
                             <span class="skill-tag">Project Management</span>
                             <span class="skill-tag">Mentoring</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Metrics -->
+    <section class="metrics-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Impact & Achievements</h2>
+                <p class="section-description">Measurable results and recognition from my development work</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-number">25+</div>
+                    <div class="metric-label">Projects Delivered</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">200+</div>
+                    <div class="metric-label">GitHub Repositories</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">15+</div>
+                    <div class="metric-label">Happy Clients</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">100%</div>
+                    <div class="metric-label">Client Satisfaction</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">3+</div>
+                    <div class="metric-label">Years Experience</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">10+</div>
+                    <div class="metric-label">Mentees Guided</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">9000+</div>
+                    <div class="metric-label">Lines of Code</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">95%</div>
+                    <div class="metric-label">Bug-Free Deployments</div>
+                </div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div class="achievements-section" style="margin-top: 4rem;">
+                <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.8rem; color: var(--text-accent);">🏆 Key Achievements</h3>
+                <div class="achievements-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div class="achievement-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--text-accent);">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <i class="fas fa-trophy" style="color: #f7971e; font-size: 1.5rem;"></i>
+                            <h4 style="margin: 0; color: var(--text-primary);">Outstanding Graduate</h4>
+                        </div>
+                        <p style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Top 10% of Full-Stack Software Engineering cohort at Moringa School (2024-2025)</p>
+                    </div>
+                    <div class="achievement-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--text-accent);">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <i class="fas fa-rocket" style="color: #4facfe; font-size: 1.5rem;"></i>
+                            <h4 style="margin: 0; color: var(--text-primary);">Fast Deployment Record</h4>
+                        </div>
+                        <p style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Deployed 15+ applications with 48-hour average delivery time</p>
+                    </div>
+                    <div class="achievement-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--text-accent);">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <i class="fas fa-users" style="color: #56ab2f; font-size: 1.5rem;"></i>
+                            <h4 style="margin: 0; color: var(--text-primary);">Mentorship Excellence</h4>
+                        </div>
+                        <p style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Successfully mentored 10+ junior developers to land their first tech roles</p>
+                    </div>
+                    <div class="achievement-item" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--text-accent);">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <i class="fas fa-code" style="color: #f093fb; font-size: 1.5rem;"></i>
+                            <h4 style="margin: 0; color: var(--text-primary);">Open Source Contributor</h4>
+                        </div>
+                        <p style="color: var(--text-secondary); margin: 0; line-height: 1.5;">Active contributor to 5+ open source projects with 200+ commits</p>
                     </div>
                 </div>
             </div>
