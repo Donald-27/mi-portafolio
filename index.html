@@ -586,8 +586,9 @@
 
         .about-skills {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            /* Make skills appear as a 2x2 grid on larger screens */
+            grid-template-columns: repeat(2, minmax(200px, 1fr));
+            gap: 1.25rem;
         }
 
         .skill-category {
@@ -617,6 +618,18 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
+        }
+
+        /* Ensure About skills collapse to single column on very small screens */
+        @media (max-width: 520px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-skills {
+                grid-template-columns: 1fr;
+            }
         }
 
         .skill-tag {
@@ -1314,7 +1327,7 @@
             grid-template-columns: repeat(2, minmax(240px, 1fr));
             gap: 2rem;
             margin-top: 4rem;
-            align-items: stretch;
+            align-items: start; /* let cards size naturally instead of forcing full height */
         }
 
         .education-card {
@@ -1328,7 +1341,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 100%; /* ensure cards stretch to equal height in the grid */
+            /* avoid forcing full height which caused excessive stretching */
+            min-height: 0;
         }
 
         .education-card:hover {
