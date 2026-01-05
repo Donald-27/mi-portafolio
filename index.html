@@ -1327,7 +1327,7 @@
             grid-template-columns: repeat(2, minmax(240px, 1fr));
             gap: 2rem;
             margin-top: 4rem;
-            align-items: start; /* let cards size naturally instead of forcing full height */
+            align-items: stretch; /* ensure cards match height for balanced 2x2 layout */
         }
 
         .education-card {
@@ -1343,6 +1343,7 @@
             justify-content: space-between;
             /* avoid forcing full height which caused excessive stretching */
             min-height: 0;
+            height: 100%; /* allow grid to stretch cards evenly */
         }
 
         .education-card:hover {
@@ -1368,11 +1369,21 @@
             color: white;
         }
 
-        /* Fallback for very small screens to avoid cramped 2-column layout */
-        @media (max-width: 420px) {
+        /* Fallback for small screens to avoid cramped 2-column layout */
+        @media (max-width: 760px) {
             .education-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        .education-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .education-content > .education-skills, .education-content > .certification-list {
+            margin-top: auto; /* push skills/certs to bottom for consistent card layout */
         }
 
         .education-title {
@@ -3170,6 +3181,9 @@
     <span class="skill-tag">Database Systems</span>
     <span class="skill-tag">Web Development</span>
 </div>
+
+                    </div>
+                </div>
 
                 <div class="education-card">
                     <div class="education-icon">
