@@ -2744,7 +2744,7 @@
                 ];
 
                 education.forEach((edu, index) => {
-                    const y = currentY + (index * 28);
+                    const y = currentY + (index * 32);
 
                     pdf.setFillColor(...colors.light);
                     pdf.rect(margin, y, contentWidth, 25, 'F');
@@ -2774,7 +2774,7 @@
                     pdf.text(detailLines, margin + 4, y + 22);
                 });
 
-                currentY += 65;
+                currentY += 110;
 
                 // Languages & Additional Skills
                 currentY = addSectionHeader('LANGUAGES & ADDITIONAL SKILLS', currentY);
