@@ -267,9 +267,10 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
-            padding: 100px 2rem 2rem 2rem;
+            overflow: visible;
+            padding: 100px 2rem 25rem 2rem;
             margin-top: 0;
+            margin-bottom: 4rem;
         }
 
         .hero-content {
@@ -431,8 +432,8 @@
         }
 
         .profile-image {
-            width: 400px;
-            height: 400px;
+            width: 420px;
+            height: 420px;
             border-radius: 50%;
             object-fit: cover;
             /* center the image properly to show the head */
@@ -452,8 +453,8 @@
 
         .profile-decorator {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 540px;
+            height: 540px;
             border: 2px solid rgba(100, 255, 218, 0.3);
             border-radius: 50%;
             top: 50%;
@@ -493,26 +494,26 @@
         }
 
         .floating-icon:nth-child(1) {
-            top: 10%;
-            left: 10%;
+            top: 45%;
+            left: -3%;
             animation-delay: 0s;
         }
 
         .floating-icon:nth-child(2) {
-            top: 20%;
-            right: 10%;
+            top: 55%;
+            right: -3%;
             animation-delay: 1s;
         }
 
         .floating-icon:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
+            top: 25%;
+            left: 0%;
             animation-delay: 2s;
         }
 
         .floating-icon:nth-child(4) {
-            bottom: 10%;
-            right: 20%;
+            top: 35%;
+            right: 0%;
             animation-delay: 3s;
         }
 
@@ -1717,6 +1718,26 @@
             .hero-description {
                 font-size: 1.1rem;
             }
+
+            .floating-icon:nth-child(1) {
+                top: 30% !important;
+                left: 5% !important;
+            }
+
+            .floating-icon:nth-child(2) {
+                top: 30% !important;
+                right: 5% !important;
+            }
+
+            .floating-icon:nth-child(3) {
+                top: 55% !important;
+                left: 10% !important;
+            }
+
+            .floating-icon:nth-child(4) {
+                top: 55% !important;
+                right: 10% !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1862,15 +1883,15 @@
             }
 
             .profile-image {
-                width: 280px;
-                height: 280px;
+                width: 300px;
+                height: 300px;
                 object-position: center 30% !important;
                 animation: fadeInScale 1.5s ease-out 0.5s forwards !important;
             }
 
             .profile-decorator {
-                width: 340px;
-                height: 340px;
+                width: 370px;
+                height: 370px;
                 animation: rotate 20s linear infinite !important;
             }
 
@@ -1878,6 +1899,27 @@
                 font-size: 1.2rem;
                 padding: 0.8rem;
                 animation: float 6s ease-in-out infinite !important;
+            }
+
+            .floating-icon:nth-child(1) {
+                top: 5% !important;
+                left: 5% !important;
+            }
+
+            .floating-icon:nth-child(2) {
+                top: 5% !important;
+                right: 5% !important;
+                left: auto !important;
+            }
+
+            .floating-icon:nth-child(3) {
+                top: 25% !important;
+                left: 0% !important;
+            }
+
+            .floating-icon:nth-child(4) {
+                top: 35% !important;
+                right: 0% !important;
             }
 
             /* Sections - Ultra Compact Mobile Spacing */
