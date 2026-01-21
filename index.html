@@ -1865,16 +1865,19 @@
                 width: 280px;
                 height: 280px;
                 object-position: center 30% !important;
+                animation: fadeInScale 1.5s ease-out 0.5s forwards !important;
             }
 
             .profile-decorator {
                 width: 340px;
                 height: 340px;
+                animation: rotate 20s linear infinite !important;
             }
 
             .floating-icon {
                 font-size: 1.2rem;
                 padding: 0.8rem;
+                animation: float 6s ease-in-out infinite !important;
             }
 
             /* Sections - Ultra Compact Mobile Spacing */
@@ -2438,9 +2441,7 @@
 
         /* Mobile performance optimizations */
         @media (max-width: 768px) {
-            .floating-icons,
-            .particles,
-            .profile-decorator {
+            .particles {
                 display: none;
             }
 
