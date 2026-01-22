@@ -1032,6 +1032,17 @@
                 <strong>My Resume</strong> with comprehensive details<br>
                 <small style="opacity: 0.8;">Official document </small>
             </div>
+
+            <button class="download-button" onclick="downloadCV()" title="Download Comprehensive CV Document">
+                <div class="button-content">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Download CV (PDF)</span>
+                </div>
+            </button>
+            <div class="download-note">
+                <strong>My Curriculum Vitae</strong> with detailed background<br>
+                <small style="opacity: 0.8;">Comprehensive document</small>
+            </div>
         </div>
     </div>
 
@@ -3002,6 +3013,63 @@
             createPage4();
 
             return pdf;
+        }
+
+        // CV Download Function - Directly downloads the CV PDF from root
+        function downloadCV() {
+            const button = event.target.closest('.download-button');
+            const originalContent = button.innerHTML;
+            const buttonContent = button.querySelector('.button-content');
+            
+            try {
+                button.disabled = true;
+                button.style.background = 'linear-gradient(45deg, #3b82f6, #1e40af)';
+                buttonContent.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Preparing CV...</span>
+                    </div>
+                `;
+
+                // Create a link to download the CV PDF from root
+                const cvLink = document.createElement('a');
+                cvLink.href = './micv.pdf'; // CV file in root directory
+                cvLink.download = 'Kiprop_Donald_CV.pdf';
+                cvLink.style.display = 'none';
+                document.body.appendChild(cvLink);
+                cvLink.click();
+                document.body.removeChild(cvLink);
+
+                // Success state
+                button.style.background = 'linear-gradient(45deg, #059669, #10b981)';
+                buttonContent.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-check-circle"></i>
+                        <span>CV Downloaded Successfully!</span>
+                    </div>
+                `;
+
+                console.log('CV download completed successfully');
+
+            } catch (error) {
+                console.error('CV download failed:', error);
+
+                // Error state
+                button.style.background = 'linear-gradient(45deg, #dc2626, #ef4444)';
+                buttonContent.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Download Failed - Please Try Again</span>
+                    </div>
+                `;
+            }
+
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                button.style.background = 'linear-gradient(135deg, #1e293b, #475569)';
+                buttonContent.innerHTML = originalContent;
+                button.disabled = false;
+            }, 3000);
         }
     </script>
 </body>
